@@ -1,0 +1,26 @@
+:root {
+  /*=========================================*/
+  --clr-icons: var(--primary-dark);
+  --clr-type-icon: var(--clr-icons);
+  --clr-seat-icon: var(--clr-icons);
+  /*==============================================*/
+  /*          für bewertung                       */
+
+  --clr-state-icons: var(--secondary-default);
+  --clr-state-active: var(--accent-color);
+  /*==============================================*/
+
+  --clr-bg: var(--secondary-dark);
+  --clr-bg-main: var(--secondary-light);
+
+  --clr-error: var(--error-color);
+
+  /*============================================*/
+  --font-size: 1rem;
+  --s-font: var(--font-size);
+  --m-font: calc(var(--s-font) * 1.5rem);
+  --l-font: calc(var(--m-font) * 2rem);
+
+  --margin-default: 1rem;
+  --padding-default: 1rem;
+}
