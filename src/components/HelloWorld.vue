@@ -1,11 +1,20 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
 defineProps({
   msg: String,
-})
+});
 
-const count = ref(0)
+const count = ref(0);
+</script>
+
+<script>
+import CheckBox from "./input-elements/CheckBox.vue";
+import RadioButton from "./input-elements/RadioButton.vue";
+
+export default {
+  components: { CheckBox, RadioButton },
+};
 </script>
 
 <template>
@@ -31,6 +40,10 @@ const count = ref(0)
     in your IDE for a better DX
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <CheckBox />
+  <RadioButton />
+  <RadioButton />
+  <RadioButton />
 </template>
 
 <style scoped>
