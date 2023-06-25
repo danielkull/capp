@@ -1,3 +1,4 @@
+
 <script>
 import { supabase } from "./lib/supabaseClient";
 export default {
@@ -63,6 +64,10 @@ export default {
     },
   },
 };
+
+<script setup>
+import HelloWorld from "./components/HelloWorld.vue";
+
 </script>
 
 <template>
