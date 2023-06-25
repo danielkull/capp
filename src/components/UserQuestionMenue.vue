@@ -241,6 +241,7 @@
   </section>
 </template>
 <script>
+import CheckBox from './input-elements/CheckBox.vue';
 export default {
   components: { CheckBox },
 };
