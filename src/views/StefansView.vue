@@ -1,5 +1,5 @@
 <template>
-  <h1>Hallo</h1>
+  <h1>Hallo Stefan, viel Spaß beim Programieren</h1>
   <CheckBox />
   <RadioButton />
   <RadioButton />
@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import CheckBox from "./input-elements/CheckBox.vue";
-import RadioButton from "./input-elements/RadioButton.vue";
-import UserQuestionMenueVue from "./UserQuestionMenue.vue";
+import CheckBox from "@/components/input-elements/CheckBox.vue";
+import RadioButton from "@/components/input-elements/RadioButton.vue";
+import UserQuestionMenueVue from "@/components/UserQuestionMenue.vue";
 
 export default {
   components: { CheckBox, RadioButton, UserQuestionMenueVue },
