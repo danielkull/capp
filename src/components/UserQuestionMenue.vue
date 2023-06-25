@@ -7,7 +7,7 @@
         id="bogen1"
         class="question-list__btn"
       /><label class="question-list__header" for="bogen1"
-        >Persöhnliche Informationen</label
+        >Persönliche Informationen</label
       >
       <section class="question-list__list">
         <ul>
