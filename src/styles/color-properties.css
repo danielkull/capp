@@ -16,6 +16,16 @@
 
   --accent-color: hsl(43, 91%, 48%);
   --error-color: hsl(349, 100%, 35%);
+
+  /*====================================================================*/
+  /*======neue CP=========*/
+  --m-font: calc(var(--s-font) * 1.5);
+  --header-question-list: clamp(1.5rem, 20vw, 2rem);
+  --question-list-padding-inline: clamp(0.6vw, 20vw, 1vw);
+  --list-padding: var(--question-list-padding-inline);
+  --list-item-padding: 0.5rem;
+  --list-hover: hsl(0, 0%, 92%);
+  /*====================================================================*/
 }
 
 html {

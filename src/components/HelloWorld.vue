@@ -11,9 +11,10 @@ const count = ref(0);
 <script>
 import CheckBox from "./input-elements/CheckBox.vue";
 import RadioButton from "./input-elements/RadioButton.vue";
+import UserQuestionMenueVue from "./UserQuestionMenue.vue";
 
 export default {
-  components: { CheckBox, RadioButton },
+  components: { CheckBox, RadioButton, UserQuestionMenueVue },
 };
 </script>
 
@@ -44,6 +45,7 @@ export default {
   <RadioButton />
   <RadioButton />
   <RadioButton />
+  <UserQuestionMenueVue />
 </template>
 
 <style scoped>
