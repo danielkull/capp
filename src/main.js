@@ -6,4 +6,6 @@ import "./styles/reset.css";
 import "./styles/global.css";
 import "./styles/color-properties.css";
 
-createApp(App).mount("#app");
+import router from "./router";
+
+createApp(App).use(router).mount("#app");
