@@ -16,6 +16,17 @@
 
   --accent-color: hsl(43, 91%, 48%);
   --error-color: hsl(349, 100%, 35%);
+  /*==========================================*/
+  --light-bg: var(--secondary-light);
+  --user-border: var(--secondary-default);
+  --seat-false: var(--secondary-default);
+  --seat-true: var(--primary-mid);
+
+  --car-icon-bg: var(--primary-dark);
+  --car-icon-img: var(--secondary-light);
+
+  --nav-icon: var(--secondary-light);
+  --nav-icon-act: var(--secondary-default);
 
   /*====================================================================*/
   /*======neue CP=========*/
