@@ -4,6 +4,8 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
+    <router-link to="/stefansView">Stefans View</router-link>
+    <router-link to="/logView">Log View</router-link>
     <router-link to="/stefansView">Stefans View</router-link> |
     <router-link to="/calendar">Kalender</router-link> |
     <router-link to="/danielView">Daniels View</router-link>
@@ -11,4 +13,8 @@
   <router-view />
 </template>
 
-<style scoped></style>
+<style scoped>
+nav {
+  display: none;
+}
+</style>
