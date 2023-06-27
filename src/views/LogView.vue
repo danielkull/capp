@@ -43,6 +43,29 @@
             />
           </div>
         </section>
+        <section class="logIn-card__logIn-page">
+          <div class="logIn-card__logIn-inpue">
+            <input type="text" />
+            <input type="text" />
+          </div>
+          <div class="logIn-card__login-btn-wrapper">
+            <button class="logIn-card__login-back">
+              <span class="logIn-card__back-arrow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  class="bi bi-caret-left-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <input type="button" value="Log In" class="LogIn-card__btn" />
+          </div>
+        </section>
       </article>
     </main>
   </body>
@@ -92,7 +115,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid red;
+  border: 1px solid yellow;
+  /* overflow: hidden; */
 }
 
 /*================================================*/
@@ -168,6 +192,85 @@ main {
   border: 3px solid var(--primary-dark);
   color: var(--primary-light);
 }
+/*===================================================*/
+/*            Login Page                      */
+/*===================================================*/
+.logIn-card__logIn-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  padding-inline: auto;
+  border-radius: 2rem;
+  width: 25vw;
+  height: 80vh;
+  /* background: rgba(0, 0, 0, 0.2); */
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 600px;
+}
+.logIn-card__logIn-inpue {
+  display: flex;
+  flex-direction: column;
+}
+.logIn-card__login-btn-wrapper {
+  margin-bottom: 4rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid red;
+}
+.LogIn-card__btn {
+  all: unset;
+
+  padding-block: 0.8rem;
+  padding-inline: 3rem;
+  border-radius: 2.5rem;
+  margin-block: 1.2rem;
+  border: 3px solid var(--primary-mid);
+  box-shadow: 0 0 0 0 var(--primary-mid) inset;
+  transition-duration: 0.5s, 0.2s;
+  transition-property: box-shadow, color;
+  background-image: white;
+  outline: 2px solid var(--secondary-mid);
+  outline-offset: 0.4rem;
+  color: var(--primary-mid);
+  font-size: clamp(1rem, 10vw, 1.4vw);
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.logIn-card__login-back {
+  all: unset;
+  height: 5rem;
+  aspect-ratio: 1;
+  background: var(--secondary-mid);
+  display: grid;
+  place-content: center;
+  border-radius: 100%;
+  outline: 2px solid var(--secondary-mid);
+  outline-offset: 0.4rem;
+}
+.logIn-card__back-arrow {
+  display: grid;
+  place-content: center;
+}
+.logIn-card__back-arrow > svg {
+  display: block;
+  height: 100%;
+  width: 3rem;
+  fill: var(--secondary-light);
+  rotate: Y 0deg;
+  transition: rotate 0.4s ease-out;
+  perspective: 2px;
+}
+.logIn-card__back-arrow > svg:hover {
+  fill: red;
+  rotate: Y 360deg;
+  perspective: 2px;
+}
 
 @media screen and (min-width: 900px) {
   .wave {
@@ -179,14 +282,16 @@ main {
     fill: var(--secondary-light);
   }
   .Sign-btn:hover,
-  .LogIn-btn:hover {
+  .LogIn-btn:hover,
+  .LogIn-card__btn:hover {
     cursor: pointer;
     box-shadow: 20rem 0 0 0 var(--primary-mid) inset;
     color: var(--secondary-light);
     outline: 2px solid var(--secondary-dark);
   }
   .LogIn-btn:active,
-  .Sign-btn:active {
+  .Sign-btn:active,
+  .LogIn-card__btn:active {
     transition-duration: 0s, 0s;
     transition-property: box-shadow, color;
     box-shadow: 20rem 0 0 0 var(--primary-dark) inset;
