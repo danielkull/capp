@@ -66,6 +66,15 @@ export default {
 </script>
 
 <template>
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link> |
+    <router-link to="/stefansView">Stefans View</router-link> |
+    <router-link to="/calendar">Kalender</router-link> |
+    <router-link to="/danielView">Daniels View</router-link>
+  </nav>
+  <router-view />
+
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
