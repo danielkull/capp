@@ -1,28 +1,101 @@
 <template>
   <body>
-    <svg
-      class="wave"
-      viewBox="0 0 1439 381"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M1441 0.0378418C1296.9 64.4485 1008.7 301.626 720.5 322.091C432.3 342.556 144.1 146.308 7.24792e-05 102.362V381.332H1441V0.0378418Z"
-      />
-    </svg>
-
     <main>
       <article class="logIn-card__wrapper">
         <section class="logIn-card__logo-capp">
           <svg
+            class="capp-logo"
+            version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            class="bi bi-1-circle-fill"
-            viewBox="0 0 16 16"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0, 0, 249.449, 249.449"
           >
-            <path
-              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312V4.002Z"
-            />
+            <g id="Layer_4_I">
+              <path
+                d="M91.294,98.606 C121.02,81.432 167.366,41.609 224.974,61.158"
+                fill-opacity="0"
+                stroke-width="15"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M212.808,118.212 C213.36,118.212 213.808,118.749 213.808,119.412 L213.808,122.222 C213.808,122.885 213.36,123.423 212.808,123.423 L190.926,123.423 C190.374,123.423 189.926,122.885 189.926,122.222 L189.926,119.412 C189.926,118.749 190.374,118.212 190.926,118.212 L212.808,118.212 z"
+                fill-opacity="0"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M87.466,97.08 C71.411,103.961 55.255,108.417 41.629,119.661"
+                fill-opacity="0"
+                stroke-width="8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M94.377,97.08 C89.444,108.654 106.613,111.289 121.809,109.316"
+                fill-opacity="0"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M72.778,185.276 C59.708,185.276 49.113,174.681 49.113,161.611 C49.113,148.541 59.708,137.946 72.778,137.946 C85.848,137.946 96.443,148.541 96.443,161.611 C96.443,174.681 85.848,185.276 72.778,185.276 z"
+                fill-opacity="0"
+                stroke-width="8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M40.341,116.651 C30.533,124.623 23.598,161.584 41.629,164.044"
+                fill-opacity="0"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <g>
+                <path
+                  d="M222.884,98.119 C225.561,109.912 225.735,105.596 226.498,121.965 C226.537,136.654 219.105,164.044 202.053,165.562 L104.733,164.951 L104.851,163.685 C104.852,144.666 90.624,129.248 73.073,129.248 C55.522,129.248 41.478,144.666 41.478,163.685 L39.762,163.335 C33.727,158.812 32.824,157.586 31.897,151.159 L32.086,140.753 C32.966,136.326 37.207,117.686 39.788,117.686 L53.23,116.249 L74.408,105.749 L83.588,102.952 L92.746,100.77 L93.953,104.393 L96.752,106.957 L101.563,109.057 L109.287,110.258 L222.884,98.119 z M212.808,118.212 L190.926,118.212 C190.374,118.212 189.926,118.749 189.926,119.412 L189.926,122.222 C189.926,122.885 190.374,123.423 190.926,123.423 L212.808,123.423 C213.36,123.423 213.808,122.885 213.808,122.222 L213.808,119.412 C213.808,118.749 213.36,118.212 212.808,118.212 z"
+                />
+                <path
+                  d="M222.884,98.119 C225.561,109.912 225.735,105.596 226.498,121.965 C226.537,136.654 219.105,164.044 202.053,165.562 L104.733,164.951 L104.851,163.685 C104.852,144.666 90.624,129.248 73.073,129.248 C55.522,129.248 41.478,144.666 41.478,163.685 L39.762,163.335 C33.727,158.812 32.824,157.586 31.897,151.159 L32.086,140.753 C32.966,136.326 37.207,117.686 39.788,117.686 L53.23,116.249 L74.408,105.749 L83.588,102.952 L92.746,100.77 L93.953,104.393 L96.752,106.957 L101.563,109.057 L109.287,110.258 L222.884,98.119 z M212.808,118.212 L190.926,118.212 C190.374,118.212 189.926,118.749 189.926,119.412 L189.926,122.222 C189.926,122.885 190.374,123.423 190.926,123.423 L212.808,123.423 C213.36,123.423 213.808,122.885 213.808,122.222 L213.808,119.412 C213.808,118.749 213.36,118.212 212.808,118.212 z"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <g>
+                <g>
+                  <path
+                    d="M15.434,15.835 L72.126,15.835"
+                    fill-opacity="0"
+                    stroke-width="13"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M72.126,72.527 L72.126,15.835"
+                    fill-opacity="0"
+                    stroke-width="13"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <path
+                  d="M127.154,232.43 C63.795,232.43 12.432,181.067 12.432,117.708 C12.471,75.256 34.701,42.151 69.739,19.836"
+                  fill-opacity="0"
+                  stroke-width="13"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M224.974,61.158 C237.587,76.529 240.907,96.309 241.875,117.708 C241.875,181.067 190.513,232.43 127.154,232.43"
+                  fill-opacity="0"
+                  stroke-width="13"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+            </g>
           </svg>
 
           <h1>CAPP</h1>
@@ -44,9 +117,32 @@
           </div>
         </section>
         <section class="logIn-card__logIn-page">
-          <div class="logIn-card__logIn-inpue">
-            <input type="text" />
-            <input type="text" />
+          <div class="logIn-card__logIn-input">
+            <form action="#">
+              <InputText
+                :inputId="'email'"
+                :inputType="'email'"
+                :inputPlaceholder="'beispiel@provider.com'"
+                >Email
+              </InputText>
+
+              <InputText :inputId="'first-password'" :inputType="'password'"
+                >Password<button class="pw-sigth">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="bi bi-eye"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+                    />
+                    <path
+                      d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+                    />
+                  </svg></button
+              ></InputText>
+            </form>
           </div>
           <div class="logIn-card__login-btn-wrapper">
             <button class="logIn-card__login-back">
@@ -72,36 +168,38 @@
 </template>
 
 <script>
-export default {};
+import InputText from "@/components/input-elements/InputText.vue";
+export default {
+  components: { InputText },
+};
 </script>
 
 <style scoped>
+.capp-logo {
+  fill: var(--secondary-light);
+  stroke: var(--secondary-light);
+  width: 100%;
+  aspect-ratio: 1;
+}
 body {
-  background: linear-gradient(
-    to right,
-    var(--primary-mid),
-    var(--primary-veryDark)
-  );
   width: 100vw;
   height: 100vh;
-}
+  background: linear-gradient(
+    to right,
 
-.wave {
-  position: absolute;
-  top: 40%;
-  left: 0;
-
-  width: 100%;
-  fill: var(--secondary-light);
+    var(--primary-mid) 20%,
+    var(--primary-veryDark) 100%
+  );
 }
 
 main {
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to top,
-    var(--secondary-light) 46%,
-    transparent 46%
+
+  background: radial-gradient(
+    circle at 50% 15vw,
+    transparent 40%,
+    var(--secondary-light) 40.1%
   );
 }
 
@@ -115,7 +213,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid yellow;
+  /* border: 1px solid red; */
   /* overflow: hidden; */
 }
 
@@ -147,6 +245,10 @@ main {
 /*================================================*/
 /*                  Buttons                     */
 /*================================================*/
+
+.login-card__start-page {
+  translate: 0 800px;
+}
 
 .login-card__btn-wrapper {
   width: 100%;
@@ -195,6 +297,7 @@ main {
 /*===================================================*/
 /*            Login Page                      */
 /*===================================================*/
+
 .logIn-card__logIn-page {
   display: flex;
   flex-direction: column;
@@ -204,23 +307,25 @@ main {
   border-radius: 2rem;
   width: 25vw;
   height: 80vh;
-  /* background: rgba(0, 0, 0, 0.2); */
+  background: white(0, 0, 0, 0.2);
+
   position: absolute;
   z-index: 10;
-  top: 0;
-  left: 600px;
+  top: -1px;
+  left: -1px;
 }
-.logIn-card__logIn-inpue {
-  display: flex;
-  flex-direction: column;
+.logIn-card__logIn-input {
+  width: 80%;
+  margin-inline: auto;
 }
 .logIn-card__login-btn-wrapper {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+  margin-top: 1.5rem;
   width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 .LogIn-card__btn {
   all: unset;
@@ -262,24 +367,50 @@ main {
   height: 100%;
   width: 3rem;
   fill: var(--secondary-light);
-  rotate: Y 0deg;
   transition: rotate 0.4s ease-out;
   perspective: 2px;
 }
 .logIn-card__back-arrow > svg:hover {
   fill: red;
-  rotate: Y 360deg;
-  perspective: 2px;
+}
+
+/*======================================================*/
+/*=================toggle BTn PW=============================*/
+.pw-sigth {
+  all: unset;
+  translate: 10px 5px;
+  cursor: pointer;
+}
+.pw-sigth > svg {
+  cursor: pointer;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  fill: var(--secondary-dark);
+}
+.pw-sigth:active > svg {
+  fill: var(--primary-dark);
+}
+
+/*======================================================================= */
+
+/*======================================================================= */
+@media screen and (min-width: 500px) {
+  main {
+    background: radial-gradient(
+      circle at 50vw 0vw,
+      transparent 40%,
+      var(--secondary-light) 40.1%
+    );
+  }
 }
 
 @media screen and (min-width: 900px) {
-  .wave {
-    position: absolute;
-    top: 85px;
-    left: 0;
-
-    width: 100%;
-    fill: var(--secondary-light);
+  main {
+    background: radial-gradient(
+      circle at 50vw -7vw,
+      transparent 40%,
+      var(--secondary-light) 40.1%
+    );
   }
   .Sign-btn:hover,
   .LogIn-btn:hover,
