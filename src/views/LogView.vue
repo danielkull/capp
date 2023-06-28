@@ -126,8 +126,13 @@
                 >Email
               </InputText>
 
-              <InputText :inputId="'first-password'" :inputType="'password'"
-                >Password<button class="pw-sigth">
+              <InputText
+                :inputId="'first-password'"
+                :inputType="inputTextStatus"
+                >Password<button
+                  class="pw-sigth"
+                  @click.prevent="togglePasswordVisibility()"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -171,6 +176,20 @@
 import InputText from "@/components/input-elements/InputText.vue";
 export default {
   components: { InputText },
+  data() {
+    return {
+      inputTextStatus: "password",
+    };
+  },
+  methods: {
+    togglePasswordVisibility() {
+      if (this.inputTextStatus === "text") {
+        this.inputTextStatus = "password";
+      } else {
+        this.inputTextStatus = "text";
+      }
+    },
+  },
 };
 </script>
 
