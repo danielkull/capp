@@ -193,7 +193,7 @@ main {
   color: var(--primary-light);
 }
 /*===================================================*/
-/*            Login Page                      */
+/*            Login Page - zweite Seite                  */
 /*===================================================*/
 .logIn-card__logIn-page {
   display: flex;
