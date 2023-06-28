@@ -147,15 +147,5 @@ export default {
   padding: 1rem;
   text-align: start;
 }
-/* .capp-input__help::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -24px;
-  left: 35px;
-  width: 1rem;
-  height: 1.5rem;
-  background: var(--primary-dark);
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-} */
+
 </style>
