@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), local("Roboto-Regular"),
+    url("/src/Fonts/roboto") format("woff2");
+  font-style: normal italic;
+  font-weight: 300 400 500 700 900;
+}
+
+@font-face {
+  font-family: "Bodoni";
+  src: url("/src/Fonts/Bodoni/BodoniModa_28pt-Medium.woff2") format("woff2"),
+    url("/src/Fonts/Bodoni/BodoniModa_72pt-Bold.woff2") format("woff2");
+  font-style: normal bold;
+  font-weight: 500 600;
+}
+
 :root {
   /*=========================================*/
   --clr-icons: var(--primary-dark);
@@ -30,4 +46,15 @@
   --btn-height-default: calc(var(--font-size) * 2);
   --btn-height-small: 1rem;
   --circle-radius: 100%;
+
+  /*============================================*/
+  /*   Fonts   Main text*/
+  /*============================================*/
+
+  font-family: "Roboto", sans-serif;
+
+  --font-logo: "Bodoni", serif;
+
+  /* font-family: "Bodoni", serif;
+  font-weight: 500; */
 }
