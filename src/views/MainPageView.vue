@@ -568,6 +568,8 @@ export default {};
   height: 100%;
   width: 100%;
   font-size: var(--l-font);
+  font-family: var(--font-logo);
+  color: var(--secondary-light);
 }
 
 .app-mainpage__main-page {
