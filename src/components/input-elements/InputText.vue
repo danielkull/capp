@@ -6,7 +6,11 @@
         <slot>Textfeld</slot>
 
         <!-- Start: Password show/hide toggle button -->
-        <button v-if="inputType === 'password'" class="pw-sigth" @click.prevent="togglePasswordVisibility()">
+        <button
+          v-if="inputType === 'password'"
+          class="pw-sigth"
+          @click.prevent="togglePasswordVisibility()"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -34,7 +38,8 @@
       <p class="capp-input__invalid-input">Fehlerhafte Eingabe</p>
     </span>
     <div class="capp-input__help-wrapper">
-      <button class="capp-input__btn">
+      <!-- Start: Help/Question Button -->
+      <button class="capp-input__btn" @click.prevent="showHelp = !showHelp">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -46,9 +51,15 @@
           />
         </svg>
       </button>
-      <article class="capp-input__help">
-        <p>Erklärung für Valid Text, Großbuchstabe etc</p>
-      </article>
+      <!-- End: Help/Question Button -->
+
+      <!-- Start: Help/Question Information Text -->
+      <Transition>
+        <article class="capp-input__help" v-show="showHelp">
+          <p>{{ giveHelperText }}</p>
+        </article>
+      </Transition>
+      <!-- End: Help/Question Information Text -->
     </div>
   </div>
 </template>
@@ -70,8 +81,8 @@ export default {
       validator(value) {
         // Only input Element type specific names are allowed
         // List can be extented if needed
-        return ['text', 'email', 'password'].includes(value)
-      }
+        return ["text", "email", "password"].includes(value);
+      },
     },
     inputPlaceholder: {
       type: String,
@@ -81,23 +92,32 @@ export default {
   data() {
     return {
       inputTextStatus: this.inputType,
+      showHelp: false,
     };
+  },
+  computed: {
+    giveHelperText() {
+      switch (this.inputType) {
+        case "text":
+          return "Hier kannst du einen beliebigen Freitext eingeben. Tob dich aus!";
+        case "email":
+          return "Bitte gib deine Mail Adresse an. Die sollte in etwa so aussehen meinKürzel@provider.com";
+        case "password":
+          return "Ein sicheres Password für dich sollte mindestens 12 Zeichen haben. Benutze am besten eine Mischung aus Groß-, Kleinschreibung mit Sonderzeichen undd Zahlen.";
+        default:
+          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parad.";
+      }
+    },
   },
   methods: {
     togglePasswordVisibility() {
       if (this.inputTextStatus === "text") {
         this.inputTextStatus = "password";
-      } else if(this.inputTextStatus === "password"){
+      } else if (this.inputTextStatus === "password") {
         this.inputTextStatus = "text";
       }
     },
   },
-  
-/*   computed: {
-    checkCurrentInputType() {
-      
-    }
-  } */
 };
 </script>
 
@@ -190,7 +210,19 @@ export default {
   padding: 1rem;
   text-align: start;
 }
+/*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+/*==================================================================== *
 /*=================toggle BTn PW=============================*/
 .pw-sigth {
   all: unset;
