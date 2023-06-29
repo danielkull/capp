@@ -28,12 +28,15 @@
         <!-- End: Password show/hide toggle button -->
       </label>
 
+      <!-- Note: autocomplete="on" lets the browser decide how to performe. Would be best to select autocomplete in future according to the type of input and for what it is used-->
       <input
         class="capp-input__default"
         :type="inputTextStatus"
         name=""
         :id="inputId"
         :placeholder="inputPlaceholder"
+        autocomplete="on"
+        required
       />
       <p class="capp-input__invalid-input">Fehlerhafte Eingabe</p>
     </span>
@@ -96,6 +99,7 @@ export default {
     };
   },
   computed: {
+    //  Here we can write all our Texts for the Help messages
     giveHelperText() {
       switch (this.inputType) {
         case "text":
@@ -209,6 +213,7 @@ export default {
   height: auto;
   padding: 1rem;
   text-align: start;
+  z-index: 10;
 }
 /*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 
