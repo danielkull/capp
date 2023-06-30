@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="28.346" height="28.346" viewBox="0, 0, 28.346, 28.346">
+  <g id="Cabrio">
+    <path d="M19.308,12.76 L21.062,12.952 C21.705,12.952 26.755,13.756 26.755,14.385 L26.907,16.507 C26.907,17.136 26.386,17.646 25.742,17.646 L24.101,17.625" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.137,17.442 L9.519,17.29" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.1,17.196 L3.822,17.132 C3.178,17.132 2.439,16.439 2.439,15.81 L2.439,14.079" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.139,10.168 C17.2,10.636 17.795,10.593 19.308,12.76" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.527,11.3 L13.164,12.76" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.425,11.953 C5.873,12.114 2.884,12.699 2.439,14.079" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.612,14.391 L3.6,14.385" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.518,14.803 L26.755,14.793" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.243,19.178 C6.149,19.178 5.261,18.291 5.261,17.196 C5.261,16.102 6.149,15.215 7.243,15.215 C8.337,15.215 9.225,16.102 9.225,17.196 C9.225,18.291 8.337,19.178 7.243,19.178 z" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22.119,19.178 C21.025,19.178 20.137,18.291 20.137,17.196 C20.137,16.102 21.025,15.215 22.119,15.215 C23.213,15.215 24.101,16.102 24.101,17.196 C24.101,18.291 23.213,19.178 22.119,19.178 z" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.425,11.953 C9.699,13.033 11.288,12.971 19.308,12.76" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

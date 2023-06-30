@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="28.346" height="28.346" viewBox="0, 0, 28.346, 28.346">
+  <g id="SUV">
+    <path d="M6.095,12.376 L21.392,13.106 C22.036,13.106 26.894,13.802 26.894,14.431 L26.907,17.228 C26.907,17.857 26.386,18.367 25.742,18.367 L24.357,18.359" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19.85,18.154 L9.478,17.866" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.047,17.866 L3.822,17.854 C3.178,17.854 2.439,17.16 2.439,16.531 L2.478,12.854" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.193,9.482 C17.279,9.445 19.043,11.316 21.062,13.022" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.278,9.649 L13.324,12.577" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.673,9.481 C5.747,10.092 6.27,11.393 6.095,12.376" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.594,13.156 L3.582,13.15" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.533,15.116 L26.77,15.106" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.243,19.899 C6.149,19.899 5.261,19.012 5.261,17.917 C5.261,16.823 6.149,15.936 7.243,15.936 C8.337,15.936 9.225,16.823 9.225,17.917 C9.225,19.012 8.337,19.899 7.243,19.899 z" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22.119,19.899 C21.025,19.899 20.137,19.012 20.137,17.917 C20.137,16.823 21.025,15.936 22.119,15.936 C23.213,15.936 24.101,16.823 24.101,17.917 C24.101,19.012 23.213,19.899 22.119,19.899 z" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.746,9.481 L13.991,9.481" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.746,9.481 C2.914,9.649 2.726,11.337 2.478,12.854" fill-opacity="0" stroke="#C7C2C2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" id="Shape"/>
+  </g>
+</svg>
