@@ -7,6 +7,7 @@ import DanielsView from "@/views/DanielsView.vue";
 import MainPageView from "@/views/MainPageView.vue";
 import UserProfileView from "@/views/UserProfileView.vue";
 
+
 const routes = [
   {
     path: "/",

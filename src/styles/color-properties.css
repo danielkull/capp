@@ -20,6 +20,7 @@
   /*===============new CP Log In===*/
   --primary-veryDark: hsl(var(--color), calc(var(--l) - 10%));
   --font-logo-size: clamp(4rem, 10vw, 5vw);
+
   /*==========================================*/
   --light-bg: var(--secondary-light);
   --user-border: var(--secondary-default);
