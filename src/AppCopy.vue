@@ -6,7 +6,6 @@ export default {
       h2brands: "Auto Marken",
       h2types: "Auto Typen",
       h2cars: "Verfügbare Autos",
-      h2users: "Angemeldete User",
       newBrand: "",
       brands: [],
       carTypes: [],
@@ -53,30 +52,15 @@ export default {
       console.log(this.users);
     },
     async addNewBrand(brandName) {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("brands")
-        .insert({ brand_name: brandName })
-        .select();
-
-      this.getBrands();
-      this.newBrand = "";
+        .insert({ brand_name: brandName });
     },
   },
 };
 </script>
 
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/logView">Log View</router-link> |
-    <router-link to="/stefansView">Stefans View</router-link> |
-    <router-link to="/calendar">Kalender</router-link> |
-    <router-link to="/danielView">Daniels View</router-link>|
-    <router-link to="/mainView">Main Page</router-link>|
-  </nav>
-  <router-view />
-
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -157,7 +141,7 @@ export default {
     </li>
   </ul>
   <!-- <p v-for="car in cars" :key="car.id">{{ car }}</p> -->
-  <h2>{{ h2users }}</h2>
+  <h2>Users</h2>
   <ul class="users">
     <li v-for="user in users" :key="user.id" class="user-card">
       <h4>{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</h4>
@@ -370,7 +354,7 @@ ul.users > li.user-card a:hover {
   }
 
   ul.users {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
