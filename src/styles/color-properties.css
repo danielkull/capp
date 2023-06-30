@@ -12,7 +12,6 @@
 
   --secondary-light: hsl(0, 0%, 97%);
 
-
   --font-color-dark: hsl(0, 0%, 5%);
   --font-color-light: hsl(0, 0%, 57%);
 
@@ -21,6 +20,19 @@
   /*===============new CP Log In===*/
   --primary-veryDark: hsl(var(--color), calc(var(--l) - 10%));
   --font-logo-size: clamp(4rem, 10vw, 5vw);
+
+  /*==========================================*/
+  --light-bg: var(--secondary-light);
+  --user-border: var(--secondary-default);
+  --seat-false: var(--secondary-default);
+  --seat-true: var(--primary-mid);
+
+  --car-icon-bg: var(--primary-dark);
+  --car-icon-img: var(--secondary-light);
+
+  --nav-icon: var(--secondary-light);
+  --nav-icon-act: var(--secondary-default);
+
   /*====================================================================*/
   /*======neue CP=========*/
   --m-font: calc(var(--s-font) * 1.5);

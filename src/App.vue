@@ -74,6 +74,8 @@ export default {
     <router-link to="/calendar">Kalender</router-link> |
     <router-link to="/danielView">Daniels View</router-link>|
     <router-link to="/mainView">Main Page</router-link>|
+    <router-link to="/UserProfileView">Userprofile</router-link>|
+
   </nav>
   <router-view />
 
