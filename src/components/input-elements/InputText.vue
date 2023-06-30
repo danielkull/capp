@@ -31,14 +31,20 @@
       <!-- Note: autocomplete="on" lets the browser decide how to performe. Would be best to select autocomplete in future according to the type of input and for what it is used-->
       <input
         class="capp-input__default"
-        :type="inputTextStatus"
-        name=""
+        v-model="inputData"
+        :type="currentTypeStatus"
+        :name="inputId"
         :id="inputId"
         :placeholder="inputPlaceholder"
         autocomplete="on"
         required
       />
-      <p class="capp-input__invalid-input">Fehlerhafte Eingabe</p>
+      <p
+        class="capp-input__invalid-input"
+        :class="{ input__valid: isValid, input__invalid: isInValid }"
+      >
+        {{ invalidMessage }}
+      </p>
     </span>
     <div class="capp-input__help-wrapper">
       <!-- Start: Help/Question Button -->
@@ -94,8 +100,11 @@ export default {
   },
   data() {
     return {
-      inputTextStatus: this.inputType,
+      currentTypeStatus: this.inputType,
       showHelp: false,
+      inputData: "",
+      isValid: true,
+      isInValid: false,
     };
   },
   computed: {
@@ -107,7 +116,19 @@ export default {
         case "email":
           return "Bitte gib deine Mail Adresse an. Die sollte in etwa so aussehen meinKürzel@provider.com";
         case "password":
-          return "Ein sicheres Password für dich sollte mindestens 12 Zeichen haben. Benutze am besten eine Mischung aus Groß-, Kleinschreibung mit Sonderzeichen undd Zahlen.";
+          return "Ein sicheres Password für dich sollte mindestens 12 Zeichen haben. Benutze am besten eine Mischung aus Groß-, Kleinschreibung mit Sonderzeichen und Zahlen.";
+        default:
+          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parad.";
+      }
+    },
+    invalidMessage() {
+      switch (this.inputType) {
+        case "text":
+          return "Der Freitext ist nicht valide";
+        case "email":
+          return "Die Mail adresse ist nicht valide.";
+        case "password":
+          return "Passwort Kriterien nicht erfüllt";
         default:
           return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parad.";
       }
@@ -115,10 +136,45 @@ export default {
   },
   methods: {
     togglePasswordVisibility() {
-      if (this.inputTextStatus === "text") {
-        this.inputTextStatus = "password";
-      } else if (this.inputTextStatus === "password") {
-        this.inputTextStatus = "text";
+      if (this.currentTypeStatus === "text") {
+        this.currentTypeStatus = "password";
+      } else if (this.currentTypeStatus === "password") {
+        this.currentTypeStatus = "text";
+      }
+    },
+    /* Validation Checks for Watchers */
+    validateEmail(value) {
+      const validationRequirments = new RegExp(
+        /^\w+([\.-]?\w+)*@([\w-]+\.)+[\w-]{2,4}$/
+      );
+      if (validationRequirments.test(value) || value === "") {
+        this.isValid = true;
+        this.isInValid = false;
+      } else {
+        this.isValid = false;
+        this.isInValid = true;
+      }
+    },
+    validatePassword(value) {
+      const validationRequirments = new RegExp(
+        /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\*"´§`'.!@$%^&(){}[\]:;<>,.?/~_+\-=]).{12,}$/
+      );
+      if (validationRequirments.test(value) || value === "") {
+        this.isValid = true;
+        this.isInValid = false;
+      } else {
+        this.isValid = false;
+        this.isInValid = true;
+      }
+    },
+  },
+  watch: {
+    /* Watchers for Validation */
+    inputData(value) {
+      if (this.inputType === "email") {
+        this.validateEmail(value);
+      } else if (this.inputType === "password") {
+        this.validatePassword(value);
       }
     },
   },
@@ -167,8 +223,9 @@ export default {
 .capp-input__default:focus {
   outline-color: var(--primary-light);
 }
+
+/* ====== Invalid and Valid Styling ====== */
 .capp-input__invalid-input {
-  color: var(--error-color);
   font-size: var(--s-font);
   width: 100%;
   height: max-content;

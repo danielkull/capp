@@ -102,29 +102,33 @@
           </svg>
 
           <h1>CAPP</h1>
+          <!-- === Start Page Section for Log In und Sign In === -->
         </section>
         <Transition name="slide">
-          <section v-if="show" class="login-card__start-page">
+          <section v-if="startPage" class="login-card__start-page">
             <div class="login-card__btn-wrapper">
               <input
                 type="button"
                 value="Log In"
                 class="LogIn-btn btn-font"
                 id="LogIn-btn"
-                @click.prevent="changePage"
+                @click.prevent="changePage('logIn')"
               />
               <input
                 type="button"
                 value="Sign In"
                 class="Sign-btn btn-font"
                 id="Sign-btn"
+                @click.prevent="changePage('signIn')"
               />
             </div>
           </section>
         </Transition>
+        <!-- ============== End of Start Page ==================== -->
 
+        <!-- ============== Log In Page Section  ============== -->
         <Transition name="slide">
-          <section v-if="!show" class="logIn-card__logIn-page">
+          <section v-if="logInPage" class="logIn-card__logIn-page">
             <div class="logIn-card__logIn-input">
               <form action="#" autocomplete="on">
                 <InputText
@@ -142,7 +146,7 @@
             <div class="logIn-card__login-btn-wrapper">
               <button
                 class="logIn-card__login-back"
-                @click.prevent="changePage"
+                @click.prevent="changePage('logIn')"
               >
                 <span class="logIn-card__back-arrow">
                   <svg
@@ -161,6 +165,49 @@
             </div>
           </section>
         </Transition>
+        <!-- ============== End of Log In Page ==================== -->
+
+        <!-- ============== Sign In Page Section  ============== -->
+        <Transition name="slide">
+          <section v-if="signInPage" class="logIn-card__logIn-page">
+            <div class="logIn-card__logIn-input">
+              <form action="#" autocomplete="on">
+                <InputText :inputId="'username'" :inputType="'text'" :inputPlaceholder="'Ein beliebiger Username'">Username</InputText>
+                <InputText
+                  :inputId="'email'"
+                  :inputType="'email'"
+                  :inputPlaceholder="'beispiel@provider.com'"
+                  >Email
+                </InputText>
+
+                <InputText :inputId="'first-password'" :inputType="'password'"
+                  >Password</InputText
+                >
+              </form>
+            </div>
+            <div class="logIn-card__login-btn-wrapper">
+              <button
+                class="logIn-card__login-back"
+                @click.prevent="changePage('signIn')"
+              >
+                <span class="logIn-card__back-arrow">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="bi bi-caret-left-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <input type="button" value="Log In" class="LogIn-card__btn" />
+            </div>
+          </section>
+        </Transition>
+        <!-- ============== End of Sign In Page ==================== -->
       </article>
     </main>
   </body>
@@ -172,13 +219,20 @@ export default {
   components: { InputText },
   data() {
     return {
-      show: true,
+      startPage: true,
+      logInPage: false,
+      signInPage: false,
       motionActive: false,
     };
   },
   methods: {
-    changePage() {
-      this.show = !this.show;
+    changePage(switchToPage) {
+      if (switchToPage === "logIn") {
+        this.logInPage = !this.logInPage;
+      } else if (switchToPage === "signIn") {
+        this.signInPage = !this.signInPage;
+      }
+      this.startPage = !this.startPage;
       this.hideSlide();
     },
     hideSlide() {
@@ -316,6 +370,7 @@ main {
   translate: 0 0;
   z-index: 11;
   background-color: var(--secondary-light);
+  border-radius: 2rem;
 }
 
 .slide-enter-active {
@@ -344,7 +399,7 @@ main {
   align-items: center;
   border-radius: 2rem;
   width: 25vw;
-  height: 80vh;
+  height: 85vh;
 
   position: absolute;
   z-index: 10;
