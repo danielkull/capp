@@ -152,7 +152,7 @@
           h2textInfo
         }}</label>
         <section class="question-list__list question-list__car-info">
-          <ul>
+          <div>
             <h3>Typ</h3>
             <ul class="question-list">
               <li
@@ -216,19 +216,19 @@
             <ul class="question-list">
               <li
                 class="question-list__item"
-                v-for="seatsCount in seatsCounts"
-                :key="seatsCount"
+                v-for="seatCount in seatCounts"
+                :key="seatCount.id"
               >
                 <input
                   type="radio"
                   class="capp-radio__default"
                   name="car-seats"
-                  :id="`seats-value-${seatsCount}`"
-                  :value="seatsCount"
+                  :id="`seats-value-${seatCount.id}`"
+                  :value="seatCount.id"
                   v-model="chosenSeatCount"
                 />
-                <label :for="`seats-value-${seatsCount}`">{{
-                  seatsCount
+                <label :for="`seats-value-${seatCount.id}`">{{
+                  seatCount.name
                 }}</label>
               </li>
             </ul>
@@ -284,7 +284,7 @@
                 <label for="isofix-no">Nein</label>
               </li>
             </ul>
-          </ul>
+          </div>
         </section>
       </article>
 
@@ -383,34 +383,49 @@
           name="question"
           id="bogen5"
           class="question-list__btn"
-        /><label class="question-list__header" for="bogen5">Platzhalter</label>
+        /><label class="question-list__header" for="bogen5">{{
+          h2textLimitations
+        }}</label>
         <section class="question-list__list">
-          <ul class="question-list">
-            <li id="" class="question-list__item">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                class="capp-btn__default"
-              /><label for="">Platzhalter</label>
-            </li>
-            <li id="" class="question-list__item">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                class="capp-btn__default"
-              /><label for="">Platzhalter</label>
-            </li>
-            <li id="" class="question-list__item">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                class="capp-btn__default"
-              /><label for="">Platzhalter</label>
-            </li>
-          </ul>
+          <div>
+            <p>&nbsp;</p>
+            <p>
+              Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
+              kannst Du sie hier auswählen:
+            </p>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="limitation in limitations"
+                :key="limitation.id"
+              >
+                <input
+                  type="checkbox"
+                  class="capp-btn__default"
+                  :name="`limit-${limitation.id}`"
+                  :id="`limit-${limitation.id}`"
+                  v-model="limitation.checked"
+                  @change="chooseLimitations()"
+                />
+                <label :for="`limit-${limitation.id}`">{{
+                  limitation.name
+                }}</label>
+              </li>
+              <li class="question-list__item">
+                <label for="min-age">Mindestalter</label>
+                <select name="min-age" id="min-age" v-model="chosenMinAge">
+                  <option
+                    v-for="minAge in minAges"
+                    :key="minAge.id"
+                    :value="minAge.id"
+                  >
+                    {{ minAge.name }}
+                  </option>
+                </select>
+              </li>
+            </ul>
+            <p hidden>{{ chosenLimitations }}</p>
+          </div>
         </section>
       </article>
     </section>
@@ -427,6 +442,7 @@ export default {
       h2textInfo: "Angaben zum Fahrzeug",
       h2textFeatures: "Ausstattung",
       h2textTrunkSize: "Kofferraum-Größen",
+      h2textLimitations: "Einschränkungen für die Vermietung",
       usernameValue: "",
       passwordValue: "",
       firstnameValue: "",
@@ -446,6 +462,8 @@ export default {
       ownTrunkSize: "",
       chosenFeatures: [],
       miscellaneous: "",
+      chosenLimitations: [],
+      chosenMinAge: "",
       personalItems: [
         {
           id: "username",
@@ -546,7 +564,24 @@ export default {
           name: "Schaltung",
         },
       ],
-      seatsCounts: [2, 4, 5, 6],
+      seatCounts: [
+        {
+          id: 2,
+          name: "2 Sitze",
+        },
+        {
+          id: 4,
+          name: "4 Sitze",
+        },
+        {
+          id: 5,
+          name: "5 Sitze",
+        },
+        {
+          id: 6,
+          name: "6 und mehr Sitze",
+        },
+      ],
       features: [
         {
           id: 1,
@@ -661,6 +696,46 @@ export default {
           name: "bis zu 1600 Liter",
         },
       ],
+      limitations: [
+        {
+          id: 1,
+          name: "Kinder im Auto erlauben",
+          checked: false,
+        },
+        {
+          id: 2,
+          name: "Haustiere im Auto erlauben",
+          checked: false,
+        },
+        {
+          id: 3,
+          name: "Auslandsfahrten erlauben",
+          checked: false,
+        },
+        {
+          id: 4,
+          name: "Rauchen erlauben",
+          checked: false,
+        },
+      ],
+      minAges: [
+        {
+          id: 0,
+          name: "keine Angabe",
+        },
+        {
+          id: 18,
+          name: "18 Jahre",
+        },
+        {
+          id: 21,
+          name: "21 Jahre",
+        },
+        {
+          id: 25,
+          name: "25 Jahre",
+        },
+      ],
     };
   },
   methods: {
@@ -677,6 +752,21 @@ export default {
       });
       this.chosenFeatures = this.chosenFeatures.filter((feature) => {
         return feature.checked === true;
+      });
+    },
+    chooseLimitations() {
+      this.limitations.forEach((limitation) => {
+        limitation.checked != limitation.checked;
+        if (
+          limitation.checked === false &&
+          !this.chosenLimitations.includes(limitation)
+        ) {
+          console.log(limitation.name);
+          this.chosenLimitations.push(limitation);
+        }
+      });
+      this.chosenLimitations = this.chosenLimitations.filter((limitation) => {
+        return limitation.checked === false;
       });
     },
   },
@@ -750,7 +840,7 @@ h1 {
   background: var(--secondary-default);
 }
 
-.question-list__categorie > .question-list__list > ul {
+.question-list__categorie > .question-list__list > * {
   overflow: hidden;
   width: 100%;
   padding-inline: var(--list-padding);
@@ -963,5 +1053,19 @@ input[type="tel"]:focus-within {
   left: 50.2%;
   transition: 0.3s ease-out;
   background: var(--primary-dark);
+}
+
+/* Select */
+select {
+  padding: 0.35rem 0.5rem;
+  font-size: 1.1rem;
+  margin-left: 0.35rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--secondary-mid);
+  color: var(--font-color-dark);
+}
+
+select:focus-within {
+  outline-color: var(--primary-mid);
 }
 </style>
