@@ -26,21 +26,17 @@
               <label for="username">Nickname</label>
               <input
                 type="text"
+                class="capp-input__default"
                 name="username"
                 id="username"
                 placeholder="Username"
                 v-model="usernameValue"
-                :class="[
-                  {
-                    'capp-input__invalid-input':
-                      usernameValue.length > 0 && usernameValue.length < 10,
-                  },
-                  {
-                    'capp-input__default':
-                      usernameValue.length === 0 || usernameValue.length >= 10,
-                  },
-                ]"
+                :class="{
+                  input__invalid:
+                    usernameValue.length > 0 && usernameValue.length < 5,
+                }"
               />
+              <span>Muss mindestens 5 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="password">Passwort</label>
@@ -50,7 +46,12 @@
                 name="password"
                 id="password"
                 v-model="passwordValue"
+                :class="{
+                  input__invalid:
+                    passwordValue.length > 0 && passwordValue.length < 10,
+                }"
               />
+              <span>Muss mindestens 10 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="firstname">Vorname</label>
@@ -61,7 +62,16 @@
                 id="firstname"
                 placeholder="Vorname"
                 v-model="firstnameValue"
+                :class="{
+                  input__invalid:
+                    firstnameValue.length === 1 ||
+                    /[0-9!?§$%&(){}€@#]/.test(firstnameValue),
+                }"
               />
+              <span
+                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
+                Sonderzeichen enthalten.</span
+              >
             </li>
             <li class="question-list__item personal-item">
               <label for="lastname">Nachname</label>
@@ -72,27 +82,32 @@
                 id="lastname"
                 placeholder="Nachname"
                 v-model="lastnameValue"
+                :class="{
+                  input__invalid:
+                    lastnameValue.length === 1 ||
+                    /[0-9!?§$%&(){}€@#]/.test(lastnameValue),
+                }"
               />
+              <span
+                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
+                Sonderzeichen enthalten.</span
+              >
             </li>
             <li class="question-list__item personal-item">
               <label for="email">E-Mail</label>
               <input
                 type="email"
+                class="capp-input__default"
                 name="email"
                 id="email"
                 placeholder="E-Mail"
                 v-model="emailValue"
-                :class="[
-                  {
-                    'capp-input__invalid-input':
-                      emailValue !== '' && !emailValue.includes('@'),
-                  },
-                  {
-                    'capp-input__default':
-                      emailValue.includes('@') || emailValue === '',
-                  },
-                ]"
+                :class="{
+                  input__invalid:
+                    emailValue !== '' && !emailValue.includes('@'),
+                }"
               />
+              <span>Muss das @-Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="phone">Telefon</label>
@@ -103,7 +118,9 @@
                 id="phone"
                 placeholder="Telefon"
                 v-model="phoneValue"
+                :class="{ input__invalid: /[a-zA-Z]/.test(phoneValue) }"
               />
+              <span>Darf keine Buchstaben enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="address">Straße, Haus-Nr.</label>
@@ -114,7 +131,9 @@
                 id="address"
                 placeholder="Straße, Haus-Nr."
                 v-model="addressValue"
+                :class="{ input__invalid: addressValue.length === 1 }"
               />
+              <span>Muss mindestens 2 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="zipcode">PLZ</label>
@@ -125,7 +144,12 @@
                 id="zipcode"
                 placeholder="PLZ"
                 v-model="zipcodeValue"
+                :class="{
+                  input__invalid:
+                    zipcodeValue.length > 0 && zipcodeValue.length < 4,
+                }"
               />
+              <span>Muss mindestens 4 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="city">Wohnort</label>
@@ -136,7 +160,16 @@
                 id="city"
                 placeholder="Ort"
                 v-model="cityValue"
+                :class="{
+                  input__invalid:
+                    cityValue.length === 1 ||
+                    /[0-9!?§$%&(){}€@#]/.test(cityValue),
+                }"
               />
+              <span
+                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
+                Sonderzeichen enthalten.</span
+              >
             </li>
           </ul>
         </section>
@@ -168,9 +201,13 @@
                   :value="carType.name"
                   v-model="chosenCarType"
                 />
-                <label :for="`car-type-${carType.id}`">{{
-                  carType.name
-                }}</label>
+                <label :for="`car-type-${carType.id}`"
+                  >{{ carType.name }}
+                  <img
+                    :src="'../src/assets/Car-Types/' + carType.iconSource"
+                    :alt="carType.name"
+                    :title="carType.name"
+                /></label>
               </li>
             </ul>
 
@@ -189,7 +226,13 @@
                   :value="fuelType.id"
                   v-model="chosenFuelType"
                 />
-                <label :for="`fuel-${fuelType.id}`">{{ fuelType.name }}</label>
+                <label :for="`fuel-${fuelType.id}`"
+                  >{{ fuelType.name }}
+                  <img
+                    :src="'../src/assets/Fuel-Types/' + fuelType.iconSource"
+                    :alt="fuelType.name"
+                    :title="fuelType.name"
+                /></label>
               </li>
             </ul>
 
@@ -233,7 +276,14 @@
               </li>
             </ul>
 
-            <h3>Raucher</h3>
+            <h3>
+              Raucher
+              <img
+                src="../assets/different-types/Raucher.svg"
+                alt="Raucher"
+                title="Raucher"
+              />
+            </h3>
             <ul class="question-list">
               <li class="question-list__item">
                 <input
@@ -259,7 +309,14 @@
               </li>
             </ul>
 
-            <h3>Isofix Kindersitz-Halterung</h3>
+            <h3>
+              Isofix Kindersitz-Halterung
+              <img
+                src="../assets/different-types/Isofix.svg"
+                alt="Isofix Kindersitz-Halterung"
+                title="Isofix Kindersitz-Halterung"
+              />
+            </h3>
             <ul class="question-list">
               <li class="question-list__item">
                 <input
@@ -358,8 +415,14 @@
                 v-model="chosenTrunkSize"
               />
               <label :for="luggageTrunkSize.id"
-                >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.name }}</label
-              >
+                >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.name }}
+                <img
+                  :src="
+                    '../src/assets/Trunk-Types/' + luggageTrunkSize.iconSource
+                  "
+                  :alt="luggageTrunkSize.name"
+                  :title="luggageTrunkSize.name"
+              /></label>
             </li>
             <!-- Eigene Angaben -->
             <li class="question-list__item">
@@ -407,9 +470,15 @@
                   v-model="limitation.checked"
                   @change="chooseLimitations()"
                 />
-                <label :for="`limit-${limitation.id}`">{{
-                  limitation.name
-                }}</label>
+                <label :for="`limit-${limitation.id}`">
+                  {{ limitation.name }}
+                  <img
+                    :src="
+                      '../src/assets/different-types/' + limitation.iconSource
+                    "
+                    :alt="limitation.name"
+                    :title="limitation.name"
+                /></label>
               </li>
               <li class="question-list__item">
                 <label for="min-age">Mindestalter</label>
@@ -464,94 +533,83 @@ export default {
       miscellaneous: "",
       chosenLimitations: [],
       chosenMinAge: "",
-      personalItems: [
-        {
-          id: "username",
-          label: "Nickname",
-        },
-        {
-          id: "password",
-          label: "Passwort",
-        },
-        {
-          id: "firstname",
-          label: "Vornname",
-        },
-        {
-          id: "lastname",
-          label: "Nachname",
-        },
-        {
-          id: "email",
-          label: "E-Mail",
-        },
-        {
-          id: "phone",
-          label: "Telefon",
-        },
-        {
-          id: "address",
-          label: "Straße, Haus-Nr.",
-        },
-        {
-          id: "zipcode",
-          label: "PLZ",
-        },
-        {
-          id: "city",
-          label: "Wohnort",
-        },
-      ],
       carTypes: [
         {
           id: 1,
-          name: "Cabrio",
+          name: "Bus",
+          iconSource: "Bus.svg",
         },
         {
           id: 2,
-          name: "Kleinwagen",
+          name: "Cabrio",
+          iconSource: "Cabrio.svg",
         },
         {
           id: 3,
-          name: "Kombi",
+          name: "Kleinwagen",
+          iconSource: "Cabrio.svg",
         },
         {
           id: 4,
-          name: "Limousine",
+          name: "Kombi",
+          iconSource: "Suv.svg",
         },
         {
           id: 5,
-          name: "SUV",
+          name: "Limousine",
+          iconSource: "Suv.svg",
         },
         {
           id: 6,
+          name: "Pickup",
+          iconSource: "Pickup.svg",
+        },
+        {
+          id: 7,
+          name: "SUV",
+          iconSource: "Suv.svg",
+        },
+        {
+          id: 8,
+          name: "Transporter",
+          iconSource: "Transporter.svg",
+        },
+        {
+          id: 9,
           name: "Van",
+          iconSource: "Transporter.svg",
         },
       ],
       fuelTypes: [
         {
-          id: "gas",
+          id: "autogas",
           name: "Autogas",
+          iconSource: "Autogas.svg",
         },
         {
           id: "benzin",
           name: "Benzin",
+          iconSource: "Gas.svg",
         },
         {
           id: "diesel",
           name: "Diesel",
+          iconSource: "Diesel.svg",
         },
         {
           id: "electric",
           name: "Elektro",
+          iconSource: "Electro.svg",
         },
         {
           id: "hybrid",
           name: "Hybrid",
+          iconSource: "Hybrid.svg",
         },
         {
           id: "h2",
           name: "Wasserstoff",
+          iconSource: "Wasserstoff.svg",
         },
       ],
       gears: [
@@ -678,22 +736,27 @@ export default {
         {
           id: "S",
           name: "170-250 Liter",
+          iconSource: "S-trunk.svg",
         },
         {
           id: "M",
           name: "350-500 Liter",
+          iconSource: "M-trunk.svg",
         },
         {
           id: "L",
           name: "450-550 Liter",
+          iconSource: "L-trunk.svg",
         },
         {
           id: "XL",
           name: "380-800 Liter",
+          iconSource: "XL-trunk.svg",
         },
         {
           id: "XXL",
           name: "bis zu 1600 Liter",
+          iconSource: "XXL-trunk.svg",
         },
       ],
       limitations: [
@@ -701,21 +764,25 @@ export default {
           id: 1,
           name: "Kinder im Auto erlauben",
           checked: false,
+          iconSource: "Isofix.svg",
         },
         {
           id: 2,
           name: "Haustiere im Auto erlauben",
           checked: false,
+          iconSource: "Tiere.svg",
         },
         {
           id: 3,
           name: "Auslandsfahrten erlauben",
           checked: false,
+          iconSource: "Car-symbol.svg",
         },
         {
           id: 4,
           name: "Rauchen erlauben",
           checked: false,
+          iconSource: "Raucher.svg",
         },
       ],
       minAges: [
@@ -913,6 +980,10 @@ label {
   color: var(--font-color-light);
 }
 
+label > img {
+  align-self: baseline;
+}
+
 /* Input Elements */
 /* Radio Buttons */
 input[type="radio"],
@@ -999,26 +1070,21 @@ input[type="tel"]:focus-within {
 .capp-input__default:focus {
   outline-color: var(--primary-light);
 }
-.capp-input__invalid-input {
+
+.capp-input__default.input__invalid {
   color: var(--error-color);
-  outline: 1px solid var(--error-color);
-  font-size: var(--s-font);
-  width: 100%;
-  height: max-content;
-  text-align: right;
-  padding-right: calc(var(--s-font) / 2);
-  margin-top: calc(var(--s-font) / 1.5);
 }
 
-.capp-input__invalid-input:focus {
+.capp-input__default.input__invalid:focus {
   outline-color: var(--error-color);
 }
 
-.input__valid {
-  color: transparent;
+.capp-input__default ~ span {
+  display: none;
 }
 
-.input__invalid {
+.capp-input__default.input__invalid ~ span {
+  display: block;
   color: var(--error-color);
 }
 
