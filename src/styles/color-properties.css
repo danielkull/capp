@@ -9,14 +9,18 @@
   --secondary-dark: hsl(0, 2%, 70%);
   --secondary-mid: hsl(0, 0%, 85%);
   --secondary-default: hsl(0, 0%, 82%);
-  --secondary-light: hsl(0, 0%, 95%);
+
+  --secondary-light: hsl(0, 0%, 97%);
+
 
   --font-color-dark: hsl(0, 0%, 5%);
   --font-color-light: hsl(0, 0%, 57%);
 
   --accent-color: hsl(43, 91%, 48%);
-  --error-color: hsl(349, 100%, 35%);
-
+  --error-color: hsl(349, 100%, 45%);
+  /*===============new CP Log In===*/
+  --primary-veryDark: hsl(var(--color), calc(var(--l) - 10%));
+  --font-logo-size: clamp(4rem, 10vw, 5vw);
   /*====================================================================*/
   /*======neue CP=========*/
   --m-font: calc(var(--s-font) * 1.5);
@@ -46,7 +50,7 @@ html {
   --font-color-light: hsl(0, 0%, 57%);
 
   --accent-color: hsl(43, 91%, 48%);
-  --error-color: hsl(349, 100%, 35%);
+  --error-color: hsl(349, 100%, 25%);
 }
 html[data-theme="dark"] {
   /*green*/
