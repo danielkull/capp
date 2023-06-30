@@ -6,7 +6,11 @@
         <slot>Textfeld</slot>
 
         <!-- Start: Password show/hide toggle button -->
-        <button v-if="inputType === 'password'" class="pw-sigth" @click.prevent="togglePasswordVisibility()">
+        <button
+          v-if="inputType === 'password'"
+          class="pw-sigth"
+          @click.prevent="togglePasswordVisibility()"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -70,8 +74,8 @@ export default {
       validator(value) {
         // Only input Element type specific names are allowed
         // List can be extented if needed
-        return ['text', 'email', 'password'].includes(value)
-      }
+        return ["text", "email", "password"].includes(value);
+      },
     },
     inputPlaceholder: {
       type: String,
@@ -87,13 +91,13 @@ export default {
     togglePasswordVisibility() {
       if (this.inputTextStatus === "text") {
         this.inputTextStatus = "password";
-      } else if(this.inputTextStatus === "password"){
+      } else if (this.inputTextStatus === "password") {
         this.inputTextStatus = "text";
       }
     },
   },
-  
-/*   computed: {
+
+  /*   computed: {
     checkCurrentInputType() {
       
     }
