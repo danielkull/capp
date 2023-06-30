@@ -4,8 +4,8 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/stefansView">Stefans View</router-link>
-    <router-link to="/userProfile">Userprofile</router-link>
+    <router-link to="/stefansView">Stefans View</router-link>|
+    <router-link to="/UserProfileView">Userprofile</router-link>|
   </nav>
   <router-view />
 </template>
