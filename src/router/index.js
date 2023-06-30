@@ -4,6 +4,7 @@ import StefansView from "@/views/StefansView.vue";
 import LogView from "@/views/LogView.vue";
 import CalenderView from "@/views/CalenderView.vue";
 import DanielsView from "@/views/DanielsView.vue";
+import MainPageView from "@/views/MainPageView.vue";
 
 const routes = [
   {
@@ -26,7 +27,7 @@ const routes = [
     path: "/logView",
     name: "logView",
     component: LogView,
- },
+  },
   {
     path: "/calendar",
     name: "calendar",
@@ -36,6 +37,11 @@ const routes = [
     path: "/danielView",
     name: "danielView",
     component: DanielsView,
+  },
+  {
+    path: "/mainView",
+    name: "mainView",
+    component: MainPageView,
   },
 ];
 
