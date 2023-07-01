@@ -201,13 +201,9 @@
                   :value="carType.name"
                   v-model="chosenCarType"
                 />
-                <label :for="`car-type-${carType.id}`"
-                  >{{ carType.name }}
-                  <img
-                    :src="'../src/assets/Car-Types/' + carType.iconSource"
-                    :alt="carType.name"
-                    :title="carType.name"
-                /></label>
+                <label :for="`car-type-${carType.id}`">{{
+                  carType.name
+                }}</label>
               </li>
             </ul>
 
@@ -226,13 +222,7 @@
                   :value="fuelType.id"
                   v-model="chosenFuelType"
                 />
-                <label :for="`fuel-${fuelType.id}`"
-                  >{{ fuelType.name }}
-                  <img
-                    :src="'../src/assets/Fuel-Types/' + fuelType.iconSource"
-                    :alt="fuelType.name"
-                    :title="fuelType.name"
-                /></label>
+                <label :for="`fuel-${fuelType.id}`">{{ fuelType.name }}</label>
               </li>
             </ul>
 
@@ -276,14 +266,7 @@
               </li>
             </ul>
 
-            <h3>
-              Raucher
-              <img
-                src="../assets/different-types/Raucher.svg"
-                alt="Raucher"
-                title="Raucher"
-              />
-            </h3>
+            <h3>Raucher</h3>
             <ul class="question-list">
               <li class="question-list__item">
                 <input
@@ -309,14 +292,7 @@
               </li>
             </ul>
 
-            <h3>
-              Isofix Kindersitz-Halterung
-              <img
-                src="../assets/different-types/Isofix.svg"
-                alt="Isofix Kindersitz-Halterung"
-                title="Isofix Kindersitz-Halterung"
-              />
-            </h3>
+            <h3>Isofix Kindersitz-Halterung</h3>
             <ul class="question-list">
               <li class="question-list__item">
                 <input
@@ -415,14 +391,8 @@
                 v-model="chosenTrunkSize"
               />
               <label :for="luggageTrunkSize.id"
-                >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.name }}
-                <img
-                  :src="
-                    '../src/assets/Trunk-Types/' + luggageTrunkSize.iconSource
-                  "
-                  :alt="luggageTrunkSize.name"
-                  :title="luggageTrunkSize.name"
-              /></label>
+                >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.name }}</label
+              >
             </li>
             <!-- Eigene Angaben -->
             <li class="question-list__item">
@@ -471,14 +441,8 @@
                   @change="chooseLimitations()"
                 />
                 <label :for="`limit-${limitation.id}`">
-                  {{ limitation.name }}
-                  <img
-                    :src="
-                      '../src/assets/different-types/' + limitation.iconSource
-                    "
-                    :alt="limitation.name"
-                    :title="limitation.name"
-                /></label>
+                  {{ limitation.name }}</label
+                >
               </li>
               <li class="question-list__item">
                 <label for="min-age">Mindestalter</label>
