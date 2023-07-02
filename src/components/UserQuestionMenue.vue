@@ -39,9 +39,13 @@
               <span>Muss mindestens 5 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
-              <label for="password">Passwort</label>
+              <label for="password"
+                ><span @click="togglePassword()"
+                  >Passwort&nbsp;&lt;&gt;</span
+                ></label
+              >
               <input
-                type="password"
+                :type="inputType"
                 class="capp-input__default"
                 name="password"
                 id="password"
@@ -476,6 +480,7 @@ export default {
       h2textFeatures: "Ausstattung",
       h2textTrunkSize: "Kofferraum-Größen",
       h2textLimitations: "Einschränkungen für die Vermietung",
+      inputType: "password",
       usernameValue: "",
       passwordValue: "",
       firstnameValue: "",
@@ -799,6 +804,13 @@ export default {
       this.chosenLimitations = this.chosenLimitations.filter((limitation) => {
         return limitation.checked === false;
       });
+    },
+    togglePassword() {
+      if (this.inputType === "password") {
+        this.inputType = "text";
+      } else {
+        this.inputType = "password";
+      }
     },
   },
 };
