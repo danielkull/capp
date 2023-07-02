@@ -1,19 +1,19 @@
 <template>
   <h1>Hallo Stefan, viel Spaß beim Programieren</h1>
-  <CheckBox />
-  <RadioButton />
-  <RadioButton />
-  <RadioButton />
-  <UserQuestionMenueVue />
+
+  <UserEvaluation />
+
+  <!-- <UserQuestionMenueVue /> -->
 </template>
 
 <script>
 import CheckBox from "@/components/input-elements/CheckBox.vue";
 import RadioButton from "@/components/input-elements/RadioButton.vue";
+import UserEvaluation from "@/components/UserEvaluation.vue";
 import UserQuestionMenueVue from "@/components/UserQuestionMenue.vue";
 
 export default {
-  components: { CheckBox, RadioButton, UserQuestionMenueVue },
+  components: { CheckBox, RadioButton, UserQuestionMenueVue, UserEvaluation },
 };
 </script>
 
