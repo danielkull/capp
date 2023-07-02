@@ -6,6 +6,7 @@ import CalenderView from "@/views/CalenderView.vue";
 import DanielsView from "@/views/DanielsView.vue";
 import MainPageView from "@/views/MainPageView.vue";
 import UserProfileView from "@/views/UserProfileView.vue";
+import KirstensView from "@/views/KirstensView.vue";
 
 
 const routes = [
@@ -49,6 +50,11 @@ const routes = [
     path: "/UserProfileView",
     name: "userProfile",
     component: UserProfileView,
+  },
+  {
+    path: "/KirstensView",
+    name: "kirstensView",
+    component: KirstensView,
   },
 ];
 

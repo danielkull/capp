@@ -1,5 +1,4 @@
-<script>
-</script>
+<script></script>
 
 <template>
   <nav>
@@ -11,9 +10,10 @@
     <router-link to="/danielView">Daniels View</router-link>|
     <router-link to="/mainView">Main Page</router-link>|
     <router-link to="/UserProfileView">Userprofile</router-link>|
+    <router-link to="/KirstensView">Userprofile</router-link>|
   </nav>
   <router-view />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
+
