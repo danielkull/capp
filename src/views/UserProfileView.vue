@@ -203,7 +203,7 @@
         </article>
 
         <article class="user-profile__commentar-wrapper">
-          <section class="commentar-section__wrapper--head">
+          <section class="commentar-section__wrapper-head">
             <input
               type="checkbox"
               name="commentar-check"
@@ -488,7 +488,7 @@ main {
   transition: height 0.2s ease-out;
 }
 
-.commentar-section__wrapper--head {
+.commentar-section__wrapper-head {
   display: block;
   height: 5.5rem;
   border-radius: inherit;
