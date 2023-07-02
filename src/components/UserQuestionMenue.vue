@@ -26,31 +26,38 @@
               <label for="username">Nickname</label>
               <input
                 type="text"
+                class="capp-input__default"
                 name="username"
                 id="username"
                 placeholder="Username"
                 v-model="usernameValue"
-                :class="[
-                  {
-                    'capp-input__invalid-input':
-                      usernameValue.length > 0 && usernameValue.length < 10,
-                  },
-                  {
-                    'capp-input__default':
-                      usernameValue.length === 0 || usernameValue.length >= 10,
-                  },
-                ]"
+                :class="{
+                  input__invalid:
+                    usernameValue.length > 0 && usernameValue.length < 5,
+                }"
               />
+              <span>Muss mindestens 5 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
-              <label for="password">Passwort</label>
+              <label for="password"
+                >Passwort&nbsp;<span
+                  id="password-toggle-text"
+                  @click="togglePassword()"
+                  >&lt;{{ inputTypeText }}&gt;</span
+                ></label
+              >
               <input
-                type="password"
+                :type="inputType"
                 class="capp-input__default"
                 name="password"
                 id="password"
                 v-model="passwordValue"
+                :class="{
+                  input__invalid:
+                    passwordValue.length > 0 && passwordValue.length < 10,
+                }"
               />
+              <span>Muss mindestens 10 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="firstname">Vorname</label>
@@ -61,7 +68,16 @@
                 id="firstname"
                 placeholder="Vorname"
                 v-model="firstnameValue"
+                :class="{
+                  input__invalid:
+                    firstnameValue.length === 1 ||
+                    /[0-9!?§$%&(){}€@#]/.test(firstnameValue),
+                }"
               />
+              <span
+                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
+                Sonderzeichen enthalten.</span
+              >
             </li>
             <li class="question-list__item personal-item">
               <label for="lastname">Nachname</label>
@@ -72,27 +88,32 @@
                 id="lastname"
                 placeholder="Nachname"
                 v-model="lastnameValue"
+                :class="{
+                  input__invalid:
+                    lastnameValue.length === 1 ||
+                    /[0-9!?§$%&(){}€@#]/.test(lastnameValue),
+                }"
               />
+              <span
+                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
+                Sonderzeichen enthalten.</span
+              >
             </li>
             <li class="question-list__item personal-item">
               <label for="email">E-Mail</label>
               <input
                 type="email"
+                class="capp-input__default"
                 name="email"
                 id="email"
                 placeholder="E-Mail"
                 v-model="emailValue"
-                :class="[
-                  {
-                    'capp-input__invalid-input':
-                      emailValue !== '' && !emailValue.includes('@'),
-                  },
-                  {
-                    'capp-input__default':
-                      emailValue.includes('@') || emailValue === '',
-                  },
-                ]"
+                :class="{
+                  input__invalid:
+                    emailValue !== '' && !emailValue.includes('@'),
+                }"
               />
+              <span>Muss das @-Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="phone">Telefon</label>
@@ -103,7 +124,9 @@
                 id="phone"
                 placeholder="Telefon"
                 v-model="phoneValue"
+                :class="{ input__invalid: /[a-zA-Z]/.test(phoneValue) }"
               />
+              <span>Darf keine Buchstaben enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="address">Straße, Haus-Nr.</label>
@@ -114,7 +137,9 @@
                 id="address"
                 placeholder="Straße, Haus-Nr."
                 v-model="addressValue"
+                :class="{ input__invalid: addressValue.length === 1 }"
               />
+              <span>Muss mindestens 2 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="zipcode">PLZ</label>
@@ -125,7 +150,12 @@
                 id="zipcode"
                 placeholder="PLZ"
                 v-model="zipcodeValue"
+                :class="{
+                  input__invalid:
+                    zipcodeValue.length > 0 && zipcodeValue.length < 4,
+                }"
               />
+              <span>Muss mindestens 4 Zeichen enthalten.</span>
             </li>
             <li class="question-list__item personal-item">
               <label for="city">Wohnort</label>
@@ -136,7 +166,16 @@
                 id="city"
                 placeholder="Ort"
                 v-model="cityValue"
+                :class="{
+                  input__invalid:
+                    cityValue.length === 1 ||
+                    /[0-9!?§$%&(){}€@#]/.test(cityValue),
+                }"
               />
+              <span
+                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
+                Sonderzeichen enthalten.</span
+              >
             </li>
           </ul>
         </section>
@@ -152,7 +191,7 @@
           h2textInfo
         }}</label>
         <section class="question-list__list question-list__car-info">
-          <ul>
+          <div>
             <h3>Typ</h3>
             <ul class="question-list">
               <li
@@ -216,19 +255,19 @@
             <ul class="question-list">
               <li
                 class="question-list__item"
-                v-for="seatsCount in seatsCounts"
-                :key="seatsCount"
+                v-for="seatCount in seatCounts"
+                :key="seatCount.id"
               >
                 <input
                   type="radio"
                   class="capp-radio__default"
                   name="car-seats"
-                  :id="`seats-value-${seatsCount}`"
-                  :value="seatsCount"
+                  :id="`seats-value-${seatCount.id}`"
+                  :value="seatCount.id"
                   v-model="chosenSeatCount"
                 />
-                <label :for="`seats-value-${seatsCount}`">{{
-                  seatsCount
+                <label :for="`seats-value-${seatCount.id}`">{{
+                  seatCount.name
                 }}</label>
               </li>
             </ul>
@@ -284,7 +323,7 @@
                 <label for="isofix-no">Nein</label>
               </li>
             </ul>
-          </ul>
+          </div>
         </section>
       </article>
 
@@ -383,34 +422,49 @@
           name="question"
           id="bogen5"
           class="question-list__btn"
-        /><label class="question-list__header" for="bogen5">Platzhalter</label>
+        /><label class="question-list__header" for="bogen5">{{
+          h2textLimitations
+        }}</label>
         <section class="question-list__list">
-          <ul class="question-list">
-            <li id="" class="question-list__item">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                class="capp-btn__default"
-              /><label for="">Platzhalter</label>
-            </li>
-            <li id="" class="question-list__item">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                class="capp-btn__default"
-              /><label for="">Platzhalter</label>
-            </li>
-            <li id="" class="question-list__item">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                class="capp-btn__default"
-              /><label for="">Platzhalter</label>
-            </li>
-          </ul>
+          <div>
+            <p>&nbsp;</p>
+            <p>
+              Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
+              kannst Du sie hier auswählen:
+            </p>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="limitation in limitations"
+                :key="limitation.id"
+              >
+                <input
+                  type="checkbox"
+                  class="capp-btn__default"
+                  :name="`limit-${limitation.id}`"
+                  :id="`limit-${limitation.id}`"
+                  v-model="limitation.checked"
+                  @change="chooseLimitations()"
+                />
+                <label :for="`limit-${limitation.id}`">
+                  {{ limitation.name }}</label
+                >
+              </li>
+              <li class="question-list__item">
+                <label for="min-age">Mindestalter</label>
+                <select name="min-age" id="min-age" v-model="chosenMinAge">
+                  <option
+                    v-for="minAge in minAges"
+                    :key="minAge.id"
+                    :value="minAge.id"
+                  >
+                    {{ minAge.name }}
+                  </option>
+                </select>
+              </li>
+            </ul>
+            <p hidden>{{ chosenLimitations }}</p>
+          </div>
         </section>
       </article>
     </section>
@@ -427,6 +481,9 @@ export default {
       h2textInfo: "Angaben zum Fahrzeug",
       h2textFeatures: "Ausstattung",
       h2textTrunkSize: "Kofferraum-Größen",
+      h2textLimitations: "Einschränkungen für die Vermietung",
+      inputType: "password",
+      inputTypeText: "show Password",
       usernameValue: "",
       passwordValue: "",
       firstnameValue: "",
@@ -446,94 +503,85 @@ export default {
       ownTrunkSize: "",
       chosenFeatures: [],
       miscellaneous: "",
-      personalItems: [
-        {
-          id: "username",
-          label: "Nickname",
-        },
-        {
-          id: "password",
-          label: "Passwort",
-        },
-        {
-          id: "firstname",
-          label: "Vornname",
-        },
-        {
-          id: "lastname",
-          label: "Nachname",
-        },
-        {
-          id: "email",
-          label: "E-Mail",
-        },
-        {
-          id: "phone",
-          label: "Telefon",
-        },
-        {
-          id: "address",
-          label: "Straße, Haus-Nr.",
-        },
-        {
-          id: "zipcode",
-          label: "PLZ",
-        },
-        {
-          id: "city",
-          label: "Wohnort",
-        },
-      ],
+      chosenLimitations: [],
+      chosenMinAge: "",
       carTypes: [
         {
           id: 1,
-          name: "Cabrio",
+          name: "Bus",
+          iconSource: "Bus.svg",
         },
         {
           id: 2,
-          name: "Kleinwagen",
+          name: "Cabrio",
+          iconSource: "Cabrio.svg",
         },
         {
           id: 3,
-          name: "Kombi",
+          name: "Kleinwagen",
+          iconSource: "Cabrio.svg",
         },
         {
           id: 4,
-          name: "Limousine",
+          name: "Kombi",
+          iconSource: "Suv.svg",
         },
         {
           id: 5,
-          name: "SUV",
+          name: "Limousine",
+          iconSource: "Suv.svg",
         },
         {
           id: 6,
+          name: "Pickup",
+          iconSource: "Pickup.svg",
+        },
+        {
+          id: 7,
+          name: "SUV",
+          iconSource: "Suv.svg",
+        },
+        {
+          id: 8,
+          name: "Transporter",
+          iconSource: "Transporter.svg",
+        },
+        {
+          id: 9,
           name: "Van",
+          iconSource: "Transporter.svg",
         },
       ],
       fuelTypes: [
         {
-          id: "gas",
+          id: "autogas",
           name: "Autogas",
+          iconSource: "Autogas.svg",
         },
         {
           id: "benzin",
           name: "Benzin",
+          iconSource: "Gas.svg",
         },
         {
           id: "diesel",
           name: "Diesel",
+          iconSource: "Diesel.svg",
         },
         {
           id: "electric",
           name: "Elektro",
+          iconSource: "Electro.svg",
         },
         {
           id: "hybrid",
           name: "Hybrid",
+          iconSource: "Hybrid.svg",
         },
         {
           id: "h2",
           name: "Wasserstoff",
+          iconSource: "Wasserstoff.svg",
         },
       ],
       gears: [
@@ -546,7 +594,24 @@ export default {
           name: "Schaltung",
         },
       ],
-      seatsCounts: [2, 4, 5, 6],
+      seatCounts: [
+        {
+          id: 2,
+          name: "2 Sitze",
+        },
+        {
+          id: 4,
+          name: "4 Sitze",
+        },
+        {
+          id: 5,
+          name: "5 Sitze",
+        },
+        {
+          id: 6,
+          name: "6 und mehr Sitze",
+        },
+      ],
       features: [
         {
           id: 1,
@@ -643,22 +708,71 @@ export default {
         {
           id: "S",
           name: "170-250 Liter",
+          iconSource: "S-trunk.svg",
         },
         {
           id: "M",
           name: "350-500 Liter",
+          iconSource: "M-trunk.svg",
         },
         {
           id: "L",
           name: "450-550 Liter",
+          iconSource: "L-trunk.svg",
         },
         {
           id: "XL",
           name: "380-800 Liter",
+          iconSource: "XL-trunk.svg",
         },
         {
           id: "XXL",
           name: "bis zu 1600 Liter",
+          iconSource: "XXL-trunk.svg",
+        },
+      ],
+      limitations: [
+        {
+          id: 1,
+          name: "Kinder im Auto erlauben",
+          checked: false,
+          iconSource: "Isofix.svg",
+        },
+        {
+          id: 2,
+          name: "Haustiere im Auto erlauben",
+          checked: false,
+          iconSource: "Tiere.svg",
+        },
+        {
+          id: 3,
+          name: "Auslandsfahrten erlauben",
+          checked: false,
+          iconSource: "Car-symbol.svg",
+        },
+        {
+          id: 4,
+          name: "Rauchen erlauben",
+          checked: false,
+          iconSource: "Raucher.svg",
+        },
+      ],
+      minAges: [
+        {
+          id: 0,
+          name: "keine Angabe",
+        },
+        {
+          id: 18,
+          name: "18 Jahre",
+        },
+        {
+          id: 21,
+          name: "21 Jahre",
+        },
+        {
+          id: 25,
+          name: "25 Jahre",
         },
       ],
     };
@@ -678,6 +792,30 @@ export default {
       this.chosenFeatures = this.chosenFeatures.filter((feature) => {
         return feature.checked === true;
       });
+    },
+    chooseLimitations() {
+      this.limitations.forEach((limitation) => {
+        limitation.checked != limitation.checked;
+        if (
+          limitation.checked === false &&
+          !this.chosenLimitations.includes(limitation)
+        ) {
+          console.log(limitation.name);
+          this.chosenLimitations.push(limitation);
+        }
+      });
+      this.chosenLimitations = this.chosenLimitations.filter((limitation) => {
+        return limitation.checked === false;
+      });
+    },
+    togglePassword() {
+      if (this.inputType === "password") {
+        this.inputType = "text";
+        this.inputTypeText = "hide Password";
+      } else {
+        this.inputType = "password";
+        this.inputTypeText = "show Password";
+      }
     },
   },
 };
@@ -750,7 +888,7 @@ h1 {
   background: var(--secondary-default);
 }
 
-.question-list__categorie > .question-list__list > ul {
+.question-list__categorie > .question-list__list > * {
   overflow: hidden;
   width: 100%;
   padding-inline: var(--list-padding);
@@ -821,6 +959,10 @@ ul.question-list {
 label {
   font-size: 1.1rem;
   color: var(--font-color-light);
+}
+
+label > img {
+  align-self: baseline;
 }
 
 /* Input Elements */
@@ -909,27 +1051,27 @@ input[type="tel"]:focus-within {
 .capp-input__default:focus {
   outline-color: var(--primary-light);
 }
-.capp-input__invalid-input {
+
+.capp-input__default.input__invalid {
   color: var(--error-color);
-  outline: 1px solid var(--error-color);
-  font-size: var(--s-font);
-  width: 100%;
-  height: max-content;
-  text-align: right;
-  padding-right: calc(var(--s-font) / 2);
-  margin-top: calc(var(--s-font) / 1.5);
 }
 
-.capp-input__invalid-input:focus {
+.capp-input__default.input__invalid:focus {
   outline-color: var(--error-color);
 }
 
-.input__valid {
-  color: transparent;
+.capp-input__default ~ span {
+  display: none;
 }
 
-.input__invalid {
+.capp-input__default.input__invalid ~ span {
+  display: block;
   color: var(--error-color);
+}
+
+span#password-toggle-text {
+  font-size: 0.75rem;
+  color: var(--primary-dark);
 }
 
 /* Checkboxen */
@@ -963,5 +1105,19 @@ input[type="tel"]:focus-within {
   left: 50.2%;
   transition: 0.3s ease-out;
   background: var(--primary-dark);
+}
+
+/* Select */
+select {
+  padding: 0.35rem 0.5rem;
+  font-size: 1.1rem;
+  margin-left: 0.35rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--secondary-mid);
+  color: var(--font-color-dark);
+}
+
+select:focus-within {
+  outline-color: var(--primary-mid);
 }
 </style>
