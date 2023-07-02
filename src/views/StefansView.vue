@@ -5,7 +5,9 @@
   <RadioButton />
   <RadioButton />
   <UserQuestionMenueVue />
-  <IconType />
+  <IconType :carType="'Kleinwagen'"></IconType>
+  <IconType :carType="'Bus'"> </IconType>
+  <IconType :carType="'SUV'"> </IconType>
 </template>
 
 <script>
