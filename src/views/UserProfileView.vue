@@ -218,6 +218,9 @@
             </section>
           </section>
           <AverageRating></AverageRating>
+          <CustomerReviews></CustomerReviews>
+          <CustomerReviews></CustomerReviews>
+          <CustomerReviews></CustomerReviews>
         </article>
       </div>
     </main>
@@ -242,9 +245,10 @@
 <script>
 import RatingBar from "@/components/messenger/RatingBar.vue";
 import AverageRating from "@/components/messenger/AverageRating.vue";
+import CustomerReviews from "@/components/messenger/CustomerReviews.vue";
 
 export default {
-  components: { RatingBar, AverageRating },
+  components: { RatingBar, AverageRating, CustomerReviews },
 };
 // const profilBtn = document.querySelector("#nav-profil-btn");
 // const userProfil = document.querySelector("#user-profile-frame");
@@ -497,7 +501,8 @@ main {
 .commentar-section__btn {
   display: none;
 }
-.commentar-section__btn ~ label, .commentar-section__rating-bar {
+.commentar-section__btn ~ label,
+.commentar-section__rating-bar {
   /* background: rgba(0, 0, 0, 0.6); */
   display: block;
   text-align: center;

@@ -5,7 +5,7 @@
     :id="ratingId"
     :name="ratingGroup"
   />
-  <label class="commentar__rating--icon" :for="ratingId">
+  <label class="commentar__rating--icon" :class="{ 'responsive-scaling': scalingIsActive }" :for="ratingId">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -116,6 +116,10 @@ export default {
       type: String,
       required: true,
     },
+    scalingIsActive: {
+      type: Boolean,
+      default: false,
+    }
   },
 };
 </script>
@@ -151,6 +155,13 @@ export default {
 .commentar__rating--radio:checked ~ label > svg {
   fill: gold;
   stroke: gold;
+}
+
+
+.responsive-scaling > svg {
+  width: clamp(1rem, 2vw, 2.5rem);
+  height: clamp(1rem, 2vw, 2.5rem);
+  margin-left: 0.001rem;
 }
 
 /*===================================================*/
