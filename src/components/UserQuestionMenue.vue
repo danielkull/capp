@@ -40,8 +40,10 @@
             </li>
             <li class="question-list__item personal-item">
               <label for="password"
-                ><span @click="togglePassword()"
-                  >Passwort&nbsp;&lt;&gt;</span
+                >Passwort&nbsp;<span
+                  id="password-toggle-text"
+                  @click="togglePassword()"
+                  >&lt;{{ inputTypeText }}&gt;</span
                 ></label
               >
               <input
@@ -481,6 +483,7 @@ export default {
       h2textTrunkSize: "Kofferraum-Größen",
       h2textLimitations: "Einschränkungen für die Vermietung",
       inputType: "password",
+      inputTypeText: "show Password",
       usernameValue: "",
       passwordValue: "",
       firstnameValue: "",
@@ -808,8 +811,10 @@ export default {
     togglePassword() {
       if (this.inputType === "password") {
         this.inputType = "text";
+        this.inputTypeText = "hide Password";
       } else {
         this.inputType = "password";
+        this.inputTypeText = "show Password";
       }
     },
   },
@@ -1062,6 +1067,11 @@ input[type="tel"]:focus-within {
 .capp-input__default.input__invalid ~ span {
   display: block;
   color: var(--error-color);
+}
+
+span#password-toggle-text {
+  font-size: 0.75rem;
+  color: var(--primary-dark);
 }
 
 /* Checkboxen */
