@@ -126,10 +126,9 @@
                 >Email
               </InputText>
 
-              <InputText
-                :inputId="'first-password'"
-                :inputType="'password'"
-                >Password</InputText>
+              <InputText :inputId="'first-password'" :inputType="'password'"
+                >Password</InputText
+              >
             </form>
           </div>
           <div class="logIn-card__login-btn-wrapper">

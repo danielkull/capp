@@ -23,8 +23,8 @@
             <section class="user-profile__user-info">
               <div class="user-info__wrapper">
                 <span class="user-info__city">
-                  <span class="user-info__plz-icon"
-                    ><svg
+                  <span class="user-info__plz-icon">
+                    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -34,8 +34,9 @@
                     >
                       <path
                         d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
-                      /></svg
-                  ></span>
+                      />
+                    </svg>
+                  </span>
                   <p class="user-info__city-plz">01097</p>
                   <p>/</p>
                   <p class="user-info__city-name">Dresden,</p>
@@ -201,17 +202,23 @@
           </section>
         </article>
 
-        <section class="user-profile__commentar-wrapper">
-          <input
-            type="checkbox"
-            name="commentar-check"
-            id="commentar-section-check"
-            class="commentar-section__btn"
-          />
-          <label for="commentar-section-check">
-            Waren sie mit <span>USERNAME</span> zufrieden ?</label
-          >
-        </section>
+        <article class="user-profile__commentar-wrapper">
+          <section class="commentar-section__wrapper--head">
+            <input
+              type="checkbox"
+              name="commentar-check"
+              id="commentar-section-check"
+              class="commentar-section__btn"
+            />
+            <label for="commentar-section-check">
+              Waren sie mit <span>USERNAME</span> zufrieden ?
+            </label>
+            <section class="commentar-section__rating-bar">
+              <RatingBar :ratingGroup="'userChoice'"></RatingBar>
+            </section>
+          </section>
+          <AverageRating></AverageRating>
+        </article>
       </div>
     </main>
     <nav class="nav-bar__wrapper">
@@ -233,7 +240,12 @@
 </template>
 
 <script>
-export default {};
+import RatingBar from "@/components/messenger/RatingBar.vue";
+import AverageRating from "@/components/messenger/AverageRating.vue";
+
+export default {
+  components: { RatingBar, AverageRating },
+};
 // const profilBtn = document.querySelector("#nav-profil-btn");
 // const userProfil = document.querySelector("#user-profile-frame");
 
@@ -262,7 +274,6 @@ main {
   background: dodgerblue;
   height: 100%;
   width: 100%;
- 
 }
 /*========================================================*/
 /*==================Profilbild-BG===============================*/
@@ -464,7 +475,6 @@ main {
   z-index: 8;
   display: block;
   bottom: 0px;
-  /*left: 0; */
   background: var(--light-bg);
   height: 10rem;
   width: 100%;
@@ -473,21 +483,27 @@ main {
   box-shadow: 0px -5px 20px rgba(148, 148, 148, 0.4);
   transition: height 0.2s ease-out;
 }
+
+.commentar-section__wrapper--head {
+  display: block;
+  height: 5.5rem;
+  border-radius: inherit;
+  border-bottom: 1px solid var(--user-border);
+  width: 90%;
+  margin-inline: auto;
+  padding-top: 1.5rem;
+}
+
 .commentar-section__btn {
   display: none;
 }
-.commentar-section__btn ~ label {
+.commentar-section__btn ~ label, .commentar-section__rating-bar {
   /* background: rgba(0, 0, 0, 0.6); */
   display: block;
   text-align: center;
-  padding-top: 1.5rem;
   font-size: 1rem;
   font-weight: bold;
-  width: 90%;
-  margin-inline: auto;
-  height: 4rem;
-  border-radius: inherit;
-  border-bottom: 1px solid var(--user-border);
+  padding-bottom: 0.5rem;
 }
 .commentar-section__btn ~ label span {
   color: var(--primary-dark);
