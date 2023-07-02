@@ -10,7 +10,7 @@
             />
           </span>
         </article>
-        <h3 class="customer-review__header--username">Reviewer Username</h3>
+        <h3 class="customer-review__header-username">Reviewer Username</h3>
       </section>
       <RatingBar
         :ratingGroup="'Reviewer Username'"
@@ -18,7 +18,7 @@
       ></RatingBar>
     </header>
     <main>
-      <p class="customer-review--text">
+      <p class="customer-review-text">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
         iusto dolorum aut autem ad, neque molestias necessitatibus accusamus?
         Assumenda porro quasi soluta blanditiis quae, debitis voluptate laborum
@@ -55,7 +55,7 @@ export default {
   align-items: center;
 }
 
-.customer-review__header--username {
+.customer-review__header-username {
   font-weight: bold;
   font-size: 0.8rem;
   margin-left: 0.5rem;
