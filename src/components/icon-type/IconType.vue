@@ -301,6 +301,280 @@
           />
         </g>
       </svg>
+      <!-- Pic Cabrio -->
+      <svg
+        v-if="carType === 'Cabrio'"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        viewBox="0, 0, 28.346, 28.346"
+      >
+        <g id="Cabrio">
+          <path
+            d="M19.308,12.76 L21.062,12.952 C21.705,12.952 26.755,13.756 26.755,14.385 L26.907,16.507 C26.907,17.136 26.386,17.646 25.742,17.646 L24.101,17.625"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M20.137,17.442 L9.519,17.29"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M5.1,17.196 L3.822,17.132 C3.178,17.132 2.439,16.439 2.439,15.81 L2.439,14.079"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.139,10.168 C17.2,10.636 17.795,10.593 19.308,12.76"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12.527,11.3 L13.164,12.76"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.425,11.953 C5.873,12.114 2.884,12.699 2.439,14.079"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2.612,14.391 L3.6,14.385"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M25.518,14.803 L26.755,14.793"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M7.243,19.178 C6.149,19.178 5.261,18.291 5.261,17.196 C5.261,16.102 6.149,15.215 7.243,15.215 C8.337,15.215 9.225,16.102 9.225,17.196 C9.225,18.291 8.337,19.178 7.243,19.178 z"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22.119,19.178 C21.025,19.178 20.137,18.291 20.137,17.196 C20.137,16.102 21.025,15.215 22.119,15.215 C23.213,15.215 24.101,16.102 24.101,17.196 C24.101,18.291 23.213,19.178 22.119,19.178 z"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.425,11.953 C9.699,13.033 11.288,12.971 19.308,12.76"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+      </svg>
+      <svg
+        v-if="carType === 'Pickup'"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        viewBox="0, 0, 28.346, 28.346"
+      >
+        <g id="Pick_up">
+          <path
+            d="M2.752,13.358 L21.816,13.358 C22.459,13.358 26.755,13.836 26.755,14.466 L26.907,17.732 C26.907,18.361 26.386,18.871 25.742,18.871 L24.355,18.851"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M20.137,18.647 L9.518,18.421"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M4.935,18.421 L3.822,18.357 C3.178,18.357 2.439,17.664 2.439,17.035 L2.57,13.358"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M17.383,8.949 C20.512,8.799 20.868,11.834 21.917,13.358"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2.525,14.853 L3.513,14.848"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M25.477,15.36 L26.714,15.351"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M7.243,20.403 C6.149,20.403 5.261,19.516 5.261,18.421 C5.261,17.327 6.149,16.44 7.243,16.44 C8.337,16.44 9.225,17.327 9.225,18.421 C9.225,19.516 8.337,20.403 7.243,20.403 z"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22.119,20.403 C21.025,20.403 20.137,19.516 20.137,18.421 C20.137,17.327 21.025,16.44 22.119,16.44 C23.213,16.44 24.101,17.327 24.101,18.421 C24.101,19.516 23.213,20.403 22.119,20.403 z"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14.872,8.943 L14.872,18.421"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14.872,8.943 L18.057,8.943"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+      </svg>
+      <svg
+        v-if="carType === 'Transporter'"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        viewBox="0, 0, 28.346, 28.346"
+      >
+        <g id="Transporter">
+          <path
+            d="M5.264,13.539 L15.775,13.67"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M17.394,13.67 L22.982,13.76 C23.625,13.76 25.881,14.494 26.471,15.261 L26.431,18.938 C26.431,19.567 25.024,19.41 24.381,19.41 L25.649,19.404"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19.968,19.268 L9.627,19.11"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M5.466,19.11 L4.041,19.048 C3.398,19.048 2.876,18.505 2.876,17.876 L3.053,9.893"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M17.109,8.617 L17.394,13.539"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M3.053,14.281 L4.041,14.275"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M25.233,15.753 L26.471,15.753"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M7.447,20.92 C6.353,20.92 5.466,20.033 5.466,18.938 C5.466,17.844 6.353,16.957 7.447,16.957 C8.542,16.957 9.429,17.844 9.429,18.938 C9.429,20.033 8.542,20.92 7.447,20.92 z"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22.124,20.92 C21.029,20.92 20.142,20.033 20.142,18.938 C20.142,17.844 21.029,16.957 22.124,16.957 C23.218,16.957 24.105,17.844 24.105,18.938 C24.105,20.033 23.218,20.92 22.124,20.92 z"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M5.466,8.426 C3.67,8.426 3.23,8.426 3.053,9.893"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19.312,8.426 C20.572,9.331 22.479,12.251 22.982,13.76"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19.312,8.426 L4.967,8.426"
+            fill-opacity="0"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+      </svg>
     </button>
   </article>
 </template>
@@ -363,7 +637,7 @@ export default {
 .icon-tooltip::after {
   content: "";
   top: 90%;
-  left: 0;
+  left: 25%;
   width: 4rem;
   height: 1rem;
   clip-path: polygon(10% 0%, 50% 0%, 30% 100%);
@@ -380,7 +654,7 @@ export default {
 
 svg {
   stroke: var(--secondary-light);
-  width: 6rem;
+  width: 3rem;
   aspect-ratio: 1;
 }
 
