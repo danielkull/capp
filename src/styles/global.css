@@ -1,7 +1,13 @@
 @font-face {
   font-family: "Roboto";
-  src: local("Roboto"), local("Roboto-Regular"),
-    url("/src/Fonts/roboto") format("woff2");
+  src: url("/src/Fonts/roboto/Roboto-Black.woff2") format("woff2"),
+    url("/src/Fonts/roboto/Roboto-Bold.woff2") format("woff2"),
+    url("/src/Fonts/roboto/Roboto-Italic.woff2") format("woff2"),
+    url("/src/Fonts/roboto/Roboto-Light.woff2") format("woff2"),
+    url("/src/Fonts/roboto/Roboto-LightItalic.woff2") format("woff2"),
+    url("/src/Fonts/roboto/Roboto-Medium.woff2") format("woff2"),
+    url("/src/Fonts/roboto/Roboto-Regular.woff2") format("woff2");
+
   font-style: normal italic;
   font-weight: 300 400 500 700 900;
 }
@@ -46,6 +52,8 @@
   --btn-height-default: calc(var(--font-size) * 2);
   --btn-height-small: 1rem;
   --circle-radius: 100%;
+
+  --s-brd-rad: 1rem;
 
   /*============================================*/
   /*   Fonts   Main text*/

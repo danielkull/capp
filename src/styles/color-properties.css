@@ -10,10 +10,11 @@
   --secondary-mid: hsl(0, 0%, 85%);
   --secondary-default: hsl(0, 0%, 82%);
 
-  --secondary-light: hsl(0, 0%, 97%);
+  --secondary-light: hsl(0, 0%, 99%);
 
-  --font-color-dark: hsl(0, 0%, 5%);
+  --font-color-dark: hsl(0, 0%, 30%);
   --font-color-light: hsl(0, 0%, 57%);
+  --light-font: var(--secondary-light);
 
   --accent-color: hsl(43, 91%, 48%);
   --error-color: hsl(349, 100%, 45%);
@@ -32,6 +33,18 @@
 
   --nav-icon: var(--secondary-light);
   --nav-icon-act: var(--secondary-default);
+
+  /*================new CP - UserEvalutation======================*/
+
+  --icon-false: var(--secondary-dark);
+  --icon-true: var(--accent-color);
+  --area-focus: var(--primary-dark);
+  --area-default: var(--secondary-dark);
+  --area-hover: var(--primary-mid);
+  --s-brd: 1px;
+  --m-brd: 2px;
+  --clr-user-brd: var(--secondary-dark);
+  --bg-txt-field: hsl(0, 0%, 97%);
 
   /*====================================================================*/
   /*======neue CP=========*/
