@@ -1,7 +1,10 @@
 <template>
   <body>
     <main>
-      <article class="logIn-card__wrapper">
+      <article
+        class="logIn-card__wrapper"
+        :class="{ 'in-motion': motionActive }"
+      >
         <section class="logIn-card__logo-capp">
           <svg
             class="capp-logo"
@@ -99,56 +102,112 @@
           </svg>
 
           <h1>CAPP</h1>
+          <!-- === Start Page Section for Log In und Sign In === -->
         </section>
-        <section class="login-card__start-page">
-          <div class="login-card__btn-wrapper">
-            <input
-              type="button"
-              value="Log In"
-              class="LogIn-btn btn-font"
-              id="LogIn-btn"
-            />
-            <input
-              type="button"
-              value="Sign In"
-              class="Sign-btn btn-font"
-              id="Sign-btn"
-            />
-          </div>
-        </section>
-        <section class="logIn-card__logIn-page">
-          <div class="logIn-card__logIn-input">
-            <form action="#">
-              <InputText
-                :inputId="'email'"
-                :inputType="'email'"
-                :inputPlaceholder="'beispiel@provider.com'"
-                >Email
-              </InputText>
+        <Transition name="slide">
+          <section v-if="startPage" class="login-card__start-page">
+            <div class="login-card__btn-wrapper">
+              <input
+                type="button"
+                value="Log In"
+                class="LogIn-btn btn-font"
+                id="LogIn-btn"
+                @click.prevent="changePage('logIn')"
+              />
+              <input
+                type="button"
+                value="Sign In"
+                class="Sign-btn btn-font"
+                id="Sign-btn"
+                @click.prevent="changePage('signIn')"
+              />
+            </div>
+          </section>
+        </Transition>
+        <!-- ============== End of Start Page ==================== -->
 
-              <InputText :inputId="'first-password'" :inputType="'password'"
-                >Password</InputText
-              >
-            </form>
-          </div>
-          <div class="logIn-card__login-btn-wrapper">
-            <button class="logIn-card__login-back">
-              <span class="logIn-card__back-arrow">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  class="bi bi-caret-left-fill"
-                  viewBox="0 0 16 16"
+        <!-- ============== Log In Page Section  ============== -->
+        <Transition name="slide">
+          <section v-if="logInPage" class="logIn-card__logIn-page">
+            <div class="logIn-card__logIn-input">
+              <form action="#" autocomplete="on">
+                <InputText
+                  :inputId="'email'"
+                  :inputType="'email'"
+                  :inputPlaceholder="'beispiel@provider.com'"
+                  >Email
+                </InputText>
+
+                <InputText :inputId="'first-password'" :inputType="'password'"
+                  >Password</InputText
                 >
-                  <path
-                    d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
-                  />
-                </svg>
-              </span>
-            </button>
-            <input type="button" value="Log In" class="LogIn-card__btn" />
-          </div>
-        </section>
+              </form>
+            </div>
+            <div class="logIn-card__login-btn-wrapper">
+              <button
+                class="logIn-card__login-back"
+                @click.prevent="changePage('logIn')"
+              >
+                <span class="logIn-card__back-arrow">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="bi bi-caret-left-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <input type="button" value="Log In" class="LogIn-card__btn" />
+            </div>
+          </section>
+        </Transition>
+        <!-- ============== End of Log In Page ==================== -->
+
+        <!-- ============== Sign In Page Section  ============== -->
+        <Transition name="slide">
+          <section v-if="signInPage" class="logIn-card__logIn-page">
+            <div class="logIn-card__logIn-input">
+              <form action="#" autocomplete="on">
+                <InputText :inputId="'username'" :inputType="'text'" :inputPlaceholder="'Ein beliebiger Username'">Username</InputText>
+                <InputText
+                  :inputId="'email'"
+                  :inputType="'email'"
+                  :inputPlaceholder="'beispiel@provider.com'"
+                  >Email
+                </InputText>
+
+                <InputText :inputId="'first-password'" :inputType="'password'"
+                  >Password</InputText
+                >
+              </form>
+            </div>
+            <div class="logIn-card__login-btn-wrapper">
+              <button
+                class="logIn-card__login-back"
+                @click.prevent="changePage('signIn')"
+              >
+                <span class="logIn-card__back-arrow">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="bi bi-caret-left-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <input type="button" value="Log In" class="LogIn-card__btn" />
+            </div>
+          </section>
+        </Transition>
+        <!-- ============== End of Sign In Page ==================== -->
       </article>
     </main>
   </body>
@@ -158,6 +217,31 @@
 import InputText from "@/components/input-elements/InputText.vue";
 export default {
   components: { InputText },
+  data() {
+    return {
+      startPage: true,
+      logInPage: false,
+      signInPage: false,
+      motionActive: false,
+    };
+  },
+  methods: {
+    changePage(switchToPage) {
+      if (switchToPage === "logIn") {
+        this.logInPage = !this.logInPage;
+      } else if (switchToPage === "signIn") {
+        this.signInPage = !this.signInPage;
+      }
+      this.startPage = !this.startPage;
+      this.hideSlide();
+    },
+    hideSlide() {
+      this.motionActive = true;
+      setTimeout(() => {
+        this.motionActive = false;
+      }, 1000);
+    },
+  },
 };
 </script>
 
@@ -194,14 +278,15 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  display: block;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* border: 1px solid red; */
-  /* overflow: hidden; */
+}
+
+.in-motion {
+  overflow: hidden;
 }
 
 /*================================================*/
@@ -232,10 +317,6 @@ main {
 /*================================================*/
 /*                  Buttons                     */
 /*================================================*/
-
-.login-card__start-page {
-  translate: 0 800px;
-}
 
 .login-card__btn-wrapper {
   width: 100%;
@@ -282,19 +363,43 @@ main {
   color: var(--primary-light);
 }
 /*===================================================*/
-/*            Login Page - zweite Seite                  */
+/*            Start Page                      */
 /*===================================================*/
 
+.login-card__start-page {
+  translate: 0 0;
+  z-index: 11;
+  background-color: var(--secondary-light);
+  border-radius: 2rem;
+}
+
+.slide-enter-active {
+  animation: 1s 1 forwards slider;
+}
+.slide-leave-active {
+  animation: 1s 1 reverse slider;
+}
+
+@keyframes slider {
+  0% {
+    translate: 0 600px;
+  }
+  100% {
+    translate: 0 0px;
+  }
+}
+
+/*===================================================*/
+/*            Login Page:       ;                    */
+/*===================================================*/
 .logIn-card__logIn-page {
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  padding-inline: auto;
   border-radius: 2rem;
   width: 25vw;
-  height: 80vh;
-  background: white(0, 0, 0, 0.2);
+  height: 85vh;
 
   position: absolute;
   z-index: 10;
@@ -344,6 +449,7 @@ main {
   border-radius: 100%;
   outline: 2px solid var(--secondary-mid);
   outline-offset: 0.4rem;
+  cursor: pointer;
 }
 .logIn-card__back-arrow {
   display: grid;
@@ -414,7 +520,6 @@ main {
   .logIn-card__wrapper:hover {
     box-shadow: 13px 13px 20px rgba(95, 95, 95, 0.3),
       -13px -13px 20px rgba(95, 95, 95, 0.3);
-    cursor: pointer;
   }
 }
 </style>
