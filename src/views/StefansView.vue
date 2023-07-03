@@ -1,9 +1,7 @@
 <template>
   <h1>Hallo Stefan, viel Spaß beim Programieren</h1>
-
-  <UserEvaluation />
-
-  <!-- <UserQuestionMenueVue /> -->
+ <UserEvaluation />
+ <UserQuestionMenueVue /> 
 </template>
 
 <script>
