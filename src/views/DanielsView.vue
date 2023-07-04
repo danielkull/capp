@@ -32,6 +32,7 @@
         >Password</InputText
       >
     </form>
+    <button @click.prevent="userState.getUser()">Get new State</button>
     <pre>
       {{ userState }}
     </pre>
@@ -46,7 +47,7 @@ export default {
   components: { InputText },
   setup() {
     const userState = userStateStore();
-    userState.getUser();
+    // userState.getUser();
     return { userState };
   },
 };
