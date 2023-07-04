@@ -23,7 +23,7 @@
 
     <main class="app-mainpage__main-page main-page-style">
       <section class="filter-choice-frame"></section>
-      <section class="filter-choice"></section>
+      <section class="filter-choice"><filter-drop-down /></section>
       <section class="test">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
@@ -530,7 +530,10 @@
 </template>
 
 <script>
-export default {};
+import FilterDropDown from "../components/FilterDropDown.vue";
+export default {
+  components: { FilterDropDown },
+};
 </script>
 
 <style scoped>
