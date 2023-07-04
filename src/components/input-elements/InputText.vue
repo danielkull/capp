@@ -1,3 +1,44 @@
+<!-- ================================================== -->
+<!-- ========= Einführung in diese Komponente ========= -->
+<!-- ================================================== -->
+
+<!-- Standard Input Feld benötigt mindestens eine :inputID -->
+<!-- Das InputText hat ein Fallback slot mit einem default Text -->
+<!-- <InputText :inputId="'you-need-an-ID'"></InputText> -->
+
+<!-- Wenn man ein anderes Input Feld haben möchte dann kann man noch den :inputTypen -->
+<!-- festlegen und z.B. auch den :inputPlaceholder -->
+<!-- Der :inputTyp liegt als Standard auf "text", man kann aber auch noch "password" und "email" auswählen-->
+<!-- Wenn man weitere besondere Input Elemente haben möchte, dann müssen die erst in die Komponente eingebaut werden. -->
+<!-- Die Auswahl der passenden Typen, sorgt dafür das die entsprechenden Hilfstexte oder zusatz Symbole richtig angezeigt werden. -->
+<!-- Zudem haben diese auch eine passende Formvalidierung! -->
+<!-- <InputText
+      :inputId="'email'"
+      :inputType="'email'"
+      :inputPlaceholder="'beispiel@provider.com'"
+      >Email</InputText
+    > -->
+
+<!-- Hier wurde als Beispiel der slot mit dem default Text überschrieben mit "Another Mail"-->
+<!-- <InputText
+      :inputId="'another-mail'"
+      :inputType="'email'"
+      :inputPlaceholder="'dontTrust@Rabbits.com'"
+      >Another Mail</InputText
+    > -->
+
+<!-- Wenn man ein Password input element benutz ohne es in ein <form></form> tag einzubinden,  -->
+<!-- dann gibt er eine Warnmeldung.  -->
+<!-- <form action="#">
+      <InputText :inputId="'first-password'" :inputType="'password'"
+        >Password</InputText
+      >
+    </form> -->
+
+<!-- ================================================== -->
+<!-- ============== Ende der Einführung  ============== -->
+<!-- ================================================== -->
+
 <template>
   <div class="capp-input__wrapper">
     <span>
@@ -8,7 +49,7 @@
         <!-- Start: Password show/hide toggle button -->
         <button
           v-if="inputType === 'password'"
-          class="pw-sigth"
+          class="pw-sight"
           @click.prevent="togglePasswordVisibility()"
         >
           <svg
@@ -73,9 +114,6 @@
   </div>
 </template>
 
-<!-- NOTE: Beim nutzen von Password vielleicht noch autocomplete Attribute einfügen -->
-<!-- required Attribute ebenfalls einfügen und die passenden CSS und JS dazupacken -->
-
 <script>
 export default {
   name: "InputText",
@@ -114,11 +152,11 @@ export default {
         case "text":
           return "Hier kannst du einen beliebigen Freitext eingeben. Tob dich aus!";
         case "email":
-          return "Bitte gib deine Mail Adresse an. Die sollte in etwa so aussehen meinKürzel@provider.com";
+          return "Bitte gib deine Mail Adresse an. Die sollte in etwa so aussehen meinKuerzel@provider.com";
         case "password":
           return "Ein sicheres Password für dich sollte mindestens 12 Zeichen haben. Benutze am besten eine Mischung aus Groß-, Kleinschreibung mit Sonderzeichen und Zahlen.";
         default:
-          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parad.";
+          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parat.";
       }
     },
     invalidMessage() {
@@ -286,18 +324,18 @@ export default {
 
 /*==================================================================== *
 /*=================toggle BTn PW=============================*/
-.pw-sigth {
+.pw-sight {
   all: unset;
   translate: 10px 5px;
   cursor: pointer;
 }
-.pw-sigth > svg {
+.pw-sight > svg {
   cursor: pointer;
   width: 1.5rem;
   aspect-ratio: 1;
   fill: var(--secondary-dark);
 }
-.pw-sigth:active > svg {
+.pw-sight:active > svg {
   fill: var(--primary-dark);
 }
 
