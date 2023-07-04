@@ -10,7 +10,7 @@
     <router-link to="/danielView">Daniels View</router-link>|
     <router-link to="/mainView">Main Page</router-link>|
     <router-link to="/UserProfileView">Userprofile</router-link>|
-    <router-link to="/KirstensView">Userprofile</router-link>|
+    <router-link to="/KirstensView">KirstensView</router-link>|
   </nav>
   <router-view />
 </template>
