@@ -6,6 +6,10 @@
 
     <!-- Wenn man ein anderes Input Feld haben möchte dann kann man noch den :inputTypen -->
     <!-- festlegen und z.B. auch den :inputPlaceholder -->
+    <!-- Der :inputTyp liegt als Standard auf "text", man kann aber auch noch "password" und "email" auswählen-->
+    <!-- Wenn man weitere besondere Input Elemente haben möchte, dann müssen die erst in die Komponente eingebaut werden. -->
+    <!-- Die Auswahl der passenden Typen, sorgt dafür das die entsprechenden Hilfstexte oder zusatz Symbole richtig angezeigt werden. -->
+    <!-- Zudem haben diese auch eine passende Formvalidierung! -->
     <InputText
       :inputId="'email'"
       :inputType="'email'"
@@ -21,8 +25,8 @@
       >Another Mail</InputText
     >
 
-    <!-- Wenn man ein Password input element benutz ohne form darum gibt er eine -->
-    <!-- Warnmeldung.  -->
+    <!-- Wenn man ein Password input element benutz ohne es in ein <form></form> tag einzubinden,  -->
+    <!-- dann gibt er eine Warnmeldung.  -->
     <form action="#">
       <InputText :inputId="'first-password'" :inputType="'password'"
         >Password</InputText
