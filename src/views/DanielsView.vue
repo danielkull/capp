@@ -32,7 +32,7 @@
         >Password</InputText
       >
     </form>
-    <button @click.prevent="userState.getUser()">Get new State</button>
+    <!-- <button @click.prevent="userState.getUser()">Get new State</button> -->
     <pre>
       {{ userState }}
     </pre>
