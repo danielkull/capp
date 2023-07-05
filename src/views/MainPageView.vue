@@ -524,15 +524,17 @@
         </p>
       </section>
     </main>
-    <footer>Footer</footer>
-    <nav class="nav-placeholder"></nav>
+    <footer>
+      <NavBarMenue />
+    </footer>
   </body>
 </template>
 
 <script>
 import FilterDropDown from "../components/FilterDropDown.vue";
+import NavBarMenue from "@/components/main-component/NavBar.vue";
 export default {
-  components: { FilterDropDown },
+  components: { FilterDropDown, NavBarMenue },
 };
 </script>
 
@@ -597,7 +599,7 @@ main::-webkit-scrollbar {
   height: 30%;
 
   position: absolute;
-  z-index: 10;
+  z-index: 9;
   border-radius: 2rem 2rem 0 0;
   top: 60px;
   left: 0;
@@ -631,9 +633,6 @@ main::-webkit-scrollbar {
 }
 /*==============================================*/
 /*===============footer - placegolder==========================*/
-footer {
-  display: none;
-}
 
 /*===============================================*/
 .filter-icon__wrapper {
