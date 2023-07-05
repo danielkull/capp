@@ -33,18 +33,22 @@
       >
     </form>
     <!-- <button @click.prevent="userState.getUser()">Get new State</button> -->
-<!--     <pre>
-      {{ userState }}
-    </pre> -->
+    <pre>
+      {{ users }}
+    </pre>
   </div>
 </template>
 
 <script>
 import InputText from "@/components/input-elements/InputText.vue";
-// import { userStateStore } from "@/stores/userStateStorage";
+import { userStateStore } from "@/stores/userStateStorage";
+import { mapState } from "pinia";
 
 export default {
   components: { InputText },
+  computed: {
+    ...mapState(userStateStore, ["users"]),
+  }
 /*   setup() {
     const userState = userStateStore();
     // userState.getUser();
