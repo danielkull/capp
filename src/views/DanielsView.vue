@@ -33,23 +33,23 @@
       >
     </form>
     <!-- <button @click.prevent="userState.getUser()">Get new State</button> -->
-    <pre>
+<!--     <pre>
       {{ userState }}
-    </pre>
+    </pre> -->
   </div>
 </template>
 
 <script>
 import InputText from "@/components/input-elements/InputText.vue";
-import { userStateStore } from "@/stores/userStateStorage";
+// import { userStateStore } from "@/stores/userStateStorage";
 
 export default {
   components: { InputText },
-  setup() {
+/*   setup() {
     const userState = userStateStore();
     // userState.getUser();
     return { userState };
-  },
+  }, */
 };
 </script>
 
