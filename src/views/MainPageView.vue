@@ -58,21 +58,25 @@
         </p> -->
       </section>
     </main>
-    <footer>Footer</footer>
-    <nav class="nav-placeholder"></nav>
+    <footer>
+      <NavBarMenue />
+    </footer>
   </body>
 </template>
 
 <script>
 import FilterDropDown from "@/components/FilterDropDown.vue";
+import NavBarMenue from "@/components/main-component/NavBar.vue";
 import SmallCarCard from "@/components/SmallCarCard.vue";
 import IconType from "@/components/icon-type/IconType.vue";
 import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
+
 export default {
   components: {
     FilterDropDown,
+    NavBarMenue,
     SmallCarCard,
     IconType,
     FuelType,
@@ -143,7 +147,7 @@ main::-webkit-scrollbar {
   height: 30%;
 
   position: absolute;
-  z-index: 10;
+  z-index: 9;
   border-radius: 2rem 2rem 0 0;
   top: 60px;
   left: 0;
@@ -177,9 +181,6 @@ main::-webkit-scrollbar {
 }
 /*==============================================*/
 /*===============footer - placegolder==========================*/
-footer {
-  display: none;
-}
 
 /*===============================================*/
 .filter-icon__wrapper {
