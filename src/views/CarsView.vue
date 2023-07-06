@@ -1,15 +1,18 @@
 <script>
 import { supabase } from "@/lib/supabaseClient";
+import CarCard from "../components/cars-components/CarCard.vue";
 export default {
   data() {
     return {
       title: "Übersicht über unsere verfügbaren Autos",
-      brands: [],
-      carTypes: [],
-      cars: [],
+      brands: null,
+      carTypes: null,
+      cars: null,
     };
   },
-  components: {},
+  components: {
+    CarCard,
+  },
   mounted() {
     this.getBrands();
     this.getCarTypes();
@@ -35,7 +38,18 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `id, type_id, user_id, kw, year_of_construction, max_speed, trunk_volume_in_liters, img_source, count_of_seats, users (id, username, firstname, lastname), car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+          `id, 
+          type_id, 
+          user_id, 
+          kw, 
+          year_of_construction, 
+          max_speed, 
+          trunk_volume_in_liters, 
+          img_source, 
+          count_of_seats, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .order("id", { ascending: true });
       this.cars = data;
@@ -48,7 +62,8 @@ export default {
 <template>
   <main>
     <h1>{{ title }}</h1>
-    <div class="cars-container">
+    <div class="cars-container" v-if="cars">
+      <!--
       <div class="car" v-for="car in cars" :key="car.id">
         <div class="car-img">
           <img
@@ -68,14 +83,17 @@ export default {
           </h4>
           <p>
             <span class="label">Sitze</span>
-            <span class="seats-count">{{ car.count_of_seats }}</span>
+            <span
+              class="seats-count"
+              :class="'seats-' + car.count_of_seats"
+            ></span>
           </p>
           <p>
             <span class="label">Typ</span>
             <span class="car-type">{{ car.car_types.category }}</span>
           </p>
           <p>
-            <span class="label"></span>
+            <span class="label user-label"></span>
             <span class="user">000{{ car.users.id }}</span>
           </p>
 
@@ -86,7 +104,26 @@ export default {
           >
         </div>
       </div>
+      -->
+      <CarCard
+        v-for="car in cars"
+        :key="car.id"
+        :brandName="car.car_types.brands.brand_name"
+        :carTypeCategory="car.car_types.category"
+        :carTypeName="car.car_types.car_type_name"
+        :carUserID="car.users.id"
+        :imgSource="car.img_source"
+        :seatsCount="car.count_of_seats"
+      >
+        <router-link
+          class="more-info"
+          :to="{ name: 'carView', params: { id: car.id } }"
+          >mehr Info</router-link
+        >
+      </CarCard>
     </div>
+
+    <div v-else><p>Loading Cars...</p></div>
   </main>
 </template>
 
@@ -102,17 +139,17 @@ h1 {
   text-align: center;
 }
 
-h4 {
-  font-size: 1.25rem;
-  color: var(--primary-dark);
-  margin-bottom: 0.35rem;
-}
-
 .cars-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
   padding-block: 2rem;
+}
+/*
+h4 {
+  font-size: 1.25rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.35rem;
 }
 
 .car {
@@ -163,9 +200,29 @@ h4 {
 }
 
 .car-details > p > span.seats-count {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--primary-dark);
+}
+
+.car-details > p > span.seats-count.seats-2::before {
+  content: "* *";
+}
+
+.car-details > p > span.seats-count.seats-4::before {
+  content: "* * * *";
+}
+
+.car-details > p > span.seats-count.seats-5::before {
+  content: "* * * * *";
+}
+
+.car-details > p > span.seats-count.seats-6::before {
+  content: "* * * * * *";
+}
+
+.car-details > p > span.seats-count.seats-8::before {
+  content: "* * * * * * * *";
 }
 
 .car-details > p > span.car-type {
@@ -181,7 +238,7 @@ h4 {
   font-weight: 300;
 }
 
-.car-details > p:last-of-type > span.label::before {
+.car-details > p > span.label.user-label::before {
   content: "";
   width: 20px;
   aspect-ratio: 1;
@@ -191,7 +248,7 @@ h4 {
   border-radius: 50%;
   outline: 1px solid var(--primary-dark);
 }
-
+*/
 a.more-info {
   font-size: 0.85rem;
   text-decoration: none;
