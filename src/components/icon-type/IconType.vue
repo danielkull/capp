@@ -665,15 +665,6 @@ svg {
   aspect-ratio: 1;
 }
 
-/* .svg-holder {
-  background-image: url("@/assets/Car-Types/SUV.svg");
-  width: 4rem;
-  aspect-ratio: 1;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-} */
-
 @media screen and (min-width: 900px) {
   .icon-btn:hover .icon-tooltip {
     translate: -50% -140%;
