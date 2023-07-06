@@ -3,6 +3,9 @@
   <UserEvaluation />
   <UserQuestionMenueVue />
   <CheckBox />
+  <div class="test-wrapper">
+    <ToogleButton :defaultState="true" />
+  </div>
   <RadioButton />
   <RadioButton />
   <RadioButton />
@@ -48,6 +51,7 @@ import IconType from "@/components/icon-type/IconType.vue";
 import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
+import ToogleButton from "@/components/input-elements/DarkModeButton.vue";
 
 export default {
   components: {
@@ -58,6 +62,7 @@ export default {
     FuelType,
     TrunkType,
     DifferentType,
+    ToogleButton,
   },
 };
 </script>
@@ -66,5 +71,11 @@ export default {
 .car-icon__holder {
   display: flex;
   gap: 2rem;
+}
+.test-wrapper {
+  width: 100vw;
+  height: 4rem;
+  display: grid;
+  place-content: center;
 }
 </style>

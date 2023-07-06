@@ -87,7 +87,7 @@ html {
   --accent-color: hsl(43, 91%, 48%);
   --error-color: hsl(349, 100%, 25%);
 }
-html[data-theme="dark"] {
+.active {
   /*green*/
   --color: 140, 45%;
   --l: 40%;
@@ -109,3 +109,14 @@ html[data-theme="dark"] {
   --error-color: hsl(349, 54%, 53%);
   --accent-color: hsl(43, 92%, 36%);
 }
+
+/* .active {
+  --secondary-dark: hsl(0, 0%, 12%);
+  --error-color: hsl(349, 54%, 53%);
+
+  --color: 140, 45%;
+  --l: 40%;
+
+  --color-primary: hsl(var(--color), var(--l));
+  --font-color-light: hsl(0, 0%, 57%);
+} */
