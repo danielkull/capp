@@ -5,7 +5,7 @@
       alt="Das Auto des Users"
     />
 
-    <section class="car-card__importan-info">
+    <section class="car-card__important-info">
       <section class="car-card__basic-information">
         <span class="car-card__adress">
           <svg
@@ -252,10 +252,7 @@ export default {
   border-radius: 1rem;
   overflow: hidden;
 }
-/* .car-card__img-wrapper {
-  width: 100%;
-  background-image: ;
-} */
+
 img {
   width: 100%;
 }
@@ -266,7 +263,7 @@ img {
 
   display: flex;
 }
-.car-card__importan-info {
+.car-card__important-info {
   position: absolute;
   display: flex;
   flex-direction: column;
