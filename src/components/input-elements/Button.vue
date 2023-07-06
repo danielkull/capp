@@ -1,6 +1,11 @@
 <template>
-  <!-- <input type="button" value="Log In" class="Log-btn btn-font" id="LogIn-btn" />
-   -->
+  <input
+    type="button"
+    :value="`${log_in}`"
+    class="Log-btn btn-font"
+    id="LogIn-btn"
+  />
+
   <input
     type="button"
     :value="`${sign_in}`"
