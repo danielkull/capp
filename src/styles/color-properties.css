@@ -17,7 +17,13 @@
   --light-font: var(--secondary-light);
 
   --accent-color: hsl(43, 91%, 48%);
-  --error-color: hsl(349, 100%, 45%);
+  --error-color: hsl(349, 100%, 40%);
+
+  /*============new CP Icons- Types======================*/
+  --error-color-light: hsl(349, 100%, 50%);
+  --icon-no: var(--error-color);
+  --icon-brd: 1px solid var(--primary-dark);
+  --icon-no-brd: 1px solid transparent;
   /*===============new CP Log In===*/
   --primary-veryDark: hsl(var(--color), calc(var(--l) - 10%));
   --font-logo-size: clamp(4rem, 10vw, 5vw);
