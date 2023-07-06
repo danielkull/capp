@@ -224,21 +224,6 @@
         </article>
       </div>
     </main>
-    <nav class="nav-bar__wrapper">
-      <button class="nav-bar__profil-btn" id="nav-profil-btn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="bi bi-person-square"
-          viewBox="0 0 16 16"
-        >
-          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-          <path
-            d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"
-          />
-        </svg>
-      </button>
-    </nav>
   </body>
 </template>
 
@@ -530,36 +515,6 @@ label::after {
   height: 30rem;
 }
 
-/*============nav-bar=====================*/
-.nav-bar__wrapper {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4rem;
-  background: linear-gradient(to top, var(--primary-dark), var(--primary-mid));
-  border-radius: 1.2rem 1.2rem 0 0;
-  padding-inline: 1rem;
-}
-.nav-bar__profil-btn {
-  all: unset;
-  padding: 0.3rem;
-
-  display: grid;
-  place-content: center;
-}
-.nav-bar__profil-btn svg {
-  width: 2rem;
-  height: 2rem;
-  fill: var(--nav-icon);
-}
-
-.nav-bar__profil-btn:active svg {
-  fill: var(--nav-icon-act);
-}
 /*======Media Queries================================*/
 @media screen and (min-width: 1000px) {
   .user-profile__frame {

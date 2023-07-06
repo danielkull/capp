@@ -31,9 +31,11 @@
   --car-icon-bg: var(--primary-dark);
   --car-icon-img: var(--secondary-light);
 
+  /*==================new CP navbar========================*/
   --nav-icon: var(--secondary-light);
-  --nav-icon-act: var(--secondary-default);
-
+  --nav-icon-act: var(--secondary-dark);
+  --light-brd: rgba(255, 255, 255, 0.2);
+  --dark-brd: rgba(0, 0, 0, 0.2);
   /*================new CP - UserEvalutation======================*/
 
   --icon-false: var(--secondary-dark);
@@ -54,6 +56,8 @@
   --list-padding: var(--question-list-padding-inline);
   --list-item-padding: 0.5rem;
   --list-hover: hsl(0, 0%, 92%);
+  --bg-list: var(--secondary-default);
+  --bg-lis-surface: var(--secondary-light);
   /*====================================================================*/
 }
 
