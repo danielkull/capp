@@ -383,6 +383,9 @@ main {
 .user-info__name {
   width: 100%;
   text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 .user-info__name h2 {
   font-size: 2rem;
