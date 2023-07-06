@@ -13,6 +13,8 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0"
         y="0"
+        width="100%"
+        height="100%"
         viewBox="0, 0, 30, 28.346"
       >
         <g id="Kleinwagen">
@@ -105,6 +107,8 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0"
         y="0"
+        width="100%"
+        height="100%"
         viewBox="0, 0, 30, 28.346"
       >
         <g id="SUV">
@@ -203,6 +207,8 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0"
         y="0"
+        width="100%"
+        height="100%"
         viewBox="0, 0, 30, 28.346"
       >
         <g id="Bus">
@@ -592,15 +598,16 @@ export default {
 <style scoped>
 .icon-btn {
   all: unset;
-  /* width: 4rem; */
+
   aspect-ratio: 1;
-  padding: 0.1rem;
+  padding: 0.2rem;
   border-radius: 0.5rem;
   display: grid;
   place-content: center;
   background: var(--primary-veryDark);
   cursor: pointer;
   position: relative;
+  border: var(--icon-brd);
 }
 
 .icon-btn:active {
