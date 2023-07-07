@@ -248,7 +248,10 @@
                   class="capp-btn__default"
                 />
                 <label :for="trunkSize.id"
-                  >{{ trunkSize.id }} {{ trunkSize.name }}</label
+                  >{{ trunkSize.id }} {{ trunkSize.min }}-{{
+                    trunkSize.max
+                  }}
+                  Liter</label
                 >
               </li>
             </ul>
@@ -443,30 +446,40 @@ export default {
         {
           id: "S",
           name: "170-250 Liter",
+          min: 170,
+          max: 250,
           iconSource: "S-trunk.svg",
           checked: false,
         },
         {
           id: "M",
-          name: "350-500 Liter",
+          name: "251-450 Liter",
+          min: 251,
+          max: 450,
           iconSource: "M-trunk.svg",
           checked: false,
         },
         {
           id: "L",
-          name: "450-550 Liter",
+          name: "451-550 Liter",
+          min: 451,
+          max: 550,
           iconSource: "L-trunk.svg",
           checked: false,
         },
         {
           id: "XL",
-          name: "380-800 Liter",
+          name: "551-800 Liter",
+          min: 551,
+          max: 800,
           iconSource: "XL-trunk.svg",
           checked: false,
         },
         {
           id: "XXL",
-          name: "bis zu 1600 Liter",
+          name: "801-1600 Liter",
+          min: 801,
+          max: 1600,
           iconSource: "XXL-trunk.svg",
           checked: false,
         },
