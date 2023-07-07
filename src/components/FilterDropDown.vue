@@ -491,14 +491,12 @@ export default {
     };
   },
   mounted() {
-    this.getCarFeatures();
+    this.getFeatures();
   },
   methods: {
-    async getCarFeatures() {
+    async getFeatures() {
       const { data } = await supabase.from("features").select();
-      console.log(data);
       const carFeaturesFromDB = data;
-      console.log(carFeaturesFromDB);
       for (const item of carFeaturesFromDB) {
         this.features.push({
           id: item.id,
@@ -506,7 +504,6 @@ export default {
           checked: false,
         });
       }
-      console.log(this.features);
     },
     chooseCarTypes() {
       this.carTypes.forEach((carType) => {
