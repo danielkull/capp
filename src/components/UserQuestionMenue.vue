@@ -508,8 +508,6 @@ export default {
       isSmoker: "",
       hasIsofix: "",
       chosenTrunkSize: "",
-      minTrunkSize: 0,
-      maxTrunkSize: 0,
       ownTrunkSize: "",
       chosenFeatures: [],
       miscellaneous: "",
