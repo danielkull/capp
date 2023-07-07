@@ -32,13 +32,32 @@
         >Password</InputText
       >
     </form>
+    <!-- Test von Pinia mit der Option API -->
+    <button @click.prevent="getUser()">Get new State</button>
+    <pre>
+      {{ users }}
+    </pre>
   </div>
 </template>
 
 <script>
 import InputText from "@/components/input-elements/InputText.vue";
+// Holt uns den passenden Store
+import { userStateStore } from "@/stores/userStateStorage";
+// mapState und mapActions sind teile der Pinia Options API
+import { mapState, mapActions } from "pinia";
+
 export default {
   components: { InputText },
+  // Die Actions von Pina werden mit den methods ausgeführt in der Option API
+  methods: {
+    ...mapActions(userStateStore, { getUser: "getUser" }),
+  },
+  // Hier als Beispiel wird der normale State von Pina mit computed geladen
+  // Kann auch anders genutzt werden z.B. data()...
+  computed: {
+    ...mapState(userStateStore, ["users"]),
+  },
 };
 </script>
 
