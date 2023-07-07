@@ -3,7 +3,7 @@
   <UserEvaluation />
   <UserQuestionMenueVue />
   <CheckBox />
-  <DarkModeButton />
+
   <RadioButton />
   <RadioButton />
   <RadioButton />
@@ -49,7 +49,7 @@ import IconType from "@/components/icon-type/IconType.vue";
 import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
-import DarkModeButton from "@/components/input-elements/DarkModeButton.vue";
+
 export default {
   components: {
     CheckBox,
@@ -59,7 +59,6 @@ export default {
     FuelType,
     TrunkType,
     DifferentType,
-    DarkModeButton,
   },
 };
 </script>
