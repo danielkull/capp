@@ -30,9 +30,10 @@ export default {
     async getCarTypes() {
       const { data } = await supabase
         .from("car_types")
-        .select(`id, car_type_name, brand_id, brands ( brand_name )`)
+        .select(`id, car_type_name, category, brand_id, brands ( brand_name )`)
         .order("brand_id", { ascending: true })
-        .order("id", { ascending: true });
+        .order("id", { ascending: true })
+        .order("category", { ascending: true });
       this.carTypes = data;
       console.log(this.carTypes);
     },
@@ -40,7 +41,7 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `id, type_id, kw, year_of_construction, max_speed, trunk_volume_in_liters, img_source, count_of_seats, car_types ( id, car_type_name, brand_id, brands ( id, brand_name ) ), cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+          `id, type_id, user_id, kw, year_of_construction, max_speed, trunk_volume_in_liters, img_source, count_of_seats, users (id, username, firstname, lastname), car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         );
       this.cars = data;
       console.log(this.cars);
@@ -66,7 +67,6 @@ export default {
 </script>
 
 <template>
-
   <h2>{{ h2brands }}</h2>
 
   <form @submit.prevent="addNewBrand(this.newBrand)">
@@ -91,7 +91,7 @@ export default {
     <li v-for="carType in carTypes" :key="carType.id">
       {{ carType.brand_id }}.{{ carType.id }})
       <span>{{ carType.brands.brand_name }}</span>
-      {{ carType.car_type_name }}
+      {{ carType.car_type_name }} ({{ carType.category }})
     </li>
   </ul>
   <h2>{{ h2cars }}</h2>
@@ -115,6 +115,17 @@ export default {
           </li>
           <li>
             <span>Anzahl Sitze:</span> <span>{{ car.count_of_seats }}</span>
+          </li>
+          <li>
+            <span>Typ:</span> <span>{{ car.car_types.category }}</span>
+          </li>
+          <li>
+            <span>UserID: </span>
+            <span
+              >{{ car.users.firstname }} {{ car.users.lastname }} ({{
+                car.users.username
+              }})</span
+            >
           </li>
           <li>
             <span>PS:</span> <span>{{ car.kw }}</span>

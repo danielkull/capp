@@ -7,7 +7,8 @@ import DanielsView from "@/views/DanielsView.vue";
 import MainPageView from "@/views/MainPageView.vue";
 import UserProfileView from "@/views/UserProfileView.vue";
 import KirstensView from "@/views/KirstensView.vue";
-
+import CarsView from "@/views/CarsView.vue";
+import CarView from "@/views/CarView.vue";
 
 const routes = [
   {
@@ -55,6 +56,16 @@ const routes = [
     path: "/KirstensView",
     name: "kirstensView",
     component: KirstensView,
+  },
+  {
+    path: "/carsView",
+    name: "carsView",
+    component: CarsView,
+  },
+  {
+    path: "/carView/:id",
+    name: "carView",
+    component: CarView,
   },
 ];
 
