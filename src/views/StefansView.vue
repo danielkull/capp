@@ -1,8 +1,9 @@
 <template>
   <h1>Hallo Stefan, viel Spaß beim Programieren</h1>
- <UserEvaluation />
- <UserQuestionMenueVue /> 
+  <UserEvaluation />
+  <UserQuestionMenueVue />
   <CheckBox />
+  <MainButton />
   <RadioButton />
   <RadioButton />
   <RadioButton />
@@ -16,12 +17,26 @@
     <IconType :carType="'Transporter'"> </IconType>
   </span>
   <span class="car-icon__holder">
-    <IconType :fuelType="'Gas'"></IconType>
-    <IconType :fuelType="'Diesel'"> </IconType>
-    <IconType :fuelType="'Electro'"> </IconType>
-    <IconType :fuelType="'Autogas'"></IconType>
-    <IconType :fuelType="'Hybrid'"> </IconType>
-    <IconType :fuelType="'Wasserstoff'"> </IconType>
+    <FuelType :fuelType="'Gas'"></FuelType>
+    <FuelType :fuelType="'Diesel'"> </FuelType>
+    <FuelType :fuelType="'Electro'"> </FuelType>
+    <FuelType :fuelType="'Autogas'"></FuelType>
+    <FuelType :fuelType="'Hybrid'"> </FuelType>
+    <FuelType :fuelType="'Wasserstoff'"> </FuelType>
+  </span>
+  <span class="car-icon__holder">
+    <TrunkType :trunkType="'S'"></TrunkType>
+    <TrunkType :trunkType="'M'"> </TrunkType>
+    <TrunkType :trunkType="'L'"> </TrunkType>
+    <TrunkType :trunkType="'XL'"></TrunkType>
+    <TrunkType :trunkType="'XXL'"> </TrunkType>
+  </span>
+  <span class="car-icon__holder">
+    <DifferentType :differentType="'Isofix'"></DifferentType>
+    <DifferentType :differentType="'Raucher'"> </DifferentType>
+    <DifferentType :differentType="'Nicht-Raucher'"> </DifferentType>
+    <DifferentType :differentType="'Tiere'"> </DifferentType>
+    <DifferentType :differentType="'Keine Tiere'"> </DifferentType>
   </span>
 </template>
 
@@ -32,14 +47,20 @@ import UserEvaluation from "@/components/UserEvaluation.vue";
 import UserQuestionMenueVue from "@/components/UserQuestionMenue.vue";
 import IconType from "@/components/icon-type/IconType.vue";
 import FuelType from "@/components/icon-type/fuelType.vue";
+import TrunkType from "@/components/icon-type/TrunkType.vue";
+import DifferentType from "@/components/icon-type/DifferentTypes.vue";
+import MainButton from "@/components/input-elements/Button.vue";
 
 export default {
   components: {
     CheckBox,
+    MainButton,
     RadioButton,
     UserQuestionMenueVue,
     IconType,
     FuelType,
+    TrunkType,
+    DifferentType,
   },
 };
 </script>
