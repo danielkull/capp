@@ -393,11 +393,18 @@
                 type="radio"
                 name="trunk-size"
                 :id="luggageTrunkSize.id"
-                :value="luggageTrunkSize.id"
+                :value="[
+                  luggageTrunkSize.id,
+                  luggageTrunkSize.min,
+                  luggageTrunkSize.max,
+                ]"
                 v-model="chosenTrunkSize"
               />
               <label :for="luggageTrunkSize.id"
-                >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.name }}</label
+                >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.min }}-{{
+                  luggageTrunkSize.max
+                }}
+                Liter</label
               >
             </li>
             <!-- Eigene Angaben -->
@@ -501,6 +508,8 @@ export default {
       isSmoker: "",
       hasIsofix: "",
       chosenTrunkSize: "",
+      minTrunkSize: 0,
+      maxTrunkSize: 0,
       ownTrunkSize: "",
       chosenFeatures: [],
       miscellaneous: "",
@@ -618,26 +627,36 @@ export default {
         {
           id: "S",
           name: "170-250 Liter",
+          min: 170,
+          max: 250,
           iconSource: "S-trunk.svg",
         },
         {
           id: "M",
-          name: "350-500 Liter",
+          name: "251-450 Liter",
+          min: 251,
+          max: 450,
           iconSource: "M-trunk.svg",
         },
         {
           id: "L",
-          name: "450-550 Liter",
+          name: "451-550 Liter",
+          min: 451,
+          max: 550,
           iconSource: "L-trunk.svg",
         },
         {
           id: "XL",
-          name: "380-800 Liter",
+          name: "551-800 Liter",
+          min: 551,
+          max: 800,
           iconSource: "XL-trunk.svg",
         },
         {
           id: "XXL",
-          name: "bis zu 1600 Liter",
+          name: "801-1600 Liter",
+          min: 801,
+          max: 1600,
           iconSource: "XXL-trunk.svg",
         },
       ],
