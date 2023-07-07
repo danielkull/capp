@@ -16,4 +16,3 @@
 </template>
 
 <style scoped></style>
-
