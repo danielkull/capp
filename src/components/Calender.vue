@@ -5,13 +5,40 @@
     <div class="calendar">
       <!-- Calendar Header -->
       <div class="calendar-header">
-        <span class="month-picker" id="month-picker">{{ currentMonth }}</span>
-        <div class="year-picker" id="year-picker">
-          <span class="year-change" id="pre-year">
+        <div class="day-picker" id="day-picker">
+          <span class="day-change" id="pre-day" @click="dateDown()">
             <pre>&lt;</pre>
           </span>
-          <span id="year">{{ currentYear }}</span>
-          <div class="year-change" id="next-year">
+          <span id="day">{{ currentDate.date }}</span>
+          <span class="day-change" id="next-day" @click="dateUp()">
+            <pre>&gt;</pre>
+          </span>
+        </div>
+        <div class="month-picker" id="month-picker">
+          <span class="month-change" id="pre-month" @click="monthDown()">
+            <pre>&lt;</pre>
+          </span>
+          <span id="month" @click="showMonthList()">{{
+            monthNames[currentDate.month]
+          }}</span>
+          <span class="month-change" id="next-month" @click="monthUp()">
+            <pre>&gt;</pre>
+          </span>
+        </div>
+        <div class="year-picker" id="year-picker">
+          <span
+            class="year-change"
+            id="pre-year"
+            @click="currentDate.year -= 1"
+          >
+            <pre>&lt;</pre>
+          </span>
+          <span id="year">{{ currentDate.year }}</span>
+          <div
+            class="year-change"
+            id="next-year"
+            @click="currentDate.year += 1"
+          >
             <pre>&gt;</pre>
           </div>
         </div>
@@ -32,9 +59,10 @@
             {{ prevMonthDays + 1 - firstMonthDay + n }}
           </div>
           <div
-            :class="{ dayActive: n === currentDate.getDate() }"
+            :class="{ dayActive: n === currentDate.date }"
             v-for="(n, index) in currentMonthDays"
             :key="index"
+            @click="currentDate.date = index + 1"
           >
             {{ n }}
           </div>
@@ -48,13 +76,49 @@
         </div>
         <div class="calendar-footer"></div>
         <div class="date-time-formate">
-          <div class="day-text-formate">Heute</div>
+          <div
+            class="day-text-formate"
+            @click="getCurrentDate()"
+            :class="{
+              showTime: isMonthListHidden,
+              hideTime: !isMonthListHidden,
+            }"
+          >
+            Heute
+          </div>
           <div class="date-time-value">
-            <div class="time-formate">{{ currentTime }}</div>
-            <div class="date-formate">{{ currentDatum }}</div>
+            <div
+              class="time-formate"
+              :class="{
+                showTime: isMonthListHidden,
+                hideTime: !isMonthListHidden,
+              }"
+            >
+              {{ currentTime }}
+            </div>
+            <div
+              class="date-formate"
+              :class="{
+                showTime: isMonthListHidden,
+                hideTime: !isMonthListHidden,
+              }"
+            >
+              {{ weekDayNames[currentDay] }}, {{ currentDatum }}
+            </div>
           </div>
         </div>
-        <div class="month-list"></div>
+        <div
+          class="month-list"
+          :class="{ hide: isMonthListHidden, show: !isMonthListHidden }"
+        >
+          <div
+            v-for="(monthName, index) in monthNames"
+            :key="index"
+            @click="hideMonthList()"
+          >
+            <div @click="currentDate.month = index">{{ monthName }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -64,8 +128,16 @@
 export default {
   data() {
     return {
-      currentDate: new Date(),
       weekDays: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+      weekDayNames: [
+        "Sonntag",
+        "Montag",
+        "Dienstag",
+        "Mittwoch",
+        "Donnerstag",
+        "Freitag",
+        "Samstag",
+      ],
       monthNames: [
         "Januar",
         "Februar",
@@ -80,58 +152,67 @@ export default {
         "November",
         "Dezember",
       ],
+      currentDate: {
+        date: 0,
+        month: 0,
+        year: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      },
+      isMonthListHidden: true,
     };
   },
   created() {
-    this.logPrevMonthDays();
+    this.getCurrentDate();
   },
   computed: {
-    currentMonth() {
-      return this.monthNames[this.currentDate.getMonth()];
-    },
-    currentYear() {
-      return this.currentDate.getFullYear();
+    currentDay() {
+      return new Date(
+        this.currentDate.year,
+        this.currentDate.month,
+        this.currentDate.date
+      ).getDay();
     },
     currentTime() {
       return (
-        this.currentDate.getHours() +
+        ("0" + this.currentDate.hours).slice(-2) +
         ":" +
-        this.currentDate.getMinutes() +
+        ("0" + this.currentDate.minutes).slice(-2) +
         ":" +
-        this.currentDate.getSeconds()
+        ("0" + this.currentDate.seconds).slice(-2)
       );
     },
     currentDatum() {
       return (
-        this.currentDate.getDate() +
+        this.currentDate.date +
         ". " +
-        this.monthNames[this.currentDate.getMonth()] +
+        this.monthNames[this.currentDate.month] +
         " " +
-        this.currentDate.getFullYear()
+        this.currentDate.year
       );
     },
     currentMonthDays() {
       return new Date(
-        this.currentDate.getFullYear(),
-        this.currentDate.getMonth() + 1,
+        this.currentDate.year,
+        this.currentDate.month + 1,
         0
       ).getDate();
     },
     prevMonthDays() {
       let year =
-        this.currentDate.getMonth() === 0
-          ? this.currentDate.getFullYear() - 1
-          : this.currentDate.getFullYear();
+        this.currentDate.month === 0
+          ? this.currentDate.year - 1
+          : this.currentDate.year;
 
-      let month =
-        this.currentDate.getMonth() === 0 ? 11 : this.currentDate.getMonth();
+      let month = this.currentDate.month === 0 ? 11 : this.currentDate.month;
 
       return new Date(year, month, 0).getDate();
     },
     firstMonthDay() {
       let firstDay = new Date(
-        this.currentDate.getFullYear(),
-        this.currentDate.getMonth(),
+        this.currentDate.year,
+        this.currentDate.month,
         1
       ).getDay();
 
@@ -143,24 +224,83 @@ export default {
     },
   },
   methods: {
-    logPrevMonthDays() {
-      console.log(this.prevMonthDays);
-      console.log(this.firstMonthDay);
+    getCurrentDate() {
+      let today = new Date();
+      this.currentDate.date = today.getDate();
+      this.currentDate.month = today.getMonth();
+      this.currentDate.year = today.getFullYear();
+      this.currentDate.hours = today.getHours();
+      this.currentDate.minutes = today.getMinutes();
+      this.currentDate.seconds = today.getSeconds();
+    },
+    dateUp() {
+      if (this.currentDate.date === this.currentMonthDays) {
+        this.currentDate.date = 1;
+        this.monthUp();
+      } else {
+        this.currentDate.date += 1;
+      }
+    },
+    dateDown() {
+      if (this.currentDate.date === 1) {
+        this.currentDate.date = this.prevMonthDays;
+        this.monthDown();
+      } else {
+        this.currentDate.date -= 1;
+      }
+    },
+    monthUp() {
+      if (this.currentDate.month === 11) {
+        this.currentDate.month = 0;
+        this.currentDate.year += 1;
+      } else {
+        this.currentDate.month += 1;
+      }
+    },
+    monthDown() {
+      if (this.currentDate.month === 0) {
+        this.currentDate.month = 11;
+        this.currentDate.year -= 1;
+      } else {
+        this.currentDate.month -= 1;
+      }
+    },
+    showMonthList() {
+      this.isMonthListHidden = false;
+    },
+    hideMonthList() {
+      this.isMonthListHidden = true;
     },
   },
 };
 </script>
 
 <style scoped>
+h1,
+h2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+}
+
 h1 {
   font-size: var(--l-font);
+  color: var(--primary-dark);
 }
 
 h2 {
-  font-size: calc(var(--m-font) * 1.25);
+  font-size: calc(var(--m-font) * 1.15);
+  margin-bottom: 2rem;
+  color: var(--secondary-dark);
+}
+
+body {
+  padding-inline: 2.5rem;
 }
 
 .container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   position: relative;
@@ -185,6 +325,7 @@ h2 {
   padding: 0.5rem;
   background-color: var(--primary-mid);
   color: var(--secondary-light);
+  border-radius: 1rem;
 }
 
 .calendar-body {
@@ -242,19 +383,24 @@ h2 {
   color: var(--primary-dark);
 }
 
-.year-picker {
-  width: 35%;
+.year-picker,
+.month-picker,
+.day-picker {
+  width: 32%;
   display: flex;
   justify-content: space-between;
 }
 
-.year-change {
+.year-change,
+.day-change {
   margin: 0px 10px;
   cursor: pointer;
 }
 
-.year-change:hover {
+.year-change:hover,
+.day-change:hover {
   background-color: var(--secondary-light);
+  color: var(--primary-dark);
 }
 
 .year-change:hover > pre {
@@ -268,7 +414,9 @@ h2 {
   align-items: center;
 }
 
-#year:hover {
+#year:hover,
+#month:hover,
+#day:hover {
   cursor: pointer;
   transform: scale(1.2);
   transition: all 0.2s ease-in-out;
@@ -288,8 +436,8 @@ h2 {
 .month-list {
   position: relative;
   left: 0;
-  top: -50px;
-  background-color: white;
+  top: -125px;
+  background-color: rgba(255, 255, 255, 0.75);
   color: var(--primary-dark);
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -312,16 +460,16 @@ h2 {
 
 .month-list > div > div:hover {
   background-color: var(--primary-light);
-  color: var(--primary-dark);
+  color: white;
   transform: scale(0.9);
   transition: all 0.2s ease-in-out;
 }
 
-.month-list .show {
+.month-list.show {
+  animation: to-left 0.71s forwards;
   visibility: visible;
   pointer-events: visible;
   transition: 0.6 ease-in-out;
-  animation: to-left 0.71s forwards;
 }
 
 .month-list.hideonce {
@@ -369,6 +517,7 @@ h2 {
   font-size: 1.25rem;
 }
 
+.day-text-formate.hideTime,
 .time-formate.hideTime,
 .date-formate.hideTime {
   animation: hideTime 1.5s forwards;
@@ -385,8 +534,11 @@ h2 {
 }
 
 .dayActive {
-  color: var(--primary-mid);
+  color: white;
+  background-color: var(--primary-light);
   font-weight: 700;
+  border-radius: 50%;
+  aspect-ratio: 1;
 }
 
 /* Animations */
@@ -403,11 +555,11 @@ h2 {
 
 @keyframes to-left {
   0% {
-    transform: translateX(230%);
+    transform: translateX(-150%);
     opacity: 1;
   }
   100% {
-    transform: translateX(230%);
+    transform: translateX(0%);
     opacity: 1;
   }
 }
