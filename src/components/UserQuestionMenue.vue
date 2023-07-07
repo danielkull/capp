@@ -471,6 +471,7 @@
   </form>
 </template>
 <script>
+import { supabase } from "../lib/supabaseClient";
 import CheckBox from "./input-elements/CheckBox.vue";
 export default {
   components: { CheckBox },
@@ -612,98 +613,7 @@ export default {
           name: "6 und mehr Sitze",
         },
       ],
-      features: [
-        {
-          id: 1,
-          name: "Airbags",
-          checked: false,
-        },
-        {
-          id: 2,
-          name: "Anhängerkupplung",
-          checked: false,
-        },
-        {
-          id: 3,
-          name: "Becherhalter",
-          checked: false,
-        },
-        {
-          id: 4,
-          name: "Bluetooth-Radio",
-          checked: false,
-        },
-        {
-          id: 5,
-          name: "Dachträger",
-          checked: false,
-        },
-        {
-          id: 6,
-          name: "Einparkhilfe",
-          checked: false,
-        },
-        {
-          id: 7,
-          name: "Fahrradträger",
-          checked: false,
-        },
-        {
-          id: 8,
-          name: "Freisprecheinrichtung",
-          checked: false,
-        },
-        {
-          id: 9,
-          name: "Gepäckbox Dach",
-          checked: false,
-        },
-        {
-          id: 10,
-          name: "Isofix-Base",
-          checked: false,
-        },
-        {
-          id: 11,
-          name: "Internes Navigationssystem",
-          checked: false,
-        },
-        {
-          id: 12,
-          name: "Kindersitz",
-          checked: false,
-        },
-        {
-          id: 13,
-          name: "Klimaanlage",
-          checked: false,
-        },
-        {
-          id: 14,
-          name: "Ladegurte",
-          checked: false,
-        },
-        {
-          id: 15,
-          name: "Umklappbare Rückbank",
-          checked: false,
-        },
-        {
-          id: 16,
-          name: "USB-Anschluss",
-          checked: false,
-        },
-        {
-          id: 17,
-          name: "Universelle Handy-Halterung",
-          checked: false,
-        },
-        {
-          id: 18,
-          name: "Zentralverriegelung",
-          checked: false,
-        },
-      ],
+      features: [],
       luggageTrunkSizes: [
         {
           id: "S",
@@ -777,7 +687,21 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.getFeatures();
+  },
   methods: {
+    async getFeatures() {
+      const { data } = await supabase.from("features").select();
+      const carFeaturesFromDB = data;
+      for (const item of carFeaturesFromDB) {
+        this.features.push({
+          id: item.id,
+          name: item.feature_name,
+          checked: false,
+        });
+      }
+    },
     chooseFeatures() {
       this.features.forEach((feature) => {
         feature.checked != feature.checked;
