@@ -1,4 +1,11 @@
-<script></script>
+<script>
+import DarkModeButton from "@/components/input-elements/DarkModeButton.vue";
+export default {
+  components: {
+    DarkModeButton,
+  },
+};
+</script>
 
 <template>
   <nav>
@@ -12,6 +19,7 @@
     <router-link to="/UserProfileView">Userprofile</router-link>|
     <router-link to="/KirstensView">Userprofile</router-link>|
     <router-link to="/CarsView">Verfügbare Autos</router-link>
+    <DarkModeButton />
   </nav>
   <router-view />
 </template>

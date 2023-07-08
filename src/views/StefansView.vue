@@ -70,4 +70,10 @@ export default {
   display: flex;
   gap: 2rem;
 }
+.test-wrapper {
+  width: 100vw;
+  height: 4rem;
+  display: grid;
+  place-content: center;
+}
 </style>
