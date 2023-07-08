@@ -1,5 +1,9 @@
 <script>
 import { supabase } from "@/lib/supabaseClient";
+import IconType from "@/components/icon-type/IconType.vue";
+import fuelType from "@/components/icon-type/fuelType.vue";
+import TrunkType from "@/components/icon-type/TrunkType.vue";
+import IconSeatsCount from "@/components/icon-type/IconSeatsCount.vue";
 export default {
   data() {
     return {
@@ -7,7 +11,7 @@ export default {
       car: null,
     };
   },
-  components: {},
+  components: { IconType, IconSeatsCount, fuelType, TrunkType },
   mounted() {
     this.getCar();
   },
@@ -16,7 +20,7 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, users ( id, username, firstname, lastname ), 
+          `*, users ( id, username, firstname, lastname, address, zipcode, city ), 
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
@@ -29,10 +33,6 @@ export default {
 </script>
 
 <template>
-  <!--
-  <h1>Auto Nr. {{ this.carID }}</h1>
-  <pre>{{ car }}</pre>
-  -->
   <main v-if="car">
     <div class="single-car">
       <img
@@ -51,29 +51,38 @@ export default {
         </h1>
         <p>
           <span class="label user-label"></span>
-          <span>000{{ car.users.id }} - {{ car.users.username }}</span>
+          <span
+            >{{ car.users.firstname }} {{ car.users.lastname }}<br />{{
+              car.users.address
+            }}<br />{{ car.users.zipcode }} {{ car.users.city }}</span
+          >
         </p>
         <p>
           <span class="label">Typ</span>
-          <span class="car-type">{{ car.car_types.category }}</span>
+          <span><IconType :carType="car.car_types.category" /></span>
         </p>
         <p>
           <span class="label">Sitze</span>
-          <span
-            class="seats-count"
-            :class="'seats-' + car.count_of_seats"
-          ></span>
+          <span>
+            <IconSeatsCount :countOfSeats="car.count_of_seats" />
+          </span>
         </p>
         <p>
           <span class="label">Getriebe-Art</span> <span>{{ car.gear }}</span>
         </p>
         <p>
           <span class="label">Kofferraum-Volumen</span>
-          <span>{{ car.trunk_volume_in_liters }} l</span>
+          <span>{{ car.trunk_volume_in_liters }} l </span>
+        </p>
+        <p>
+          <span class="label">Kofferraum-Größe</span>
+          <span
+            ><TrunkType :trunkVolumeLiters="car.trunk_volume_in_liters"
+          /></span>
         </p>
         <p>
           <span class="label">Kraftstoff</span>
-          <span>{{ car.fuel_type }},</span>
+          <span><fuelType :fuelType="car.fuel_type" /></span>
         </p>
         <p>
           <span class="label">Verbrauch</span>
