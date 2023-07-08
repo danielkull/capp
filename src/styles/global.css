@@ -107,6 +107,10 @@
 
   --margin-default: 1rem;
   --padding-default: 1rem;
+
+  --s-brd: 1px;
+  --m-brd: 2px;
+  --l-brd: 2px;
   /*============================================*/
   /*           default-btn*/
   /*============================================*/
@@ -127,26 +131,4 @@
 
   /* font-family: "Bodoni", serif;
   font-weight: 500; */
-}
-.active {
-  /*green*/
-  --color: 140, 45%;
-  --l: 40%;
-
-  --color-primary: hsl(var(--color), var(--l));
-  --color-primary-light: hsl(var(--color), calc(var(--l) + 24%));
-  --color-primary-mid: hsl(var(--color), calc(var(--l) + 12%));
-
-  --secondary-dark: hsl(0, 0%, 12%);
-  --secondary-mid: hsl(0, 0%, 16%);
-  --secondary-default: hsl(0, 0%, 37%);
-  --secondary-light: hsl(0, 0%, 60%);
-
-  --clr-trans: transparent;
-
-  --font-color-dark: hsl(0, 0%, 82%);
-  --font-color-light: hsl(0, 0%, 57%);
-
-  --error-color: hsl(349, 54%, 53%);
-  --accent-color: hsl(43, 92%, 36%);
 }
