@@ -72,7 +72,8 @@
       <!-- Note: autocomplete="on" lets the browser decide how to performe. Would be best to select autocomplete in future according to the type of input and for what it is used-->
       <input
         class="capp-input__default"
-        v-model="inputData"
+        :value="inputData"
+        @input="$emit('update:inputData', $event.target.value)"
         :type="currentTypeStatus"
         :name="inputId"
         :id="inputId"
@@ -135,12 +136,16 @@ export default {
       type: String,
       default: "Type here...",
     },
+    inputData: {
+      type: String,
+    },
   },
+  emits: ["update:inputData"],
   data() {
     return {
       currentTypeStatus: this.inputType,
       showHelp: false,
-      inputData: "",
+
       isValid: true,
       isInValid: false,
     };
