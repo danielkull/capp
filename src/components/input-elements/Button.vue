@@ -5,21 +5,14 @@
     class="Log-btn btn-font"
     id="LogIn-btn"
   />
-
-  <input
-    type="button"
-    :value="`${sign_in}`"
-    class="Log-btn btn-font"
-    id="LogIn-btn"
-  />
 </template>
 
 <script>
 export default {
-  data: () => ({
-    log_in: "Log in",
-    sign_in: "Sign In",
-  }),
+  // data: () => ({
+  //   log_in: "Log in",
+  //   sign_in: "Sign In",
+  // }),
 };
 </script>
 
@@ -28,7 +21,7 @@ export default {
   all: unset;
   cursor: pointer;
   padding: calc(0.2rem + 1vh) calc(1.5rem + 1vw);
-  border-radius: calc(var(--s-brd-rad) + 0.5rem);
+  border-radius: calc(var(--s-brd-rad) + 2rem);
   border: calc(var(--m-brd) + 1px) solid var(--primary-mid);
   box-shadow: 0 0 0 0 var(--primary-mid) inset;
   transition-duration: 0.5s, 0.2s;
@@ -36,6 +29,7 @@ export default {
   background: var(--secondary-light);
   outline: var(--m-brd) solid var(--secondary-mid);
   outline-offset: clamp(0.3rem, 2vw, 0.5rem);
+  text-align: center;
 }
 
 .btn-font {

@@ -107,17 +107,13 @@
         <Transition name="slide">
           <section v-if="startPage" class="login-card__start-page">
             <div class="login-card__btn-wrapper">
-              <input
-                type="button"
+              <LogButton
                 value="Log In"
-                class="LogIn-btn btn-font"
                 id="LogIn-btn"
                 @click.prevent="changePage('logIn')"
               />
-              <input
-                type="button"
+              <LogButton
                 value="Sign In"
-                class="Sign-btn btn-font"
                 id="Sign-btn"
                 @click.prevent="changePage('signIn')"
               />
@@ -144,24 +140,9 @@
               </form>
             </div>
             <div class="logIn-card__login-btn-wrapper">
-              <button
-                class="logIn-card__login-back"
-                @click.prevent="changePage('logIn')"
-              >
-                <span class="logIn-card__back-arrow">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="bi bi-caret-left-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
-                    />
-                  </svg>
-                </span>
-              </button>
-              <input type="button" value="Log In" class="LogIn-card__btn" />
+              <BackButton @click.prevent="changePage('logIn')" />
+
+              <LogButton value="Log In" />
             </div>
           </section>
         </Transition>
@@ -172,7 +153,12 @@
           <section v-if="signInPage" class="logIn-card__logIn-page">
             <div class="logIn-card__logIn-input">
               <form action="#" autocomplete="on">
-                <InputText :inputId="'username'" :inputType="'text'" :inputPlaceholder="'Ein beliebiger Username'">Username</InputText>
+                <InputText
+                  :inputId="'username'"
+                  :inputType="'text'"
+                  :inputPlaceholder="'Ein beliebiger Username'"
+                  >Username</InputText
+                >
                 <InputText
                   :inputId="'email'"
                   :inputType="'email'"
@@ -186,24 +172,9 @@
               </form>
             </div>
             <div class="logIn-card__login-btn-wrapper">
-              <button
-                class="logIn-card__login-back"
-                @click.prevent="changePage('signIn')"
-              >
-                <span class="logIn-card__back-arrow">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="bi bi-caret-left-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
-                    />
-                  </svg>
-                </span>
-              </button>
-              <input type="button" value="Log In" class="LogIn-card__btn" />
+              <BackButton @click.prevent="changePage('signIn')" />
+
+              <LogButton value="Sign In" />
             </div>
           </section>
         </Transition>
@@ -215,8 +186,10 @@
 
 <script>
 import InputText from "@/components/input-elements/InputText.vue";
+import LogButton from "@/components/input-elements/Button.vue";
+import BackButton from "@/components/input-elements/BackButton.vue";
 export default {
-  components: { InputText },
+  components: { InputText, LogButton, BackButton },
   data() {
     return {
       startPage: true,
@@ -306,10 +279,13 @@ main {
   width: var(--font-logo-size);
   aspect-ratio: 1;
   fill: var(--secondary-light);
+  display: none;
 }
 .logIn-card__logo-capp > h1 {
+  margin-top: 3rem;
   font-size: var(--font-logo-size);
   color: var(--secondary-light);
+  font-family: var(--font-logo);
 }
 
 /*================================================*/
@@ -323,45 +299,10 @@ main {
   height: auto;
   display: grid;
   place-content: center;
-  margin-bottom: 3rem;
+  gap: clamp(1.6rem, 5vw, 3rem);
+  margin-bottom: 2rem;
 }
 
-.Sign-btn,
-.LogIn-btn {
-  all: unset;
-
-  padding-block: 0.8rem;
-  padding-inline: 3rem;
-  border-radius: 2.5rem;
-  margin-block: 1.2rem;
-  border: 3px solid var(--primary-mid);
-  box-shadow: 0 0 0 0 var(--primary-mid) inset;
-  transition-duration: 0.5s, 0.2s;
-  transition-property: box-shadow, color;
-  background-image: white;
-  outline: 2px solid var(--secondary-mid);
-  outline-offset: 0.4rem;
-}
-
-.btn-font {
-  color: var(--primary-mid);
-  font-size: clamp(1.5rem, 10vw, 1.8vw);
-  font-family: monospace;
-  font-weight: bold;
-}
-.LogIn-btn:focus,
-.Sign-btn:focus {
-  background: var(--primary-mid);
-  color: var(--secondary-light);
-}
-.LogIn-btn:active,
-.Sign-btn:active {
-  transition-duration: 0s, 0s;
-  transition-property: box-shadow, color;
-  background: var(--primary-dark);
-  border: 3px solid var(--primary-dark);
-  color: var(--primary-light);
-}
 /*===================================================*/
 /*            Start Page                      */
 /*===================================================*/
@@ -398,9 +339,8 @@ main {
   justify-content: end;
   align-items: center;
   border-radius: 2rem;
-  width: 25vw;
+  width: 100%;
   height: 85vh;
-
   position: absolute;
   z-index: 10;
   top: -1px;
@@ -413,11 +353,11 @@ main {
 .logIn-card__login-btn-wrapper {
   margin-bottom: 3rem;
   margin-top: 1.5rem;
+  margin-inline: 2rem;
   width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 2px solid red; */
 }
 .LogIn-card__btn {
   all: unset;
@@ -435,36 +375,6 @@ main {
   outline-offset: 0.4rem;
   color: var(--primary-mid);
   font-size: clamp(1rem, 10vw, 1.4vw);
-  font-family: monospace;
-  font-weight: bold;
-}
-
-.logIn-card__login-back {
-  all: unset;
-  height: 5rem;
-  aspect-ratio: 1;
-  background: var(--secondary-mid);
-  display: grid;
-  place-content: center;
-  border-radius: 100%;
-  outline: 2px solid var(--secondary-mid);
-  outline-offset: 0.4rem;
-  cursor: pointer;
-}
-.logIn-card__back-arrow {
-  display: grid;
-  place-content: center;
-}
-.logIn-card__back-arrow > svg {
-  display: block;
-  height: 100%;
-  width: 3rem;
-  fill: var(--secondary-light);
-  transition: rotate 0.4s ease-out;
-  perspective: 2px;
-}
-.logIn-card__back-arrow > svg:hover {
-  fill: red;
 }
 
 /*======================================================*/
@@ -488,23 +398,7 @@ main {
       var(--secondary-light) 40.1%
     );
   }
-  .Sign-btn:hover,
-  .LogIn-btn:hover,
-  .LogIn-card__btn:hover {
-    cursor: pointer;
-    box-shadow: 20rem 0 0 0 var(--primary-mid) inset;
-    color: var(--secondary-light);
-    outline: 2px solid var(--secondary-dark);
-  }
-  .LogIn-btn:active,
-  .Sign-btn:active,
-  .LogIn-card__btn:active {
-    transition-duration: 0s, 0s;
-    transition-property: box-shadow, color;
-    box-shadow: 20rem 0 0 0 var(--primary-dark) inset;
-    border: 3px solid var(--primary-dark);
-    color: var(--primary-light);
-  }
+
   .logIn-card__wrapper {
     position: absolute;
     top: 50%;
