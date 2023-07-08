@@ -14,15 +14,17 @@
       </h4>
       <p>
         <span class="label">Sitze</span>
-        <span class="seats-count" :class="'seats-' + seatsCount"></span>
+        <span>
+          <IconSeatsCount :countOfSeats="seatsCount" />
+        </span>
       </p>
       <p>
         <span class="label">Typ</span>
-        <span class="car-type">{{ carTypeCategory }}</span>
+        <span><IconType :carType="carTypeCategory" /></span>
       </p>
       <p>
         <span class="label user-label"></span>
-        <span class="user">000{{ carUserID }}</span>
+        <span class="user">{{ carUserZipCode }} {{ carUserCity }}</span>
       </p>
 
       <slot>Router Link to Single Car View</slot>
@@ -31,8 +33,15 @@
 </template>
 
 <script>
+import IconType from "@/components/icon-type/IconType.vue";
+import IconSeatsCount from "@/components/icon-type/IconSeatsCount.vue";
+
 export default {
   name: "CarCard",
+  components: {
+    IconType,
+    IconSeatsCount,
+  },
   props: {
     imgSource: {
       type: String,
@@ -57,30 +66,19 @@ export default {
       type: Number,
       required: true,
     },
+    carUserZipCode: {
+      type: String,
+      required: true,
+    },
+    carUserCity: {
+      type: String,
+      required: true,
+    },
   },
 };
 </script>
 
 <style scoped>
-/*
-main {
-  background-color: var(--secondary-mid);
-  padding: 1.5rem 2rem;
-}
-
-h1 {
-  font-size: 2rem;
-  color: var(--primary-dark);
-  text-align: center;
-}
-
-.cars-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  padding-block: 2rem;
-}
-*/
 h4 {
   font-size: 1.25rem;
   color: var(--primary-dark);
@@ -183,21 +181,4 @@ h4 {
   border-radius: 50%;
   outline: 1px solid var(--primary-dark);
 }
-/*
-a.more-info {
-  font-size: 0.85rem;
-  text-decoration: none;
-  color: var(--primary-dark);
-}
-
-a.more-info:hover {
-  color: var(--primary-mid);
-}
-
-@media screen and (min-width: 768px) {
-  .cars-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-*/
 </style>
