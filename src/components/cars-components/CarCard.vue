@@ -80,16 +80,17 @@ export default {
 
 <style scoped>
 h4 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  padding-bottom: 0.75rem;
   color: var(--primary-dark);
   margin-bottom: 0.35rem;
 }
 
 .car {
   display: grid;
-  grid-template-columns: 3fr 4fr;
-  column-gap: 1.25rem;
-  padding: 0.5rem 0.75rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  padding: 0.75rem;
   background-color: white;
   border-radius: 0.5rem;
   align-items: center;
@@ -98,7 +99,7 @@ h4 {
 
 .car-img {
   width: 100%;
-  aspect-ratio: 400 / 350;
+  aspect-ratio: 400 / 250;
   border-radius: 1.5rem;
   padding: 0;
   margin: 0;
@@ -109,7 +110,7 @@ h4 {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  aspect-ratio: 400 / 350;
+  aspect-ratio: 400 / 250;
   border-radius: 1.5rem;
   box-shadow: 2px 2px 5px var(--secondary-dark);
 }
@@ -117,10 +118,11 @@ h4 {
 .car-details > p {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  font-size: 1.2rem;
 }
 
 .car-details > p + p {
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
 }
 
 .car-details > p:last-of-type {
@@ -180,5 +182,31 @@ h4 {
   border: 6px solid white;
   border-radius: 50%;
   outline: 1px solid var(--primary-dark);
+}
+
+@media screen and (min-width: 768px) {
+  .car {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+  .car-img,
+  .car-img > img {
+    aspect-ratio: 400 / 350;
+  }
+
+  .car-details > p {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .car-img,
+  .car-img > img {
+    aspect-ratio: 400 / 275;
+  }
 }
 </style>
