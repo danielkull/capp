@@ -26,7 +26,6 @@
   --icon-no-brd: 1px solid transparent;
   /*===============new CP Log In===*/
   --primary-veryDark: hsl(var(--color), calc(var(--l) - 10%));
-  --font-logo-size: clamp(4rem, 10vw, 5vw);
 
   /*==========================================*/
   --light-bg: var(--secondary-light);
@@ -49,18 +48,13 @@
   --area-focus: var(--primary-dark);
   --area-default: var(--secondary-dark);
   --area-hover: var(--primary-mid);
-  --s-brd: 1px;
-  --m-brd: 2px;
   --clr-user-brd: var(--secondary-dark);
   --bg-txt-field: hsl(0, 0%, 97%);
 
   /*====================================================================*/
   /*======neue CP=========*/
-  --m-font: calc(var(--s-font) * 1.5);
-  --header-question-list: clamp(1.5rem, 20vw, 2rem);
-  --question-list-padding-inline: clamp(0.6vw, 20vw, 1vw);
+
   --list-padding: var(--question-list-padding-inline);
-  --list-item-padding: 0.5rem;
   --list-hover: hsl(0, 0%, 92%);
   --bg-list: var(--secondary-default);
   --bg-lis-surface: var(--secondary-light);
@@ -88,4 +82,72 @@
 
   --error-color: hsl(349, 54%, 53%);
   --accent-color: hsl(43, 92%, 36%);
+}
+
+.new-properties-light {
+  --clr-bg: hsl(0, 1%, 81%);
+  --surface-dark: hsl(0, 0%, 96%);
+  --surface-light: hsl(0, 0%, 98%);
+  --surface-hover: hsl(0, 0%, 88%);
+  --list-color: hsl(0, 0%, 82%);
+  --primary-dark: hsl(141, 45%, 40%);
+  --primary-middle: hsl(141, 45%, 48%);
+  --primary-light: hsl(141, 45%, 56%);
+  --secondary-color: hsl(43, 91%, 48%);
+  --accent-color-dark: hsl(349, 94%, 24%);
+  --accent-color-light: hsl(349, 100%, 35%);
+  --logo-font-color: var(--surface-light);
+  --main-font-color-dark: hsl(0, 0, 15%);
+  --main-font-color-light: hsl(0, 0, 73%);
+  --clr-trans: transparent;
+  /*======================================================*/
+  --clr-sur-d: var(--surface-dark);
+  --clr-sur-l: var(--surface-light);
+  --sur-hover: var(--surface-hover);
+  --clr-error: var(--accent-color-dark);
+  --clr-error-hover: var(--accent-color-light);
+  /*======================================================*/
+  --clr-prime-d: var(--primary-dark);
+  --clr-prime-m: var(--primary-middle);
+  --clr-prime-l: var(--primary-light);
+  /*==================  Berwertung  =======================*/
+  --clr-like-def: var(--list-color);
+  --clr-like-act: var(--secondary-color);
+  /*================  Sitze  ==============================*/
+  --clr-seat-def: var(--list-color);
+  --clr-seat-act: var(--secondary-color);
+}
+
+.new-properties-dark {
+  --clr-bg: hsl(0, 0%, 7%);
+  --surface-dark: hsl(0, 0%, 12%);
+  --surface-light: hsl(0, 0%, 16%);
+  --surface-hover: hsl(0, 0%, 25%);
+  --list-color: hsl(0, 2%, 55%);
+  --primary-dark: hsl(141, 45%, 40%);
+  --primary-middle: hsl(141, 45%, 48%);
+  --primary-light: hsl(141, 45%, 56%);
+  --secondary-color: hsl(43, 91%, 48%);
+  --accent-color-dark: hsl(349, 54%, 53%);
+  --accent-color-light: hsl(349, 52%, 61%);
+  --logo-font-color: var(--main-font-color-light);
+  --main-font-color-dark: hsl(0, 0, 55%);
+  --main-font-color-light: hsl(0, 0, 93%);
+  --clr-trans: transparent;
+  /*======================================================*/
+  --clr-sur-d: var(--surface-dark);
+  --clr-sur-l: var(--surface-light);
+  --sur-hover: var(--surface-hover);
+  --clr-error: var(--accent-color-dark);
+  --clr-error-hover: var(--accent-color-light);
+  /*======================================================*/
+  --clr-prime-d: var(--primary-dark);
+  --clr-prime-m: var(--primary-middle);
+  --clr-prime-l: var(--primary-light);
+  /*==================  Berwertung  =======================*/
+  --clr-like-def: var(--list-color);
+  --clr-like-act: var(--secondary-color);
+  /*================  Sitze  ==============================*/
+  --clr-seat-def: var(--list-color);
+  --clr-seat-act: var(--secondary-color);
 }
