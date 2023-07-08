@@ -6,7 +6,7 @@
       >
 
       <svg
-        v-if="fuelType === 'Gas'"
+        v-if="fuelType === 'Benzin'"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -162,7 +162,7 @@
       </svg>
       <!-- Pic Electro -->
       <svg
-        v-if="fuelType === 'Electro'"
+        v-if="fuelType === 'Elektro'"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
