@@ -1,19 +1,14 @@
 <template>
   <input
     type="button"
-    :value="`${log_in}`"
+    value="log_in"
     class="Log-btn btn-font"
     id="LogIn-btn"
   />
 </template>
 
 <script>
-export default {
-  // data: () => ({
-  //   log_in: "Log in",
-  //   sign_in: "Sign In",
-  // }),
-};
+export default {};
 </script>
 
 <style scoped>
