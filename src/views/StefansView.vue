@@ -3,7 +3,7 @@
   <UserEvaluation />
   <UserQuestionMenueVue />
   <CheckBox />
-
+  <MainButton />
   <RadioButton />
   <RadioButton />
   <RadioButton />
@@ -49,10 +49,12 @@ import IconType from "@/components/icon-type/IconType.vue";
 import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
+import MainButton from "@/components/input-elements/Button.vue";
 
 export default {
   components: {
     CheckBox,
+    MainButton,
     RadioButton,
     UserQuestionMenueVue,
     IconType,
