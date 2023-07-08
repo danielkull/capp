@@ -90,7 +90,7 @@ export default {
 <style scoped>
 main {
   background-color: var(--secondary-mid);
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 0.75rem;
 }
 
 h1 {
@@ -117,6 +117,13 @@ a.more-info:hover {
 }
 
 @media screen and (min-width: 768px) {
+  main {
+    background-color: var(--secondary-mid);
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
   .cars-container {
     grid-template-columns: repeat(2, 1fr);
   }
