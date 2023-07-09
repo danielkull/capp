@@ -596,6 +596,9 @@ export default {
 };
 </script>
 <style scoped>
+#icon__car-type {
+  margin-inline: var(--icon-margin);
+}
 .icon-btn {
   all: unset;
 
@@ -604,10 +607,11 @@ export default {
   border-radius: 0.5rem;
   display: grid;
   place-content: center;
-  background: var(--primary-veryDark);
+
   cursor: pointer;
   position: relative;
-  border: var(--icon-brd);
+  background: var(--clr-type-icon);
+  border: 1px solid var(--clr-bord-icon);
 }
 
 .icon-btn:active {
@@ -660,9 +664,13 @@ export default {
 }
 
 svg {
-  stroke: var(--secondary-light);
-  width: 3rem;
+  stroke: var(--clr-iconsvg);
+  width: calc(var(--svg-width) + 0.3rem);
   aspect-ratio: 1;
+}
+.icon-btn:active .icon-tooltip {
+  translate: -50% -140%;
+  opacity: 1;
 }
 
 @media screen and (min-width: 900px) {
