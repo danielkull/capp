@@ -251,6 +251,7 @@ export default {
   border-radius: 1rem;
   overflow: hidden;
   border-top: 0.125rem solid var(--clr-img-top);
+  box-shadow: 10px 10px 10px var(--card-shadow);
 }
 
 img {

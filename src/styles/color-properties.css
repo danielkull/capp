@@ -48,10 +48,10 @@
   --clr-type-icon: var(--primary-dark);
   --clr-bord-icon: var(--clr-prime-l);
   /*====IMG car card===========*/
-
+  --card-shadow: rgba(0, 0, 0, 0.1);
   --clr-brd: rgb(186, 186, 186);
-  --clr-brd-top: var(--list-color);
-  --clr-img-top: var(--clr-font-light);
+  --clr-brd-top: var(--main-font-color-light);
+  --clr-img-top: var(--surface-light);
   /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
