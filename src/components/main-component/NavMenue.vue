@@ -144,7 +144,7 @@ export default {};
   margin-inline: auto;
   padding: 0.5rem;
   list-style-type: none;
-  background: var(--bg-lis-surface);
+  background: var(--bg-list-surface);
   background: red;
 }
 .menu-main__list li {

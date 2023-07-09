@@ -1,5 +1,5 @@
 <template>
-  <article class="car-car-_wrapper">
+  <article class="car-card__wrapper">
     <img
       src="https://ais-cf.tvnow.de/tvnow/movie/5429467/1800x0/folge-vom-23042023.jpg"
       alt="Das Auto des Users"
@@ -24,7 +24,7 @@
           <p>/</p>
           <p>Dresden, Neustadt</p>
         </span>
-        <span class="car-dard__seat-icon-wrapper">
+        <span class="car-card__seat-icon-wrapper">
           <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +243,7 @@ export default {
 </script>
 
 <style scoped>
-.car-car-_wrapper {
+.car-card__wrapper {
   width: 100%;
   height: 18rem;
   position: relative;
@@ -319,15 +319,15 @@ img {
   border-top: 1px solid var(--clr-brd);
 }
 
-.car-dard__seat-icon-wrapper {
+.car-card__seat-icon-wrapper {
   align-items: center;
   display: flex;
 }
-.car-dard__seat-icon-wrapper > svg {
+.car-card__seat-icon-wrapper > svg {
   fill: var(--clr-seat-def);
   width: 1rem;
 }
-.car-dard__seat-icon-wrapper > .plus {
+.car-card__seat-icon-wrapper > .plus {
   fill: var(--clr-state-icons);
   width: 2rem;
   aspect-ratio: 1;

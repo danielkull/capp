@@ -111,7 +111,7 @@
   --list-padding: var(--question-list-padding-inline);
   --list-hover: hsl(0, 0%, 92%);
   --bg-list: var(--secondary-default);
-  --bg-lis-surface: var(--secondary-light);
+  --bg-list-surface: var(--secondary-light);
   /*====================================================================*/
 }
 
