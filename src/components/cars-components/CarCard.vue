@@ -13,6 +13,10 @@
         {{ carTypeName }}
       </h4>
       <p>
+        <span class="label user-label"></span>
+        <span class="user">{{ carUserZipCode }} {{ carUserCity }}</span>
+      </p>
+      <p>
         <span class="label">Sitze</span>
         <span>
           <IconSeatsCount :countOfSeats="seatsCount" />
@@ -21,10 +25,6 @@
       <p>
         <span class="label">Typ</span>
         <span><IconType :carType="carTypeCategory" /></span>
-      </p>
-      <p>
-        <span class="label user-label"></span>
-        <span class="user">{{ carUserZipCode }} {{ carUserCity }}</span>
       </p>
 
       <slot>Router Link to Single Car View</slot>
@@ -83,24 +83,24 @@ h4 {
   font-size: 1.5rem;
   padding-bottom: 0.75rem;
   color: var(--primary-dark);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--secondary-mid);
 }
 
 .car {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   align-items: center;
-  box-shadow: 2px 2px 10px var(--secondary-dark);
 }
 
 .car-img {
   width: 100%;
-  aspect-ratio: 400 / 250;
-  border-radius: 1.5rem;
+  aspect-ratio: 400 / 275;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
   padding: 0;
   margin: 0;
 }
@@ -110,9 +110,18 @@ h4 {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  aspect-ratio: 400 / 250;
-  border-radius: 1.5rem;
-  box-shadow: 2px 2px 5px var(--secondary-dark);
+  aspect-ratio: 400 / 275;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.car-details {
+  width: 100%;
+  padding: 1.35rem 1.25rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  margin-top: -1.75rem;
+  box-shadow: 0 2px 10px var(--secondary-dark);
 }
 
 .car-details > p {
@@ -130,7 +139,7 @@ h4 {
 }
 
 .car-details > p > span.label {
-  font-weight: 300;
+  font-weight: 400;
   color: var(--primary-dark);
 }
 
@@ -170,40 +179,22 @@ h4 {
 }
 
 .car-details > p > span.user {
-  font-weight: 300;
+  font-weight: 500;
+  color: var(--primary-dark);
 }
 
 .car-details > p > span.label.user-label::before {
   content: "";
-  width: 20px;
+  width: 25px;
   aspect-ratio: 1;
   display: inline-block;
   background-color: var(--primary-dark);
   border: 6px solid white;
   border-radius: 50%;
-  outline: 1px solid var(--primary-dark);
+  outline: 1px solid var(--primary-mid);
 }
 
-@media screen and (min-width: 768px) {
-  .car {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1279px) {
-  .car-img,
-  .car-img > img {
-    aspect-ratio: 400 / 350;
-  }
-
-  .car-details > p {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    font-size: 1.1rem;
-  }
-}
-
-@media screen and (min-width: 1250px) {
+@media screen and (min-width: 1280px) {
   .car-img,
   .car-img > img {
     aspect-ratio: 400 / 275;
