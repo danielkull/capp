@@ -213,7 +213,7 @@ export default {
 }
 .car-card__seat-icon-wrapper > svg {
   fill: var(--clr-state-icons);
-  width: 1rem;
+  width: 1.5rem;
 }
 .car-card__seat-icon-wrapper > .plus {
   fill: var(--clr-state-icons);
