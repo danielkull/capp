@@ -1,6 +1,6 @@
 <template>
   <h1 class="title">Test Bereich für das User/Data Management</h1>
-  <LoggedIn v-if="authenticationStore.session"></LoggedIn>
+  <LoggedIn v-if="authenticationStore.session.value"></LoggedIn>
   <PageEntry v-else></PageEntry>
   <button @click.prevent="getSessionInfos()">Test</button>
 </template>
