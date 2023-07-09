@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import NavMainMenue from "@/components/main-component/NavBar.vue";
+import NavMainMenue from "@/components/main-component/NavMenue.vue";
 export default {
   components: {
     NavMainMenue,
@@ -110,43 +110,39 @@ export default {
   z-index: 10;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 5rem;
-  border-top: 2px solid var(--primary-light);
-  background: linear-gradient(
-    to top,
-    var(--primary-veryDark),
-    var(--primary-mid)
-  );
-  border-radius: 1.2rem 1.2rem 0 0;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  width: 100vw;
+
+  height: 4.5rem;
+  border-top: var(--m-brd) solid var(--clr-prime-l);
+  background: linear-gradient(to top, var(--clr-prime-vd), var(--clr-prime-m));
+  border-radius: calc(var(--s-brd-rad) + 0.2rem) calc(var(--s-brd-rad) + 0.2rem)
+    0 0;
+  box-shadow: 0 -5px 30px var(--nav-shadow);
 }
 
 .nav-bar__btn-icons {
   appearance: none;
-
   width: 0rem;
   aspect-ratio: 1;
   position: absolute;
   top: -99999px;
 }
 label {
+  display: grid;
+  place-content: center;
   width: 4rem;
+  aspect-ratio: 1;
   border-radius: 0.5rem;
   padding: 0.4rem;
   border: solid;
   border-width: var(--s-brd);
-  border-color: transparent;
-  display: grid;
-  place-content: center;
-  aspect-ratio: 1;
-  /* background: blue; */
+  border-color: var(--clr-trans);
 }
 svg {
   width: 90%;
   margin-inline: auto;
   aspect-ratio: 1;
-  fill: var(--nav-icon);
+  fill: var(--nav-icon-def);
 }
 
 /*========== Animate icon backgound =================*/
@@ -157,10 +153,6 @@ svg {
 #menue-icon:active + label {
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
     inset -5px -5px 10px rgba(255, 255, 255, 0.2);
-  /* border: solid;
-  border-width: 1px 1px 1px 1px;
-  border-color: var(--dark-brd) var(--light-brd) var(--light-brd)
-    var(--dark-brd); */
 }
 /*===================================================*/
 /*========== Animate message Icon=================*/
@@ -185,15 +177,15 @@ svg {
 #user-icon:active + label svg,
 #message-icon:active + label svg,
 #calendar-icon:active + label svg {
-  fill: var(--secondary-dark);
+  fill: var(--nav-icon-act);
 }
 #menue-icon:active + label .menue-strip2 {
   width: 100%;
-  background: var(--secondary-dark);
+  background: var(--nav-icon-act);
 }
 #menue-icon:active + label .menue-strip1 {
   width: 70%;
-  background: var(--secondary-dark);
+  background: var(--nav-icon-act);
 }
 /*===================================================*/
 /*========== Menue Icon =================*/
@@ -208,7 +200,7 @@ svg {
 .menue-strip {
   width: 100%;
   height: 0.25rem;
-  background: var(--nav-icon);
+  background: var(--nav-icon-def);
   border-radius: 0.6rem;
   transition: width 0.2s ease-in-out;
 }
@@ -228,19 +220,19 @@ svg {
   background: red;
   position: fixed;
   z-index: 8;
-  /* top: 100%;
-  left: 0; */
-  margin-top: 90vh;
+  margin-top: 220%;
+
   transition: margin 0.5s ease-in-out;
   border-radius: 2rem;
 }
 .nav-bar__menu-user {
   z-index: 9;
+  border-radius: 0;
 }
 
 .nav-bar__menu-main {
-  background: var(--bg-lis-surface);
-  padding: 2rem 1rem;
+  background: var(--surface-light);
+  padding: var(--m-pad) var(--s-pad);
 }
 .nav-bar__menu-calender {
   background: olive;
@@ -250,16 +242,16 @@ svg {
 }
 
 :has(#user-icon:active) .nav-bar__menu-user {
-  margin-top: 0vh;
+  margin-top: 0%;
 }
 :has(#calendar-icon:active) .nav-bar__menu-calender {
-  margin-top: 3.5vh;
+  margin-top: 16.1%;
 }
 :has(#message-icon:active) .nav-bar__menu-message {
-  margin-top: 3.5vh;
+  margin-top: 16.1%;
 }
 :has(#menue-icon:active) .nav-bar__menu-main {
-  margin-top: 3.5vh;
+  margin-top: 16.1%;
 }
 
 /*=============================================================*/

@@ -134,12 +134,18 @@ export default {};
 </script>
 
 <style scoped>
+.menu-main__wrapper {
+  width: 100%;
+  height: 100%;
+  margin-inline: auto;
+}
 .menu-main__list {
   width: 90%;
   margin-inline: auto;
   padding: 0.5rem;
   list-style-type: none;
   background: var(--bg-lis-surface);
+  background: red;
 }
 .menu-main__list li {
   font-family: Arial, Helvetica, sans-serif;

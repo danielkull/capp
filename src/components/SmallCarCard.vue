@@ -213,7 +213,7 @@
           </svg>
         </span>
       </section>
-      <section class="car-card__icon-wrapper">
+      <section class="car-card__icon-wrapper" style="--svg-width: 2.4rem">
         <IconType :carType="'Kleinwagen'" class="icon"></IconType>
         <FuelType :fuelType="'Gas'" class="icon"></FuelType>
         <TrunkType :trunkType="'S'" class="icon"></TrunkType>
@@ -246,15 +246,17 @@ export default {
 .car-car-_wrapper {
   width: 100%;
   height: 18rem;
-  background: yellow;
   position: relative;
   margin-bottom: 1rem;
   border-radius: 1rem;
   overflow: hidden;
+  border-top: 0.125rem solid var(--clr-img-top);
 }
 
 img {
+  border-radius: 1rem 1rem 0 0;
   width: 100%;
+  filter: grayscale(var(--filter-img));
 }
 
 .car-card__basic-information {
@@ -272,11 +274,12 @@ img {
   left: 0;
   right: 0;
   width: 100%;
-  padding-block: 1rem;
-  background: var(--secondary-light);
+  padding-block: 1.2rem;
+  border-top: 1px solid var(--clr-brd-top);
+  background: var(--surface-light);
   border-radius: 1rem;
 
-  box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 -10px 15px var(--nav-shadow);
 }
 .car-card__adress {
   width: 95%;
@@ -286,14 +289,14 @@ img {
   align-items: center;
 }
 .car-card__adress p {
-  font-weight: 400;
-  font-size: 0.9rem;
-  color: var(--primary-dark);
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: var(--clr-plz-car, rgb(179, 179, 179));
 }
 .car-card__adress > svg {
-  width: 1rem;
+  width: 1.2rem;
   aspect-ratio: 1;
-  fill: var(--primary-dark);
+  fill: var(--clr-plz-car, rgb(179, 179, 179));
   margin-right: 0.5rem;
 }
 .icon {
@@ -305,20 +308,22 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.2rem;
+  padding-left: -0.3rem;
+  padding-block: 0.9rem 0rem;
 
-  padding-right: 0.5rem;
-  padding-block: 0.6rem;
   width: 90%;
   margin-inline: auto;
-
-  border-top: 1px solid black;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--clr-brd);
 }
+
 .car-dard__seat-icon-wrapper {
   align-items: center;
   display: flex;
 }
 .car-dard__seat-icon-wrapper > svg {
-  fill: var(--clr-state-icons);
+  fill: var(--clr-seat-def);
   width: 1rem;
 }
 .car-dard__seat-icon-wrapper > .plus {

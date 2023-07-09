@@ -92,7 +92,7 @@ h4 {
   grid-template-columns: 3fr 4fr;
   column-gap: 1.25rem;
   padding: 0.5rem 0.75rem;
-  background-color: white;
+  background-color: var(--surface-dark);
   border-radius: 0.5rem;
   align-items: center;
   box-shadow: 2px 2px 10px var(--secondary-dark);

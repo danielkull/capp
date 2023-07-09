@@ -1,9 +1,9 @@
 <template>
   <body>
     <header class="capp-mainpage__header">
-      <article><h1>CAPP</h1></article>
-      <article>
-        <span>
+      <article class="capp-mainpage__logo-font"><h1>CAPP</h1></article>
+      <article class="filter-icon__aricle">
+        <span class="filter-icon__frame">
           <input type="checkbox" class="filter-icon__wrapper" id="filter-box" />
           <label for="filter-box" class="filter-box">
             <span class="filter-icon__line">
@@ -24,38 +24,13 @@
     <main class="app-mainpage__main-page main-page-style">
       <section class="filter-choice-frame"></section>
       <section class="filter-choice"><filter-drop-down /></section>
-      <section class="test">
+      <section class="mainpage__card-page">
         <SmallCarCard />
         <SmallCarCard />
         <SmallCarCard />
-        <!-- <p>
-          distinctio quis quaerat eum nobis magni alias quo earum iure hic vel
-          quidem eius assumenda odio eaque? Quasi incidunt sequi quis laborum
-          cum. Sed commodi quo eius aut consequatur id natus a voluptate ullam,
-          aliquam veritatis tenetur qui praesentium non ut ex esse adipisci.
-          Dignissimos aliquam quisquam magni dolorem quam illum, non ad. Tempore
-          et velit vel. Ea possimus totam adipisci incidunt necessitatibus
-          inventore maiores deserunt voluptas alias dolor, nemo repellendus
-          eaque est ipsum modi corrupti vero impedit similique. Magni incidunt
-          facere ab. Mollitia deserunt velit at magnam, quod nisi corrupti
-          deleniti sit excepturi reprehenderit hic officiis et, explicabo
-          repellendus a qui eligendi id sequi maiores cupiditate. Voluptates
-          culpa quisquam corporis saepe odio. Quis vitae repellat quae, corrupti
-          consectetur officiis corporis aspernatur adipisci vel cum ab qui error
-          totam quia dolorem quibusdam maxime dolore facere tempora ut id, dolor
-          eos incidunt? A, exercitationem. Ipsam aliquid illo libero amet
-          suscipit voluptas culpa animi quo nemo vitae dolore fugiat recusandae
-          eius quia maiores. Voluptate maxime accusantium nisi non eaque dolore.
-          Cum quae accusantium placeat dolorum quo natus, possimus ducimus alias
-          ex minus ipsam recusandae saepe distinctio labore perferendis,
-          voluptas repellendus earum sapiente itaque blanditiis quam! Deleniti
-          quam maxime praesentium molestiae. Repellendus amet aut voluptatum
-          tempore quis numquam ut aperiam eveniet vero voluptatibus eos porro
-          earum fugit, adipisci corporis deleniti ducimus ad iure laudantium
-          facere? Molestiae quos repellat alias expedita sunt? Aspernatur ullam
-          qui, pariatur facere ab delectus maxime architecto sit aut deserunt
-          quam quaerat reprehenderit doloremque corporis cum totam inventore
-        </p> -->
+        <SmallCarCard />
+        <SmallCarCard />
+        <SmallCarCard />
       </section>
     </main>
     <footer>
@@ -93,93 +68,83 @@ export default {
 }
 
 .capp-mainpage__header {
-  width: 100%;
-  height: 20rem;
-  background: linear-gradient(
-    to right,
-    var(--primary-mid),
-    var(--primary-veryDark)
-  );
-  padding-inline: 2rem;
-  position: absolute;
   display: flex;
+  position: absolute;
   justify-content: space-between;
-
+  align-items: center;
+  width: 100%;
+  height: 6rem;
   top: 0;
   left: 0;
+  background: linear-gradient(
+    to right,
+    var(--clr-prime-m) 40%,
+    var(--clr-prime-vd)
+  );
+  padding-inline: 1.2rem;
 }
+
 .capp-mainpage__header article {
+  display: block;
   height: 100%;
-  width: 5rem;
-  display: flex;
-  justify-content: center;
+  width: max-content;
   margin-top: 1rem;
 }
-.capp-mainpage__header article > h1 {
-  text-align: center;
-  justify-content: center;
+
+.filter-icon__frame {
+  display: grid;
+  place-content: center;
+  width: max-content;
+  height: max-content;
+  padding-inline: 0.5rem;
+}
+.capp-mainpage__logo-font {
+  margin-bottom: 1.8rem;
+  align-items: center;
+}
+.capp-mainpage__logo-font h1 {
   height: 100%;
-  width: 100%;
   font-size: var(--l-font);
   font-family: var(--font-logo);
-  color: var(--secondary-light);
+  color: var(--logo-font-color);
+  font-weight: 500;
 }
 
 .app-mainpage__main-page {
   width: 100%;
   height: 100%;
   padding-inline: 0rem;
-  border-radius: 2rem 2rem 0 0;
-  margin-top: 1.5rem;
+  border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
+  margin-top: 3.8rem;
   overflow: scroll;
   position: fixed;
 }
 .main-page-style {
-  background: var(--secondary-default);
+  background: var(--clr-bg);
   box-shadow: inset 10px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 main::-webkit-scrollbar {
-  display: none;
+  appearance: none;
+  width: 0;
 }
 .main-page__shadow {
-  width: 100%;
-  height: 30%;
-
   position: absolute;
   z-index: 9;
-  border-radius: 2rem 2rem 0 0;
   top: 60px;
   left: 0;
-
+  width: 100%;
+  height: 30%;
+  border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   box-shadow: inset 0px 15px 15px rgba(0, 0, 0, 0.4);
 }
-.test {
+.mainpage__card-page {
   width: 90%;
   margin-inline: auto;
-
-  /* background: var(--secondary-light); */
 }
 
 /*=================================================================*/
-/*=====================nav-placeholder=======================================*/
 
-.nav-placeholder {
-  background: linear-gradient(
-    to right,
-    var(--primary-mid),
-    var(--primary-veryDark)
-  );
-  display: block;
-  position: absolute;
-  border-radius: 1.5rem 1.5rem 0 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4rem;
-  z-index: 20;
-}
-/*==============================================*/
 /*===============footer - placegolder==========================*/
 
 /*===============================================*/
@@ -190,17 +155,16 @@ main::-webkit-scrollbar {
 .filter-box {
   cursor: pointer;
   display: flex;
+  width: 2.5rem;
+  height: 3rem;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
-  width: 2.5rem;
-  height: 3rem;
-  margin-right: 1rem;
 }
 .filter-icon__line {
   display: block;
   width: 100%;
-  border: 1px solid white;
+  border: 1px solid var(--clr-iconsvg);
   opacity: 0.84;
 
   position: relative;
@@ -214,14 +178,14 @@ main::-webkit-scrollbar {
   width: 0.5rem;
   aspect-ratio: 1;
   border-radius: 100%;
-  background: white;
+  background: var(--clr-iconsvg);
   position: absolute;
   top: -4px;
   transition: 0.2s ease-in-out;
 }
 .ball-2 {
-  border: 1px solid white;
-  background: var(--primary-dark);
+  border: 1px solid var(--clr-iconsvg);
+  background: var(--clr-prime-vd);
   left: 10%;
 }
 .ball-1,
@@ -287,34 +251,5 @@ main::-webkit-scrollbar {
   }
 
   /*========================================*/
-  .nav-placeholder {
-    background: linear-gradient(
-      to right,
-      var(--primary-mid),
-      var(--primary-veryDark)
-    );
-    display: block;
-    position: absolute;
-    border-radius: 0rem 1.5rem 1.5rem 0;
-    top: 15%;
-    left: 0;
-    width: 5rem;
-    height: 80%;
-    z-index: 20;
-  }
-
-  footer {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    font-size: 3rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: red;
-    height: 5rem;
-    width: 100vw;
-  }
 }
 </style>

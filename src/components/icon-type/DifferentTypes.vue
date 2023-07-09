@@ -1,5 +1,5 @@
 <template>
-  <article id="icon__fuel-type">
+  <article id="icon__different-type">
     <button class="icon-btn">
       <span class="icon-tooltip"
         ><p>{{ differentType }}</p></span
@@ -467,19 +467,20 @@ export default {
 </script>
 
 <style scoped>
+#icon__different-type {
+  margin-inline: var(--icon-margin);
+}
 .icon-btn {
   all: unset;
-
   aspect-ratio: 1;
   padding: 0.2rem;
-
   border-radius: 0.5rem;
   display: grid;
   place-content: center;
-  background: var(--primary-veryDark);
   cursor: pointer;
   position: relative;
-  border: var(--icon-brd);
+  background: var(--clr-type-icon);
+  border: 1px solid var(--clr-bord-icon);
 }
 
 .icon-btn:active {
@@ -532,48 +533,51 @@ export default {
 }
 
 svg {
-  width: 3rem;
+  width: calc(var(--svg-width) + 0.2rem);
   margin-inline: auto;
   aspect-ratio: 1;
-  fill: var(--secondary-light);
+  fill: var(--clr-iconsvg);
 }
 
 svg:is(.iso, .dog) {
-  width: 3rem;
+  width: calc(var(--svg-width) + 0.2rem);
 }
 .icon-btn:has(.no-pet, .no-smoking) {
   background: linear-gradient(
     45deg,
-    var(--icon-no) 48%,
+    var(--clr-error) 48%,
     transparent 48% 52%,
-    var(--icon-no) 52%
+    var(--clr-error) 52%
   );
-  border: var(--icon-no-brd);
+  border: 1px solid var(--clr-error);
 }
 
 svg .stroke {
-  stroke: var(--secondary-light);
+  stroke: var(--clr-iconsvg);
 }
-
+.icon-btn:active .icon-tooltip {
+  translate: -50% -140%;
+  opacity: 1;
+}
 @media screen and (min-width: 900px) {
   .icon-btn:hover .icon-tooltip {
     translate: -50% -140%;
     opacity: 1;
   }
   .icon-btn:hover {
-    background: var(--primary-dark);
+    background: var(--clr-prime-d);
   }
   .icon-btn:has(.no-pet, .no-smoking):hover {
     background: linear-gradient(
       45deg,
-      var(--error-color-light) 48%,
+      var(--clr-error-hover) 48%,
       transparent 48% 52%,
-      var(--error-color-light) 52%
+      var(--clr-error-hover) 52%
     );
   }
 
   .icon-btn:focus {
-    background: var(--primary-dark);
+    background: var(--clr-prime-d);
   }
 }
 </style>
