@@ -1,19 +1,14 @@
 <template>
   <input
     type="button"
-    :value="`${log_in}`"
-    class="Log-btn btn-font"
+    value="log in"
+    class="Log-btn btn-font disabled"
     id="LogIn-btn"
   />
 </template>
 
 <script>
-export default {
-  // data: () => ({
-  //   log_in: "Log in",
-  //   sign_in: "Sign In",
-  // }),
-};
+export default {};
 </script>
 
 <style scoped>
@@ -46,6 +41,12 @@ export default {
   transition: none;
   background: var(--primary-dark);
   color: var(--primary-light);
+}
+
+.disabled {
+  pointer-events: none;
+  color: var(--font-disabled);
+  border-color: var(--font-disabled);
 }
 
 @media screen and (min-width: 900px) {
