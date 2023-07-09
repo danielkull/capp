@@ -107,13 +107,23 @@ h1 {
 }
 
 a.more-info {
-  font-size: 0.85rem;
+  display: block;
+  font-size: 1rem;
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--primary-dark);
+  border-radius: 15px;
   text-decoration: none;
+  text-align: center;
   color: var(--primary-dark);
+  transition: all 0.5s steps(5);
 }
 
 a.more-info:hover {
-  color: var(--primary-mid);
+  _color: white;
+  background-color: var(--secondary-mid);
+  border-color: transparent;
 }
 
 @media screen and (min-width: 768px) {
@@ -121,11 +131,21 @@ a.more-info:hover {
     background-color: var(--secondary-mid);
     padding: 1.5rem 1.25rem;
   }
+
+  .cars-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (min-width: 992px) {
   .cars-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .cars-container {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 </style>
