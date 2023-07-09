@@ -1,5 +1,6 @@
 <template>
   <h1>Hallo Stefan, viel Spaß beim Programieren</h1>
+  <AccordionDefault />
   <UserEvaluation />
   <UserQuestionMenueVue />
   <CheckBox />
@@ -7,7 +8,6 @@
   <RadioButton />
   <RadioButton />
   <RadioButton />
-  <UserQuestionMenueVue />
   <span class="car-icon__holder">
     <IconType :carType="'Kleinwagen'"></IconType>
     <IconType :carType="'Bus'"> </IconType>
@@ -50,6 +50,7 @@ import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import MainButton from "@/components/input-elements/Button.vue";
+import AccordionDefault from "@/components/main-component/AccordionDefault.vue";
 
 export default {
   components: {
@@ -61,6 +62,7 @@ export default {
     FuelType,
     TrunkType,
     DifferentType,
+    AccordionDefault,
   },
 };
 </script>
@@ -75,5 +77,8 @@ export default {
   height: 4rem;
   display: grid;
   place-content: center;
+}
+h1 {
+  margin-bottom: 3rem;
 }
 </style>
