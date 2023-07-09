@@ -376,10 +376,6 @@ main {
   color: var(--primary-mid);
   font-size: clamp(1rem, 10vw, 1.4vw);
 }
-
-/*======================================================*/
-
-/*======================================================================= */
 @media screen and (min-width: 500px) {
   main {
     background: radial-gradient(
