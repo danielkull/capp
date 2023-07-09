@@ -199,8 +199,9 @@ export default {};
   display: flex;
 }
 .car-card__seat-icon-wrapper > svg {
+  --svg-width: 1rem;
   fill: var(--clr-seat-def);
-  width: 1rem;
+  width: var(--svg-width);
 }
 .car-card__seat-icon-wrapper > .plus {
   fill: var(--clr-state-icons);

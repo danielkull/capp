@@ -43,22 +43,29 @@
                   <p class="user-info__city-disrict">Neustadt</p>
                 </span>
                 <article class="user-info__favorite-choice">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="bi bi-star"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
-                    />
-                  </svg>
+                  <input
+                    type="checkbox"
+                    name="favorite-star"
+                    id="favorite-star"
+                  />
+                  <label for="favorite-star"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="bi bi-star"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
+                      /></svg
+                  ></label>
                 </article>
               </div>
-              <span class="user-info__name"><h2>Username</h2></span>
-              <article class="user-info__seat-icons">
-                <SeatIconsFrame />
-              </article>
+              <span class="user-info__header"
+                ><h2>Username</h2>
+                <article class="user-info__seat-icons">
+                  <SeatIconsFrame /></article
+              ></span>
             </section>
             <!----------------------------------------------------------------->
             <section class="user-profile__user-icons">
@@ -118,9 +125,14 @@
             </section>
           </section>
           <AverageRating></AverageRating>
-          <CustomerReviews></CustomerReviews>
-          <CustomerReviews></CustomerReviews>
-          <CustomerReviews></CustomerReviews>
+          <section class="customer-wrapper">
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+          </section>
         </article>
       </div>
     </main>
@@ -149,13 +161,6 @@ export default {
     SeatIconsFrame,
   },
 };
-// const profilBtn = document.querySelector("#nav-profil-btn");
-// const userProfil = document.querySelector("#user-profile-frame");
-
-// profilBtn.addEventListener("click", openProfilCard);
-// function openProfilCard() {
-//   console.log("klick");
-// }
 </script>
 
 <style scoped>
@@ -164,20 +169,14 @@ body {
   width: 100vw;
   height: 100vh;
 }
-main {
-  width: 100%;
-  height: 100%;
-}
-.user-profile__frame {
+
+main,
+.user-profile__frame,
+.user-profile__wrapper {
   width: 100%;
   height: 100%;
 }
 
-.user-profile__wrapper {
-  background: dodgerblue;
-  height: 100%;
-  width: 100%;
-}
 /*========================================================*/
 /*==================Profilbild-BG===============================*/
 /*========================================================*/
@@ -188,58 +187,52 @@ main {
 }
 .image-filter {
   position: absolute;
-  top: 18px;
-  left: 0;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(6px);
   display: block;
   width: 100%;
   height: 30%;
+  inset: 0;
+  z-index: 1;
+  background: var(--img-sh-filter, rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(6px);
 }
 .user-profile__image-wrapper > img,
 .user-profile__image-small__wrapper > img {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-origin: border-box;
-  position: relative;
+  object-fit: cover;
+  object-position: center center;
 }
 .user-profile__information-wrapper {
-  background: var(--light-bg);
+  background: var(--clr-sur-d);
   position: absolute;
   z-index: 2;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 79vh;
-  padding-inline: 1rem;
-  border-radius: 2rem 2rem 0 0;
+  padding-inline: var(--padding-default);
+  border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
 }
 /*==================Profilbild-Klein-===============================*/
 .user-profile__image-small {
-  display: block;
-  width: 10rem;
-  margin-inline: auto;
-  margin-top: -7rem;
-  aspect-ratio: 1;
-  border-radius: 100%;
-  background: var(--light-bg);
   display: grid;
   place-items: center;
+  width: 10rem;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  margin-top: -7rem;
+  border-radius: 100%;
+  background: var(--clr-sur-d);
 }
 .user-profile__image-small__wrapper {
   overflow: hidden;
   display: block;
   width: 95%;
-  border: 6px solid var(--primary-dark);
+  border: calc(var(--l-brd) * 2) solid var(--clr-prime-d);
   aspect-ratio: 1;
-  border-radius: 100%;
+  border-radius: inherit;
 }
 /*========================================================*/
-/*==================Profilbilder-Ende===============================*/
 /*========================================================*/
 /*==================User Profil===============================*/
 /*--------------User info------------------------*/
@@ -247,8 +240,7 @@ main {
   width: 100%;
   height: auto;
   padding-bottom: 0.5rem;
-
-  border-bottom: 1px solid var(--user-border);
+  border-bottom: 1px solid var(--clr-brd-top);
   margin-inline: auto;
 }
 .user-info__wrapper,
@@ -260,9 +252,8 @@ main {
 .user-info__wrapper {
   width: 100%;
   height: 2rem;
-  /* padding-inline: 1rem; */
   justify-content: space-between;
-  margin-top: -0.5rem;
+  margin-top: -0.3rem;
 }
 
 .user-info__plz-icon {
@@ -273,101 +264,102 @@ main {
   place-items: center;
 }
 .user-info__plz-icon svg {
-  fill: var(--primary-dark);
+  fill: var(--clr-plz);
 }
 .user-info__plz-icon ~ p {
-  color: var(--primary-dark);
+  color: var(--clr-plz);
   font-size: 0.8rem;
   margin-inline: 0.1rem;
 }
 .user-info__favorite-choice {
   width: 2.5rem;
   aspect-ratio: 1;
-  border: 1px solid var(--accent-color);
   border-radius: 100%;
-  display: grid;
-  place-items: center;
+  display: block;
+  margin-top: -3rem;
+  outline: var(--s-brd) solid var(--clr-like-def);
+  outline-offset: 3px;
 }
 
 .user-info__favorite-choice svg {
-  width: 70%;
-  aspect-ratio: 1;
-  fill: var(--accent-color);
-}
-.user-info__name {
   width: 100%;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+
+  aspect-ratio: 1;
+  fill: var(--clr-like-def);
 }
-.user-info__name h2 {
-  font-size: 2rem;
-  font-family: monospace;
+
+#favorite-star {
+  all: unset;
+}
+#favorite-star + label {
+  display: block;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+.user-info__favorite-choice:has(#favorite-star:checked) {
+  outline-color: var(--clr-like-act);
+}
+#favorite-star:checked + label svg {
+  fill: var(--clr-like-act);
+}
+/*===================Header===================================*/
+.user-info__header {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-info__header > h2 {
+  font-size: var(--m-font);
+  color: var(--clr-font-commentar);
+  font-weight: 400;
+  font-style: normal;
 }
 /*--------------User Icons------------------------*/
 .user-profile__user-icons {
   width: 100%;
   height: auto;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--user-border);
+  display: block;
   margin-bottom: calc(var(--margin-default) / 2);
 }
 
-.user-info-icon-wrapper {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  aspect-ratio: 1;
-  border-radius: 0.5rem;
-  margin-block: calc(var(--margin-default) / 2);
-  margin-right: 0.2rem;
-  background: var(--car-icon-bg);
-}
-.user-info__important-icons {
-  display: flex;
-  align-items: center;
-  background: blue;
-}
-
-/*=====================================================*/
 .car-card__icon-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.2rem;
-  padding-left: -0.3rem;
-  padding-block: 0.9rem 0rem;
-  background: red;
+  border-bottom: 1px solid var(--clr-brd-top);
+  padding-block: 0.8rem;
   width: 100%;
-  margin-inline: auto;
-  margin-top: 0.5rem;
 }
 /*--------------User Ausstattung------------------------*/
 .user-profile__equipment-wrapper {
   text-align: center;
-  border-bottom: 1px solid var(--user-border);
 }
 .user-profile__equipment-wrapper h2 {
   width: 100%;
-  font-size: var(--m-font);
-  color: var(--font-color-light);
+  font-size: calc(var(--s-font) + 0.4rem);
+  color: var(--main-font-color-light);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
 }
 
 .user-profile__equipment-itemlist {
-  /* background: blue; */
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+  gap: 0.3rem;
+  color: var(--clr-font-list);
   margin-bottom: calc(var(--margin-default) / 2);
 }
 .user-profile__equi-item {
-  background: var(--user-border);
-  padding-inline: 0.5rem;
-  padding-block: 0.3rem;
-  margin: 0.1rem;
-  border-radius: 0.5rem;
+  background: var(--surface-hover);
+  padding-inline: calc(var(--s-font) - 0.4rem);
+  padding-block: calc(var(--s-font) - 0.6rem);
+  border-radius: calc(var(--s-font) - 0.6rem);
+  font-weight: 300;
+  font-size: calc(var(--s-font) - 0.2rem);
 }
 /*===================================================*/
 /*===============  Commentar Section====================*/
@@ -378,23 +370,26 @@ main {
   z-index: 8;
   display: block;
   bottom: 0px;
-  background: var(--light-bg);
+  background: var(--clr-sur-d);
   height: 10rem;
   width: 100%;
-  border-radius: 2rem 2rem 0 0;
+  border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   translate: 0px 0px;
-  box-shadow: 0px -5px 20px rgba(148, 148, 148, 0.4);
+  box-shadow: 0px -5px 20px var(--crl-shadow-top, rgba(148, 148, 148, 0.4));
+  border-top: 1px solid var(--clr-brd-top);
   transition: height 0.2s ease-out;
+  color: var(--clr-font-commentar);
 }
 
 .commentar-section__wrapper-head {
   display: block;
   height: 5.5rem;
   border-radius: inherit;
-  border-bottom: 1px solid var(--user-border);
+  border-bottom: 1px solid var(--clr-brd-top);
   width: 90%;
   margin-inline: auto;
   padding-top: 1.5rem;
+  margin-top: calc(var(--s-font) / 2);
 }
 
 .commentar-section__btn {
@@ -402,17 +397,17 @@ main {
 }
 .commentar-section__btn ~ label,
 .commentar-section__rating-bar {
-  /* background: rgba(0, 0, 0, 0.6); */
   display: block;
   text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: var(--s-font);
+  font-weight: 500;
   padding-bottom: 0.5rem;
 }
 .commentar-section__btn ~ label span {
-  color: var(--primary-dark);
+  color: var(--clr-prime-d);
+  font-weight: 700;
 }
-label::after {
+.commentar-section__btn + label::after {
   content: "";
   position: absolute;
   display: block;
@@ -421,12 +416,22 @@ label::after {
   translate: -50% 0;
   width: 5rem;
   height: 0.4rem;
-  border-radius: 1rem;
-  background: var(--secondary-default);
+  border-radius: var(--s-brd-rad);
+  background: var(--clr-like-def);
 }
 
 .user-profile__commentar-wrapper:has(#commentar-section-check:checked) {
   height: 30rem;
+}
+
+.customer-wrapper {
+  margin-top: 1rem;
+  overflow: scroll;
+  height: 50vh;
+}
+.customer-wrapper::-webkit-scrollbar {
+  appearance: none;
+  width: 0;
 }
 
 /*======Media Queries================================*/
