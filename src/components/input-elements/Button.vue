@@ -1,10 +1,5 @@
 <template>
-  <input
-    type="button"
-    value="log in"
-    class="Log-btn btn-font disabled"
-    id="LogIn-btn"
-  />
+  <input type="button" value="log in" class="Log-btn btn-font" id="LogIn-btn" />
 </template>
 
 <script>
