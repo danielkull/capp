@@ -5,7 +5,11 @@
     :id="ratingId"
     :name="ratingGroup"
   />
-  <label class="commentar__rating-icon" :class="{ 'responsive-scaling': scalingIsActive }" :for="ratingId">
+  <label
+    class="commentar__rating-icon"
+    :class="{ 'responsive-scaling': scalingIsActive }"
+    :for="ratingId"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -119,7 +123,7 @@ export default {
     scalingIsActive: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 };
 </script>
@@ -128,7 +132,7 @@ export default {
 /* Defines the basic properties */
 .commentar__rating-icon svg {
   width: 2rem;
-  height: 2rem;
+  aspect-ratio: 1;
   cursor: pointer;
   margin-inline: 0.3rem;
 }
@@ -140,23 +144,22 @@ export default {
 /* Default deative state, if not hover or in focus */
 .commentar__rating-icon:not(:hover) > svg,
 .commentar__rating-icon:not(:focus) > svg {
-  fill: var(--nav-icon-act);
-  stroke: var(--nav-icon-act);
+  fill: var(--clr-like-def);
+  stroke: var(--clr-like-def);
 }
 
 /* If "active", give current and its siblings this color */
 .commentar__rating-icon:active > svg,
 .commentar__rating-icon:active ~ label > svg {
-  fill: goldenrod;
-  stroke: goldenrod;
+  fill: var(--clr-like-act);
+  stroke: var(--clr-like-act);
 }
 
 /* If "checked", give current and its siblings this color */
 .commentar__rating-radio:checked ~ label > svg {
-  fill: gold;
-  stroke: gold;
+  fill: var(--clr-like-act);
+  stroke: var(--clr-like-act);
 }
-
 
 .responsive-scaling > svg {
   width: clamp(1rem, 2vw, 2.5rem);
@@ -172,22 +175,22 @@ export default {
   /* If "hover", give current and its siblings this color */
   .commentar__rating-icon:hover > svg,
   .commentar__rating-icon:hover ~ label > svg {
-    fill: goldenrod;
-    stroke: goldenrod;
+    fill: var(--clr-like-act);
+    stroke: var(--clr-like-act);
   }
 
   /* After a selection was made  */
   .commentar__rating-radio:checked ~ label:hover > svg,
   .commentar__rating-radio:checked ~ label:hover ~ label > svg,
   label:hover ~ .commentar__rating-radio:checked ~ label > svg {
-    fill: goldenrod;
-    stroke: goldenrod;
+    fill: var(--clr-like-act);
+    stroke: var(--clr-like-act);
   }
 
   /* If "checked", give current and its siblings this color */
   .commentar__rating-radio:checked ~ label > svg {
-    fill: gold;
-    stroke: gold;
+    fill: var(--clr-like-act);
+    stroke: var(--clr-like-act);
   }
 }
 </style>
