@@ -1,6 +1,6 @@
 :root {
   /*============== Neue =======*/
-  --clr-bg: hsl(0, 1%, 81%);
+  --clr-bg: hsl(0, 1%, 92%);
   --surface-dark: hsl(0, 0%, 96%);
   --surface-light: hsl(0, 0%, 98%);
   --surface-hover: hsl(0, 0%, 93%);
@@ -57,9 +57,16 @@
   --box-shadow-light: hsla(0, 0%, 12%, 0.2);
   --list-actv: var(--primary-dark);
   --list-default: var(--list-color);
+  /*=========checkbox===*/
+  --check-default: var(--list-color);
+  --check-checked: var(--clr-prime-m);
+  --clr-after-btn: var(--clr-sur-l);
   /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
+  /*============ Log Button====================*/
+  --clr-disabled: ;
+  --font-disabled: var(--main-font-color-light);
 
   --primary-dark: hsl(var(--color), var(--l));
   --primary-mid: hsl(var(--color), calc(var(--l) + 12%));
@@ -135,8 +142,9 @@
   --accent-color-dark: hsl(349, 54%, 53%);
   --accent-color-light: hsl(349, 52%, 61%);
   --logo-font-color: var(--main-font-color-light);
-  --main-font-color-dark: hsl(0, 0, 55%);
+  --main-font-color-dark: hsl(0, 0%, 55%);
   --clr-font-light: hsl(0, 0%, 80%);
+  --clr-font-lightest: hsl(0, 0%, 90%);
   --clr-trans: transparent;
   /*======================================================*/
   --clr-sur-d: var(--surface-dark);
@@ -149,7 +157,7 @@
   --clr-prime-d: var(--primary-dark);
   --clr-prime-m: var(--surface-dark);
   --clr-prime-l: var(--primary-light);
-  /*==================  Berwertung  =======================*/
+  /*==================  Bewertung  =======================*/
   --clr-like-def: var(--list-color);
   --clr-like-act: var(--secondary-color);
   /*================  Sitze  ==============================*/
@@ -175,6 +183,10 @@
   --box-shadow-light: hsla(0, 0%, 12%, 0.2);
   --list-actv: var(--primary-dark);
   --list-default: var(--list-color);
+  /*=========checkbox===*/
+  --check-default: var(--list-color);
+  --check-checked: var(--clr-prime-d);
+  --clr-after-btn: var(--clr-font-lightest);
   /*===== Neue Ende =====*/
 
   /*===== Neue Ende =====*/
