@@ -21,8 +21,19 @@ export const useCarStore = defineStore("car", {
         }
       } catch (error) {
         alert(error.message);
-      } finally {
-        this.loading = false;
+      }
+    },
+    async getUserCar(activeUser) {
+      try {
+        let { data, error } = await supabase.from("cars").select().eq("user_id", activeUser);
+
+        if (error) throw error;
+        console.log("User Car Data: ", data);
+        if (data) {
+          this.userCar = data;
+        }
+      } catch (error) {
+        alert(error.message);
       }
     },
   },

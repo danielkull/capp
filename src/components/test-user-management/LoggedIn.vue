@@ -8,8 +8,24 @@
       class="btn-abstand"
     ></Button>
   </div>
+  <h3 class="header-3">Aktiver User</h3>
   <pre>
     {{ this.authenticationStore.activeUser }}
+  </pre>
+
+  <h3 class="header-3">Das Auto des Users</h3>
+  <pre>
+    {{ userCarData }}
+    {{ this.carStore.userCar }}
+  </pre>
+  <input
+    type="button"
+    value="User Car"
+    @click="showUserCar(this.authenticationStore.activeUser[0].id)"
+  />
+
+  <h3 class="header-3">Liste von allen Autos</h3>
+  <pre>
     {{ this.carStore.cars }}
   </pre>
 </template>
@@ -24,6 +40,7 @@ export default {
   data() {
     return {
       loading: false,
+      userCarData: "",
     };
   },
   setup() {
@@ -36,10 +53,19 @@ export default {
     logOut() {
       this.authenticationStore.logOut();
     },
+    async showUserCar(activeUser) {
+      //   const activeUserID = this.authenticationStore.activeUser[0].id;
+
+      this.userCarData = await this.carStore.getUserCar(activeUser);
+      //   return this.carStore.userCar;
+    },
   },
-  mounted() {
-    this.authenticationStore.getProfileData();
-    this.carStore.getCarData();
+  async mounted() {
+    await this.authenticationStore.getProfileData();
+    await this.carStore.getCarData();
+    const activeUserID = await this.authenticationStore.activeUser[0].id;
+    await this.carStore.getUserCar(activeUserID);
+    this.userCarData = this.carStore.userCar;
   },
 };
 </script>
@@ -49,6 +75,11 @@ export default {
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.header-3 {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .Log-btn:disabled {
