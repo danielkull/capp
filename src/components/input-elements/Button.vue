@@ -43,6 +43,12 @@ export default {};
   color: var(--primary-light);
 }
 
+.disabled {
+  pointer-events: none;
+  color: var(--font-disabled);
+  border-color: var(--font-disabled);
+}
+
 @media screen and (min-width: 900px) {
   .Log-btn:hover,
   .LogIn-card__btn:hover {

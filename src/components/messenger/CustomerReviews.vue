@@ -17,14 +17,13 @@
         :scalingIsActive="true"
       ></RatingBar>
     </header>
-    <main>
-      <p class="customer-review-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-        iusto dolorum aut autem ad, neque molestias necessitatibus accusamus?
-        Assumenda porro quasi soluta blanditiis quae, debitis voluptate laborum
-        quos dicta at.
-      </p>
-    </main>
+
+    <p class="customer-review-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto
+      dolorum aut autem ad, neque molestias necessitatibus accusamus? Assumenda
+      porro quasi soluta blanditiis quae, debitis voluptate laborum quos dicta
+      at.
+    </p>
   </article>
 </template>
 
@@ -41,6 +40,11 @@ export default {
 .commentar-section__customer-review {
   width: 90%;
   margin-inline: auto;
+  background: var(--surface-light);
+  margin-top: 1rem;
+  border-radius: var(--s-brd-rad);
+  padding-inline: 1rem;
+  padding-block: 0.2rem 0.4rem;
 }
 
 .customer-review__header {
@@ -60,12 +64,18 @@ export default {
   font-size: 0.8rem;
   margin-left: 0.5rem;
 }
+.customer-review-text {
+  font-size: 0.9rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  text-align: start;
+}
 /* Customer Image Profil same as UserProfileView.vue Img */
 
 /*==================Profilbild-Klein-===============================*/
 .user-profile__image-small {
   width: 2.5rem;
-  height: 2.5rem;
+  aspect-ratio: 1;
   margin-inline: auto;
   /* margin-top: 7rem; */
   aspect-ratio: 1;
@@ -76,7 +86,7 @@ export default {
 .user-profile__image-small__wrapper {
   overflow: hidden;
   display: block;
-  width: 95%;
+  width: 100%;
   border: 3px solid var(--primary-dark);
   aspect-ratio: 1;
   border-radius: 100%;
@@ -84,11 +94,9 @@ export default {
 
 .user-profile__image-small__wrapper > img {
   width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-origin: border-box;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center center;
   position: relative;
 }
 /*========================================================*/

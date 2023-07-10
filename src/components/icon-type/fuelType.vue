@@ -6,7 +6,7 @@
       >
 
       <svg
-        v-if="fuelType === 'Gas'"
+        v-if="fuelType === 'Benzin'"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -162,7 +162,7 @@
       </svg>
       <!-- Pic Electro -->
       <svg
-        v-if="fuelType === 'Electro'"
+        v-if="fuelType === 'Elektro'"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -488,19 +488,20 @@ export default {
 };
 </script>
 <style scoped>
+#icon__fuel-type {
+  margin-inline: var(--icon-margin);
+}
 .icon-btn {
   all: unset;
-
   aspect-ratio: 1;
   padding: 0.35rem;
-
   border-radius: 0.5rem;
   display: grid;
   place-content: center;
-  background: var(--primary-veryDark);
   cursor: pointer;
   position: relative;
-  border: var(--icon-brd);
+  background: var(--clr-type-icon);
+  border: 1px solid var(--clr-bord-icon);
 }
 
 .icon-btn:active {
@@ -553,15 +554,18 @@ export default {
 }
 
 svg {
-  width: 2.7rem;
+  width: var(--svg-width);
   margin-inline: auto;
   aspect-ratio: 1;
-  fill: var(--secondary-light);
+  fill: var(--clr-iconsvg);
 }
 .stroke {
-  stroke: var(--secondary-light);
+  stroke: var(--clr-iconsvg);
 }
-
+.icon-btn:active .icon-tooltip {
+  translate: -50% -140%;
+  opacity: 1;
+}
 @media screen and (min-width: 900px) {
   .icon-btn:hover .icon-tooltip {
     translate: -50% -140%;
