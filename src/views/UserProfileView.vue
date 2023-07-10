@@ -90,21 +90,7 @@
             </section>
             <!----------------------------------------------------------------->
             <section class="user-profile__equipment-wrapper">
-              <h2>Ausstattung</h2>
-              <ul class="user-profile__equipment-itemlist">
-                <li class="user-profile__equi-item">Lorems</li>
-                <li class="user-profile__equi-item">Loremswdt4t</li>
-                <li class="user-profile__equi-item">Loremswf</li>
-                <li class="user-profile__equi-item">Loremswf</li>
-                <li class="user-profile__equi-item">Lortehthtemswf</li>
-                <li class="user-profile__equi-item">Loreeeeemswf</li>
-                <li class="user-profile__equi-item">Loreeeeemswf</li>
-                <li class="user-profile__equi-item">eeee</li>
-                <li class="user-profile__equi-item">Loreeeewf</li>
-                <li class="user-profile__equi-item">Loreewf</li>
-                <li class="user-profile__equi-item">Loreewf</li>
-                <li class="user-profile__equi-item">Loreeeewfewrrzwer</li>
-              </ul>
+              <CarItemsMenue />
             </section>
           </section>
         </article>
@@ -148,6 +134,7 @@ import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import SeatIconsFrame from "@/components/icon-type/SeatIcons.vue";
+import CarItemsMenue from "@/components/main-component/CarOwnerAccordion.vue";
 
 export default {
   components: {
@@ -159,6 +146,7 @@ export default {
     TrunkType,
     DifferentType,
     SeatIconsFrame,
+    CarItemsMenue,
   },
 };
 </script>
@@ -303,6 +291,7 @@ main,
 #favorite-star:checked + label svg {
   fill: var(--clr-like-act);
 }
+
 /*===================Header===================================*/
 .user-info__header {
   width: 100%;
@@ -333,33 +322,14 @@ main,
   padding-block: 0.8rem;
   width: 100%;
 }
-/*--------------User Ausstattung------------------------*/
+/*=============================*/
 .user-profile__equipment-wrapper {
-  text-align: center;
+  overflow: scroll;
+  height: 40vh;
 }
-.user-profile__equipment-wrapper h2 {
-  width: 100%;
-  font-size: calc(var(--s-font) + 0.4rem);
-  color: var(--main-font-color-light);
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-}
-
-.user-profile__equipment-itemlist {
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  color: var(--clr-font-list);
-  margin-bottom: calc(var(--margin-default) / 2);
-}
-.user-profile__equi-item {
-  background: var(--surface-hover);
-  padding-inline: calc(var(--s-font) - 0.4rem);
-  padding-block: calc(var(--s-font) - 0.6rem);
-  border-radius: calc(var(--s-font) - 0.6rem);
-  font-weight: 300;
-  font-size: calc(var(--s-font) - 0.2rem);
+.user-profile__equipment-wrapper::-webkit-scrollbar {
+  appearance: none;
+  width: 0;
 }
 /*===================================================*/
 /*===============  Commentar Section====================*/
@@ -371,7 +341,7 @@ main,
   display: block;
   bottom: 0px;
   background: var(--clr-sur-d);
-  height: 10rem;
+  height: 9rem;
   width: 100%;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   translate: 0px 0px;
@@ -421,7 +391,7 @@ main,
 }
 
 .user-profile__commentar-wrapper:has(#commentar-section-check:checked) {
-  height: 30rem;
+  height: 70%;
 }
 
 .customer-wrapper {
@@ -437,7 +407,6 @@ main,
 /*======Media Queries================================*/
 @media screen and (min-width: 1000px) {
   .user-profile__frame {
-    /* background: blue; */
     width: 39.5%;
     height: 100%;
     overflow: hidden;
@@ -456,25 +425,6 @@ main,
   .user-profile__image-wrapper img {
     width: 40vw;
     height: 100%;
-  }
-  .nav-bar__wrapper {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-    bottom: 0;
-    left: 0;
-    width: 4rem;
-    height: 100%;
-    background: linear-gradient(
-      to top,
-      var(--primary-dark),
-      var(--primary-mid)
-    );
-    border-radius: 0rem 1.2rem 1.2rem 0;
-    padding-inline: 1rem;
-    padding-block: 2rem;
   }
 }
 </style>
