@@ -375,7 +375,7 @@ main,
   width: 100%;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   translate: 0px 0px;
-  box-shadow: 0px -5px 20px var(--crl-shadow-top, rgba(148, 148, 148, 0.4));
+  box-shadow: 0px -5px 20px var(--clr-shadow-top, rgba(148, 148, 148, 0.4));
   border-top: 1px solid var(--clr-brd-top);
   transition: height 0.2s ease-out;
   color: var(--clr-font-commentar);

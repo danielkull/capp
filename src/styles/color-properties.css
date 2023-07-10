@@ -55,7 +55,7 @@
   /*========User-profile==================*/
   --img-sh-filter: hsla(0, 0%, 100%, 0.2);
   --clr-plz: var(--clr-prime-d);
-  --crl-shadow-top: hsla(0, 0%, 58%, 0.4);
+  --clr-shadow-top: hsla(0, 0%, 58%, 0.4);
   --clr-font-list: var(--main-font-color-dark);
   --clr-font-commentar: var(--main-font-color-dark);
 
@@ -178,10 +178,9 @@
   --img-sh-filter: hsla(0, 0%, 37%, 0.2);
   --clr-font-commentar: var(--main-font-color-light);
 
-  --crl-shadow-top: hsla(0, 0%, 3%, 0.9);
-  /*===== Neue Ende =====*/
+  --clr-shadow-top: hsla(0, 0%, 3%, 0.9);
+  /*===== Neues Ende =====*/
 
-  /*===== Neue Ende =====*/
   /*green*/
   --color: 140, 45%;
   --l: 40%;
