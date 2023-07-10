@@ -1,5 +1,11 @@
 <template>
-  <input type="checkbox" name="filter" id="" class="capp-btn__default" />
+  <input
+    type="checkbox"
+    name="filter"
+    id=""
+    class="capp-btn__default"
+    style="--after-heigth: 1.7rem"
+  />
 </template>
 
 <script>
@@ -8,34 +14,45 @@ export default {};
 
 <style scoped>
 .capp-btn__default {
+  --after-heigth: 1.7rem;
   cursor: pointer;
   appearance: none;
   display: block;
   position: relative;
-  width: calc(var(--btn-height-default) * 2);
-  height: var(--btn-height-default);
-  border-radius: var(--btn-height-default);
+  width: clamp(3.5rem, 10vw, 4rem);
+  height: calc(var(--after-heigth) + 0.3rem);
+  border-radius: var(--m-brd-rad);
   margin-block: var(--margin-default);
-  background: var(--secondary-mid);
+  background: var(--check-default);
+  transition: background-color 0.2s ease-out;
 }
 .capp-btn__default::after {
   content: "";
   position: absolute;
   display: block;
-  top: -2.3%;
-  left: -3%;
-  width: var(--btn-height-default);
+  top: 50%;
+  left: 0%;
+  translate: 10% -50%;
+  width: var(--after-heigth);
   aspect-ratio: 1;
   border-radius: var(--circle-radius);
-  background: var(--secondary-dark);
-  transition: 0.3s ease-out;
+  background: var(--clr-after-btn);
+  transition-duration: 0.2s, 0.2s;
+  transition-property: background-color, translate;
+  /* transition: background-color 0.2s ease-out; */
 }
 .capp-btn__default:checked {
-  background: var(--primary-light);
+  background-color: var(--check-checked);
 }
 .capp-btn__default:checked::after {
-  left: 50.2%;
+  translate: 95% -50%;
   transition: 0.3s ease-out;
-  background: var(--primary-dark);
+  background-color: var(--clr-after-btn);
+}
+
+@media screen and (min-width: 1000px) {
+  .capp-btn__default:checked::after {
+    translate: 127% -50%;
+  }
 }
 </style>

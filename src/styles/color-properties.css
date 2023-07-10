@@ -52,6 +52,10 @@
   --clr-brd: rgb(186, 186, 186);
   --clr-brd-top: var(--main-font-color-light);
   --clr-img-top: var(--surface-light);
+  /*=========checkbox===*/
+  --check-default: var(--list-color);
+  --check-checked: var(--clr-prime-m);
+  --clr-after-btn: var(--clr-sur-l);
   /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
@@ -130,8 +134,9 @@
   --accent-color-dark: hsl(349, 54%, 53%);
   --accent-color-light: hsl(349, 52%, 61%);
   --logo-font-color: var(--main-font-color-light);
-  --main-font-color-dark: hsl(0, 0, 55%);
+  --main-font-color-dark: hsl(0, 0%, 55%);
   --clr-font-light: hsl(0, 0%, 80%);
+  --clr-font-lightest: hsl(0, 0%, 90%);
   --clr-trans: transparent;
   /*======================================================*/
   --clr-sur-d: var(--surface-dark);
@@ -166,7 +171,10 @@
   --clr-brd: var(--list-color);
   --clr-brd-top: var(--list-color);
   --clr-img-top: var(--clr-font-light);
-
+  /*=========checkbox===*/
+  --check-default: var(--list-color);
+  --check-checked: var(--clr-prime-d);
+  --clr-after-btn: var(--clr-font-lightest);
   /*===== Neue Ende =====*/
 
   /*===== Neue Ende =====*/
