@@ -4,12 +4,12 @@
 </template>
 
 <script>
-/* export default {
-  props: {
-    radioSelector: "Test",
-  },
-}; */
-// Hier noch Props einfügen.
+export default {
+  // props: {
+  //   radioSelector: "Test",
+  //   radioWidth: "1rem",
+  // },
+};
 </script>
 
 <style scoped>
@@ -21,25 +21,26 @@
   border-radius: var(--circle-radius);
   margin: var(--margin-default);
   border: 1px solid var(--clr-trans);
+
   position: relative;
 }
 .capp-radio__default::after {
+  width: var(--radio-Width, 1rem);
+  aspect-ratio: 1;
   content: "";
   display: block;
   position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  width: 1rem;
-  height: 1rem;
-  transition: 0.3s;
+  transition: all 0.2s;
   border-radius: var(--circle-radius);
-  outline: 2px solid var(--font-color-light);
+  outline: 2px solid var(--radio-def);
   outline-offset: 0px;
 }
 .capp-radio__default:checked::after {
-  background: var(--primary-mid);
+  background: var(--radio-act);
   outline-offset: 7px;
-  outline: 1px solid var(--primary-mid);
+  outline: 1px solid var(--radio-act);
 }
 </style>

@@ -111,6 +111,9 @@
   --area-hover: var(--primary-mid);
   --clr-user-brd: var(--secondary-dark);
   --bg-txt-field: hsl(0, 0%, 97%);
+  /*======================new CP Radios=====================*/
+  --radio-def: var(--list-color);
+  --radio-act: var(--clr-prime-m);
 
   /*====================================================================*/
   /*======neue CP=========*/
@@ -178,6 +181,9 @@
   --check-default: var(--list-color);
   --check-checked: var(--clr-prime-d);
   --clr-after-btn: var(--clr-font-lightest);
+  /*======================new CP Radios=====================*/
+  --radio-def: var(--clr-plz-car);
+  --radio-act: var(--primary-middle);
   /*===== Neue Ende =====*/
 
   /*===== Neue Ende =====*/

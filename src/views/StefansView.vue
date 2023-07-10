@@ -4,7 +4,7 @@
   <UserQuestionMenueVue />
   <CheckBox />
   <MainButton />
-  <RadioButton />
+  <RadioButton :style="('--radio-Width:' radioWidth)" />
   <RadioButton />
   <RadioButton />
   <UserQuestionMenueVue />
