@@ -1,6 +1,6 @@
 :root {
   /*============== Neue =======*/
-  --clr-bg: hsl(0, 1%, 81%);
+  --clr-bg: hsl(0, 1%, 92%);
   --surface-dark: hsl(0, 0%, 96%);
   --surface-light: hsl(0, 0%, 98%);
   --surface-hover: hsl(0, 0%, 88%);
@@ -55,6 +55,9 @@
   /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
+  /*============ Log Button====================*/
+  --clr-disabled: ;
+  --font-disabled: var(--main-font-color-light);
 
   --primary-dark: hsl(var(--color), var(--l));
   --primary-mid: hsl(var(--color), calc(var(--l) + 12%));
@@ -144,7 +147,7 @@
   --clr-prime-d: var(--primary-dark);
   --clr-prime-m: var(--surface-dark);
   --clr-prime-l: var(--primary-light);
-  /*==================  Berwertung  =======================*/
+  /*==================  Bewertung  =======================*/
   --clr-like-def: var(--list-color);
   --clr-like-act: var(--secondary-color);
   /*================  Sitze  ==============================*/
