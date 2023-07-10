@@ -17,9 +17,12 @@ export default {
     <router-link to="/danielView">Daniels View</router-link>|
     <router-link to="/mainView">Main Page</router-link>|
     <router-link to="/UserProfileView">Userprofile</router-link>|
-    <router-link to="/KirstensView">Userprofile</router-link>|
+    <router-link to="/KirstensView">KirstensView</router-link>|
     <router-link to="/CarsView">Verfügbare Autos</router-link> |
-    <router-link to="/AddNewCarView">Neues Auto erfassen</router-link>
+    <router-link to="/AddNewCarView">Neues Auto erfassen</router-link>|
+    <router-link to="/testUserManagementView"
+      >User/Data Managment Test Bereich</router-link
+    >|
     <DarkModeButton />
   </nav>
   <router-view />
