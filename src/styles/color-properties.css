@@ -37,7 +37,7 @@
   /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
 
-  --nav-shadow: var(--box-shadow-dar, rgba(0, 0, 0, 0.7));
+  --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
   /*====================================*/
   --nav-icon-def: var(--surface-light);
   --nav-icon-act: var(--main-font-color-light);
@@ -161,7 +161,7 @@
   --clr-iconsvg: rgb(230, 230, 230, 0.8);
   /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
-  --nav-shadow: var(--box-shadow-dar, rgba(0, 0, 0, 0.7));
+  --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
   /*====================================*/
   --nav-icon-def: var(--primary-dark);
   --nav-icon-act: var(--list-color);

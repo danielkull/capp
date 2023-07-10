@@ -3,7 +3,7 @@
     <article class="question-list__categorie">
       <input
         type="checkbox"
-        name="hier Namen für Katgorie eintrageb"
+        name="hier Namen für Kategorie eintragen"
         id="card1"
         class="question-list__btn"
       /><label class="question-list__header" for="card1">Kategorie Text</label>
@@ -28,7 +28,7 @@
     <article class="question-list__categorie">
       <input
         type="checkbox"
-        name="hier Namen für Katgorie eintrageb"
+        name="hier Namen für Kategorie eintragen"
         id="card2"
         class="question-list__btn"
       /><label class="question-list__header" for="card2">Kategorie Text</label>
@@ -54,7 +54,7 @@
     <article class="question-list__categorie">
       <input
         type="checkbox"
-        name="hier Namen für Katgorie eintrageb"
+        name="hier Namen für Kategorie eintragen"
         id="card3"
         class="question-list__btn"
       /><label class="question-list__header" for="card3">Kategorie Text</label>
@@ -79,7 +79,7 @@
     <article class="question-list__categorie">
       <input
         type="checkbox"
-        name="hier Namen für Katgorie eintrageb"
+        name="hier Namen für Kategorie eintragen"
         id="card4"
         class="question-list__btn"
       /><label class="question-list__header" for="card4">Kategorie Text</label>
