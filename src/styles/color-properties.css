@@ -3,7 +3,7 @@
   --clr-bg: hsl(0, 1%, 92%);
   --surface-dark: hsl(0, 0%, 96%);
   --surface-light: hsl(0, 0%, 98%);
-  --surface-hover: hsl(0, 0%, 88%);
+  --surface-hover: hsl(0, 0%, 93%);
   --list-color: hsl(0, 0%, 82%);
   --primary-very-dark: hsl(141, 45%, 25%);
   --primary-dark: hsl(141, 45%, 40%);
@@ -36,7 +36,8 @@
   --clr-type-icon: var(--primary-dark);
   /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
-  --nav-shadow: var(--box-shadow-dar, rgba(0, 0, 0, 0.7));
+
+  --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
   /*====================================*/
   --nav-icon-def: var(--surface-light);
   --nav-icon-act: var(--main-font-color-light);
@@ -52,6 +53,10 @@
   --clr-brd: rgb(186, 186, 186);
   --clr-brd-top: var(--main-font-color-light);
   --clr-img-top: var(--surface-light);
+  /*====Dreieck==Acordion=======*/
+  --box-shadow-light: hsla(0, 0%, 12%, 0.2);
+  --list-actv: var(--primary-dark);
+  --list-default: var(--list-color);
   /*=========checkbox===*/
   --check-default: var(--list-color);
   --check-checked: var(--clr-prime-m);
@@ -164,7 +169,7 @@
   --clr-iconsvg: rgb(230, 230, 230, 0.8);
   /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
-  --nav-shadow: var(--box-shadow-dar, rgba(0, 0, 0, 0.7));
+  --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
   /*====================================*/
   --nav-icon-def: var(--primary-dark);
   --nav-icon-act: var(--list-color);
@@ -174,6 +179,10 @@
   --clr-brd: var(--list-color);
   --clr-brd-top: var(--list-color);
   --clr-img-top: var(--clr-font-light);
+  /*====Dreieck==Acordion=======*/
+  --box-shadow-light: hsla(0, 0%, 12%, 0.2);
+  --list-actv: var(--primary-dark);
+  --list-default: var(--list-color);
   /*=========checkbox===*/
   --check-default: var(--list-color);
   --check-checked: var(--clr-prime-d);
