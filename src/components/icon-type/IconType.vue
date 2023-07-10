@@ -7,7 +7,7 @@
       <!-- <div class="svg-holder"></div> -->
 
       <svg
-        v-if="carType === 'Kleinwagen'"
+        v-if="carType === 'Kleinwagen' || carType === 'Limousine'"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -101,7 +101,7 @@
       <!-- Pic SUV -->
 
       <svg
-        v-if="carType === 'SUV'"
+        v-if="carType === 'SUV' || carType === 'Kombi'"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -201,7 +201,7 @@
       </svg>
       <!-- Pic Bus -->
       <svg
-        v-if="carType === 'Bus'"
+        v-if="carType === 'Bus' || carType === 'Van'"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
