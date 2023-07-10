@@ -34,7 +34,7 @@
   font-family: "Roboto";
   src: url("/src/Fonts/roboto/Roboto-Italic.woff2") format("woff2");
 
-  font-style: normal;
+  font-style: italic;
   font-weight: 400;
   font-display: swap;
 }
@@ -104,9 +104,16 @@
   --s-font: var(--font-size);
   --m-font: calc(var(--s-font) * 1.5);
   --l-font: calc(var(--m-font) * 2);
-
+  --icon-margin: 0.1rem;
   --margin-default: 1rem;
   --padding-default: 1rem;
+  --s-pad: var(--padding-default);
+  --m-pad: calc(var(--padding-default) * 2);
+
+  --s-brd: 1px;
+  --m-brd: 2px;
+  --l-brd: 3px;
+
   /*============================================*/
   /*           default-btn*/
   /*============================================*/
@@ -116,6 +123,7 @@
   --circle-radius: 100%;
 
   --s-brd-rad: 1rem;
+  --m-brd-rad: 2rem;
 
   /*============================================*/
   /*   Fonts   Main text*/

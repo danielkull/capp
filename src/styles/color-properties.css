@@ -1,24 +1,92 @@
 :root {
+  /*============== Neue =======*/
+  --clr-bg: hsl(0, 1%, 92%);
+  --surface-dark: hsl(0, 0%, 96%);
+  --surface-light: hsl(0, 0%, 98%);
+  --surface-hover: hsl(0, 0%, 88%);
+  --list-color: hsl(0, 0%, 89%);
+  --surface-hover: hsl(0, 0%, 93%);
+  --list-color: hsl(0, 0%, 82%);
+  --primary-very-dark: hsl(141, 45%, 25%);
+  --primary-dark: hsl(141, 45%, 40%);
+  --primary-middle: hsl(141, 45%, 48%);
+  --primary-light: hsl(141, 45%, 56%);
+  --secondary-color: hsl(43, 91%, 48%);
+  --accent-color-dark: hsl(349, 94%, 24%);
+  --accent-color-light: hsl(349, 100%, 35%);
+  --logo-font-color: var(--surface-light);
+  --main-font-color-dark: hsl(0, 0%, 15%);
+  --main-font-color-light: hsl(0, 0%, 73%);
+  --clr-trans: transparent;
+  /*======================================================*/
+  --clr-sur-d: var(--surface-dark);
+  --clr-sur-l: var(--surface-light);
+  --sur-hover: var(--surface-hover);
+  --clr-error: var(--accent-color-dark);
+  --clr-error-hover: var(--accent-color-light);
+  /*======================================================*/
+  --clr-prime-vd: var(--primary-very-dark, rgb(35, 92, 55));
+  --clr-prime-d: var(--primary-dark);
+  --clr-prime-m: var(--primary-middle, rgb(67, 177, 106));
+  --clr-prime-l: var(--primary-light);
+  /*==================  Berwertung  =======================*/
+  --clr-like-def: var(--list-color);
+  --clr-like-act: var(--secondary-color);
+  /*================  Sitze  ==============================*/
+  --clr-seat-def: var(--list-color);
+  --clr-seat-act: var(--secondary-color);
+  --clr-type-icon: var(--primary-dark);
+  /*==================================*/
+  --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
+
+  --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
+  /*====================================*/
+  --nav-icon-def: var(--surface-light);
+  --nav-icon-act: var(--main-font-color-light);
+  /*==== car card===========*/
+  --clr-plz-car: var(--clr-prime-d);
+  --filter-img: 10%;
+  --clr-iconsvg: rgba(231, 231, 231);
+  /*=============Car-type=====================*/
+  --clr-type-icon: var(--primary-dark);
+  --clr-bord-icon: var(--clr-prime-l);
+  /*====IMG car card===========*/
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --clr-brd: rgb(186, 186, 186);
+  --clr-brd-top: var(--main-font-color-light);
+  --clr-img-top: var(--surface-light);
+  /*========User-profile==================*/
+  --img-sh-filter: hsla(0, 0%, 100%, 0.2);
+  --clr-plz: var(--clr-prime-d);
+  --clr-shadow-top: hsla(0, 0%, 58%, 0.4);
+  --clr-font-list: var(--main-font-color-dark);
+  --clr-font-commentar: var(--main-font-color-dark);
+  /*====Dreieck==Acordion=======*/
+  --box-shadow-light: hsla(0, 0%, 12%, 0.2);
+  --list-actv: var(--primary-dark);
+  --list-default: var(--list-color);
+  /*=========checkbox===*/
+  --check-default: var(--list-color);
+  --check-checked: var(--clr-prime-m);
+  --clr-after-btn: var(--clr-sur-l);
+  /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
-
+  /*============ Log Button====================*/
+  --clr-disabled: ;
+  --font-disabled: var(--main-font-color-light);
   --primary-dark: hsl(var(--color), var(--l));
   --primary-mid: hsl(var(--color), calc(var(--l) + 12%));
   --primary-light: hsl(var(--color), calc(var(--l) + 24%));
-
   --secondary-dark: hsl(0, 2%, 70%);
   --secondary-mid: hsl(0, 0%, 85%);
   --secondary-default: hsl(0, 0%, 82%);
-
   --secondary-light: hsl(0, 0%, 99%);
-
   --font-color-dark: hsl(0, 0%, 30%);
   --font-color-light: hsl(0, 0%, 57%);
   --light-font: var(--secondary-light);
-
   --accent-color: hsl(43, 91%, 48%);
   --error-color: hsl(349, 100%, 40%);
-
   /*============new CP Icons- Types======================*/
   --error-color-light: hsl(349, 100%, 50%);
   --icon-no: var(--error-color);
@@ -26,86 +94,113 @@
   --icon-no-brd: 1px solid transparent;
   /*===============new CP Log In===*/
   --primary-veryDark: hsl(var(--color), calc(var(--l) - 10%));
-  --font-logo-size: clamp(4rem, 10vw, 5vw);
-
   /*==========================================*/
   --light-bg: var(--secondary-light);
   --user-border: var(--secondary-default);
   --seat-false: var(--secondary-default);
   --seat-true: var(--primary-mid);
-
   --car-icon-bg: var(--primary-dark);
   --car-icon-img: var(--secondary-light);
-
   /*==================new CP navbar========================*/
   --nav-icon: var(--secondary-light);
   --nav-icon-act: var(--secondary-dark);
   --light-brd: rgba(255, 255, 255, 0.2);
   --dark-brd: rgba(0, 0, 0, 0.2);
   /*================new CP - UserEvalutation======================*/
-
   --icon-false: var(--secondary-dark);
   --icon-true: var(--accent-color);
   --area-focus: var(--primary-dark);
   --area-default: var(--secondary-dark);
   --area-hover: var(--primary-mid);
-  --s-brd: 1px;
-  --m-brd: 2px;
   --clr-user-brd: var(--secondary-dark);
   --bg-txt-field: hsl(0, 0%, 97%);
-
   /*====================================================================*/
   /*======neue CP=========*/
-  --m-font: calc(var(--s-font) * 1.5);
-  --header-question-list: clamp(1.5rem, 20vw, 2rem);
-  --question-list-padding-inline: clamp(0.6vw, 20vw, 1vw);
   --list-padding: var(--question-list-padding-inline);
-  --list-item-padding: 0.5rem;
   --list-hover: hsl(0, 0%, 92%);
   --bg-list: var(--secondary-default);
-  --bg-lis-surface: var(--secondary-light);
+  --bg-list-surface: var(--secondary-light);
   /*====================================================================*/
 }
-
-html {
+:root.dark-theme {
+  /*===== Neue =====*/
+  --clr-bg: hsl(0, 0%, 3%);
+  --surface-dark: hsl(0, 0%, 10%);
+  --surface-light: hsl(0, 0%, 16%);
+  --surface-hover: hsl(0, 0%, 25%);
+  --list-color: hsl(0, 2%, 35%);
+  --primary-dark: hsl(141, 45%, 40%);
+  --primary-middle: hsl(141, 45%, 48%);
+  --primary-light: hsl(141, 45%, 36%);
+  --secondary-color: hsl(43, 91%, 48%);
+  --accent-color-dark: hsl(349, 54%, 53%);
+  --accent-color-light: hsl(349, 52%, 61%);
+  --logo-font-color: var(--main-font-color-light);
+  --main-font-color-dark: hsl(0, 0%, 55%);
+  --clr-font-light: hsl(0, 0%, 80%);
+  --clr-font-lightest: hsl(0, 0%, 90%);
+  --clr-trans: transparent;
+  /*======================================================*/
+  --clr-sur-d: var(--surface-dark);
+  --clr-sur-l: var(--surface-light);
+  --sur-hover: var(--surface-hover);
+  --clr-error: var(--accent-color-dark);
+  --clr-error-hover: var(--accent-color-light);
+  /*======================================================*/
+  --clr-prime-vd: var(--clr-bg);
+  --clr-prime-d: var(--primary-dark);
+  --clr-prime-m: var(--surface-dark);
+  --clr-prime-l: var(--primary-light);
+  /*==================  Bewertung  =======================*/
+  --clr-like-def: var(--list-color);
+  --clr-like-act: var(--secondary-color);
+  /*================  Sitze  ==============================*/
+  --clr-seat-def: var(--list-color);
+  --clr-seat-act: var(--secondary-color);
+  /*=============Car-type=====================*/
+  --clr-type-icon: var(--primary-very-dark);
+  --clr-bord-icon: var(--clr-prime-l);
+  --clr-iconsvg: rgb(230, 230, 230, 0.8);
+  /*==================================*/
+  --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
+  --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
+  /*====================================*/
+  --nav-icon-def: var(--primary-dark);
+  --nav-icon-act: var(--list-color);
+  /*====IMG car card===========*/
+  --clr-plz-car: hsl(0, 0%, 70%);
+  --filter-img: 20%;
+  --clr-brd: var(--list-color);
+  --clr-brd-top: var(--list-color);
+  --clr-img-top: var(--clr-font-light);
+  --clr-font-list: var(--clr-font-light);
+  /*========User-profile==================*/
+  --img-sh-filter: hsla(0, 0%, 37%, 0.2);
+  --clr-font-commentar: var(--main-font-color-light);
+  --clr-shadow-top: hsla(0, 0%, 3%, 0.9);
+  /*===== Neues Ende =====*/
+  /*====Dreieck==Acordion=======*/
+  --box-shadow-light: hsla(0, 0%, 12%, 0.2);
+  --list-actv: var(--primary-dark);
+  --list-default: var(--list-color);
+  /*=========checkbox===*/
+  --check-default: var(--list-color);
+  --check-checked: var(--clr-prime-d);
+  --clr-after-btn: var(--clr-font-lightest);
+  /*===== Neue Ende =====*/
   /*green*/
   --color: 140, 45%;
   --l: 40%;
-
-  --primary-dark: hsl(var(--color), var(--l));
-  --primary-mid: hsl(var(--color), calc(var(--l) + 12%));
-  --primary-light: hsl(var(--color), calc(var(--l) + 24%));
-
-  --secondary-dark: hsl(0, 2%, 70%);
-  --secondary-mid: hsl(0, 0%, 85%);
-  --secondary-default: hsl(0, 0%, 82%);
-  --secondary-light: hsl(0, 0%, 95%);
-
-  --font-color-dark: hsl(0, 0%, 5%);
-  --font-color-light: hsl(0, 0%, 57%);
-
-  --accent-color: hsl(43, 91%, 48%);
-  --error-color: hsl(349, 100%, 25%);
-}
-html[data-theme="dark"] {
-  /*green*/
-  --color: 140, 45%;
-  --l: 40%;
-
   --color-primary: hsl(var(--color), var(--l));
   --color-primary-light: hsl(var(--color), calc(var(--l) + 24%));
   --color-primary-mid: hsl(var(--color), calc(var(--l) + 12%));
-
   --secondary-dark: hsl(0, 0%, 12%);
   --secondary-mid: hsl(0, 0%, 16%);
   --secondary-default: hsl(0, 0%, 37%);
   --secondary-light: hsl(0, 0%, 60%);
-
   --clr-trans: transparent;
-
   --font-color-dark: hsl(0, 0%, 82%);
   --font-color-light: hsl(0, 0%, 57%);
-
   --error-color: hsl(349, 54%, 53%);
   --accent-color: hsl(43, 92%, 36%);
 }

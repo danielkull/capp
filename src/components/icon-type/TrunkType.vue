@@ -330,19 +330,20 @@ export default {
 </script>
 
 <style scoped>
+#icon___trunk-type {
+  margin-inline: var(--icon-margin);
+}
 .icon-btn {
   all: unset;
-
   aspect-ratio: 1;
   padding: 0.2rem;
-
   border-radius: 0.5rem;
   display: grid;
   place-content: center;
-  background: var(--primary-veryDark);
   cursor: pointer;
   position: relative;
-  border: var(--icon-brd);
+  background: var(--clr-type-icon);
+  border: 1px solid var(--clr-bord-icon);
 }
 
 .icon-btn:active {
@@ -395,15 +396,18 @@ export default {
 }
 
 svg {
-  width: 3rem;
+  width: calc(var(--svg-width) + 0.3rem);
   margin-inline: auto;
   aspect-ratio: 1;
-  fill: var(--secondary-light);
+  fill: var(--clr-iconsvg);
 }
 .stroke {
-  stroke: var(--secondary-light);
+  stroke: var(--clr-iconsvg);
 }
-
+.icon-btn:active .icon-tooltip {
+  translate: -50% -140%;
+  opacity: 1;
+}
 @media screen and (min-width: 900px) {
   .icon-btn:hover .icon-tooltip {
     translate: -50% -140%;
