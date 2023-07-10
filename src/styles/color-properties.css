@@ -56,7 +56,7 @@
   --color: 140, 45%;
   --l: 40%;
   /*============ Log Button====================*/
-  --clr-disbaled: ;
+  --clr-disabled: ;
   --font-disabled: var(--main-font-color-light);
 
   --primary-dark: hsl(var(--color), var(--l));
@@ -147,7 +147,7 @@
   --clr-prime-d: var(--primary-dark);
   --clr-prime-m: var(--surface-dark);
   --clr-prime-l: var(--primary-light);
-  /*==================  Berwertung  =======================*/
+  /*==================  Bewertung  =======================*/
   --clr-like-def: var(--list-color);
   --clr-like-act: var(--secondary-color);
   /*================  Sitze  ==============================*/
