@@ -69,6 +69,10 @@
   --check-default: var(--list-color);
   --check-checked: var(--clr-prime-m);
   --clr-after-btn: var(--clr-sur-l);
+  /*=========menue===========*/
+  --menue-icon-def: var(--main-font-color-light);
+  --menue-icon-act: var(--clr-prime-m);
+
   /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
@@ -123,6 +127,7 @@
   --list-hover: hsl(0, 0%, 92%);
   --bg-list: var(--secondary-default);
   --bg-list-surface: var(--secondary-light);
+  /*==================*/
   /*====================================================================*/
 }
 :root.dark-theme {
@@ -193,6 +198,10 @@
   /*======================new CP Radios=====================*/
   --radio-def: var(--clr-plz-car);
   --radio-act: var(--primary-middle);
+  /*=======carmenue=======*/
+  --menue-icon-act: var(--primary-middle);
+  /*============tetfield================*/
+  --clr-txt-bg: var(--clr-prime-l);
   /*===== Neue Ende =====*/
   /*green*/
   --color: 140, 45%;

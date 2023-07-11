@@ -33,7 +33,7 @@ export default {
 </script>
 
 <template>
-  <main v-if="car">
+  <main v-if="car" style="--svg-width: 2.4rem">
     <div class="single-car">
       <div class="img-wrapper">
         <img
