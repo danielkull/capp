@@ -27,7 +27,7 @@
       ></label>
       <section class="car-info__list">
         <section class="placeholder">
-          <EquipmentList />
+          <EquipmentList :equipmentItems="featureItems" />
         </section>
       </section>
     </article>
@@ -56,9 +56,52 @@
       ></label>
       <section class="car-info__list">
         <section class="placeholder">
+          <p>
+            <span class="label">Marke/Modell</span>
+            <span>{{ brandName }} {{ carModel }}</span>
+          </p>
+          <p>
+            <span class="label">Kennzeichen</span>
+            <span>{{ licensePlate }}</span>
+          </p>
+          <p>
+            <span class="label">Versicherung</span> <span>{{ insurance }}</span>
+          </p>
+          <p>
+            <span class="label">Versicherungs-Nr.</span>
+            <span>{{ insuranceNumber }}</span>
+          </p>
+          <p>
+            <span class="label">Getriebe-Art</span> <span>{{ gear }}</span>
+          </p>
+          <p>
+            <span class="label">Kraftstoffverbrauch / km</span>
+            <span>{{ fuelConsumePerKm }} l</span>
+          </p>
+          <p>
+            <span class="label">PS</span> <span>{{ kwValue }}</span>
+          </p>
+          <p>
+            <span class="label">Höchst-Tempo</span>
+            <span>{{ maxSpeed }} kmh</span>
+          </p>
+          <p>
+            <span class="label">Baujahr</span>
+            <span>{{ yearOfConstruction }}</span>
+          </p>
+          <p>
+            <span class="label">Kilometerstand</span>
+            <span>{{ mileageValue }}</span>
+          </p>
+          <p>
+            <span class="label">Kofferaum-Volumen</span>
+            <span>{{ trunkVolume }} l</span>
+          </p>
+          <!--
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
           maxime alias ea aut placeat. Commodi a voluptatibus, repellendus quia
           quam, eius tempora facilis nihil velit voluptate sunt ut eaque
+          -->
         </section>
       </section>
     </article>
@@ -129,6 +172,60 @@ export default {
     EquipmentList,
     MessageField,
   },
+  props: {
+    featureItems: {
+      type: Array,
+      required: true,
+    },
+    brandName: {
+      type: String,
+      required: false,
+    },
+    carModel: {
+      type: String,
+      required: false,
+    },
+    licensePlate: {
+      type: String,
+      required: true,
+    },
+    fuelConsumePerKm: {
+      type: Number,
+      required: false,
+    },
+    gear: {
+      type: String,
+      required: false,
+    },
+    insurance: {
+      type: String,
+      required: true,
+    },
+    insuranceNumber: {
+      type: String,
+      required: true,
+    },
+    kwValue: {
+      type: Number,
+      required: false,
+    },
+    maxSpeed: {
+      type: Number,
+      required: false,
+    },
+    yearOfConstruction: {
+      type: Number,
+      required: false,
+    },
+    mileageValue: {
+      type: Number,
+      required: false,
+    },
+    trunkVolume: {
+      type: Number,
+      required: false,
+    },
+  },
 };
 </script>
 
@@ -191,6 +288,18 @@ ul.car-info {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.3s ease-in-out;
+}
+
+.car-info__list > .placeholder > p {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--secondary-mid);
+}
+
+.car-info__list > .placeholder > p > span.label {
+  color: var(--primary-dark);
 }
 
 .car-info__btn:checked ~ .car-info__list {

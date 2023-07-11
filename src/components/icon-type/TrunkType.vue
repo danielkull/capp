@@ -2,7 +2,7 @@
   <article id="icon__trunk-type">
     <button class="icon-btn">
       <span class="icon-tooltip"
-        ><p>{{ trunkType }}</p></span
+        ><p>{{ trunkVolumeLiters }} l</p></span
       >
       <svg
         v-if="
@@ -319,7 +319,7 @@ export default {
   props: {
     trunkType: {
       type: String,
-      required: true,
+      required: false,
     },
     trunkVolumeLiters: {
       type: Number,
