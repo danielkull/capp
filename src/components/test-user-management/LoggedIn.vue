@@ -25,6 +25,13 @@
   />
 
   <h3 class="header-3">Liste von allen Autos</h3>
+  <ul>
+    <li v-for="car in this.carStore.cars">
+      <h3>User: {{ car.user_id }} rents car {{ car.id }}</h3>
+      <p>Car License Plate: {{ car.car_license_plate }}</p>
+      <input type="button" value="Rent Car" @click="createRoute(car.id)" />
+    </li>
+  </ul>
   <pre>
     {{ this.carStore.cars }}
   </pre>
@@ -34,6 +41,7 @@
 import Button from "@/components/input-elements/Button.vue";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { useCarStore } from "@/stores/useCarStore";
+import { supabase } from "@/lib/supabaseClient";
 
 export default {
   components: { Button },
@@ -52,6 +60,18 @@ export default {
   methods: {
     logOut() {
       this.authenticationStore.logOut();
+    },
+    async createRoute(rentCarId) {
+      try {
+        const activeUser = await this.authenticationStore.activeUser[0].id;
+        console.log(rentCarId, activeUser);
+
+        const { error } = await supabase
+          .from("routes")
+          .insert({ user_id: activeUser, car_id: rentCarId });
+      } catch (error) {
+        alert(error.message);
+      }
     },
     async showUserCar(activeUser) {
       //   const activeUserID = this.authenticationStore.activeUser[0].id;
