@@ -1,6 +1,7 @@
 <script>
 import { supabase } from "@/lib/supabaseClient";
 import CarCard from "../components/cars-components/CarCard.vue";
+import SmallCarCard from "../components/cars-components/SmallCarCard.vue";
 export default {
   data() {
     return {
@@ -12,6 +13,7 @@ export default {
   },
   components: {
     CarCard,
+    SmallCarCard,
   },
   mounted() {
     this.getBrands();
@@ -38,15 +40,7 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `id, 
-          type_id, 
-          user_id, 
-          kw, 
-          year_of_construction, 
-          max_speed, 
-          trunk_volume_in_liters, 
-          img_source, 
-          count_of_seats, 
+          `*, 
           users ( id, username, firstname, lastname, address, zipcode, city ), 
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
@@ -89,6 +83,28 @@ export default {
         >
         -->
       </CarCard>
+    </div>
+    <div class="cars-container" v-if="cars">
+      <SmallCarCard
+        v-for="car in cars"
+        :key="car.id"
+        :brandName="car.car_types.brands.brand_name"
+        :carTypeCategory="car.car_types.category"
+        :carTypeName="car.car_types.car_type_name"
+        :fuelTypeName="car.fuel_type"
+        :trunkVolume="car.trunk_volume_in_liters"
+        :carUserID="car.users.id"
+        :carUserZipCode="car.users.zipcode"
+        :carUserCity="car.users.city"
+        :imgSource="car.img_source"
+        :seatsCount="car.count_of_seats"
+      >
+        <router-link
+          class="more-info"
+          :to="{ name: 'singleUserProfile', params: { id: car.id } }"
+          >mehr Info</router-link
+        >
+      </SmallCarCard>
     </div>
 
     <div v-else><p>Loading Cars...</p></div>
