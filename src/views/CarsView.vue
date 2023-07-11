@@ -57,34 +57,6 @@ export default {
   <main>
     <h1>{{ title }}</h1>
     <div class="cars-container" v-if="cars">
-      <CarCard
-        v-for="car in cars"
-        style="--svg-width: 2.4rem"
-        :key="car.id"
-        :brandName="car.car_types.brands.brand_name"
-        :carTypeCategory="car.car_types.category"
-        :carTypeName="car.car_types.car_type_name"
-        :carUserID="car.users.id"
-        :carUserZipCode="car.users.zipcode"
-        :carUserCity="car.users.city"
-        :imgSource="car.img_source"
-        :seatsCount="car.count_of_seats"
-      >
-        <router-link
-          class="more-info"
-          :to="{ name: 'singleUserProfile', params: { id: car.id } }"
-          >mehr Info</router-link
-        >
-        <!--
-        <router-link
-          class="more-info"
-          :to="{ name: 'carOwnerView', params: { id: car.id } }"
-          >User Profil</router-link
-        >
-        -->
-      </CarCard>
-    </div>
-    <div class="cars-container" v-if="cars">
       <SmallCarCard
         v-for="car in cars"
         :key="car.id"
