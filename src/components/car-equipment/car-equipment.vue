@@ -1,5 +1,13 @@
 <template>
   <ul class="user-profile__equipment-itemlist">
+    <li
+      class="user-profile__equi-item"
+      v-for="item in equipmentItems"
+      :key="item.id"
+    >
+      {{ item.features.feature_name }}
+    </li>
+    <!--
     <li class="user-profile__equi-item">Lorems</li>
     <li class="user-profile__equi-item">Loremswdt4t</li>
     <li class="user-profile__equi-item">Loremswf</li>
@@ -12,10 +20,18 @@
     <li class="user-profile__equi-item">Loreewf</li>
     <li class="user-profile__equi-item">Loreewf</li>
     <li class="user-profile__equi-item">Loreeeewfewrrzwer</li>
+    -->
   </ul>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    equipmentItems: {
+      type: Array,
+      required: true,
+    },
+  },
+};
 </script>
 <style scoped>
 .user-profile__equipment-itemlist {
