@@ -65,6 +65,7 @@ export default {
     <div class="cars-container" v-if="cars">
       <CarCard
         v-for="car in cars"
+        style="--svg-width: 2.4rem"
         :key="car.id"
         :brandName="car.car_types.brands.brand_name"
         :carTypeCategory="car.car_types.category"
