@@ -78,9 +78,16 @@ export default {
       >
         <router-link
           class="more-info"
-          :to="{ name: 'carView', params: { id: car.id } }"
+          :to="{ name: 'singleUserProfile', params: { id: car.id } }"
           >mehr Info</router-link
         >
+        <!--
+        <router-link
+          class="more-info"
+          :to="{ name: 'carOwnerView', params: { id: car.id } }"
+          >User Profil</router-link
+        >
+        -->
       </CarCard>
     </div>
 
