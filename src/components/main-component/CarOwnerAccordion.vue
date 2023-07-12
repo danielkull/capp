@@ -97,11 +97,6 @@
             <span class="label">Kofferaum-Volumen</span>
             <span>{{ trunkVolume }} l</span>
           </p>
-          <!--
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          maxime alias ea aut placeat. Commodi a voluptatibus, repellendus quia
-          quam, eius tempora facilis nihil velit voluptate sunt ut eaque
-          -->
         </section>
       </section>
     </article>
@@ -128,9 +123,10 @@
             d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
           /></svg
       ></label>
-      <section class="car-info__list">
+      <section class="car-info__list calendar">
         <section class="placeholder">
-          ssssssssssssssssssssssssssssssssssssssssssssssss
+          <h2>Buchen Sie hier Ihren nächsten Fahrt-Termin!</h2>
+          <calendar />
         </section>
       </section>
     </article>
@@ -167,10 +163,12 @@
 <script>
 import EquipmentList from "@/components/car-equipment/car-equipment.vue";
 import MessageField from "@/components/input-elements/TextArea.vue";
+import Calendar from "@/components/Calendar.vue";
 export default {
   components: {
     EquipmentList,
     MessageField,
+    Calendar,
   },
   props: {
     featureItems: {
@@ -230,6 +228,13 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.75rem;
+  color: var(--primary-dark);
+}
+
 .car-info__wrapper {
   overflow: hidden;
   width: 100%;
