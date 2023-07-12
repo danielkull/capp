@@ -9,7 +9,7 @@ export default {
   //   radioSelector: "Test",
   //   radioWidth: "1rem",
   // },
-};
+//};
 </script>
 
 <style scoped>
