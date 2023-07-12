@@ -31,5 +31,6 @@ export default {
 nav {
   position: absolute;
   background: rgba(0, 0, 0, 0.2);
+  /* display: none; */
 }
 </style>

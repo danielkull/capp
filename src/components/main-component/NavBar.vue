@@ -82,18 +82,18 @@
     <section class="nav-bar__menu-message menue-cards"></section>
     <section class="nav-bar__menu-main menue-cards">
       <section class="menu-main__wrapper">
-        <NavMainMenue />
+        <MainMenue />
       </section>
     </section>
   </article>
 </template>
 
 <script>
-import NavMainMenue from "@/components/main-component/NavMenue.vue";
+import MainMenue from "@/components/main-component/MainMenue.vue";
 
 export default {
   components: {
-    NavMainMenue,
+    MainMenue,
   },
 };
 </script>
@@ -221,7 +221,8 @@ svg {
   background: red;
   position: fixed;
   z-index: 8;
-  margin-top: 220%;
+  /* margin-top: 220%; */
+  margin-top: 25%;
 
   transition: margin 0.5s ease-in-out;
   border-radius: 2rem;
@@ -229,17 +230,21 @@ svg {
 .nav-bar__menu-user {
   z-index: 9;
   border-radius: 0;
+  display: none;
 }
 
 .nav-bar__menu-main {
-  background: var(--surface-light);
+  background: var(--clr-bg);
   padding: var(--m-pad) var(--s-pad);
+  border-top: 2px solid var(--list-color);
 }
 .nav-bar__menu-calender {
+  display: none;
   background: olive;
 }
 .nav-bar__menu-message {
   background: dodgerblue;
+  display: none;
 }
 
 :has(#user-icon:active) .nav-bar__menu-user {
@@ -251,9 +256,9 @@ svg {
 :has(#message-icon:active) .nav-bar__menu-message {
   margin-top: 16.1%;
 }
-:has(#menue-icon:active) .nav-bar__menu-main {
+/* :has(#menue-icon:active) .nav-bar__menu-main {
   margin-top: 16.1%;
-}
+} */
 
 /*=============================================================*/
 
@@ -261,5 +266,7 @@ svg {
   width: 100%;
   height: 100%;
   margin-inline: auto;
+  background: var(--clr-bg);
+  margin-top: 0%;
 }
 </style>
