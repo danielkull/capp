@@ -204,7 +204,6 @@ import CustomerReviews from "@/components/messenger/CustomerReviews.vue";
 import IconType from "@/components/icon-type/IconType.vue";
 import fuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
-import IconSeatsCount from "@/components/icon-type/IconSeatsCount.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import SeatIconsFrame from "@/components/icon-type/SeatIcons.vue";
 import CarItemsMenue from "@/components/main-component/CarOwnerAccordion.vue";
@@ -220,7 +219,6 @@ export default {
     AverageRating,
     CustomerReviews,
     IconType,
-    IconSeatsCount,
     fuelType,
     TrunkType,
     DifferentType,
