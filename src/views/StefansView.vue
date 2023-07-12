@@ -1,13 +1,10 @@
 <template>
   <h1>Hallo Stefan, viel Spaß beim Programieren</h1>
-  <AccordionDefault />
-  <UserEvaluation />
-  <UserQuestionMenueVue />
-  <CheckBox />
-  <MainButton />
-  <RadioButton />
-  <RadioButton />
-  <RadioButton />
+  <!-- <AccordionDefault />
+  <UserEvaluation /> -->
+  <!-- <UserQuestionMenueVue /> -->
+  <!-- <CheckBox /> -->
+  <FAQ />
 </template>
 
 <script>
@@ -15,6 +12,7 @@ import CheckBox from "@/components/input-elements/CheckBox.vue";
 import RadioButton from "@/components/input-elements/RadioButton.vue";
 import UserEvaluation from "@/components/UserEvaluation.vue";
 import UserQuestionMenueVue from "@/components/UserQuestionMenue.vue";
+import FAQ from "@/components/user-menue/FaqMenue.vue";
 
 import AccordionDefault from "@/components/main-component/AccordionDefault.vue";
 
@@ -24,6 +22,7 @@ export default {
     RadioButton,
     UserQuestionMenueVue,
     AccordionDefault,
+    FAQ,
   },
 };
 </script>

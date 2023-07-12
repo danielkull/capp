@@ -9,6 +9,7 @@
       width="100%"
       height="100%"
       viewBox="0, 0, 14.173, 19.843"
+      class="seatTrue"
     >
       <g id='"_-Layer_4'>
         <g>
@@ -38,6 +39,7 @@
       width="100%"
       height="100%"
       viewBox="0, 0, 14.173, 19.843"
+      class="seatTrue"
     >
       <g id='"_-Layer_4'>
         <g>
@@ -67,6 +69,7 @@
       width="100%"
       height="100%"
       viewBox="0, 0, 14.173, 19.843"
+      :class="{ seatTrue: countOfSeats > 3 }"
     >
       <g id='"_-Layer_4'>
         <g>
@@ -96,6 +99,7 @@
       width="100%"
       height="100%"
       viewBox="0, 0, 14.173, 19.843"
+      :class="{ seatTrue: countOfSeats >= 4 }"
     >
       <g id='"_-Layer_4'>
         <g>
@@ -125,6 +129,7 @@
       width="100%"
       height="100%"
       viewBox="0, 0, 14.173, 19.843"
+      :class="{ seatTrue: countOfSeats >= 5 }"
     >
       <g id='"_-Layer_4'>
         <g>
@@ -154,6 +159,7 @@
       width="100%"
       height="100%"
       viewBox="0, 0, 14.173, 19.843"
+      :class="{ seatTrue: countOfSeats >= 6 }"
     >
       <g id='"_-Layer_4'>
         <g>
@@ -181,6 +187,7 @@
       fill="currentColor"
       class="bi bi-plus plus"
       viewBox="0 0 16 16"
+      :class="{ seatTrue: countOfSeats > 6 }"
     >
       <path
         d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
@@ -190,7 +197,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    countOfSeats: {
+      type: Number,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -202,6 +216,9 @@ export default {};
   --svg-width: 1rem;
   fill: var(--clr-seat-def);
   width: var(--svg-width);
+}
+.car-card__seat-icon-wrapper > svg.seatTrue {
+  fill: var(--seat-true);
 }
 .car-card__seat-icon-wrapper > .plus {
   fill: var(--clr-state-icons);
