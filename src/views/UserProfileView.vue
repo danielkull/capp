@@ -150,12 +150,42 @@
           </section>
           <AverageRating></AverageRating>
           <section class="customer-wrapper">
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
           </section>
         </article>
       </div>
