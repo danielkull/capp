@@ -128,6 +128,7 @@
                 :yearOfConstruction="car.year_of_construction"
                 :mileageValue="car.mileage"
                 :trunkVolume="car.trunk_volume_in_liters"
+                :userName="car.users.username"
               />
             </section>
           </section>
