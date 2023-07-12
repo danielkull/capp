@@ -125,7 +125,10 @@
       ></label>
       <section class="car-info__list calendar">
         <section class="placeholder">
-          <h2>Buchen Sie hier Ihren nächsten Fahrt-Termin!</h2>
+          <h2>
+            Buchen Sie hier Ihren nächsten Fahrt-Termin bei
+            {{ userName }}!
+          </h2>
           <calendar />
         </section>
       </section>
@@ -221,6 +224,10 @@ export default {
     },
     trunkVolume: {
       type: Number,
+      required: false,
+    },
+    userName: {
+      type: String,
       required: false,
     },
   },
