@@ -80,7 +80,7 @@
         autocomplete="on"
         required
       />
-      <p
+      <p v-if="isInValid"
         class="capp-input__invalid-input"
         :class="{ input__valid: isValid, input__invalid: isInValid }"
       >
@@ -105,7 +105,7 @@
 
       <!-- Start: Help/Question Information Text -->
       <Transition>
-        <article class="capp-input__help" v-show="showHelp">
+        <article class="capp-input__help" v-if="showHelp">
           <p>{{ giveHelperText }}</p>
         </article>
       </Transition>
@@ -128,7 +128,7 @@ export default {
       validator(value) {
         // Only input Element type specific names are allowed
         // List can be extented if needed
-        return ["text", "email", "password"].includes(value);
+        return ["text", "email", "password", "datetime-local"].includes(value);
       },
     },
     inputPlaceholder: {
@@ -155,7 +155,9 @@ export default {
           return "Bitte gib deine Mail Adresse an. Die sollte in etwa so aussehen meinKuerzel@provider.com";
         case "password":
           return "Ein sicheres Password für dich sollte mindestens 12 Zeichen haben. Benutze am besten eine Mischung aus Groß-, Kleinschreibung mit Sonderzeichen und Zahlen.";
-        default:
+        case "datetime-local":
+          return "Wähle einfach das passende Datum und die Zeit aus."
+          default:
           return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parat.";
       }
     },

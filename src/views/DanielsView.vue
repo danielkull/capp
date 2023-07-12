@@ -31,12 +31,14 @@
       <InputText :inputId="'first-password'" :inputType="'password'"
         >Password</InputText
       >
+
+      <InputText :inputType="'datetime-local'" :inputId="'start-period'">Start Date/Time</InputText>
     </form>
     <!-- Test von Pinia mit der Option API -->
-    <button @click.prevent="getUser()">Get new State</button>
+    <!-- <button @click.prevent="getUser()">Get new State</button>
     <pre>
       {{ users }}
-    </pre>
+    </pre> -->
   </div>
 </template>
 
