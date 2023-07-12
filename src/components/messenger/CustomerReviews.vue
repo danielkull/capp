@@ -5,8 +5,9 @@
         <article class="user-profile__image-small">
           <span class="user-profile__image-small__wrapper">
             <img
-              src="https://ais-cf.tvnow.de/tvnow/movie/5429467/1800x0/folge-vom-23042023.jpg"
-              alt="Das Auto des Users"
+              :src="imgSource"
+              :alt="brandName + ' ' + carTypeName + ' von ' + userName"
+              :title="brandName + ' ' + carTypeName + ' von ' + userName"
             />
           </span>
         </article>
@@ -33,6 +34,24 @@ import RatingBar from "@/components/messenger/RatingBar.vue";
 export default {
   name: "CustomerReviews",
   components: { RatingBar },
+  props: {
+    imgSource: {
+      type: String,
+      required: true,
+    },
+    userName: {
+      type: String,
+      required: true,
+    },
+    brandName: {
+      type: String,
+      required: true,
+    },
+    carTypeName: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 
