@@ -10,6 +10,7 @@ import KirstensView from "@/views/KirstensView.vue";
 import CarsView from "@/views/CarsView.vue";
 import CarView from "@/views/CarView.vue";
 import AddNewCarView from "@/views/AddNewCarView.vue";
+import TestUserManagementView from "@/views/TestUserManagementView.vue";
 
 const routes = [
   {
@@ -77,6 +78,11 @@ const routes = [
     path: "/addNewCarView",
     name: "addNewCarView",
     component: AddNewCarView,
+  },
+  {
+    path: "/testUserManagementView",
+    name: "testUserManagementView",
+    component: TestUserManagementView,
   },
 ];
 
