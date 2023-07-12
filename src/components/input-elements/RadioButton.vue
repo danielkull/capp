@@ -5,11 +5,11 @@
 
 <script>
 export default {
-  // props: {
-  //   radioSelector: "Test",
-  //   radioWidth: "1rem",
-  // },
-//};
+  props: {
+    radioSelector: "Test",
+    radioWidth: "1rem",
+  },
+};
 </script>
 
 <style scoped>
