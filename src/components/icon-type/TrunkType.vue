@@ -5,7 +5,10 @@
         ><p>{{ trunkType }}</p></span
       >
       <svg
-        v-if="trunkType === 'S'"
+        v-if="
+          trunkType === 'S' ||
+          (trunkVolumeLiters >= 170 && trunkVolumeLiters <= 250)
+        "
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -63,7 +66,10 @@
         </g>
       </svg>
       <svg
-        v-if="trunkType === 'M'"
+        v-if="
+          trunkType === 'M' ||
+          (trunkVolumeLiters >= 251 && trunkVolumeLiters <= 450)
+        "
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -121,7 +127,10 @@
         </g>
       </svg>
       <svg
-        v-if="trunkType === 'L'"
+        v-if="
+          trunkType === 'L' ||
+          (trunkVolumeLiters >= 451 && trunkVolumeLiters <= 550)
+        "
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -179,7 +188,10 @@
         </g>
       </svg>
       <svg
-        v-if="trunkType === 'XL'"
+        v-if="
+          trunkType === 'XL' ||
+          (trunkVolumeLiters >= 551 && trunkVolumeLiters <= 800)
+        "
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -237,7 +249,10 @@
         </g>
       </svg>
       <svg
-        v-if="trunkType === 'XXL'"
+        v-if="
+          trunkType === 'XXL' ||
+          (trunkVolumeLiters >= 801 && trunkVolumeLiters <= 1600)
+        "
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -304,6 +319,10 @@ export default {
   props: {
     trunkType: {
       type: String,
+      required: true,
+    },
+    trunkVolumeLiters: {
+      type: Number,
       required: true,
     },
   },
