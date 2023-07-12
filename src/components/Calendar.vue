@@ -1,6 +1,4 @@
 <template>
-  <h1>Kalender</h1>
-  <h2>Buchen Sie hier Ihren nächsten Fahrt-Termin!</h2>
   <div class="container">
     <div class="calendar">
       <!-- Calendar Header -->
@@ -74,6 +72,9 @@
             {{ n }}
           </div>
         </div>
+        <div class="button-wrapper">
+          <Button :buttonText="'Buchen'" />
+        </div>
         <div class="calendar-footer"></div>
         <div class="date-time-formate">
           <div
@@ -125,6 +126,7 @@
 </template>
 
 <script>
+import Button from "@/components/input-elements/Button.vue";
 export default {
   data() {
     return {
@@ -163,6 +165,7 @@ export default {
       isMonthListHidden: true,
     };
   },
+  components: { Button },
   created() {
     this.getCurrentDate();
   },
@@ -284,35 +287,21 @@ h2 {
   line-height: 1.5;
 }
 
-h1 {
-  font-size: var(--l-font);
-  color: var(--primary-dark);
-}
-
-h2 {
-  font-size: calc(var(--m-font) * 1.15);
-  margin-bottom: 2rem;
-  color: var(--secondary-dark);
-}
-
-body {
-  padding-inline: 2.5rem;
-}
-
 .container {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   position: relative;
-  top: 10%;
+  top: 3.5%;
   right: 0;
   width: 100%;
 }
 
 .calendar {
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   height: 610px;
-  padding: 30px 50px 0px 50px;
+  padding: 2rem 1.25rem 0rem 1.25rem;
   background-color: whitesmoke;
   border-radius: 25px;
   overflow: hidden;
@@ -322,7 +311,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.5rem 0.25rem;
   background-color: var(--primary-mid);
   color: var(--secondary-light);
   border-radius: 1rem;
@@ -360,8 +349,6 @@ body {
 }
 
 .calendar-days > div {
-  _width: 35px;
-  _height: 30px;
   aspect-ratio: 35 / 30;
   display: flex;
   justify-content: center;
@@ -386,9 +373,17 @@ body {
 .year-picker,
 .month-picker,
 .day-picker {
-  width: 32%;
   display: flex;
   justify-content: space-between;
+}
+
+.year-picker,
+.day-picker {
+  width: 30%;
+}
+
+.month-picker {
+  width: 40%;
 }
 
 .year-change,
@@ -480,6 +475,11 @@ body {
   animation: to-right 1s forwards;
   visibility: none;
   pointer-events: none;
+}
+
+.button-wrapper {
+  position: absolute;
+  top: 62.5%;
 }
 
 .date-time-formate {
@@ -603,8 +603,17 @@ body {
   }
 }
 
-/* 
-https://www.youtube.com/watch?v=aremw7qlJYk 
-17:36
-*/
+@media screen and (min-width: 400px) {
+  .button-wrapper {
+    position: absolute;
+    top: 65%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .button-wrapper {
+    position: absolute;
+    top: 75%;
+  }
+}
 </style>
