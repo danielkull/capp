@@ -498,7 +498,7 @@ h2 {
   font-weight: 500;
   text-transform: uppercase;
   color: var(--primary-dark);
-  padding-right: 5%;
+  padding-right: 3.5%;
   border-right: 3px solid var(--primary-light);
   position: absolute;
   left: -1rem;
@@ -515,6 +515,10 @@ h2 {
 
 .time-formate {
   font-size: 1.25rem;
+}
+
+.date-formate {
+  font-size: 0.9rem;
 }
 
 .day-text-formate.hideTime,
@@ -607,6 +611,14 @@ h2 {
   .button-wrapper {
     position: absolute;
     top: 65%;
+  }
+
+  .date-formate {
+    font-size: 1rem;
+  }
+
+  .day-text-formate {
+    padding-right: 5%;
   }
 }
 
