@@ -32,7 +32,12 @@
         >Password</InputText
       >
 
-      <InputText :inputType="'datetime-local'" :inputId="'start-period'">Start Date/Time</InputText>
+      <InputText
+        v-model:inputData="test"
+        :inputType="'datetime-local'"
+        :inputId="'start-period'"
+        >Start Date/Time</InputText
+      >
     </form>
     <!-- Test von Pinia mit der Option API -->
     <!-- <button @click.prevent="getUser()">Get new State</button>
@@ -40,6 +45,7 @@
       {{ users }}
     </pre> -->
   </div>
+  <p>{{ test }}</p>
 </template>
 
 <script>
@@ -50,6 +56,11 @@ import { userStateStore } from "@/stores/userStateStorage";
 import { mapState, mapActions } from "pinia";
 
 export default {
+  data() {
+    return {
+      test: null,
+    };
+  },
   components: { InputText },
   // Die Actions von Pina werden mit den methods ausgeführt in der Option API
   methods: {
