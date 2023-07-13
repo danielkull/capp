@@ -55,6 +55,11 @@ const routes = [
     component: UserProfileView,
   },
   {
+    path: "/UserProfileView/:id",
+    name: "singleUserProfile",
+    component: UserProfileView,
+  },
+  {
     path: "/KirstensView",
     name: "kirstensView",
     component: KirstensView,

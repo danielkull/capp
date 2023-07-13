@@ -90,6 +90,7 @@
 
 <script>
 import NavMainMenue from "@/components/main-component/NavMenue.vue";
+
 export default {
   components: {
     NavMainMenue,

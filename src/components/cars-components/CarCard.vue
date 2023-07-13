@@ -19,7 +19,7 @@
       <p>
         <span class="label">Sitze</span>
         <span>
-          <IconSeatsCount :countOfSeats="seatsCount" />
+          <SeatIconsFrame :countOfSeats="seatsCount" />
         </span>
       </p>
       <p>
@@ -34,13 +34,13 @@
 
 <script>
 import IconType from "@/components/icon-type/IconType.vue";
-import IconSeatsCount from "@/components/icon-type/IconSeatsCount.vue";
+import SeatIconsFrame from "@/components/icon-type/SeatIcons.vue";
 
 export default {
   name: "CarCard",
   components: {
     IconType,
-    IconSeatsCount,
+    SeatIconsFrame,
   },
   props: {
     imgSource: {

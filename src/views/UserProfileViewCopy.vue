@@ -1,39 +1,21 @@
 <template>
-  <body v-if="car">
+  <body>
     <main>
       <div class="user-profile__frame" id="user-profile-frame">
         <article class="user-profile__wrapper">
           <span class="user-profile__image-wrapper">
             <span class="image-filter"></span>
             <img
-              :src="car.img_source"
-              :alt="
-                car.car_types.brands.brand_name +
-                ' ' +
-                car.car_types.car_type_name
-              "
-              :title="
-                car.car_types.brands.brand_name +
-                ' ' +
-                car.car_types.car_type_name
-              "
+              src="https://ais-cf.tvnow.de/tvnow/movie/5429467/1800x0/folge-vom-23042023.jpg"
+              alt="Das Auto des Users"
             />
           </span>
           <section class="user-profile__information-wrapper">
             <article class="user-profile__image-small">
               <span class="user-profile__image-small__wrapper">
                 <img
-                  :src="car.img_source"
-                  :alt="
-                    car.car_types.brands.brand_name +
-                    ' ' +
-                    car.car_types.car_type_name
-                  "
-                  :title="
-                    car.car_types.brands.brand_name +
-                    ' ' +
-                    car.car_types.car_type_name
-                  "
+                  src="https://ais-cf.tvnow.de/tvnow/movie/5429467/1800x0/folge-vom-23042023.jpg"
+                  alt="Das Auto des Users"
                 />
               </span>
             </article>
@@ -55,10 +37,10 @@
                       />
                     </svg>
                   </span>
-                  <p class="user-info__city-plz">{{ car.users.plz }}</p>
+                  <p class="user-info__city-plz">01097</p>
                   <p>/</p>
-                  <p class="user-info__city-name">{{ car.users.city }},</p>
-                  <p class="user-info__city-disrict">{{ car.users.address }}</p>
+                  <p class="user-info__city-name">Dresden,</p>
+                  <p class="user-info__city-disrict">Neustadt</p>
                 </span>
                 <article class="user-info__favorite-choice">
                   <input
@@ -80,9 +62,9 @@
                 </article>
               </div>
               <span class="user-info__header"
-                ><h2>{{ car.users.username }}</h2>
+                ><h2>Username</h2>
                 <article class="user-info__seat-icons">
-                  <SeatIconsFrame :countOfSeats="car.count_of_seats" /></article
+                  <SeatIconsFrame /></article
               ></span>
             </section>
             <!----------------------------------------------------------------->
@@ -92,15 +74,9 @@
                   class="car-card__icon-wrapper"
                   style="--svg-width: 2.4rem"
                 >
-                  <IconType
-                    :carType="car.car_types.category"
-                    class="icon"
-                  ></IconType>
-                  <fuelType :fuelType="car.fuel_type" class="icon"></fuelType>
-                  <TrunkType
-                    :trunkVolumeLiters="car.trunk_volume_in_liters"
-                    class="icon"
-                  ></TrunkType>
+                  <IconType :carType="'Kleinwagen'" class="icon"></IconType>
+                  <FuelType :fuelType="'Gas'" class="icon"></FuelType>
+                  <TrunkType :trunkType="'S'" class="icon"></TrunkType>
                   <DifferentType
                     :differentType="'Isofix'"
                     class="icon"
@@ -114,22 +90,7 @@
             </section>
             <!----------------------------------------------------------------->
             <section class="user-profile__equipment-wrapper">
-              <CarItemsMenue
-                :featureItems="car.cars_features"
-                :brandName="car.car_types.brands.brand_name"
-                :carModel="car.car_types.car_type_name"
-                :licensePlate="car.car_license_plate"
-                :fuelConsumePerKm="car.fuel_consume_per_km"
-                :gear="car.gear"
-                :insurance="car.insurance_type"
-                :insuranceNumber="car.insurance_no"
-                :kwValue="car.kw"
-                :maxSpeed="car.max_speed"
-                :yearOfConstruction="car.year_of_construction"
-                :mileageValue="car.mileage"
-                :trunkVolume="car.trunk_volume_in_liters"
-                :userName="car.users.username"
-              />
+              <CarItemsMenue />
             </section>
           </section>
         </article>
@@ -143,7 +104,7 @@
               class="commentar-section__btn"
             />
             <label for="commentar-section-check">
-              Waren sie mit <span>{{ car.users.username }}</span> zufrieden ?
+              Waren sie mit <span>USERNAME</span> zufrieden ?
             </label>
             <section class="commentar-section__rating-bar">
               <RatingBar :ratingGroup="'userChoice'"></RatingBar>
@@ -151,97 +112,41 @@
           </section>
           <AverageRating></AverageRating>
           <section class="customer-wrapper">
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
+            <CustomerReviews></CustomerReviews>
           </section>
         </article>
       </div>
     </main>
   </body>
-  <div v-else>
-    <h1>Loading Car Nr. {{ carID }}</h1>
-  </div>
 </template>
 
 <script>
-import { supabase } from "@/lib/supabaseClient";
 import RatingBar from "@/components/messenger/RatingBar.vue";
 import AverageRating from "@/components/messenger/AverageRating.vue";
 import CustomerReviews from "@/components/messenger/CustomerReviews.vue";
 import IconType from "@/components/icon-type/IconType.vue";
-import fuelType from "@/components/icon-type/fuelType.vue";
+import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import SeatIconsFrame from "@/components/icon-type/SeatIcons.vue";
 import CarItemsMenue from "@/components/main-component/CarOwnerAccordion.vue";
+
 export default {
-  data() {
-    return {
-      carID: this.$route.params.id,
-      car: null,
-    };
-  },
   components: {
     RatingBar,
     AverageRating,
     CustomerReviews,
     IconType,
-    fuelType,
+    FuelType,
     TrunkType,
     DifferentType,
     SeatIconsFrame,
     CarItemsMenue,
-  },
-  mounted() {
-    this.getCar();
-  },
-  methods: {
-    async getCar() {
-      const { data } = await supabase
-        .from("cars")
-        .select(
-          `*, users ( id, username, firstname, lastname, address, zipcode, city ),
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
-          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
-        )
-        .eq("id", this.carID);
-      this.car = data[0];
-      console.log(this.car);
-    },
   },
 };
 </script>
