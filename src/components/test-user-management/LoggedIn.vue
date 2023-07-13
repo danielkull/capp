@@ -1,3 +1,6 @@
+<!-- This "LoggedIn.vue" is part of "TestUserManagementView.vue" and only for test purpose, -->
+<!-- before building it in the main part of the app -->
+
 <template>
   <h1 class="title">You are logged in</h1>
   <div>

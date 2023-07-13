@@ -14,8 +14,6 @@ export const useCarStore = defineStore("car", {
 
         if (error && status) throw error;
 
-        console.log("Cars Data: ", data);
-
         if (data) {
           this.cars = data;
         }
@@ -28,7 +26,6 @@ export const useCarStore = defineStore("car", {
         let { data, error } = await supabase.from("cars").select().eq("user_id", activeUser);
 
         if (error) throw error;
-        console.log("User Car Data: ", data);
         if (data) {
           this.userCar = data;
         }
