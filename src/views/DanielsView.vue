@@ -42,14 +42,33 @@
         v-model:selectedData="purposeSelected"
         :selectId="'select-purpose'"
         :givenData="purposeData"
-      ></SelectDropDown>
+        :defaultText="'Klicke auf mich und wähle deinen Grund aus.'"
+        :isRequired="true"
+      >
+        Dein Grund fürs Ausleihen</SelectDropDown
+      >
       {{ purposeSelected }}
+      <pre>
+        {{ categoryData }}
+      </pre>
+      <SelectDropDown
+        v-model:selectedData="selectedData"
+        :selectId="'select-category'"
+        :givenData="categoryData"
+        :defaultText="'Wähle deine Kategorie'"
+      ></SelectDropDown>
+
+      {{ selectedData }}
+      <TextArea
+        v-model:inputData="textMsg"
+        id="my-test-text"
+        name="my-test-text"
+        placeholder="Bitte schreiben..."
+        cols="5"
+        rows="5"
+      ></TextArea>
+      {{ textMsg }}
     </form>
-    <!-- Test von Pinia mit der Option API -->
-    <!-- <button @click.prevent="getUser()">Get new State</button>
-    <pre>
-      {{ users }}
-    </pre> -->
   </div>
   <p>{{ test }}</p>
 </template>
@@ -57,6 +76,7 @@
 <script>
 import InputText from "@/components/input-elements/InputText.vue";
 import SelectDropDown from "@/components/input-elements/SelectDropDown.vue";
+import TextArea from "@/components/input-elements/TextArea.vue";
 import { supabase } from "@/lib/supabaseClient.js";
 // Holt uns den passenden Store
 import { userStateStore } from "@/stores/userStateStorage";
@@ -69,9 +89,12 @@ export default {
       test: null,
       purposeSelected: null,
       purposeData: null,
+      categoryData: null,
+      selectedData: null,
+      textMsg: null,
     };
   },
-  components: { InputText, SelectDropDown },
+  components: { InputText, SelectDropDown, TextArea },
   // Die Actions von Pina werden mit den methods ausgeführt in der Option API
   methods: {
     ...mapActions(userStateStore, { getUser: "getUser" }),
@@ -81,8 +104,9 @@ export default {
   computed: {
     ...mapState(userStateStore, ["users"]),
   },
-  mounted() {
+  created() {
     this.getPurposes();
+    this.getCategorys();
   },
   methods: {
     async getPurposes() {
@@ -91,6 +115,19 @@ export default {
         if (error) throw error;
         if (data) {
           this.purposeData = data;
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    },
+    async getCategorys() {
+      try {
+        const { data, error } = await supabase.rpc("get_category");
+
+        if (error) throw error;
+
+        if (data) {
+          this.categoryData = data;
         }
       } catch (error) {
         alert(error.message);
