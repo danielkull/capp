@@ -38,6 +38,12 @@
         :inputId="'start-period'"
         >Start Date/Time</InputText
       >
+      <SelectDropDown
+        v-model:selectedData="purposeSelected"
+        :selectId="'select-purpose'"
+        :givenData="purposeData"
+      ></SelectDropDown>
+      {{ purposeSelected }}
     </form>
     <!-- Test von Pinia mit der Option API -->
     <!-- <button @click.prevent="getUser()">Get new State</button>
@@ -50,6 +56,8 @@
 
 <script>
 import InputText from "@/components/input-elements/InputText.vue";
+import SelectDropDown from "@/components/input-elements/SelectDropDown.vue";
+import { supabase } from "@/lib/supabaseClient.js";
 // Holt uns den passenden Store
 import { userStateStore } from "@/stores/userStateStorage";
 // mapState und mapActions sind teile der Pinia Options API
@@ -59,9 +67,11 @@ export default {
   data() {
     return {
       test: null,
+      purposeSelected: null,
+      purposeData: null,
     };
   },
-  components: { InputText },
+  components: { InputText, SelectDropDown },
   // Die Actions von Pina werden mit den methods ausgeführt in der Option API
   methods: {
     ...mapActions(userStateStore, { getUser: "getUser" }),
@@ -70,6 +80,22 @@ export default {
   // Kann auch anders genutzt werden z.B. data()...
   computed: {
     ...mapState(userStateStore, ["users"]),
+  },
+  mounted() {
+    this.getPurposes();
+  },
+  methods: {
+    async getPurposes() {
+      try {
+        const { data, error } = await supabase.from("purposes").select();
+        if (error) throw error;
+        if (data) {
+          this.purposeData = data;
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    },
   },
 };
 </script>
