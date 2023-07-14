@@ -1,11 +1,13 @@
 <template>
   <div class="text-wrapper">
     <textarea
-      name=""
-      id=""
-      cols="30"
-      rows="10"
-      placeholder="Sende eine Nachricht ..."
+      :name="name"
+      :id="id"
+      :cols="cols"
+      :rows="rows"
+      :placeholder="placeholder"
+      :value="inputData"
+      @input="$emit('update:inputData', $event.target.value)"
     ></textarea>
     <Messagebutton class="send-button" />
   </div>
@@ -14,6 +16,32 @@
 <script>
 import Messagebutton from "@/components/input-elements/Button.vue";
 export default {
+  name: "TextArea",
+  emits: ["update:inputData"],
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+    },
+    placeholder: {
+      type: String,
+      default: "Sende eine Nachricht ...",
+    },
+    cols: {
+      type: String,
+      default: "30",
+    },
+    rows: {
+      type: String,
+      default: "10",
+    },
+    inputData: {
+      type: String,
+    },
+  },
   components: {
     Messagebutton,
   },

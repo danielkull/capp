@@ -50,8 +50,8 @@ export default {
   color: var(--primary-light);
 }
 
-.disabled {
-  pointer-events: none;
+.Log-btn:disabled {
+  pointer-events: not-allowed;
   color: var(--font-disabled);
   border-color: var(--font-disabled);
 }
