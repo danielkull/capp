@@ -1,7 +1,7 @@
 <template>
   <nav class="nav-bar__wrapper">
     <input
-      type="button"
+      type="checkbox"
       name="nav-menue"
       id="user-icon"
       class="nav-bar__btn-icons"
@@ -20,7 +20,7 @@
         /></svg
     ></label>
     <input
-      type="button"
+      type="checkbox"
       name="nav-menue"
       id="calendar-icon"
       class="nav-bar__btn-icons"
@@ -42,7 +42,7 @@
         /></svg
     ></label>
     <input
-      type="button"
+      type="checkbox"
       name="nav-menue"
       id="message-icon"
       class="nav-bar__btn-icons"
@@ -64,7 +64,7 @@
         /></svg
     ></label>
     <input
-      type="button"
+      type="checkbox"
       name="nav-menue"
       id="menue-icon"
       class="nav-bar__btn-icons"
@@ -82,18 +82,18 @@
     <section class="nav-bar__menu-message menue-cards"></section>
     <section class="nav-bar__menu-main menue-cards">
       <section class="menu-main__wrapper">
-        <NavMainMenue />
+        <MainMenue />
       </section>
     </section>
   </article>
 </template>
 
 <script>
-import NavMainMenue from "@/components/main-component/NavMenue.vue";
+import MainMenue from "@/components/main-component/MainMenue.vue";
 
 export default {
   components: {
-    NavMainMenue,
+    MainMenue,
   },
 };
 </script>
@@ -103,6 +103,9 @@ export default {
 /*    Icons gedrückt halten       */
 
 /*==========================================================*/
+/* section:target {
+  translate: 0% 0;
+} */
 .nav-bar__wrapper {
   position: fixed;
   display: flex;
@@ -148,10 +151,10 @@ svg {
 
 /*========== Animate icon backgound =================*/
 
-#user-icon:active + label,
-#message-icon:active + label,
-#calendar-icon:active + label,
-#menue-icon:active + label {
+#user-icon:checked + label,
+#message-icon:checked + label,
+#calendar-icon:checked + label,
+#menue-icon:checked + label {
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
     inset -5px -5px 10px rgba(255, 255, 255, 0.2);
 }
@@ -175,16 +178,16 @@ svg {
 /*===================================================*/
 /*========== Color checked icon svg =================*/
 
-#user-icon:active + label svg,
-#message-icon:active + label svg,
-#calendar-icon:active + label svg {
+#user-icon:checked + label svg,
+#message-icon:checked + label svg,
+#calendar-icon:checked + label svg {
   fill: var(--nav-icon-act);
 }
-#menue-icon:active + label .menue-strip2 {
+#menue-icon:checked + label .menue-strip2 {
   width: 100%;
   background: var(--nav-icon-act);
 }
-#menue-icon:active + label .menue-strip1 {
+#menue-icon:checked + label .menue-strip1 {
   width: 70%;
   background: var(--nav-icon-act);
 }
@@ -222,6 +225,7 @@ svg {
   position: fixed;
   z-index: 8;
   margin-top: 220%;
+  margin-top: 25%;
 
   transition: margin 0.5s ease-in-out;
   border-radius: 2rem;
@@ -229,29 +233,36 @@ svg {
 .nav-bar__menu-user {
   z-index: 9;
   border-radius: 0;
+
+  margin-top: 220%;
 }
 
 .nav-bar__menu-main {
-  background: var(--surface-light);
+  background: var(--menue-bg);
   padding: var(--m-pad) var(--s-pad);
+  border-top: 2px solid var(--list-color);
+  margin-top: 220%;
 }
 .nav-bar__menu-calender {
   background: olive;
+  margin-top: 220%;
 }
 .nav-bar__menu-message {
   background: dodgerblue;
+
+  margin-top: 220%;
 }
 
-:has(#user-icon:active) .nav-bar__menu-user {
+:has(#user-icon:checked) .nav-bar__menu-user {
   margin-top: 0%;
 }
-:has(#calendar-icon:active) .nav-bar__menu-calender {
+:has(#calendar-icon:checked) .nav-bar__menu-calender {
   margin-top: 16.1%;
 }
-:has(#message-icon:active) .nav-bar__menu-message {
+:has(#message-icon:checked) .nav-bar__menu-message {
   margin-top: 16.1%;
 }
-:has(#menue-icon:active) .nav-bar__menu-main {
+:has(#menue-icon:checked) .nav-bar__menu-main {
   margin-top: 16.1%;
 }
 
@@ -261,5 +272,7 @@ svg {
   width: 100%;
   height: 100%;
   margin-inline: auto;
+  background: var(--surface-light);
+  /* margin-top: 0%; */
 }
 </style>

@@ -107,6 +107,7 @@
   --icon-margin: 0.1rem;
   --margin-default: 1rem;
   --padding-default: 1rem;
+  --s-marg: var(--margin-default);
   --s-pad: var(--padding-default);
   --m-pad: calc(var(--padding-default) * 2);
 
