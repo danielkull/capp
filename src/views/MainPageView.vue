@@ -33,6 +33,7 @@
         <SmallCarCard />
       </section>
     </main>
+    <ExpandMenue />
     <footer>
       <NavBarMenue />
     </footer>
@@ -47,6 +48,7 @@ import IconType from "@/components/icon-type/IconType.vue";
 import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
+import ExpandMenue from "@/components/main-component/ExpandMenueFrame.vue";
 
 export default {
   components: {
@@ -57,11 +59,15 @@ export default {
     FuelType,
     TrunkType,
     DifferentType,
+    ExpandMenue,
   },
 };
 </script>
 
 <style scoped>
+/* section:target {
+  translate: 10% 0;
+} */
 :root {
   height: 100vh;
   width: 100vw;
@@ -136,7 +142,7 @@ main::-webkit-scrollbar {
   width: 100%;
   height: 30%;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
-  box-shadow: inset 0px 15px 15px rgba(0, 0, 0, 0.4);
+  /* box-shadow: inset 0px 15px 15px rgba(0, 0, 0, 0.4); */
 }
 .mainpage__card-page {
   width: 90%;

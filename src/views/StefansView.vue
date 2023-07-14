@@ -1,10 +1,10 @@
 <template>
-  <h1>Hallo Stefan, viel Spaß beim Programieren</h1>
   <!-- <AccordionDefault />
   <UserEvaluation /> -->
   <!-- <UserQuestionMenueVue /> -->
   <!-- <CheckBox /> -->
-  <FAQ />
+  <!-- <FAQ /> -->
+  <MainMenue />
 </template>
 
 <script>
@@ -15,6 +15,7 @@ import UserQuestionMenueVue from "@/components/UserQuestionMenue.vue";
 import FAQ from "@/components/user-menue/FaqMenue.vue";
 
 import AccordionDefault from "@/components/main-component/AccordionDefault.vue";
+import MainMenue from "@/components/main-component/MainMenue.vue";
 
 export default {
   components: {
@@ -23,6 +24,7 @@ export default {
     UserQuestionMenueVue,
     AccordionDefault,
     FAQ,
+    MainMenue,
   },
 };
 </script>

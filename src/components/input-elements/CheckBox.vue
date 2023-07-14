@@ -20,11 +20,13 @@ export default {};
   display: block;
   position: relative;
   width: clamp(3.5rem, 10vw, 4rem);
+
   height: calc(var(--after-heigth) + 0.3rem);
   border-radius: var(--m-brd-rad);
-  margin-block: var(--margin-default);
+  /* margin-block: var(--margin-default); */
   background: var(--check-default);
   transition: background-color 0.2s ease-out;
+  /* padding-block: calc(var(--after-heigth) - 0.7rem); */
 }
 .capp-btn__default::after {
   content: "";
@@ -33,7 +35,7 @@ export default {};
   top: 50%;
   left: 0%;
   translate: 10% -50%;
-  width: var(--after-heigth);
+  height: var(--after-heigth);
   aspect-ratio: 1;
   border-radius: var(--circle-radius);
   background: var(--clr-after-btn);
