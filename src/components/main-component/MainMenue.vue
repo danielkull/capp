@@ -398,7 +398,8 @@
       <section class="main-menue__list">
         <ul class="layer-1__list">
           <li>
-            Das Team<span class="icon-holder"
+            <a href="#test-test">Das team</a>
+            <span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -511,15 +512,24 @@
 
 <script>
 import CheckBox from "@/components/input-elements/CheckBox.vue";
+import ExpandMenue from "@/components/main-component/ExpandMenueFrame.vue";
 export default {
-  components: { CheckBox },
+  components: { CheckBox, ExpandMenue },
 };
 </script>
 
 <style scoped>
+/* section:target {
+  translate: 0% 0;
+
+  display: block;
+} */
+
+/*=======================================*/
 .main-menue__wrapper {
   width: 100%;
   height: 70vh;
+  margin-top: 2rem;
 
   overflow: scroll;
 }
@@ -545,12 +555,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 0.5rem;
+  padding-block: 0.9rem;
   padding-inline: 1rem;
   font-size: var(--header-question-list);
   color: var(--main-font-color-light);
-  background: var(--clr-bg);
-  border-bottom: 1px solid var(--clr-sur-l);
+  background: var(--menue-bg);
+  border-bottom: 1px solid var(--list-color);
 }
 .under-menue__layer-1 {
   --header-question-list: clamp(1rem, 2vw, 1.5rem);
@@ -563,7 +573,7 @@ export default {
   padding-inline: 1rem;
   font-size: var(--header-question-list);
   color: var(--main-font-color-light);
-  background: var(--clr-sur-d);
+  background: var(--menue-bg);
 }
 .under-menue__layer-2 {
   --header-question-list: clamp(1rem, 2vw, 1.5rem);
@@ -599,7 +609,7 @@ export default {
 .main-menue__list {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s ease-in-out;
+  transition: grid-template-rows 0.2s ease-in-out;
 }
 
 .layer-1__list > li,
@@ -644,9 +654,10 @@ export default {
 .icon-holder {
   display: grid;
   place-content: center;
-  width: 2rem;
+  width: 1.7rem;
   aspect-ratio: 1;
 }
+
 /*=======================================================*/
 /*            Icon - Animation                           */
 /*=======================================================*/
@@ -657,7 +668,9 @@ label :is(svg) {
 .question-list__btn:checked ~ label :is(svg) {
   fill: var(--list-actv);
 }
+
 /*=======================================================*/
+
 @media screen and (min-width: 900px) {
   .question-list__item:hover,
   .main-menue__list-header:hover {

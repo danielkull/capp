@@ -77,6 +77,7 @@
   /*=========menue===========*/
   --menue-icon-def: var(--main-font-color-light);
   --menue-icon-act: var(--clr-prime-m);
+  --menue-bg: var(--surface-light);
 
   /*============== Neue Ende =======*/
   --color: 140, 45%;
@@ -205,6 +206,9 @@
   --menue-icon-act: var(--primary-middle);
   /*============tetfield================*/
   --clr-txt-bg: var(--clr-prime-l);
+  /*=========menue===========*/
+
+  --menue-bg: var(--clr-bg);
 
   /*===== Neue Ende =====*/
   /*green*/
