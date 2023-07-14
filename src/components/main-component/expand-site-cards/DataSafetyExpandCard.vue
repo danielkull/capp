@@ -1,5 +1,5 @@
 <template>
-  <section class="menue-expand__outer-wrapper" id="message-settings">
+  <section class="menue-expand__outer-wrapper" id="data-sec">
     <header>
       <a href="#" class="back-btn">
         <svg
@@ -12,12 +12,12 @@
             d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
           /></svg
       ></a>
-      <h2 class="menue-expand__site-header">Benachrichtigungen</h2>
+      <h2 class="menue-expand__site-header">Datenschutz</h2>
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
         <!-------------------------------------------------------------------->
-        <MessageOptions />
+
         <!----------Hier COntent--------->
 
         <!-------------------------------------------------------------------->
@@ -27,13 +27,9 @@
 </template>
 
 <script>
-import MessageOptions from "@/components/main-component/expand-menu-components/MessageOptionMenue.vue";
-export default {
-  components: {
-    MessageOptions,
-  },
-};
+export default {};
 </script>
+
 <style>
 section:target {
   translate: 0% 0;
@@ -67,7 +63,7 @@ section:target {
   background: var(--menue-bg);
   margin-top: -1vh;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
-  box-shadow: inset 0 10px 20px rgb(0, 0, 0, 0.6);
+  box-shadow: inset 0 10px 20px var(--box-shd);
   border-top: 1px solid var(--brd-top);
 }
 .menue-expand__outer-wrapper header {

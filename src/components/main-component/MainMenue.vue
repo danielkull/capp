@@ -24,7 +24,8 @@
       <section class="main-menue__list">
         <ul class="layer-1__list">
           <li>
-            Nutzerkonto<span class="icon-holder"
+            <a href="#user-data">Nutzerkonto</a
+            ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -42,7 +43,8 @@
             ></span>
           </li>
           <li>
-            Anngaben zum Fahrzeug<span class="icon-holder"
+            <a href="#car-data">Angaben zum fahrzeug</a
+            ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -327,7 +329,7 @@
       <section class="main-menue__list">
         <ul class="layer-1__list">
           <li>
-            <a href="#test-test">Das team</a>
+            <a href="#team">Das Team</a>
             <span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -346,7 +348,8 @@
             ></span>
           </li>
           <li>
-            Datenschutz<span class="icon-holder"
+            <a href="#data-sec">Datenschutz</a
+            ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -364,7 +367,8 @@
             ></span>
           </li>
           <li>
-            FAQ Verleiher<span class="icon-holder"
+            <a href="#faq-client">Ausleiher</a
+            ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -382,7 +386,8 @@
             ></span>
           </li>
           <li>
-            FAQ Ausleiher<span class="icon-holder"
+            <a href="#faq-owner">FAQ Verleiher</a
+            ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -397,7 +402,8 @@
             ></span>
           </li>
           <li>
-            Nutzungsbedingungen<span class="icon-holder"
+            <a href="#use-rule">Nutzungsbedingungen</a
+            ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -413,7 +419,8 @@
             ></span>
           </li>
           <li>
-            Impressum<span class="icon-holder"
+            <a href="#impressum">Impressum</a
+            ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
