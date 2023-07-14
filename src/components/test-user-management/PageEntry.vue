@@ -1,3 +1,6 @@
+<!-- This "PageEntry.vue" is part of "TestUserManagementView.vue" and only for test purpose, -->
+<!-- before building it in the main part of the app -->
+
 <template>
   <!-- Sign In Formular -->
   <h2 class="subtitle">Sign In</h2>
@@ -90,12 +93,15 @@ export default {
         const duplicateMail = responsMail.data.length;
         // If Username/Mail exist, give feedback
         if (duplicateUsername & duplicateMail) {
+          // Attention: Replace this console.log later with msg for the user of the app
           console.log(
             "Leider gibt es bereits den Usernamen, sowie die Mailadresse"
           );
         } else if (duplicateUsername) {
+          // Attention: Replace this console.log later with msg for the user of the app
           console.log("Leider gibt es bereits den Usernamen");
         } else if (duplicateMail) {
+          // Attention: Replace this console.log later with msg for the user of the app
           console.log("Leider gibt es bereits die Mailadresse");
           // If They don't exist, sign Up this new user
         } else if (!duplicateUsername & !duplicateMail) {
@@ -104,9 +110,7 @@ export default {
             password: this.password,
           });
           if (error) throw error;
-          // console.log(`Check this out: ${data} and ${error}`);
-          // console.log(data);
-          // Also create a new table row for them
+          // Also create a new table row for them.
           const responseInsertNewRow = await supabase.from("users").insert({
             username: this.username,
             email: this.toLowerCase(this.email),
@@ -114,7 +118,7 @@ export default {
           if (responseInsertNewRow.error) throw error;
         }
       } catch (error) {
-        // Normaly the if cases should catch anything bevor this alert ocurs.
+        // Normaly the if cases should catch anything bevor this alert occurs.
         if (error instanceof Error) {
           alert(error.message);
         }
@@ -122,26 +126,21 @@ export default {
         this.loading = false;
       }
     },
-    async handleLogIn () {
+    async handleLogIn() {
       try {
         this.loading = true;
         const { data, error } = await supabase.auth.signInWithPassword({
           email: this.email,
           password: this.password,
         });
-        /*         if (error) throw error;
-        console.log(`Log in/Check this out: ${error}`);
-        console.log(data); */
       } catch (error) {
         if (error instanceof Error) {
-          // alert(error.message);
-          console.log(error);
-          console.log(error.message);
+          alert(error.message);
         }
       } finally {
         this.loading = false;
       }
-    }
+    },
   },
 };
 </script>

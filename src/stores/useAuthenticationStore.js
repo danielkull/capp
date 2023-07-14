@@ -11,15 +11,11 @@ export const useAuthenticationStore = defineStore("authentication", {
     getSession() {
       supabase.auth.getSession().then(({ data }) => {
         this.session.value = data.session;
-        console.log("Data: ", data);
-        console.log("Session: ", this.session.value);
       });
     },
     onAuthStateChange() {
       supabase.auth.onAuthStateChange((event, session) => {
         this.session.value = session;
-        console.log("AuthState Session: ", session);
-        console.log("AuthState event: ", event);
       });
     },
     async logOut() {
@@ -42,8 +38,6 @@ export const useAuthenticationStore = defineStore("authentication", {
           .eq("email", user.email);
 
         if (error && status) throw error;
-
-        console.log("User Data: ", data);
 
         if (data) {
           this.activeUser = data;

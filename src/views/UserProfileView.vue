@@ -1,21 +1,39 @@
 <template>
-  <body>
+  <body v-if="car">
     <main>
       <div class="user-profile__frame" id="user-profile-frame">
         <article class="user-profile__wrapper">
           <span class="user-profile__image-wrapper">
             <span class="image-filter"></span>
             <img
-              src="https://ais-cf.tvnow.de/tvnow/movie/5429467/1800x0/folge-vom-23042023.jpg"
-              alt="Das Auto des Users"
+              :src="car.img_source"
+              :alt="
+                car.car_types.brands.brand_name +
+                ' ' +
+                car.car_types.car_type_name
+              "
+              :title="
+                car.car_types.brands.brand_name +
+                ' ' +
+                car.car_types.car_type_name
+              "
             />
           </span>
           <section class="user-profile__information-wrapper">
             <article class="user-profile__image-small">
               <span class="user-profile__image-small__wrapper">
                 <img
-                  src="https://ais-cf.tvnow.de/tvnow/movie/5429467/1800x0/folge-vom-23042023.jpg"
-                  alt="Das Auto des Users"
+                  :src="car.img_source"
+                  :alt="
+                    car.car_types.brands.brand_name +
+                    ' ' +
+                    car.car_types.car_type_name
+                  "
+                  :title="
+                    car.car_types.brands.brand_name +
+                    ' ' +
+                    car.car_types.car_type_name
+                  "
                 />
               </span>
             </article>
@@ -37,10 +55,10 @@
                       />
                     </svg>
                   </span>
-                  <p class="user-info__city-plz">01097</p>
+                  <p class="user-info__city-plz">{{ car.users.plz }}</p>
                   <p>/</p>
-                  <p class="user-info__city-name">Dresden,</p>
-                  <p class="user-info__city-disrict">Neustadt</p>
+                  <p class="user-info__city-name">{{ car.users.city }},</p>
+                  <p class="user-info__city-disrict">{{ car.users.address }}</p>
                 </span>
                 <article class="user-info__favorite-choice">
                   <input
@@ -62,9 +80,9 @@
                 </article>
               </div>
               <span class="user-info__header"
-                ><h2>Username</h2>
+                ><h2>{{ car.users.username }}</h2>
                 <article class="user-info__seat-icons">
-                  <SeatIconsFrame /></article
+                  <SeatIconsFrame :countOfSeats="car.count_of_seats" /></article
               ></span>
             </section>
             <!----------------------------------------------------------------->
@@ -74,9 +92,15 @@
                   class="car-card__icon-wrapper"
                   style="--svg-width: 2.4rem"
                 >
-                  <IconType :carType="'Kleinwagen'" class="icon"></IconType>
-                  <FuelType :fuelType="'Gas'" class="icon"></FuelType>
-                  <TrunkType :trunkType="'S'" class="icon"></TrunkType>
+                  <IconType
+                    :carType="car.car_types.category"
+                    class="icon"
+                  ></IconType>
+                  <fuelType :fuelType="car.fuel_type" class="icon"></fuelType>
+                  <TrunkType
+                    :trunkVolumeLiters="car.trunk_volume_in_liters"
+                    class="icon"
+                  ></TrunkType>
                   <DifferentType
                     :differentType="'Isofix'"
                     class="icon"
@@ -90,21 +114,22 @@
             </section>
             <!----------------------------------------------------------------->
             <section class="user-profile__equipment-wrapper">
-              <h2>Ausstattung</h2>
-              <ul class="user-profile__equipment-itemlist">
-                <li class="user-profile__equi-item">Lorems</li>
-                <li class="user-profile__equi-item">Loremswdt4t</li>
-                <li class="user-profile__equi-item">Loremswf</li>
-                <li class="user-profile__equi-item">Loremswf</li>
-                <li class="user-profile__equi-item">Lortehthtemswf</li>
-                <li class="user-profile__equi-item">Loreeeeemswf</li>
-                <li class="user-profile__equi-item">Loreeeeemswf</li>
-                <li class="user-profile__equi-item">eeee</li>
-                <li class="user-profile__equi-item">Loreeeewf</li>
-                <li class="user-profile__equi-item">Loreewf</li>
-                <li class="user-profile__equi-item">Loreewf</li>
-                <li class="user-profile__equi-item">Loreeeewfewrrzwer</li>
-              </ul>
+              <CarItemsMenue
+                :featureItems="car.cars_features"
+                :brandName="car.car_types.brands.brand_name"
+                :carModel="car.car_types.car_type_name"
+                :licensePlate="car.car_license_plate"
+                :fuelConsumePerKm="car.fuel_consume_per_km"
+                :gear="car.gear"
+                :insurance="car.insurance_type"
+                :insuranceNumber="car.insurance_no"
+                :kwValue="car.kw"
+                :maxSpeed="car.max_speed"
+                :yearOfConstruction="car.year_of_construction"
+                :mileageValue="car.mileage"
+                :trunkVolume="car.trunk_volume_in_liters"
+                :userName="car.users.username"
+              />
             </section>
           </section>
         </article>
@@ -118,7 +143,7 @@
               class="commentar-section__btn"
             />
             <label for="commentar-section-check">
-              Waren sie mit <span>USERNAME</span> zufrieden ?
+              Waren sie mit <span>{{ car.users.username }}</span> zufrieden ?
             </label>
             <section class="commentar-section__rating-bar">
               <RatingBar :ratingGroup="'userChoice'"></RatingBar>
@@ -126,39 +151,97 @@
           </section>
           <AverageRating></AverageRating>
           <section class="customer-wrapper">
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
-            <CustomerReviews></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
+            <CustomerReviews
+              :imgSource="car.img_source"
+              :userName="car.users.username"
+              :brandName="car.car_types.brands.brand_name"
+              :carTypeName="car.car_types.car_type_name"
+            ></CustomerReviews>
           </section>
         </article>
       </div>
     </main>
   </body>
+  <div v-else>
+    <h1>Loading Car Nr. {{ carID }}</h1>
+  </div>
 </template>
 
 <script>
+import { supabase } from "@/lib/supabaseClient";
 import RatingBar from "@/components/messenger/RatingBar.vue";
 import AverageRating from "@/components/messenger/AverageRating.vue";
 import CustomerReviews from "@/components/messenger/CustomerReviews.vue";
 import IconType from "@/components/icon-type/IconType.vue";
-import FuelType from "@/components/icon-type/fuelType.vue";
+import fuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import SeatIconsFrame from "@/components/icon-type/SeatIcons.vue";
-
+import CarItemsMenue from "@/components/main-component/CarOwnerAccordion.vue";
 export default {
+  data() {
+    return {
+      carID: this.$route.params.id,
+      car: null,
+    };
+  },
   components: {
     RatingBar,
     AverageRating,
     CustomerReviews,
     IconType,
-    FuelType,
+    fuelType,
     TrunkType,
     DifferentType,
     SeatIconsFrame,
+    CarItemsMenue,
+  },
+  mounted() {
+    this.getCar();
+  },
+  methods: {
+    async getCar() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, users ( id, username, firstname, lastname, address, zipcode, city ),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .eq("id", this.carID);
+      this.car = data[0];
+      console.log(this.car);
+    },
   },
 };
 </script>
@@ -303,6 +386,7 @@ main,
 #favorite-star:checked + label svg {
   fill: var(--clr-like-act);
 }
+
 /*===================Header===================================*/
 .user-info__header {
   width: 100%;
@@ -333,33 +417,14 @@ main,
   padding-block: 0.8rem;
   width: 100%;
 }
-/*--------------User Ausstattung------------------------*/
+/*=============================*/
 .user-profile__equipment-wrapper {
-  text-align: center;
+  overflow: scroll;
+  height: 40vh;
 }
-.user-profile__equipment-wrapper h2 {
-  width: 100%;
-  font-size: calc(var(--s-font) + 0.4rem);
-  color: var(--main-font-color-light);
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-}
-
-.user-profile__equipment-itemlist {
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  color: var(--clr-font-list);
-  margin-bottom: calc(var(--margin-default) / 2);
-}
-.user-profile__equi-item {
-  background: var(--surface-hover);
-  padding-inline: calc(var(--s-font) - 0.4rem);
-  padding-block: calc(var(--s-font) - 0.6rem);
-  border-radius: calc(var(--s-font) - 0.6rem);
-  font-weight: 300;
-  font-size: calc(var(--s-font) - 0.2rem);
+.user-profile__equipment-wrapper::-webkit-scrollbar {
+  appearance: none;
+  width: 0;
 }
 /*===================================================*/
 /*===============  Commentar Section====================*/
@@ -371,7 +436,7 @@ main,
   display: block;
   bottom: 0px;
   background: var(--clr-sur-d);
-  height: 10rem;
+  height: 9rem;
   width: 100%;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   translate: 0px 0px;
@@ -421,7 +486,7 @@ main,
 }
 
 .user-profile__commentar-wrapper:has(#commentar-section-check:checked) {
-  height: 30rem;
+  height: 70%;
 }
 
 .customer-wrapper {
@@ -437,7 +502,6 @@ main,
 /*======Media Queries================================*/
 @media screen and (min-width: 1000px) {
   .user-profile__frame {
-    /* background: blue; */
     width: 39.5%;
     height: 100%;
     overflow: hidden;
@@ -456,25 +520,6 @@ main,
   .user-profile__image-wrapper img {
     width: 40vw;
     height: 100%;
-  }
-  .nav-bar__wrapper {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-    bottom: 0;
-    left: 0;
-    width: 4rem;
-    height: 100%;
-    background: linear-gradient(
-      to top,
-      var(--primary-dark),
-      var(--primary-mid)
-    );
-    border-radius: 0rem 1.2rem 1.2rem 0;
-    padding-inline: 1rem;
-    padding-block: 2rem;
   }
 }
 </style>
