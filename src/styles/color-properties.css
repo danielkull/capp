@@ -84,6 +84,7 @@
   --bg-content: transparent;
   --box-shd: rgb(0, 0, 0, 0.6);
   --sec-bg: transparent;
+  --shd-single-cards: rgba(102, 100, 100, 0.15);
   /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
@@ -203,6 +204,7 @@
   --bg-content: var(--menue-bg);
   --box-shd: transparent;
   --sec-bg: var(--clr-sur-d);
+  --shd-single-cards: rgba(102, 100, 100, 0.15);
   /*===== Neues Ende =====*/
   /*====Dreieck==Acordion=======*/
   --box-shadow-light: hsla(0, 0%, 12%, 0.2);
