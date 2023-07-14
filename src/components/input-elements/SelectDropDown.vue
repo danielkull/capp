@@ -98,7 +98,7 @@
       <!-- Start: Help/Question Information Text -->
       <Transition>
         <article class="capp-input__help" v-if="showHelp">
-          <p>Klicke auf das Dropdown Menü und mache dein Auswahl</p>
+          <p>Klicke auf das Dropdown-Menü und triff Deine Auswahl</p>
         </article>
       </Transition>
       <!-- End: Help/Question Information Text -->

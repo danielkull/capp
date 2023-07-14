@@ -159,27 +159,27 @@ export default {
     giveHelperText() {
       switch (this.inputType) {
         case "text":
-          return "Hier kannst du einen beliebigen Freitext eingeben. Tob dich aus!";
+          return "Gib hier Deinen Usernamen ein. Es gibt nur eine Auflage: Du musst ihn Dir merken können.";
         case "email":
-          return "Bitte gib deine Mail Adresse an. Die sollte in etwa so aussehen meinKuerzel@provider.com";
+          return "Bitte gib hier deine Mail-Adresse an. Sie sollte in etwa so aussehen: meinKuerzel@provider.com";
         case "password":
-          return "Ein sicheres Password für dich sollte mindestens 12 Zeichen haben. Benutze am besten eine Mischung aus Groß-, Kleinschreibung mit Sonderzeichen und Zahlen.";
+          return "Ein sicheres Passwort hat mindestens 12 Zeichen. Benutze hierbei bitte eine Mischung aus Groß-, Kleinschreibung, Sonderzeichen und Zahlen.";
         case "datetime-local":
           return "Wähle einfach das passende Datum und die Zeit aus.";
         default:
-          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parat.";
+          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
     },
     invalidMessage() {
       switch (this.inputType) {
         case "text":
-          return "Der Freitext ist nicht valide";
+          return "Der Username ist nicht korrekt";
         case "email":
-          return "Die Mail adresse ist nicht valide.";
+          return "Die Mail-Adresse ist nicht korrekt.";
         case "password":
-          return "Passwort Kriterien nicht erfüllt";
+          return "Leider wurden die Passwort-Kriterien nicht erfüllt";
         default:
-          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parad.";
+          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
     },
   },
