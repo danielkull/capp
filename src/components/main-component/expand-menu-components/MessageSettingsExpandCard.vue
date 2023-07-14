@@ -1,5 +1,5 @@
 <template>
-  <section class="menue-expand__outer-wrapper" id="test-test">
+  <section class="menue-expand__outer-wrapper" id="message-settings">
     <header>
       <a href="#" class="back-btn">
         <svg
@@ -12,12 +12,12 @@
             d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
           /></svg
       ></a>
-      <h3 class="menue-expand__site-header">Platzhalter</h3>
+      <h2 class="menue-expand__site-header">Benachrichtigungen</h2>
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
         <!-------------------------------------------------------------------->
-
+        <MessageOptions />
         <!----------Hier COntent--------->
 
         <!-------------------------------------------------------------------->
@@ -27,9 +27,13 @@
 </template>
 
 <script>
-export default {};
+import MessageOptions from "@/components/main-component/expand-menu-components/MessageOptionMenue.vue";
+export default {
+  components: {
+    MessageOptions,
+  },
+};
 </script>
-
 <style>
 section:target {
   translate: 0% 0;
@@ -63,6 +67,8 @@ section:target {
   background: var(--menue-bg);
   margin-top: -1vh;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
+  box-shadow: inset 0 10px 20px rgb(0, 0, 0, 0.6);
+  border-top: 1px solid var(--brd-top);
 }
 .menue-expand__outer-wrapper header {
   width: 90%;
@@ -73,16 +79,17 @@ section:target {
   padding: var(--s-pad);
   margin-inline: auto;
 }
-header h3 {
+header h2 {
   font-weight: 100;
   color: var(--logo-font-color);
-  letter-spacing: 0.1em;
-  font-size: calc(var(--m-font) * 1.1);
+  letter-spacing: 0.05em;
+  font-size: var(--m-font);
+  height: 100%;
 }
 .back-btn {
   width: max-content;
   height: max-content;
-  translate: -70px 0;
+  translate: -20px 2px;
 }
 .back-btn > svg {
   width: 2rem;
@@ -92,13 +99,15 @@ header h3 {
 
 .menue-expand__site-main {
   /*============Hintergund für DarkMode============*/
-  width: 90%;
-  height: 90vh;
-  margin-top: 1.3rem;
   display: block;
+  width: 95%;
+  height: 90.5vh;
+  margin-top: 0.2rem;
   margin-inline: auto;
   padding-inline: var(--s-pad);
   border-radius: var(--s-brd-rad) var(--s-brd-rad) 0 0;
-  /* background: var(--menue-bg); */
+  background: var(--bg-content);
+
+  overflow: scroll;
 }
 </style>

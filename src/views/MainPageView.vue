@@ -34,6 +34,7 @@
       </section>
     </main>
     <ExpandMenue />
+    <MessageSettingsCard />
     <footer>
       <NavBarMenue />
     </footer>
@@ -49,6 +50,7 @@ import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import ExpandMenue from "@/components/main-component/ExpandMenueFrame.vue";
+import MessageSettingsCard from "@/components/main-component/expand-menu-components/MessageSettingsExpandCard.vue";
 
 export default {
   components: {
@@ -60,6 +62,7 @@ export default {
     TrunkType,
     DifferentType,
     ExpandMenue,
+    MessageSettingsCard,
   },
 };
 </script>
