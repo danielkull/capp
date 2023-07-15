@@ -7,8 +7,6 @@ import DanielsView from "@/views/DanielsView.vue";
 import MainPageView from "@/views/MainPageView.vue";
 import UserProfileView from "@/views/UserProfileView.vue";
 import KirstensView from "@/views/KirstensView.vue";
-import CarsView from "@/views/CarsView.vue";
-import CarView from "@/views/CarView.vue";
 import AddNewCarView from "@/views/AddNewCarView.vue";
 import TestUserManagementView from "@/views/TestUserManagementView.vue";
 
@@ -51,29 +49,14 @@ const routes = [
     },
   },
   {
-    path: "/UserProfileView",
-    name: "userProfile",
-    component: UserProfileView,
-  },
-  {
-    path: "/UserProfileView/:id",
-    name: "singleUserProfile",
+    path: "/car-profile/:id",
+    name: "carProfile",
     component: UserProfileView,
   },
   {
     path: "/KirstensView",
     name: "kirstensView",
     component: KirstensView,
-  },
-  {
-    path: "/carsView",
-    name: "carsView",
-    component: CarsView,
-  },
-  {
-    path: "/carView/:id",
-    name: "carView",
-    component: CarView,
   },
   {
     path: "/addNewCarView",

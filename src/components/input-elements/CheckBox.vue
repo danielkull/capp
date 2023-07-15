@@ -3,7 +3,6 @@
     type="checkbox"
     name="filter"
     id=""
-    :for="checkId"
     class="capp-btn__default"
     style="--after-heigth: 1.7rem"
   />

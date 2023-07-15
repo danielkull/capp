@@ -23,8 +23,9 @@
           />
           <path
             d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3Z"
-          /></svg
-      ></label>
+          />
+        </svg>
+      </label>
       <section class="car-info__list">
         <section class="placeholder">
           <EquipmentList :equipmentItems="featureItems" />
@@ -52,8 +53,9 @@
           />
           <path
             d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
-          /></svg
-      ></label>
+          />
+        </svg>
+      </label>
       <section class="car-info__list">
         <section class="placeholder">
           <p>
@@ -121,8 +123,9 @@
           />
           <path
             d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
-          /></svg
-      ></label>
+          />
+        </svg>
+      </label>
       <section class="car-info__list calendar">
         <section class="placeholder">
           <!--
@@ -156,10 +159,13 @@
           />
           <path
             d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
-          /></svg
-      ></label>
+          />
+        </svg>
+      </label>
       <section class="car-info__list">
-        <section class="placeholder"><MessageField /></section>
+        <section class="placeholder">
+          <MessageField :id="'contact-send-msg'" />
+        </section>
       </section>
     </article>
     <!-------------------------------------------------------------------------------------->

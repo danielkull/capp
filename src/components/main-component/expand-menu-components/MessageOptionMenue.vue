@@ -12,15 +12,15 @@
         <ul>
           <li>
             <label for="privat-push">Neue Private Nachrichten im Postfach</label
-            ><CheckBox :checkId="'privat-push'" />
+            ><CheckBox id="privat-push" />
           </li>
           <li>
             <label for="group-push">Neue Gruppen Nachrichten im Postfach</label
-            ><CheckBox :checkId="'group-push'" />
+            ><CheckBox id="group-push" />
           </li>
           <li>
             <label for="review-msg">Neue Bewertungen</label
-            ><CheckBox :checkId="'review-push'" />
+            ><CheckBox id="review-push" />
           </li>
         </ul>
       </section>
@@ -38,19 +38,19 @@
         <ul>
           <li>
             <label for="privat-msg">Neue persöhnliche Nachricht</label>
-            <CheckBox :checkId="'privat-msg'" />
+            <CheckBox id="privat-msg" />
           </li>
           <li>
             <label for="new-date-msg">Neue Terminanfrage</label
-            ><CheckBox :checkId="'new-date-msg'" />
+            ><CheckBox id="new-date-msg" />
           </li>
           <li>
             <label for="date-cancel-msg">Termin Absage</label
-            ><CheckBox :checkId="'date-cancel-msg'" />
+            ><CheckBox id="date-cancel-msg" />
           </li>
           <li>
             <label for="new-review-msg">Neue Bewertung</label
-            ><CheckBox :checkId="'new-review-msg'" />
+            ><CheckBox id="new-review-msg" />
           </li>
         </ul>
       </section>
@@ -68,19 +68,19 @@
         <ul>
           <li>
             <label for="my-group-msg">Neue Gruppe</label
-            ><CheckBox :checkId="'my-group-msg'" />
+            ><CheckBox id="my-group-msg" />
           </li>
           <li>
             <label for="join-groupmsg">Einladung in Gruppe</label
-            ><CheckBox :checkId="'join-group-msg'" />
+            ><CheckBox id="join-group-msg" />
           </li>
           <li>
             <label for="my-group-msg">Neuigkeiten aus eigener Gruppe</label
-            ><CheckBox :checkId="'my-group-msg'" />
+            ><CheckBox id="my-group-msg" />
           </li>
           <li>
             <label for="other-group-msg">Neuigkeiten aus meinen Gruppe</label
-            ><CheckBox :checkId="'other-group-msg'" />
+            ><CheckBox id="other-group-msg" />
           </li>
         </ul>
       </section>

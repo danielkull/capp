@@ -7,7 +7,6 @@
     />
 
     <section class="car-card__important-info">
-      <h2>{{ brandName }} {{ carTypeName }}</h2>
       <section class="car-card__basic-information">
         <span class="car-card__adress">
           <svg
@@ -32,13 +31,12 @@
       </section>
       <section class="car-card__icon-wrapper" style="--svg-width: 2.4rem">
         <IconType :carType="carTypeCategory" class="icon"></IconType>
-        <fuelType :fuelType="fuelTypeName" class="icon"></fuelType>
+        <FuelType :fuelType="fuelTypeName" class="icon"></FuelType>
         <TrunkType :trunkVolumeLiters="trunkVolume" class="icon"></TrunkType>
         <DifferentType :differentType="'Isofix'" class="icon"></DifferentType>
         <DifferentType :differentType="'Nicht-Raucher'" class="icon">
         </DifferentType>
         <DifferentType :differentType="'Tiere'" class="icon"> </DifferentType>
-        <!---->
       </section>
       <section class="car-card__router-link">
         <slot></slot>
@@ -49,16 +47,15 @@
 
 <script>
 import IconType from "@/components/icon-type/IconType.vue";
-import fuelType from "@/components/icon-type/fuelType.vue";
+import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import SeatIconsFrame from "@/components/icon-type/SeatIcons.vue";
 
 export default {
-  name: "SmallCarCard",
   components: {
     IconType,
-    fuelType,
+    FuelType,
     TrunkType,
     DifferentType,
     SeatIconsFrame,
@@ -108,15 +105,9 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  text-align: center;
-  font-size: 1.25rem;
-  color: var(--primary-dark);
-  margin-bottom: 0.75rem;
-}
 .car-card__wrapper {
   width: 100%;
-  height: 27.5rem;
+  height: 18rem;
   position: relative;
   margin-bottom: 1rem;
   border-radius: 1rem;
@@ -139,12 +130,6 @@ img {
   margin-inline: auto;
   display: flex;
 }
-
-.car-card__router-link {
-  width: 95%;
-  margin-inline: auto;
-}
-
 .car-card__important-info {
   position: absolute;
   display: flex;
@@ -186,7 +171,7 @@ img {
 }
 .car-card__icon-wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   gap: 0.2rem;
   padding-left: -0.3rem;
@@ -210,5 +195,9 @@ img {
   fill: var(--clr-state-icons);
   width: 2rem;
   aspect-ratio: 1;
+}
+.car-card__router-link {
+  width: 95%;
+  margin-inline: auto;
 }
 </style>
