@@ -139,13 +139,12 @@ main {
   width: 100%;
   height: 100%;
 
+  /* background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%); */
 
-  background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%);
-
-  background: radial-gradient(
-    circle at 50% 15vw,
-    transparent 40%,
-    var(--bg-log) 40.1%
+  background: linear-gradient(
+    to top,
+    var(--surface-light) 10%,
+    transparent 10%
   );
 }
 .logIn-card__wrapper {
@@ -289,16 +288,12 @@ main {
     background: linear-gradient(
       to right,
 
-      var(--primary-mid) 20%,
-      var(--primary-veryDark) 100%
+      var(--bg-shd-l) 20%,
+      var(--bg-shd-d) 100%
     );
   }
   main {
-    background: radial-gradient(
-      circle at 50vw -7vw,
-      transparent 40%,
-      var(--bg-log) 40.1%
-    );
+    background: linear-gradient(to bottom, transparent 60%, var(--bg-log) 60%);
   }
 
   .logIn-card__wrapper {

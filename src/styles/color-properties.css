@@ -193,7 +193,7 @@
   --btn-outl-act: var(--main-font-color-dark);
   --clr-f-act: var(--surface-hover);
   --clr-f: var(--list-color);
-  --bg-shd-l: var(--clr-sur-l);
+  --bg-shd-l: var(--clr-sur-d);
   --bg-shd-d: var(--clr-bg);
   /*=============Car-type=====================*/
   --clr-type-icon: var(--primary-very-dark);

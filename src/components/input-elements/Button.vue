@@ -25,7 +25,7 @@ export default {
   padding: calc(0.2rem + 1vh) calc(1.5rem + 1vw);
   border-radius: calc(var(--s-brd-rad) + 2rem);
   border: calc(var(--m-brd) + 1px) solid var(--primary-mid);
-  box-shadow: 0 0 0 0 var(--primary-mid) inset;
+  box-shadow: 0 0 0 0 var(--primary-middle) inset;
   transition-duration: 0.5s, 0.2s;
   transition-property: box-shadow, color;
   background: var(--bg-log);
@@ -60,13 +60,13 @@ export default {
 @media screen and (min-width: 900px) {
   .Log-btn:hover,
   .LogIn-card__btn:hover {
-    box-shadow: 20rem 0 0 0 var(--primary-mid) inset;
+    box-shadow: 20rem 0 0 0 var(--primary-middle) inset;
     color: var(--clr-f-act);
     outline-color: var(--btn-outl-act);
   }
   .Log-btn:active {
     transition-property: box-shadow, color;
-    box-shadow: 20rem 0 0 0 var(--primary-dark) inset;
+    box-shadow: 20rem 0 0 0 var(--primary-middle) inset;
     outline-color: var(--btn-outl-act);
   }
 }
