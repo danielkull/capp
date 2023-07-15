@@ -6,6 +6,8 @@
       class="theme-btn__label"
       :class="{ 'theme-btn__label:checked': currentState === 'dark-theme' }"
     >
+      <input type="checkbox" @change="switchTheme" id="theme-btn" />
+
       <div id="test">
         <span class="switch-mode light">
           <svg
