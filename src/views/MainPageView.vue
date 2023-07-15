@@ -1,60 +1,74 @@
 <template>
-  <body>
-    <header class="capp-mainpage__header">
-      <article class="capp-mainpage__logo-font"><h1>CAPP</h1></article>
-      <article class="filter-icon__aricle">
-        <span class="filter-icon__frame">
-          <input type="checkbox" class="filter-icon__wrapper" id="filter-box" />
-          <label for="filter-box" class="filter-box">
-            <span class="filter-icon__line">
-              <span class="filter-icon__ball ball-1"></span>
-            </span>
-            <span class="filter-icon__line line-small">
-              <span class="filter-icon__ball ball-2"></span>
-            </span>
-            <span class="filter-icon__line">
-              <span class="filter-icon__ball ball-3"></span>
-            </span>
-          </label>
-        </span>
-      </article>
-      <div class="main-page__shadow"></div>
-    </header>
+  <header class="capp-mainpage__header">
+    <article class="capp-mainpage__logo-font"><h1>CAPP</h1></article>
+    <article class="filter-icon__aricle">
+      <span class="filter-icon__frame">
+        <input type="checkbox" class="filter-icon__wrapper" id="filter-box" />
+        <label for="filter-box" class="filter-box">
+          <span class="filter-icon__line">
+            <span class="filter-icon__ball ball-1"></span>
+          </span>
+          <span class="filter-icon__line line-small">
+            <span class="filter-icon__ball ball-2"></span>
+          </span>
+          <span class="filter-icon__line">
+            <span class="filter-icon__ball ball-3"></span>
+          </span>
+        </label>
+      </span>
+    </article>
+    <div class="main-page__shadow"></div>
+  </header>
 
-    <main class="app-mainpage__main-page main-page-style">
-      <section class="filter-choice-frame"></section>
-      <section class="filter-choice"><filter-drop-down /></section>
-      <section class="mainpage__card-page">
-        <SmallCarCard />
-        <SmallCarCard />
-        <SmallCarCard />
-        <SmallCarCard />
-        <SmallCarCard />
-        <SmallCarCard />
-      </section>
-    </main>
-    <ExpandMenue />
-    <MessageSettingsCard />
-    <UserDataCard />
-    <CarDataCard />
-    <DataSafety />
-    <FaqClient />
-    <FaqOwner />
-    <Impressum />
-    <TeamSite />
-    <UserRules />
-    <UserData />
+  <main class="app-mainpage__main-page main-page-style">
+    <section class="filter-choice-frame"></section>
+    <section class="filter-choice"><filter-drop-down /></section>
+    <section class="mainpage__card-page" v-if="cars">
+      <SmallCarCard
+        v-for="car in cars"
+        :key="car.id"
+        :brandName="car.car_types.brands.brand_name"
+        :carTypeCategory="car.car_types.category"
+        :carTypeName="car.car_types.car_type_name"
+        :fuelTypeName="car.fuel_type"
+        :trunkVolume="car.trunk_volume_in_liters"
+        :carUserID="car.users.id"
+        :carUserZipCode="car.users.zipcode"
+        :carUserCity="car.users.city"
+        :imgSource="car.img_source"
+        :seatsCount="car.count_of_seats"
+      >
+        <router-link
+          class="more-info"
+          :to="{ name: 'carProfile', params: { id: car.id } }"
+          >mehr Info</router-link
+        >
+      </SmallCarCard>
+    </section>
+    <div v-else><p>Loading Cars...</p></div>
 
-    <footer>
-      <NavBarMenue />
-    </footer>
-  </body>
+  </main>
+  <ExpandMenue />
+  <MessageSettingsCard />
+  <UserDataCard />
+  <CarDataCard />
+  <DataSafety />
+  <FaqClient />
+  <FaqOwner />
+  <Impressum />
+  <TeamSite />
+  <UserRules />
+  <UserData />
+
+  <footer>
+    <NavBarMenue />
+  </footer>
 </template>
 
 <script>
 import FilterDropDown from "@/components/FilterDropDown.vue";
 import NavBarMenue from "@/components/main-component/NavBar.vue";
-import SmallCarCard from "@/components/SmallCarCard.vue";
+import SmallCarCard from "@/components/main-component/SmallCarCard.vue";
 import IconType from "@/components/icon-type/IconType.vue";
 import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
@@ -70,6 +84,10 @@ import Impressum from "@/components/main-component/expand-site-cards/ImpressumEx
 import TeamSite from "@/components/main-component/expand-site-cards/TeamExpandCard.vue";
 import UserRules from "@/components/main-component/expand-site-cards/UseExpandCard.vue";
 import UserData from "@/components/main-component/expand-site-cards/UserDataExpandCard.vue";
+
+import { supabase } from "@/lib/supabaseClient";
+
+
 export default {
   components: {
     FilterDropDown,
@@ -90,6 +108,45 @@ export default {
     TeamSite,
     UserRules,
     UserData,
+  },
+  data() {
+    return {
+      title: "Übersicht über unsere verfügbaren Autos",
+      brands: null,
+      carTypes: null,
+      cars: null,
+    };
+  },
+  mounted() {
+    this.getBrands();
+    this.getCarTypes();
+    this.getCars();
+  },
+  methods: {
+    async getBrands() {
+      const { data } = await supabase.from("brands").select();
+      this.brands = data;
+    },
+    async getCarTypes() {
+      const { data } = await supabase
+        .from("car_types")
+        .select(`id, car_type_name, category, brand_id, brands ( brand_name )`)
+        .order("brand_id", { ascending: true })
+        .order("id", { ascending: true })
+        .order("category", { ascending: true });
+      this.carTypes = data;
+    },
+    async getCars() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, users ( id, username, firstname, lastname, address, zipcode, city ), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .order("id", { ascending: true });
+      this.cars = data;
+    },
   },
 };
 </script>
@@ -271,6 +328,29 @@ main::-webkit-scrollbar {
   background-color: rgb(255 255 255 / 0.3);
   backdrop-filter: blur(2px);
 }
+
+/* ===== Router link ===== */
+a.more-info {
+  display: block;
+  font-size: 1rem;
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--primary-dark);
+  border-radius: 15px;
+  text-decoration: none;
+  text-align: center;
+  color: var(--primary-dark);
+  transition: all 0.5s steps(5);
+}
+
+a.more-info:hover {
+  _color: white;
+  background-color: var(--secondary-mid);
+  border-color: transparent;
+}
+/* ======================== */
+
 @media screen and (min-width: 900px) {
   .app-mainpage__main-page {
     width: 100%;
