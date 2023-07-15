@@ -1,5 +1,5 @@
 <template>
-  <section class="menue-expand__outer-wrapper" id="test-test">
+  <section class="menue-expand__outer-wrapper" id="message-settings">
     <header>
       <a href="#" class="back-btn">
         <svg
@@ -12,12 +12,12 @@
             d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
           /></svg
       ></a>
-      <h2 class="menue-expand__site-header">Platzhalter</h2>
+      <h2 class="menue-expand__site-header">Benachrichtigungen</h2>
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
         <!-------------------------------------------------------------------->
-
+        <MessageOptions />
         <!----------Hier COntent--------->
 
         <!-------------------------------------------------------------------->
@@ -27,9 +27,13 @@
 </template>
 
 <script>
-export default {};
+import MessageOptions from "@/components/main-component/expand-menu-components/MessageOptionMenue.vue";
+export default {
+  components: {
+    MessageOptions,
+  },
+};
 </script>
-
 <style>
 section:target {
   translate: 0% 0;

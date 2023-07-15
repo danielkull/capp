@@ -34,6 +34,17 @@
       </section>
     </main>
     <ExpandMenue />
+    <MessageSettingsCard />
+    <UserDataCard />
+    <CarDataCard />
+    <DataSafety />
+    <FaqClient />
+    <FaqOwner />
+    <Impressum />
+    <TeamSite />
+    <UserRules />
+    <UserData />
+
     <footer>
       <NavBarMenue />
     </footer>
@@ -49,7 +60,16 @@ import FuelType from "@/components/icon-type/fuelType.vue";
 import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import ExpandMenue from "@/components/main-component/ExpandMenueFrame.vue";
-
+import MessageSettingsCard from "@/components/main-component/expand-site-cards/MessageSettingsExpandCard.vue";
+import UserDataCard from "@/components/main-component/expand-site-cards/UserDataExpandCard.vue";
+import CarDataCard from "@/components/main-component/expand-site-cards/CarDataExpandCard.vue";
+import DataSafety from "@/components/main-component/expand-site-cards/DataSafetyExpandCard.vue";
+import FaqClient from "@/components/main-component/expand-site-cards/FaqClientExpandCard.vue";
+import FaqOwner from "@/components/main-component/expand-site-cards/FaqOwnerExpandCard.vue";
+import Impressum from "@/components/main-component/expand-site-cards/ImpressumExpandCard.vue";
+import TeamSite from "@/components/main-component/expand-site-cards/TeamExpandCard.vue";
+import UserRules from "@/components/main-component/expand-site-cards/UseExpandCard.vue";
+import UserData from "@/components/main-component/expand-site-cards/UserDataExpandCard.vue";
 export default {
   components: {
     FilterDropDown,
@@ -60,6 +80,16 @@ export default {
     TrunkType,
     DifferentType,
     ExpandMenue,
+    MessageSettingsCard,
+    UserDataCard,
+    CarDataCard,
+    DataSafety,
+    FaqClient,
+    FaqOwner,
+    Impressum,
+    TeamSite,
+    UserRules,
+    UserData,
   },
 };
 </script>

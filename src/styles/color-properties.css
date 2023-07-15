@@ -41,6 +41,15 @@
   --text-light: var(--main-font-color-light);
   --text-mid: hsl(0, 0%, 33%);
   --text-dark: var(--main-font-color-dark);
+  /*===btn===*/
+  --clr-logo: var(--surface-light);
+  --bg-log: var(--clr-sur-l);
+  --btn-outl: var(--list-color);
+  --btn-outl-act: var(--main-font-color-light);
+  --clr-f-act: var(--surface-light);
+  --clr-f: var(--clr-prime-m);
+  --bg-shd-l: var(--clr-prime-m);
+  --bg-shd-d: var(--clr-prime-vd);
   /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
 
@@ -78,7 +87,13 @@
   --menue-icon-def: var(--main-font-color-light);
   --menue-icon-act: var(--clr-prime-m);
   --menue-bg: var(--surface-light);
-
+  /*========================================*/
+  /*===============Epand menue switch=================*/
+  --brd-top: rgb(0, 0, 0, 0.6);
+  --bg-content: transparent;
+  --box-shd: rgb(0, 0, 0, 0.6);
+  --sec-bg: transparent;
+  --shd-single-cards: rgba(102, 100, 100, 0.15);
   /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
@@ -172,6 +187,14 @@
   --text-light: var(--main-font-color-dark);
   --text-mid: var(--clr-font-light);
   --text-dark: var(--clr-font-lightest);
+  --clr-logo: var(--clr-font-lightest);
+  --bg-log: var(--clr-sur-l);
+  --btn-outl: var(--list-color);
+  --btn-outl-act: var(--main-font-color-dark);
+  --clr-f-act: var(--surface-hover);
+  --clr-f: var(--list-color);
+  --bg-shd-l: var(--clr-sur-l);
+  --bg-shd-d: var(--clr-bg);
   /*=============Car-type=====================*/
   --clr-type-icon: var(--primary-very-dark);
   --clr-bord-icon: var(--clr-prime-l);
@@ -193,6 +216,12 @@
   --img-sh-filter: hsla(0, 0%, 37%, 0.2);
   --clr-font-commentar: var(--main-font-color-light);
   --clr-shadow-top: hsla(0, 0%, 3%, 0.9);
+  /*===============Epand menue switch=================*/
+  --brd-top: white;
+  --bg-content: var(--menue-bg);
+  --box-shd: transparent;
+  --sec-bg: var(--clr-sur-d);
+  --shd-single-cards: rgba(102, 100, 100, 0.15);
   /*===== Neues Ende =====*/
   /*====Dreieck==Acordion=======*/
   --box-shadow-light: hsla(0, 0%, 12%, 0.2);
