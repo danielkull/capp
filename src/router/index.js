@@ -12,6 +12,8 @@ import CarView from "@/views/CarView.vue";
 import AddNewCarView from "@/views/AddNewCarView.vue";
 import TestUserManagementView from "@/views/TestUserManagementView.vue";
 
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+
 const routes = [
   {
     path: "/",
@@ -42,6 +44,11 @@ const routes = [
     path: "/mainView",
     name: "mainView",
     component: MainPageView,
+    meta: {
+      // Wird bei der Finalen Version auf true gesetzt damit Route mit Auth funktioniert
+      // Bei entwicklung ist es erstmal hinterlich, daher false
+      needsAuth: false,
+    },
   },
   {
     path: "/UserProfileView",
@@ -83,6 +90,23 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const authenticationStore = useAuthenticationStore();
+  if (to.meta.needsAuth) {
+    if (authenticationStore.session.value) {
+      // Benötige diesen Consoel.log später für die entwicklung
+      // console.log(authenticationStore.session.value);
+      next();
+    } else {
+      // Benötige diesen Consoel.log später für die entwicklung
+      // console.log(authenticationStore.session.value);
+      next("/logView");
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

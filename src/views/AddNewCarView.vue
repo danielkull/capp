@@ -46,7 +46,6 @@ export default {
         .order("id", { ascending: true })
         .order("category", { ascending: true });
       this.carTypes = data;
-      console.log(this.carTypes);
     },
     async getUsers() {
       const { data } = await supabase
@@ -54,7 +53,6 @@ export default {
         .select(`*`)
         .order("id", { ascending: true });
       this.users = data;
-      console.log(this.users);
     },
   },
 };

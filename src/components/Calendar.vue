@@ -73,7 +73,7 @@
           </div>
         </div>
         <div class="button-wrapper">
-          <Button :buttonText="'Buchen'" />
+          <Button value="Buchen" />
         </div>
         <div class="calendar-footer"></div>
         <div class="date-time-formate">
