@@ -726,7 +726,6 @@ export default {
           feature.checked === true &&
           !this.chosenFeatures.includes(feature)
         ) {
-          console.log(feature.name);
           this.chosenFeatures.push(feature);
         }
       });
@@ -741,7 +740,6 @@ export default {
           limitation.checked === false &&
           !this.chosenLimitations.includes(limitation)
         ) {
-          console.log(limitation.name);
           this.chosenLimitations.push(limitation);
         }
       });

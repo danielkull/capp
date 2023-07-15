@@ -45,7 +45,9 @@ const routes = [
     name: "mainView",
     component: MainPageView,
     meta: {
-      needsAuth: true,
+      // Wird bei der Finalen Version auf true gesetzt damit Route mit Auth funktioniert
+      // Bei entwicklung ist es erstmal hinterlich, daher false
+      needsAuth: false,
     },
   },
   {
@@ -94,12 +96,12 @@ router.beforeEach((to, from, next) => {
   const authenticationStore = useAuthenticationStore();
   if (to.meta.needsAuth) {
     if (authenticationStore.session.value) {
-      console.log(authenticationStore.session.value);
-      console.log("drin");
+      // Benötige diesen Consoel.log später für die entwicklung
+      // console.log(authenticationStore.session.value);
       next();
     } else {
-      console.log(authenticationStore.session.value);
-      console.log("Oheh");
+      // Benötige diesen Consoel.log später für die entwicklung
+      // console.log(authenticationStore.session.value);
       next("/logView");
     }
   } else {
