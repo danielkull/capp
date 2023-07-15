@@ -77,6 +77,7 @@
         class="capp-input__default"
         :value="inputData"
         @input="$emit('update:inputData', $event.target.value)"
+        @focusout="$emit('isValid', isValid)"
         :type="currentTypeStatus"
         :name="inputId"
         :id="inputId"
@@ -144,7 +145,7 @@ export default {
       type: String,
     },
   },
-  emits: ["update:inputData"],
+  emits: ["update:inputData", "isValid"],
   data() {
     return {
       currentTypeStatus: this.inputType,

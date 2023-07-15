@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <section class="log-view-wrapper">
     <main>
       <article
         class="logIn-card__wrapper"
@@ -109,12 +109,14 @@
             <div class="login-card__btn-wrapper">
               <LogButton
                 value="Log In"
-                id="LogIn-btn"
+                id="log-in-page-btn"
+                :disabled="loading"
                 @click.prevent="changePage('logIn')"
               />
               <LogButton
                 value="Sign In"
-                id="Sign-btn"
+                id="sign-in-page-btn"
+                :disabled="loading"
                 @click.prevent="changePage('signIn')"
               />
             </div>
@@ -128,13 +130,18 @@
             <div class="logIn-card__logIn-input">
               <form action="#" autocomplete="on">
                 <InputText
-                  :inputId="'email'"
+                  v-model:inputData="email"
+                  :inputId="'email-log-in'"
                   :inputType="'email'"
                   :inputPlaceholder="'beispiel@provider.com'"
+                  @is-valid="checkEmail"
                   >Email
                 </InputText>
-
-                <InputText :inputId="'first-password'" :inputType="'password'"
+                <InputText
+                  v-model:inputData="password"
+                  :inputId="'log-in-password'"
+                  :inputType="'password'"
+                  @is-valid="checkPassword"
                   >Password</InputText
                 >
               </form>
@@ -142,7 +149,12 @@
             <div class="logIn-card__login-btn-wrapper">
               <BackButton @click.prevent="changePage('logIn')" />
 
-              <LogButton value="Log In" />
+              <LogButton
+                :value="loading ? 'Loading...' : 'Log In'"
+                :disabled="loading"
+                id="log-in-btn"
+                @click.prevent="handleLogIn"
+              />
             </div>
           </section>
         </Transition>
@@ -154,19 +166,24 @@
             <div class="logIn-card__logIn-input">
               <form action="#" autocomplete="on">
                 <InputText
+                  v-model:inputData="username"
                   :inputId="'username'"
                   :inputType="'text'"
                   :inputPlaceholder="'Ein beliebiger Username'"
                   >Username</InputText
                 >
                 <InputText
+                  v-model:inputData="email"
                   :inputId="'email'"
                   :inputType="'email'"
                   :inputPlaceholder="'beispiel@provider.com'"
                   >Email
                 </InputText>
 
-                <InputText :inputId="'first-password'" :inputType="'password'"
+                <InputText
+                  v-model:inputData="password"
+                  :inputId="'first-password'"
+                  :inputType="'password'"
                   >Password</InputText
                 >
               </form>
@@ -174,20 +191,28 @@
             <div class="logIn-card__login-btn-wrapper">
               <BackButton @click.prevent="changePage('signIn')" />
 
-              <LogButton value="Sign In" />
+              <LogButton
+                :value="loading ? 'Loading...' : 'Log In'"
+                :disabled="loading"
+                id="sign-in-btn"
+              />
             </div>
           </section>
         </Transition>
         <!-- ============== End of Sign In Page ==================== -->
       </article>
     </main>
-  </body>
+  </section>
 </template>
 
 <script>
 import InputText from "@/components/input-elements/InputText.vue";
 import LogButton from "@/components/input-elements/Button.vue";
 import BackButton from "@/components/input-elements/BackButton.vue";
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+import { supabase } from "@/lib/supabaseClient.js";
+import router from "../router";
+
 export default {
   components: { InputText, LogButton, BackButton },
   data() {
@@ -196,10 +221,51 @@ export default {
       logInPage: false,
       signInPage: false,
       motionActive: false,
+      loading: false,
+      email: null,
+      password: null,
+      username: null,
+      isEmailValid: false,
+      isPasswordValid: false,
     };
   },
+  setup() {
+    const authenticationStore = useAuthenticationStore();
+
+    return { authenticationStore };
+  },
+  created() {
+    this.getSessionInfos();
+  },
+  beforeMount() {
+    this.checkForRegisteredUser();
+    console.log("Huhu");
+  },
   methods: {
+    emptyFormData() {
+      this.email = null;
+      this.password = null;
+      this.username = null;
+    },
+    checkEmail(currentValidation) {
+      this.isEmailValid = currentValidation;
+    },
+    checkPassword(currentValidation) {
+      this.isPasswordValid = currentValidation;
+    },
+    checkForEmptyForm() {
+      const pasW = this.password;
+      const user = this.username;
+      const mail = this.email;
+      if (this.logInPage && mail && pasW) {
+        return true;
+      } else if ((this.logInPage && !mail) || !pasW) {
+        return false;
+      }
+    },
     changePage(switchToPage) {
+      this.emptyFormData();
+      this.loading = true;
       if (switchToPage === "logIn") {
         this.logInPage = !this.logInPage;
       } else if (switchToPage === "signIn") {
@@ -212,7 +278,49 @@ export default {
       this.motionActive = true;
       setTimeout(() => {
         this.motionActive = false;
+        this.loading = false;
       }, 1000);
+    },
+    async handleLogIn() {
+      const isNotEmpty = this.checkForEmptyForm();
+      const isPasswordValid = this.isPasswordValid;
+      const isEmailValid = this.isEmailValid;
+
+      if (isNotEmpty && isPasswordValid && isEmailValid) {
+        try {
+          this.loading = true;
+          const { data, error } = await supabase.auth.signInWithPassword({
+            email: this.email,
+            password: this.password,
+          });
+
+          if (!error) {
+            console.log("Yes ", data);
+            // If everything is fine, send user to next page
+            router.push({ name: "mainView" });
+          } else {
+            throw error;
+          }
+        } catch (error) {
+          if (error instanceof Error) {
+            alert(error.message);
+          }
+        } finally {
+          this.loading = false;
+        }
+      } else {
+        alert("Deine Anmeldedaten sind leider unvollständig.");
+      }
+    },
+    getSessionInfos() {
+      this.authenticationStore.getSession();
+      this.authenticationStore.onAuthStateChange();
+    },
+    checkForRegisteredUser() {
+      console.log("Check this: ", this.authenticationStore.session);
+      if (this.authenticationStore.session) {
+        router.push({ name: "mainView" });
+      }
     },
   },
 };
@@ -225,7 +333,7 @@ export default {
   width: 100%;
   aspect-ratio: 1;
 }
-body {
+.log-view-wrapper {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(

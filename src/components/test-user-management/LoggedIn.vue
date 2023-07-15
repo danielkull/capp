@@ -16,13 +16,13 @@
     <Calender></Calender>
     <div>
       <input
-        type="time"
+        type="datetime-local"
         name="Start"
         id="start-time"
         v-model="requestRouteData.startTime"
       />
       <input
-        type="time"
+        type="datetime-local"
         name="End"
         id="end-time"
         v-model="requestRouteData.endTime"
@@ -125,7 +125,7 @@ export default {
       // console.log("Destination: ",typeof this.requestRouteData.destination)
       try {
         const activeUser = await this.authenticationStore.activeUser[0].id;
-        console.log(rentCarId, activeUser);
+
 
         const { data, error } = await supabase.from("routes").insert({
           user_id: activeUser,
@@ -147,7 +147,6 @@ export default {
           })
           .eq("id", 8); */
 
-        console.log(data);
         if (error) {
           throw error;
         }
@@ -165,7 +164,6 @@ export default {
       try {
         const { data, error } = await supabase.from("purposes").select();
         this.purposesData = data;
-        console.log(this.purposesData);
         if (error) {
           throw error;
         }

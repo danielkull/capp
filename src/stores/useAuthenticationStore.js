@@ -8,14 +8,17 @@ export const useAuthenticationStore = defineStore("authentication", {
   }),
 
   actions: {
-    getSession() {
-      supabase.auth.getSession().then(({ data }) => {
+    async getSession() {
+      await supabase.auth.getSession().then(({ data }) => {
+        console.log("GetSesstion Data: ",data)
         this.session.value = data.session;
       });
     },
-    onAuthStateChange() {
-      supabase.auth.onAuthStateChange((event, session) => {
-        this.session.value = session;
+    async onAuthStateChange() {
+      await supabase.auth.onAuthStateChange((_, _session) => {
+        console.log("Auth State Change event: ", _)
+        console.log("Auth State Change session: ", _session)
+        this.session.value = _session;
       });
     },
     async logOut() {

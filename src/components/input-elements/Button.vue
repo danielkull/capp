@@ -1,21 +1,9 @@
 <template>
-  <input
-    type="button"
-    :value="buttonText"
-    class="Log-btn btn-font"
-    id="LogIn-btn"
-  />
+  <input type="button" value="value" class="Log-btn btn-font" id="LogIn-btn" />
 </template>
 
 <script>
-export default {
-  props: {
-    buttonText: {
-      type: String,
-      required: true,
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped>
