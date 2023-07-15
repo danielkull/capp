@@ -16,15 +16,15 @@ export default {};
   box-shadow: 0 0 0 0 var(--primary-mid) inset;
   transition-duration: 0.5s, 0.2s;
   transition-property: box-shadow, color;
-  background: var(--secondary-light);
-  outline: var(--m-brd) solid var(--secondary-mid);
+  background: var(--bg-log);
+  outline: var(--m-brd) solid var(--btn-outl);
   outline-offset: clamp(0.3rem, 2vw, 0.5rem);
   text-align: center;
 }
 
 .btn-font {
-  color: var(--primary-mid);
-  font-size: clamp(1rem, 5vw, 1.2rem);
+  color: var(--clr-f);
+  font-size: clamp(1rem, 5vw, 1.4rem);
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 0.05em;
@@ -35,7 +35,8 @@ export default {};
 .Log-btn:active {
   transition: none;
   background: var(--primary-dark);
-  color: var(--primary-light);
+  color: var(--clr-f-act);
+  outline-color: var(--btn-outl-act);
 }
 
 .Log-btn:disabled {
@@ -48,13 +49,13 @@ export default {};
   .Log-btn:hover,
   .LogIn-card__btn:hover {
     box-shadow: 20rem 0 0 0 var(--primary-mid) inset;
-    color: var(--secondary-light);
-    outline-color: var(--secondary-dark);
+    color: var(--clr-f-act);
+    outline-color: var(--btn-outl-act);
   }
   .Log-btn:active {
     transition-property: box-shadow, color;
     box-shadow: 20rem 0 0 0 var(--primary-dark) inset;
-    color: var(--primary-light);
+    outline-color: var(--btn-outl-act);
   }
 }
 </style>
