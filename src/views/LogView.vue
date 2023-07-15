@@ -374,6 +374,8 @@ main {
     to top,
     var(--surface-light) 10%,
     transparent 10%
+  );
+
   background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%);
 
   background: radial-gradient(
