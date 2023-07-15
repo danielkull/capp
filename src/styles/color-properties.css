@@ -41,6 +41,15 @@
   --text-light: var(--main-font-color-light);
   --text-mid: hsl(0, 0%, 33%);
   --text-dark: var(--main-font-color-dark);
+  /*===btn===*/
+  --clr-logo: var(--surface-light);
+  --bg-log: var(--clr-sur-l);
+  --btn-outl: var(--list-color);
+  --btn-outl-act: var(--main-font-color-light);
+  --clr-f-act: var(--surface-light);
+  --clr-f: var(--clr-prime-m);
+  --bg-shd-l: var(--clr-prime-m);
+  --bg-shd-d: var(--clr-prime-vd);
   /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
 
@@ -178,6 +187,14 @@
   --text-light: var(--main-font-color-dark);
   --text-mid: var(--clr-font-light);
   --text-dark: var(--clr-font-lightest);
+  --clr-logo: var(--clr-font-lightest);
+  --bg-log: var(--clr-sur-l);
+  --btn-outl: var(--list-color);
+  --btn-outl-act: var(--main-font-color-dark);
+  --clr-f-act: var(--surface-hover);
+  --clr-f: var(--list-color);
+  --bg-shd-l: var(--clr-sur-l);
+  --bg-shd-d: var(--clr-bg);
   /*=============Car-type=====================*/
   --clr-type-icon: var(--primary-very-dark);
   --clr-bord-icon: var(--clr-prime-l);
