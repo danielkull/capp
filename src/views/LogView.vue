@@ -6,101 +6,6 @@
         :class="{ 'in-motion': motionActive }"
       >
         <section class="logIn-card__logo-capp">
-          <svg
-            class="capp-logo"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0, 0, 249.449, 249.449"
-          >
-            <g id="Layer_4_I">
-              <path
-                d="M91.294,98.606 C121.02,81.432 167.366,41.609 224.974,61.158"
-                fill-opacity="0"
-                stroke-width="15"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M212.808,118.212 C213.36,118.212 213.808,118.749 213.808,119.412 L213.808,122.222 C213.808,122.885 213.36,123.423 212.808,123.423 L190.926,123.423 C190.374,123.423 189.926,122.885 189.926,122.222 L189.926,119.412 C189.926,118.749 190.374,118.212 190.926,118.212 L212.808,118.212 z"
-                fill-opacity="0"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M87.466,97.08 C71.411,103.961 55.255,108.417 41.629,119.661"
-                fill-opacity="0"
-                stroke-width="8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M94.377,97.08 C89.444,108.654 106.613,111.289 121.809,109.316"
-                fill-opacity="0"
-                stroke-width="1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M72.778,185.276 C59.708,185.276 49.113,174.681 49.113,161.611 C49.113,148.541 59.708,137.946 72.778,137.946 C85.848,137.946 96.443,148.541 96.443,161.611 C96.443,174.681 85.848,185.276 72.778,185.276 z"
-                fill-opacity="0"
-                stroke-width="8"
-                stroke-linecap="round"
-              />
-              <path
-                d="M40.341,116.651 C30.533,124.623 23.598,161.584 41.629,164.044"
-                fill-opacity="0"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <g>
-                <path
-                  d="M222.884,98.119 C225.561,109.912 225.735,105.596 226.498,121.965 C226.537,136.654 219.105,164.044 202.053,165.562 L104.733,164.951 L104.851,163.685 C104.852,144.666 90.624,129.248 73.073,129.248 C55.522,129.248 41.478,144.666 41.478,163.685 L39.762,163.335 C33.727,158.812 32.824,157.586 31.897,151.159 L32.086,140.753 C32.966,136.326 37.207,117.686 39.788,117.686 L53.23,116.249 L74.408,105.749 L83.588,102.952 L92.746,100.77 L93.953,104.393 L96.752,106.957 L101.563,109.057 L109.287,110.258 L222.884,98.119 z M212.808,118.212 L190.926,118.212 C190.374,118.212 189.926,118.749 189.926,119.412 L189.926,122.222 C189.926,122.885 190.374,123.423 190.926,123.423 L212.808,123.423 C213.36,123.423 213.808,122.885 213.808,122.222 L213.808,119.412 C213.808,118.749 213.36,118.212 212.808,118.212 z"
-                />
-                <path
-                  d="M222.884,98.119 C225.561,109.912 225.735,105.596 226.498,121.965 C226.537,136.654 219.105,164.044 202.053,165.562 L104.733,164.951 L104.851,163.685 C104.852,144.666 90.624,129.248 73.073,129.248 C55.522,129.248 41.478,144.666 41.478,163.685 L39.762,163.335 C33.727,158.812 32.824,157.586 31.897,151.159 L32.086,140.753 C32.966,136.326 37.207,117.686 39.788,117.686 L53.23,116.249 L74.408,105.749 L83.588,102.952 L92.746,100.77 L93.953,104.393 L96.752,106.957 L101.563,109.057 L109.287,110.258 L222.884,98.119 z M212.808,118.212 L190.926,118.212 C190.374,118.212 189.926,118.749 189.926,119.412 L189.926,122.222 C189.926,122.885 190.374,123.423 190.926,123.423 L212.808,123.423 C213.36,123.423 213.808,122.885 213.808,122.222 L213.808,119.412 C213.808,118.749 213.36,118.212 212.808,118.212 z"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-              <g>
-                <g>
-                  <path
-                    d="M15.434,15.835 L72.126,15.835"
-                    fill-opacity="0"
-                    stroke-width="13"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M72.126,72.527 L72.126,15.835"
-                    fill-opacity="0"
-                    stroke-width="13"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </g>
-                <path
-                  d="M127.154,232.43 C63.795,232.43 12.432,181.067 12.432,117.708 C12.471,75.256 34.701,42.151 69.739,19.836"
-                  fill-opacity="0"
-                  stroke-width="13"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M224.974,61.158 C237.587,76.529 240.907,96.309 241.875,117.708 C241.875,181.067 190.513,232.43 127.154,232.43"
-                  fill-opacity="0"
-                  stroke-width="13"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-            </g>
-          </svg>
-
           <h1>CAPP</h1>
           <!-- === Start Page Section for Log In und Sign In === -->
         </section>
@@ -219,20 +124,14 @@ export default {
 </script>
 
 <style scoped>
-.capp-logo {
-  fill: var(--secondary-light);
-  stroke: var(--secondary-light);
-  width: 100%;
-  aspect-ratio: 1;
-}
 body {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
     to right,
 
-    var(--primary-mid) 20%,
-    var(--primary-veryDark) 100%
+    var(--bg-shd-l) 20%,
+    var(--bg-shd-d) 100%
   );
 }
 
@@ -240,9 +139,15 @@ main {
   width: 100%;
   height: 100%;
 
-  background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%);
-}
 
+  background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%);
+
+  background: radial-gradient(
+    circle at 50% 15vw,
+    transparent 40%,
+    var(--bg-log) 40.1%
+  );
+}
 .logIn-card__wrapper {
   position: absolute;
   top: 0;
@@ -262,25 +167,17 @@ main {
 /*                  Logo                          */
 /*================================================*/
 .logIn-card__logo-capp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-content: center;
+  text-align: center;
   gap: 1rem;
   width: 100%;
-  height: auto;
+  height: 30%;
+}
 
-  margin-top: 5rem;
-}
-.logIn-card__logo-capp > svg {
-  width: var(--font-logo-size);
-  aspect-ratio: 1;
-  fill: var(--secondary-light);
-  display: none;
-}
 .logIn-card__logo-capp > h1 {
-  margin-top: 3rem;
-  font-size: var(--font-logo-size);
-  color: var(--secondary-light);
+  font-size: clamp(4rem, 10vw, 6rem);
+  color: var(--clr-logo);
   font-family: var(--font-logo);
 }
 
@@ -306,8 +203,9 @@ main {
 .login-card__start-page {
   translate: 0 0;
   z-index: 11;
-  background-color: var(--secondary-light);
+  background-color: var(--bg-log);
   border-radius: 2rem;
+  padding-top: 2rem;
 }
 
 .slide-enter-active {
@@ -399,7 +297,7 @@ main {
     background: radial-gradient(
       circle at 50vw -7vw,
       transparent 40%,
-      var(--secondary-light) 40.1%
+      var(--bg-log) 40.1%
     );
   }
 
