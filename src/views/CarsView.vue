@@ -24,7 +24,6 @@ export default {
     async getBrands() {
       const { data } = await supabase.from("brands").select();
       this.brands = data;
-      console.log(this.brands);
     },
     async getCarTypes() {
       const { data } = await supabase
@@ -34,7 +33,6 @@ export default {
         .order("id", { ascending: true })
         .order("category", { ascending: true });
       this.carTypes = data;
-      console.log(this.carTypes);
     },
     async getCars() {
       const { data } = await supabase
@@ -47,7 +45,6 @@ export default {
         )
         .order("id", { ascending: true });
       this.cars = data;
-      console.log(this.cars);
     },
   },
 };

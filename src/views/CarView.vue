@@ -26,7 +26,6 @@ export default {
         )
         .eq("id", this.carID);
       this.car = data[0];
-      console.log(this.car);
     },
   },
 };
