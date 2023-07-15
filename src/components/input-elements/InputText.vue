@@ -20,7 +20,10 @@
     > -->
 
 <!-- Hier wurde als Beispiel der slot mit dem default Text überschrieben mit "Another Mail"-->
+<!-- Zudem wurde ein v-model verwendet. Das muss immer mit v-model:inputData geschrieben werden,-->
+<!-- danach kannst du eine einen namen verwenden den du in data() festgelegt hast.-->
 <!-- <InputText
+      v-model:inputData="yourDataName"
       :inputId="'another-mail'"
       :inputType="'email'"
       :inputPlaceholder="'dontTrust@Rabbits.com'"
@@ -82,6 +85,7 @@
         required
       />
       <p
+        v-if="isInValid"
         class="capp-input__invalid-input"
         :class="{ input__valid: isValid, input__invalid: isInValid }"
       >
@@ -106,7 +110,7 @@
 
       <!-- Start: Help/Question Information Text -->
       <Transition>
-        <article class="capp-input__help" v-show="showHelp">
+        <article class="capp-input__help" v-if="showHelp">
           <p>{{ giveHelperText }}</p>
         </article>
       </Transition>
@@ -129,7 +133,7 @@ export default {
       validator(value) {
         // Only input Element type specific names are allowed
         // List can be extented if needed
-        return ["text", "email", "password"].includes(value);
+        return ["text", "email", "password", "datetime-local"].includes(value);
       },
     },
     inputPlaceholder: {
@@ -155,25 +159,27 @@ export default {
     giveHelperText() {
       switch (this.inputType) {
         case "text":
-          return "Hier kannst du einen beliebigen Freitext eingeben. Tob dich aus!";
+          return "Gib hier Deinen Usernamen ein. Es gibt nur eine Auflage: Du musst ihn Dir merken können.";
         case "email":
-          return "Bitte gib deine Mail Adresse an. Die sollte in etwa so aussehen meinKuerzel@provider.com";
+          return "Bitte gib hier deine Mail-Adresse an. Sie sollte in etwa so aussehen: meinKuerzel@provider.com";
         case "password":
-          return "Ein sicheres Password für dich sollte mindestens 12 Zeichen haben. Benutze am besten eine Mischung aus Groß-, Kleinschreibung mit Sonderzeichen und Zahlen.";
+          return "Ein sicheres Passwort hat mindestens 12 Zeichen. Benutze hierbei bitte eine Mischung aus Groß-, Kleinschreibung, Sonderzeichen und Zahlen.";
+        case "datetime-local":
+          return "Wähle einfach das passende Datum und die Zeit aus.";
         default:
-          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parat.";
+          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
     },
     invalidMessage() {
       switch (this.inputType) {
         case "text":
-          return "Der Freitext ist nicht valide";
+          return "Der Username ist nicht korrekt";
         case "email":
-          return "Die Mail adresse ist nicht valide.";
+          return "Die Mail-Adresse ist nicht korrekt.";
         case "password":
-          return "Passwort Kriterien nicht erfüllt";
+          return "Leider wurden die Passwort-Kriterien nicht erfüllt";
         default:
-          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade kein Hilfetext parad.";
+          return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
     },
   },
