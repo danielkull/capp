@@ -139,13 +139,15 @@ main {
   width: 100%;
   height: 100%;
 
+
+  background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%);
+
   background: radial-gradient(
     circle at 50% 15vw,
     transparent 40%,
     var(--bg-log) 40.1%
   );
 }
-
 .logIn-card__wrapper {
   position: absolute;
   top: 0;
@@ -232,11 +234,13 @@ main {
   align-items: center;
   border-radius: 2rem;
   width: 100%;
-  height: 85vh;
+  height: max-content;
   position: absolute;
   z-index: 10;
-  top: -1px;
-  left: -1px;
+  bottom: 20px;
+  background: var(--surface-light);
+  padding-top: 3rem;
+  left: 0px;
 }
 .logIn-card__logIn-input {
   width: 80%;
@@ -244,7 +248,7 @@ main {
 }
 .logIn-card__login-btn-wrapper {
   margin-bottom: 3rem;
-  margin-top: 1.5rem;
+  margin-top: 3rem;
   margin-inline: 2rem;
   width: 80%;
   display: flex;
@@ -279,6 +283,16 @@ main {
 }
 
 @media screen and (min-width: 900px) {
+  body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+      to right,
+
+      var(--primary-mid) 20%,
+      var(--primary-veryDark) 100%
+    );
+  }
   main {
     background: radial-gradient(
       circle at 50vw -7vw,
@@ -302,6 +316,15 @@ main {
   .logIn-card__wrapper:hover {
     box-shadow: 13px 13px 20px rgba(95, 95, 95, 0.3),
       -13px -13px 20px rgba(95, 95, 95, 0.3);
+  }
+  .logIn-card__logIn-page {
+    left: -1px;
+    width: 100%;
+
+    bottom: 20px;
+    background: var(--surface-light);
+    padding-top: 4rem;
+    left: 0px;
   }
 }
 </style>

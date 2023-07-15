@@ -50,6 +50,7 @@
         <slot>Textfeld</slot>
 
         <!-- Start: Password show/hide toggle button -->
+
         <button
           v-if="inputType === 'password'"
           class="pw-sight"
@@ -73,6 +74,7 @@
       </label>
 
       <!-- Note: autocomplete="on" lets the browser decide how to performe. Would be best to select autocomplete in future according to the type of input and for what it is used-->
+
       <input
         class="capp-input__default"
         :value="inputData"
@@ -246,7 +248,7 @@ export default {
   color: var(--primary-dark);
 
   padding-block: calc(var(--s-font) / 2);
-  font-size: 1.5rem;
+  font-size: clamp(var(--s-font), 5vw, var(--m-font));
   letter-spacing: 0.1rem;
 }
 
@@ -257,11 +259,21 @@ export default {
   border-radius: 0.5rem;
   padding-inline: 0.5rem;
   padding-block: 1rem;
-  font-size: var(--m-font);
+  font-size: var(--s-font);
   background: var(--clr-bg-main);
   box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
   color: var(--font-color-dark);
+  caret-color: var(--clr-prime-m);
 }
+input[type="password"] {
+  font-family: Verdana;
+  letter-spacing: 0.1em;
+  color: var(--clr-prime-m);
+}
+input[type="password"]::placeholder {
+  letter-spacing: 0;
+}
+
 .capp-input__default:hover {
   cursor: pointer;
 }
@@ -292,11 +304,16 @@ export default {
 /*=====================*/
 .capp-input__help-wrapper {
   position: relative;
+  display: grid;
+  width: max-content;
+  height: max-content;
+  place-content: center;
+  top: 20px;
 }
 .capp-input__btn {
   all: unset;
   width: calc(var(--s-font) * 2);
-  aspect-ratio: 1;
+  height: calc(var(--s-font) * 2);
 }
 .capp-input__btn:active > svg {
   fill: var(--primary-mid);
@@ -308,18 +325,19 @@ export default {
 
 .capp-input__help {
   position: absolute;
-  top: 20p;
-  left: 0;
+  top: 60px;
+  left: -280px;
   display: block;
-  font-size: 1.2rem;
-  background: var(--secondary-light);
-  border: 1px solid var(--primary-dark);
+  font-size: var(--s-font);
+  background: var(--clr-sur-l);
+  color: var(--text-mid);
   border-radius: 1rem;
   width: 20rem;
   height: auto;
-  padding: 1rem;
+  padding: var(--s-pad);
   text-align: start;
   z-index: 10;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 50px rgb(0, 0, 0, 0.4);
 }
 /*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 
