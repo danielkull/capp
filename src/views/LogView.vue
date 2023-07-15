@@ -134,18 +134,32 @@
                   :inputId="'email-log-in'"
                   :inputType="'email'"
                   :inputPlaceholder="'beispiel@provider.com'"
-                  @is-valid="checkEmail"
+                  @is-valid="checkValidEmail"
                   >Email
                 </InputText>
                 <InputText
                   v-model:inputData="password"
                   :inputId="'log-in-password'"
                   :inputType="'password'"
-                  @is-valid="checkPassword"
+                  @is-valid="checkValidPassword"
                   >Password</InputText
                 >
               </form>
             </div>
+            <!-- Msg for the User if input is in any way invalid after cklicking the LogIn/Sign in button -->
+            <div>
+              <p
+                v-if="InputIsInValid"
+                class="capp-input__invalid-input"
+                :class="{
+                  input__valid: !InputIsInValid,
+                  input__invalid: InputIsInValid,
+                }"
+              >
+                {{ invalidInputMsg }}
+              </p>
+            </div>
+            <!-- ==============End of msg for the User ==============-->
             <div class="logIn-card__login-btn-wrapper">
               <BackButton @click.prevent="changePage('logIn')" />
 
@@ -167,34 +181,51 @@
               <form action="#" autocomplete="on">
                 <InputText
                   v-model:inputData="username"
-                  :inputId="'username'"
+                  :inputId="'sign-in-username'"
                   :inputType="'text'"
                   :inputPlaceholder="'Ein beliebiger Username'"
                   >Username</InputText
                 >
                 <InputText
                   v-model:inputData="email"
-                  :inputId="'email'"
+                  :inputId="'sign-in-email'"
                   :inputType="'email'"
                   :inputPlaceholder="'beispiel@provider.com'"
+                  @is-valid="checkValidEmail"
                   >Email
                 </InputText>
 
                 <InputText
                   v-model:inputData="password"
-                  :inputId="'first-password'"
+                  :inputId="'sign-in-password'"
                   :inputType="'password'"
+                  @is-valid="checkValidPassword"
                   >Password</InputText
                 >
               </form>
             </div>
+            <!-- Msg for the User if input is in any way invalid after cklicking the LogIn/Sign in button -->
+            <div>
+              <p
+                v-if="InputIsInValid"
+                class="capp-input__invalid-input"
+                :class="{
+                  input__valid: !InputIsInValid,
+                  input__invalid: InputIsInValid,
+                }"
+              >
+                {{ invalidInputMsg }}
+              </p>
+            </div>
+            <!-- ==============End of msg for the User ==============-->
             <div class="logIn-card__login-btn-wrapper">
               <BackButton @click.prevent="changePage('signIn')" />
 
               <LogButton
-                :value="loading ? 'Loading...' : 'Log In'"
+                :value="loading ? 'Loading...' : 'Sign In'"
                 :disabled="loading"
                 id="sign-in-btn"
+                @click.prevent="handleSignIn"
               />
             </div>
           </section>
@@ -227,45 +258,86 @@ export default {
       username: null,
       isEmailValid: false,
       isPasswordValid: false,
+      InputIsInValid: false,
+      invalidInputMsg: "",
     };
   },
   setup() {
+    // Initialize the store at the begining
     const authenticationStore = useAuthenticationStore();
 
     return { authenticationStore };
   },
   created() {
+    // Get all seasion and user data from the auth Store if availabel
     this.getSessionInfos();
   },
   beforeMount() {
+    // Take the data from the auth Store and check if somebody is already logged in
     this.checkForRegisteredUser();
-    console.log("Huhu");
   },
   methods: {
+    getSessionInfos() {
+      this.authenticationStore.getSession();
+      this.authenticationStore.onAuthStateChange();
+    },
+    checkForRegisteredUser() {
+      // Benötige diesen Consoel.log später für die entwicklung
+      // console.log("Check this: ", this.authenticationStore.session);
+      // If somebody is logged in send the user to the mainView
+      // Das MUSS für die Entwicklung ausgeklammert werden. Für die Build version
+      // wird es wieder eingeklammert.
+      /* if (this.authenticationStore.session) {
+        router.push({ name: "mainView" });
+      } */
+    },
     emptyFormData() {
       this.email = null;
       this.password = null;
       this.username = null;
     },
-    checkEmail(currentValidation) {
+    checkValidEmail(currentValidation) {
       this.isEmailValid = currentValidation;
     },
-    checkPassword(currentValidation) {
+    checkValidPassword(currentValidation) {
       this.isPasswordValid = currentValidation;
     },
     checkForEmptyForm() {
       const pasW = this.password;
       const user = this.username;
       const mail = this.email;
-      if (this.logInPage && mail && pasW) {
+      // Checks for LogIn page
+      if (this.logInPage) {
+        if (mail && pasW) {
+          return true;
+        } else if (!mail || !pasW) {
+          return false;
+        }
+        // Checks for SignIn page
+      } else if (this.signInPage) {
+        if (mail && pasW && user) {
+          return true;
+        } else if (!mail || !pasW || !user) {
+          return false;
+        }
+      }
+    },
+    dataAreComplete() {
+      const isNotEmpty = this.checkForEmptyForm();
+      const isPasswordValid = this.isPasswordValid;
+      const isEmailValid = this.isEmailValid;
+      if (isNotEmpty && isPasswordValid && isEmailValid) {
         return true;
-      } else if ((this.logInPage && !mail) || !pasW) {
+      } else {
         return false;
       }
     },
+    // Manages everything when page is changed
     changePage(switchToPage) {
       this.emptyFormData();
       this.loading = true;
+      this.invalidInputMsg = "";
+      this.InputIsInValid = false;
       if (switchToPage === "logIn") {
         this.logInPage = !this.logInPage;
       } else if (switchToPage === "signIn") {
@@ -282,11 +354,7 @@ export default {
       }, 1000);
     },
     async handleLogIn() {
-      const isNotEmpty = this.checkForEmptyForm();
-      const isPasswordValid = this.isPasswordValid;
-      const isEmailValid = this.isEmailValid;
-
-      if (isNotEmpty && isPasswordValid && isEmailValid) {
+      if (this.dataAreComplete()) {
         try {
           this.loading = true;
           const { data, error } = await supabase.auth.signInWithPassword({
@@ -295,7 +363,6 @@ export default {
           });
 
           if (!error) {
-            console.log("Yes ", data);
             // If everything is fine, send user to next page
             router.push({ name: "mainView" });
           } else {
@@ -309,18 +376,72 @@ export default {
           this.loading = false;
         }
       } else {
-        alert("Deine Anmeldedaten sind leider unvollständig.");
+        this.invalidInputMsg = "Deine Anmeldedaten sind leider unvollständig.";
+        this.InputIsInValid = true;
       }
     },
-    getSessionInfos() {
-      this.authenticationStore.getSession();
-      this.authenticationStore.onAuthStateChange();
-    },
-    checkForRegisteredUser() {
-      console.log("Check this: ", this.authenticationStore.session);
-      if (this.authenticationStore.session) {
-        router.push({ name: "mainView" });
+    async handleSignIn() {
+      if (this.dataAreComplete()) {
+        try {
+          this.loading = true;
+          // Get Username and Mail from Superbase if the already exist
+          const responsUsername = await supabase
+            .from("users")
+            .select("username")
+            .eq("username", this.username);
+          const responsMail = await supabase
+            .from("users")
+            .select("email")
+            .eq("email", this.toLowerCase(this.email));
+
+          const duplicateUsername = responsUsername.data.length;
+          const duplicateMail = responsMail.data.length;
+          // If Username/Mail exist, give feedback
+          if (duplicateUsername & duplicateMail) {
+            this.invalidInputMsg =
+              "Leider gibt es bereits den Usernamen, sowie die Mailadresse";
+            this.InputIsInValid = true;
+          } else if (duplicateUsername) {
+            this.invalidInputMsg = "Leider gibt es bereits den Usernamen";
+            this.InputIsInValid = true;
+          } else if (duplicateMail) {
+            this.invalidInputMsg = "Leider gibt es bereits die Mailadresse";
+            this.InputIsInValid = true;
+            // If They don't exist, sign Up this new user
+          } else if (!duplicateUsername & !duplicateMail) {
+            const { error } = await supabase.auth.signUp({
+              email: this.toLowerCase(this.email),
+              password: this.password,
+            });
+            if (!error) {
+              // Also create a new table row for them.
+              const responseInsertNewRow = await supabase.from("users").insert({
+                username: this.username,
+                email: this.toLowerCase(this.email),
+              });
+              if (responseInsertNewRow.error) {
+                throw error;
+              } else {
+                router.push({ name: "addNewCarView" });
+              }
+            } else {
+              throw error;
+            }
+          }
+        } catch (error) {
+          if (error instanceof Error) {
+            alert(error.message);
+          }
+        } finally {
+          this.loading = false;
+        }
+      } else {
+        this.invalidInputMsg = "Deine Anmeldedaten sind leider unvollständig.";
+        this.InputIsInValid = true;
       }
+    },
+    toLowerCase(value) {
+      return value.toLocaleLowerCase();
     },
   },
 };
@@ -484,6 +605,24 @@ main {
   color: var(--primary-mid);
   font-size: clamp(1rem, 10vw, 1.4vw);
 }
+
+/* ==== Input is Invalid CSS ==== */
+.capp-input__invalid-input {
+  font-size: var(--s-font);
+  width: 100%;
+  height: max-content;
+  text-align: center;
+  padding-right: calc(var(--s-font) / 2);
+  margin-top: calc(var(--s-font) / 1.5);
+}
+.input__valid {
+  color: transparent;
+}
+.input__invalid {
+  color: var(--error-color);
+}
+/* ============================== */
+
 @media screen and (min-width: 500px) {
   main {
     background: radial-gradient(
