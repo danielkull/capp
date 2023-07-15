@@ -25,24 +25,21 @@ export default {};
 .log-area__back-btn-wrapper {
   position: relative;
   width: max-content;
-  aspect-ratio: 1;
+  width: max-content;
   cursor: pointer;
-}
-.login__back-btn,
-.login__back-arrow {
   display: grid;
   place-content: center;
 }
 
 .login__back-btn {
   all: unset;
-  height: clamp(2rem, 10vw, 3rem);
+  height: clamp(1.5rem, 10vw, 2rem);
   aspect-ratio: 1;
-  background: var(--secondary-mid);
+  background: var(--btn-outl);
 
   padding: calc(0.2rem + 0.5vw);
   border-radius: 100%;
-  outline: var(--m-brd) solid var(--secondary-mid);
+  outline: var(--m-brd) solid var(--btn-outl);
   outline-offset: clamp(0.3rem, 2vw, 0.5rem);
   transition-duration: 0.3s, 0.3s;
   transition-property: background-color, outline-color;
@@ -56,9 +53,9 @@ export default {};
 }
 .login__back-arrow > svg {
   display: block;
-  width: 100%;
+  width: 2.2rem;
   height: 100%;
-  fill: white;
+  fill: var(--bg-log);
 }
 
 #back-btn:active {
@@ -68,9 +65,9 @@ export default {};
   outline-color: var(--primary-dark);
 }
 @media screen and (min-width: 900px) {
-  .login__back-btn:hover {
-    outline-color: var(--secondary-dark);
-    background: var(--primary-mid);
+  .log-area__back-btn-wrapper:hover .login__back-btn {
+    outline-color: var(--btn-outl-act);
+    background: var(--primary-middle);
   }
   .login__back-btn:active {
     background: var(--primary-dark);

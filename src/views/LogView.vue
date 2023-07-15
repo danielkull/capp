@@ -368,6 +368,14 @@ main {
   width: 100%;
   height: 100%;
 
+  /* background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%); */
+
+  background: linear-gradient(
+    to top,
+    var(--surface-light) 10%,
+    transparent 10%
+  );
+
   background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%);
 
   background: radial-gradient(
@@ -386,11 +394,9 @@ main {
   flex-direction: column;
   justify-content: space-between;
 }
-
 .in-motion {
   overflow: hidden;
 }
-
 /*================================================*/
 /*                  Logo                          */
 /*================================================*/
@@ -402,19 +408,16 @@ main {
   width: 100%;
   height: 30%;
 }
-
 .logIn-card__logo-capp > h1 {
   font-size: clamp(4rem, 10vw, 6rem);
   color: var(--clr-logo);
   font-family: var(--font-logo);
 }
-
 /*================================================*/
 /*                  Logo-Ende                     */
 /*================================================*/
 /*                  Buttons                     */
 /*================================================*/
-
 .login-card__btn-wrapper {
   width: 100%;
   height: auto;
@@ -423,7 +426,6 @@ main {
   gap: clamp(1.6rem, 5vw, 3rem);
   margin-bottom: 2rem;
 }
-
 /*===================================================*/
 /*            Start Page                      */
 /*===================================================*/
@@ -451,7 +453,6 @@ main {
     translate: 0 0px;
   }
 }
-
 /*===================================================*/
 /*            Login Page:       ;                    */
 /*===================================================*/
@@ -516,7 +517,6 @@ main {
 .input__invalid {
   color: var(--error-color);
 }
-/* ============================== */
 
 @media screen and (min-width: 500px) {
   main {
@@ -535,16 +535,12 @@ main {
     background: linear-gradient(
       to right,
 
-      var(--primary-mid) 20%,
-      var(--primary-veryDark) 100%
+      var(--bg-shd-l) 20%,
+      var(--bg-shd-d) 100%
     );
   }
   main {
-    background: radial-gradient(
-      circle at 50vw -7vw,
-      transparent 40%,
-      var(--bg-log) 40.1%
-    );
+    background: linear-gradient(to bottom, transparent 60%, var(--bg-log) 60%);
   }
 
   .logIn-card__wrapper {
