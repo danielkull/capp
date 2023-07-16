@@ -1,254 +1,65 @@
 <template>
   <section class="faq-question__wrapper">
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-1"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-1"
-        >Wie funktioniert privates Car-Sharing</label
-      >
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Registriere Dich und Dein Auto, das dauert ungefähr fünf Minuten. Im
-            Kalender gibst Du Dein Auto für mögliche Anfragen frei. Sobald eine
-            Nachbarin* Dein Auto ausleihen möchte, nimmt sie* Kontakt mit Dir
-            auf und reserviert das Auto über den Kalender. Du bestätigst die
-            Buchung per Knopfdruck und schlägst ihr* einen Termin vor, um den
-            Erstcheck inkl. Vertragsunterzeichnung vorzunehmen.
-          </p>
-        </section>
-      </section>
+    <article name="faq-owner-questions">
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-1'"
+        :faqId="'owner-question-1'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-2'"
+        :faqId="'owner-question-2'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-3'"
+        :faqId="'owner-question-3'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-4'"
+        :faqId="'owner-question-4'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-5'"
+        :faqId="'owner-question-5'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-6'"
+        :faqId="'owner-question-6'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-7'"
+        :faqId="'owner-question-5'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-8'"
+        :faqId="'owner-question-6'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-9'"
+        :faqId="'owner-question-5'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-10'"
+        :faqId="'owner-question-6'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-11'"
+        :faqId="'owner-question-5'"
+      />
+      <SingleQuestion
+        :faqOwnerQuestion="'owner-question-12'"
+        :faqId="'owner-question-6'"
+      />
     </article>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-2"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-2"
-        >Schließe ich mit dem Mieter* einen Vertrag ab?</label
-      >
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Na klar, das empfehlen wir auch absolut! Schau Dir hier unseren
-            Mustervertrag an. Du kannst ihn natürlich anpassen.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-3"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-3"
-        >Was für Kosten kommen auf mich zu?</label
-      >
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Keine! Der Mieter* wird den Wagen in dem Zustand zurückbringen, in
-            dem er ihn ausgeliehen hat, mit gleichem Tankstand und im gleichen
-            Reinigungszustand. Wir empfehlen zusätzlich eine Kilometerpauschale
-            von 15 Cent, um den Verschleiß einzukalkulieren. Bitte bedenke: Du
-            sollst als Vermieterin* weder draufzahlen noch Profit machen!
-            Sharing is caring.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-4"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-4"
-        >Worauf sollte ich bei der Übergabe achten?
-      </label>
-
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Plane vor der Übergabe eine halbe Stunde Zeit ein, um die Formalien
-            mit Deinem Nachbarn* zu klären. Hier unterschreibt ihr beide den
-            Vertrag und schaut euch das Auto an. Gibt es schon Beulen oder
-            Kratzer im Lack? Sind Flecken im Polster? Wo schaltet man den
-            Beifahrerairbag für die Babyschale aus und findet den
-            Erste-Hilfe-Koffer und das Warndreieck? Wo liegt die Kopie vom
-            Fahrzeugschein (siehe auch “Was mache ich mit dem Fahrzeugschein”).
-            Checkt den Tank- und Kilometerstand gemeinsam und übergebe dann den
-            Schlüssel. Bei längerfristigen Fahrgemeinschaften wird die Übergabe
-            natürlich viel schneller vonstatten gehen.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-5"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-5"
-        >Und bei der Rückgabe?
-      </label>
-
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Schau nach, ob der Tank nachgefüllt wurde und das Auto in dem
-            Zustand ist, in dem Du es abgegeben hast. Achte dabei Kratzer,
-            Beulen, Flecken, Krümel.... Und natürlich, dass Du den Schlüssel
-            zurückbekommst.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-6"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-6"
-        >Was mache ich mit dem Fahrzeugschein?
-      </label>
-
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Kopieren und an einem guten Ort im Auto aufbewahren, z.B. der
-            Sonnenblende oder dem Handschuhfach. Ach ja: Informiere bitte den
-            Mieter* über den Aufbewahrungsort.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-7"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-7"
-        >Kann ich Buchungen ablehnen, auch wenn das Auto im Kalender als
-        verfügbar eingetragen ist?
-      </label>
-
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Na klar! Es ist Dein Auto, Du kannst ohne Nennung von Gründen
-            ablehnen.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-8"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-8"
-        >Was passiert, wenn ein Mieter* einen Strafzettel bekommt?</label
-      >
-
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Dann muss er* bezahlen, so schnell wie möglich, und ohne Diskussion.
-            Wenn ihr euch nicht einig seid, wer den Strafzettel verursacht hat:
-            dafür ist der Buchungskalender da. Hier ist die Buchung ja
-            verzeichnet.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-9"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-9"
-        >Das Auto ist nicht gereinigt zurückgekommen. Und jetzt?</label
-      >
-
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Sprich die Mieterin* bei der Rückgabe darauf an und vereinbare einen
-            schnellstmöglichen Termin, an dem das Auto von ihr* gereinigt wird.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-10"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-10"
-        >...aufgetankt wurde auch nicht...</label
-      >
-
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Siehe oben. Zur Not tanke selbst und schick dem Mieter* ein Foto von
-            der Tankquittung, die er dann nachträglich bezahlt.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <article class="faq-question">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="owner-faq-11"
-        class="faq-list-check"
-      /><label class="faq-question__header" for="owner-faq-11"
-        >...ich bin also generell echt unzufrieden mit der Mieterin*...</label
-      >
-
-      <section class="faq-answer__holder">
-        <section class="placeholder">
-          <p>
-            Dann blockiere sie*, so dass sie* Dein Auto nicht mehr anfragen
-            kann. Und schreibe die problematischen Punkte in ihre Bewertung -
-            aber bitte gemäßigt. Capp ist nicht der Ort für Wutbürger*, sondern
-            für Menschen, die sich für eine gute Nachbarschaft und Klimaschutz
-            einsetzen.
-          </p>
-        </section>
-      </section>
-    </article>
-    <!------------------------------------------------------------>
-    <!------------------------------------------------------------>
   </section>
 </template>
-<script></script>
+<script>
+import SingleQuestion from "@/components/main-component/expand-menu-components/FaqSingleQuestion.vue";
+export default {
+  components: {
+    SingleQuestion,
+  },
+};
+</script>
 
 <style scoped>
 /* List Elements */
