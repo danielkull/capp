@@ -136,9 +136,14 @@ export default {
       validator(value) {
         // Only input Element type specific names are allowed
         // List can be extented if needed
-        return ["text", "email", "password", "datetime-local", "tel"].includes(
-          value
-        );
+        return [
+          "text",
+          "email",
+          "password",
+          "datetime-local",
+          "tel",
+          "number",
+        ].includes(value);
       },
     },
     inputPlaceholder: {
@@ -173,6 +178,8 @@ export default {
           return "Wähle einfach das passende Datum und die Zeit aus.";
         case "tel":
           return "Deine Telefon-Nummer darf keine Buchstaben enthalten.";
+        case "number":
+          return "Gib hier eine Zahl ein - oder zähle den Wert mit dem up-Pfeil hoch bzw. mit dem down-Pfeil herunter.";
         default:
           return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
