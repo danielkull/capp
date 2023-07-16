@@ -149,9 +149,9 @@ section :is(h3) {
   padding-block: 0.5rem;
   background: var(--sec-bg);
   box-shadow: 0px 0px 15px var(--shd-single-cards);
-  border-radius: 2rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  border-radius: var(--m-brd-rad);
+  padding: var(--s-pad);
+  margin-bottom: var(--s-marg);
 }
 .setting-content__question {
   border-bottom: var(--m-brd) solid var(--check-checked);

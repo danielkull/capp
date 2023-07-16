@@ -17,7 +17,7 @@
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
         <!-------------------------------------------------------------------->
-
+        <DataTable />
         <!----------Hier COntent--------->
 
         <!-------------------------------------------------------------------->
@@ -27,7 +27,12 @@
 </template>
 
 <script>
-export default {};
+import DataTable from "@/components/main-component/expand-menu-components/UserDatesTable.vue";
+export default {
+  components: {
+    DataTable,
+  },
+};
 </script>
 
 <style>
