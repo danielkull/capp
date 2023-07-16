@@ -244,7 +244,7 @@
 
     <!------------------------------------------------------>
     <section class="faq-answer__holder">
-      <section class="placeholder">
+      
         <!------------------------------------------------------------------------->
         <!---------------------/  Owner-Answers-Text  /---------------------------->
         <!------------------------------------------------------------------------->
@@ -351,17 +351,20 @@
 
           </p>
          <p v-if="faqQuestion === 'client-question-5'">
-          Zeig Deiner neuen Carsharing-Partnerin, dass Du gut mit ihrem Auto umgegangen bist. Das Auto sieht genauso sauber aus wie vor deiner Ausleihe und auch der Tank wurde nachgefüllt. Anhand des Kilometerstandes errechnet ihr die Verschleißpauschale, die Du dann direkt bezahlst. Wir empfehlen hier Bezahlsysteme wie z.B. PayPal. So habt ihr direkt einen Beleg über die Zahlung. Ach ja: Schlüsselübergabe nicht vergessen!
+          Zeig Deiner neuen Carsharing-Partnerin, dass Du gut mit ihrem Auto umgegangen bist. Das Auto sieht genauso sauber aus wie vor deiner Ausleihe und auch der Tank wurde nachgefüllt. Anhand des Kilometerstandes errechnet ihr die Verschleißpauschale, die Du dann direkt bezahlst. Wir empfehlen hier Bezahlsysteme wie z.B. PayPal. <br>So habt ihr direkt einen Beleg über die Zahlung. Ach ja: Schlüsselübergabe nicht vergessen!
 
           </p>
          <p v-if="faqQuestion === 'client-question-6'">
-           Grundsätzlich wird alles im Vertrag und Gespräch geklärt und festgelegt, aber auf vier heikle Punkte gehen wir einmal explizit ein: Kläre unbedingt im Voraus ab, wenn Du 
-            
-  <ul>im Auto rauchen möchtest</ul> 
-<ul>Kinder mitfahren</ul>
-<ul>Haustiere transportiert werden sollen</ul>
-<ul>oder Du mit dem geliehenen Auto ins Ausland fährst</ul>
+           Grundsätzlich wird alles im Vertrag und Gespräch geklärt und festgelegt, aber auf vier heikle Punkte gehen wir einmal explizit ein: Kläre unbedingt im Voraus ab, wenn Du : 
+           
+<ul>
+  <li><span></span>im Auto rauchen möchtest</li>
+  <li><span></span>Kinder mitfahren</li>
+  <li><span></span>Haustiere transportiert werden sollen</li>
+  <li><span></span>oder Du mit dem geliehenen Auto ins Ausland fährst</li>
+</ul>
 
+  
           </p>
 
 
@@ -405,7 +408,7 @@ Du! So steht es im Vertrag. Wenn Du jemanden anderen fahren lassen möchtest, kl
              Das machen wir für Dich! Schreibe uns einfach eine Email an
             capp.carsharing@gmail.com, wir kümmern uns darum.
           </p>
-      </section>
+      
     </section>
   </article>
 </template>
@@ -430,12 +433,14 @@ export default {
 </script>
 
 <style scoped>
-.faq-question__wrapper {
-  overflow: hidden;
-  width: 90%;
-  margin-inline: auto;
+.faq-question{
+  width:100%;
+  border-bottom: var(--s-brd) solid var(--clr-brd-top);
 }
 
+.faq-question label{
+  width:90%;
+}
 .faq-question__header,
 .faq-question__header::after {
   cursor: pointer;
@@ -450,9 +455,12 @@ export default {
   justify-content: space-between;
   padding-block: 0.5rem;
   padding-inline: 1rem;
-  font-size: var(--header-question-list);
-  color: var(--main-font-color-light);
-  background: var(--surface-light);
+  font-size: clamp(0.9rem, 3vw, 1.3rem);
+   color: var(--text-light);
+   margin-top:.7rem;
+   
+ 
+ 
 }
 .faq-list-check {
   all: unset;
@@ -468,42 +476,88 @@ export default {
   width: 0.8rem;
   height: 1.5rem;
   top: 45%;
-  right: calc(2% + 1.5vw);
+  right: calc(-11% + 1.5vw);
   translate: 0% -50%;
   clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
   transform-origin: center;
-  transition: rotate 0.3s ease-out;
+  transition: rotate 0.2s ease-out;
   background: var(--list-default);
+
 }
 /*====================== dreieck = Ende==================================*/
 .faq-question > .faq-answer__holder > * {
   overflow: hidden;
   width: 100%;
   padding-inline: var(--list-padding);
-  list-style-type: none;
-  background: var(--surface-light);
-  box-shadow: inset 0px 3px 5px var(--box-shadow-light);
+ 
+  
+  /* box-shadow: inset 0px 3px 5px var(--box-shadow-light); */
 }
 
 .faq-answer__holder {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.3s ease-in-out;
+ margin-top:.7rem;
+  padding-inline:0.7rem;
+  font-size: clamp(0.9rem, 3vw, 1.3rem);
+ line-height: 1.2rem;
+   color: var(--text-mid);
+  
+}
+ul{
+  padding-top:0.3rem;
+  margin-top:0.3rem;
+  border-top:1px solid var(--text-light);
 }
 
 .faq-list-check:checked ~ .faq-answer__holder {
   display: grid;
   grid-template-rows: 1fr;
-  background: var(--surface-dark);
-  padding-block: 0rem 1rem;
+  background: var(--clr-sur-d);
+  padding-block: 0.8rem 1.3rem;
+  font-weight: 400;
+    border-radius: 0 0 1.2rem 1.2rem;
+    border-bottom: var(--s-brd) solid var(--primary-middle);
 }
 .faq-list-check:checked ~ .faq-question__header::after {
   background: var(--list-actv);
   rotate: 90deg;
 }
 
-.faq-question__header:hover {
+.faq-question:has(.faq-list-check:checked){
+  border-bottom: var(--s-brd) solid var(--sec-bg);
+
+}
+
+
+li{
+  
+  list-style-type: circle;
+  margin-left:0.6rem;
+  width:90%;
+  display: inline-flex;
+  align-items: center;
+line-height: 1rem;
+font-style: italic;
+  
+}
+
+li > span {
+display: block;
+border-radius: 100%;;
+width:0.3rem;
+aspect-ratio: 1;
+background: var(--text-mid);
+margin-right:0.8rem;
+
+}
+
+
+
+
+/* .faq-question__header:hover {
   background: var(--surface-hover);
   color: var(--main-font-color-dark);
-}
+} */
 </style>

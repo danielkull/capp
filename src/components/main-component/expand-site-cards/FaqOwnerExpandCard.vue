@@ -18,7 +18,54 @@
       <section class="menue-expand__site-main">
         <!-------------------------------------------------------------------->
 
-        <FaqOwnerAccordion />
+        <SingleQuestion
+          :faqQuestion="'owner-question-1'"
+          :faqId="'owner-question-1'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-2'"
+          :faqId="'owner-question-2'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-3'"
+          :faqId="'owner-question-3'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-4'"
+          :faqId="'owner-question-4'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-5'"
+          :faqId="'owner-question-5'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-6'"
+          :faqId="'owner-question-6'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-7'"
+          :faqId="'owner-question-7'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-8'"
+          :faqId="'owner-question-8'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-9'"
+          :faqId="'owner-question-9'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-10'"
+          :faqId="'owner-question-10'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-11'"
+          :faqId="'owner-question-11'"
+        />
+        <SingleQuestion
+          :faqQuestion="'owner-question-12'"
+          :faqId="'owner-question-12'"
+        />
         <!-------------------------------------------------------------------->
       </section>
     </div>
@@ -26,11 +73,11 @@
 </template>
 
 <script>
-import FaqOwnerAccordion from "@/components/main-component/expand-menu-components/FaqOwnerAccordion.vue";
+import SingleQuestion from "@/components/main-component/expand-menu-components/FaqSingleQuestion.vue";
 
 export default {
   components: {
-    FaqOwnerAccordion,
+    SingleQuestion,
   },
 };
 </script>
@@ -56,8 +103,9 @@ section:target {
   min-height: 100vh;
   min-height: 100dvh;
   background: linear-gradient(to top, white 30%, transparent),
-    linear-gradient(to right, var(--clr-prime-m) 40%, var(--clr-prime-vd));
+    linear-gradient(to left, var(--bg-shd-l), var(--bg-shd-d));
   width: 0;
+
   transition: 0.2s;
 }
 .menue-expand__inner-wrapper {
@@ -102,13 +150,12 @@ header h2 {
   /*============Hintergund für DarkMode============*/
   display: block;
   width: 95%;
-  height: 90.5vh;
+  height: 88vh;
   margin-top: 0.2rem;
   margin-inline: auto;
   padding-inline: var(--s-pad);
   border-radius: var(--s-brd-rad) var(--s-brd-rad) 0 0;
   background: var(--bg-content);
-
   overflow: scroll;
 }
 </style>

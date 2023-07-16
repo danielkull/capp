@@ -16,17 +16,83 @@
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
-        <FaqClientAccordion />
+        <SingleQuestion
+          :faqQuestion="'client-question-1'"
+          :faqId="'client-question-1'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-2'"
+          :faqId="'client-question-2'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-3'"
+          :faqId="'client-question-3'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-4'"
+          :faqId="'client-question-4'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-5'"
+          :faqId="'client-question-5'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-6'"
+          :faqId="'client-question-6'"
+        />
+
+        <SingleQuestion
+          :faqQuestion="'client-question-7'"
+          :faqId="'client-question-7'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-8'"
+          :faqId="'client-question-8'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-9'"
+          :faqId="'client-question-9'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-10'"
+          :faqId="'client-question-10'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-11'"
+          :faqId="'client-question-11'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-12'"
+          :faqId="'client-question-12'"
+        />
+
+        <SingleQuestion
+          :faqQuestion="'client-question-13'"
+          :faqId="'client-question-13'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-14'"
+          :faqId="'client-question-14'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-15'"
+          :faqId="'client-question-15'"
+        />
+        <SingleQuestion
+          :faqQuestion="'client-question-16'"
+          :faqId="'client-question-16'"
+        />
       </section>
     </div>
   </section>
 </template>
 
 <script>
-import FaqClientAccordion from "@/components/main-component/expand-menu-components/FaqClientAccordion.vue";
+import SingleQuestion from "@/components/main-component/expand-menu-components/FaqSingleQuestion.vue";
+
 export default {
   components: {
-    FaqClientAccordion,
+    SingleQuestion,
   },
 };
 </script>
