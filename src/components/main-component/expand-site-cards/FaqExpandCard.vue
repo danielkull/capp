@@ -18,7 +18,7 @@
       <section class="menue-expand__site-main">
         <!-------------------------------------------------------------------->
 
-        <FaqOwner />
+        <FaqAccordion />
         <!-------------------------------------------------------------------->
       </section>
     </div>
@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import FaqOwner from "@/components/main-component/expand-menu-components/FaqOwnerAccordion.vue";
+import FaqAccordion from "@/components/main-component/expand-menu-components/FaqAccordion.vue";
 export default {
   components: {
-    FaqOwner,
+    FaqAccordion,
   },
 };
 </script>

@@ -2,54 +2,84 @@
   <section class="faq-question__wrapper">
     <article name="faq-owner-questions">
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-1'"
+        :faqQuestion="'owner-question-1'"
         :faqId="'owner-question-1'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-2'"
+        :faqQuestion="'owner-question-2'"
         :faqId="'owner-question-2'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-3'"
+        :faqQuestion="'owner-question-3'"
         :faqId="'owner-question-3'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-4'"
+        :faqQuestion="'owner-question-4'"
         :faqId="'owner-question-4'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-5'"
+        :faqQuestion="'owner-question-5'"
         :faqId="'owner-question-5'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-6'"
+        :faqQuestion="'owner-question-6'"
         :faqId="'owner-question-6'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-7'"
+        :faqQuestion="'owner-question-7'"
         :faqId="'owner-question-5'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-8'"
+        :faqQuestion="'owner-question-8'"
         :faqId="'owner-question-6'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-9'"
+        :faqQuestion="'owner-question-9'"
         :faqId="'owner-question-5'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-10'"
+        :faqQuestion="'owner-question-10'"
         :faqId="'owner-question-6'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-11'"
+        :faqQuestion="'owner-question-11'"
         :faqId="'owner-question-5'"
       />
       <SingleQuestion
-        :faqOwnerQuestion="'owner-question-12'"
+        :faqQuestion="'owner-question-12'"
         :faqId="'owner-question-6'"
       />
     </article>
+
+    <article style="border: 1px solid red" name="faq-client-questions">
+      <SingleQuestion
+        :faqQuestion="'client-question-1'"
+        :faqId="'client-question-1'"
+      />
+      <SingleQuestion
+        :faqQuestion="'client-question-2'"
+        :faqId="'client-question-2'"
+      />
+      <SingleQuestion
+        :faqQuestion="'client-question-3'"
+        :faqId="'client-question-3'"
+      />
+      <SingleQuestion
+        :faqQuestion="'client-question-4'"
+        :faqId="'client-question-4'"
+      />
+      <SingleQuestion
+        :faqQuestion="'client-question-5'"
+        :faqId="'client-question-5'"
+      />
+      <SingleQuestion
+        :faqQuestion="'client-question-6'"
+        :faqId="'client-question-6'"
+      />
+    </article>
+
+    <!-------------------------------------------------------------------------->
+    <article name="faq-owner-questions"></article>
   </section>
 </template>
 <script>

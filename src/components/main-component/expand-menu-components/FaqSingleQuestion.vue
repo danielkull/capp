@@ -1,4 +1,24 @@
 <template>
+  <!------------------------------------------------------------------------->
+
+  <!--/   Erklärung  
+ Fragezeile: besteht aus der Checkbox un dem Label,
+ hier ist die ID gebindet zbsp "owner-question-1" 
+ Antowrtzeile: besteht aus dem p tag
+ hier ist die ID gebindet zbsp "owner-question-1" 
+
+ diese beiden gehören zusammen für ein Accordion Element
+
+
+ Angeben werden sie FAQAccordion
+
+ zbsp:
+  <SingleQuestion
+        :faqQuestion="'owner-question-1'"
+        :faqId="'owner-question-1'"
+      />
+ /-->
+
   <article class="faq-question">
     <input
       type="checkbox"
@@ -11,48 +31,48 @@
     <!------------------------------------------------------------------------->
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-1'"
+      v-if="faqQuestion === 'owner-question-1'"
       :for="faqId"
       >Wie funktioniert privates Car-Sharing
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-2'"
+      v-if="faqQuestion === 'owner-question-2'"
       :for="faqId"
     >
       Schließe ich mit dem Mieter* einen Vertrag ab?
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-3'"
+      v-if="faqQuestion === 'owner-question-3'"
       :for="faqId"
     >
       Was für Kosten kommen auf mich zu?
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-4'"
+      v-if="faqQuestion === 'owner-question-4'"
       :for="faqId"
     >
       Worauf sollte ich bei der Übergabe achten?
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-5'"
+      v-if="faqQuestion === 'owner-question-5'"
       :for="faqId"
     >
       Und bei der Rückgabe?
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-6'"
+      v-if="faqQuestion === 'owner-question-6'"
       :for="faqId"
     >
       Was mache ich mit dem Fahrzeugschein?
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-7'"
+      v-if="faqQuestion === 'owner-question-7'"
       :for="faqId"
     >
       Kann ich Buchungen ablehnen, auch wenn das Auto im Kalender als verfügbar
@@ -60,47 +80,94 @@
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-8'"
+      v-if="faqQuestion === 'owner-question-8'"
       :for="faqId"
     >
       Was passiert, wenn ein Mieter* einen Strafzettel bekommt?
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-9'"
+      v-if="faqQuestion === 'owner-question-9'"
       :for="faqId"
     >
       Das Auto ist nicht gereinigt zurückgekommen. Und jetzt?
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-10'"
+      v-if="faqQuestion === 'owner-question-10'"
       :for="faqId"
     >
       ...aufgetankt wurde auch nicht...
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-11'"
+      v-if="faqQuestion === 'owner-question-11'"
       :for="faqId"
     >
       ...ich bin also generell echt unzufrieden mit der Mieterin*...
     </label>
     <label
       class="faq-question__header"
-      v-if="faqOwnerQuestion === 'owner-question-12'"
+      v-if="faqQuestion === 'owner-question-12'"
       :for="faqId"
     >
       Die Bewertung war unfair - kann ich sie im Nachhinein löschen?
     </label>
+    <!------------------------------------------------------------------------------------------>
+    <!------------------------------/  Ausleiher-Question-label  /-------------------------------->
+    <!------------------------------------------------------------------------------------------>
+    <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-1'"
+      :for="faqId"
+    >
+      Wie funktioniert privates Car-Sharing
+    </label>
+    <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-2'"
+      :for="faqId"
+    >
+      Wie funktioniert die Buchung?
+    </label>
+    <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-3'"
+      :for="faqId"
+    >
+      Warum muss ich über den Kalender buchen?
+    </label>
 
+    <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-4'"
+      :for="faqId"
+    >
+      Die erste Buchung - was muss ich als Mieterin* beachten?
+    </label>
+    <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-5'"
+      :for="faqId"
+    >
+      Und bei der Rückgabe?
+    </label>
+    <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-6'"
+      :for="faqId"
+    >
+      Gibt es Einschränkungen, die ich bei der Anmietung beachten muss?
+    </label>
+
+    <!------------------------------------------------------>
     <section class="faq-answer__holder">
       <section class="placeholder">
         <!------------------------------------------------------------------------->
         <!---------------------/  Owner-Answers-Text  /---------------------------->
         <!------------------------------------------------------------------------->
 
-        <p v-if="faqOwnerQuestion === 'owner-question-1'">
+        <p v-if="faqQuestion === 'owner-question-1'">
           Registriere Dich und Dein Auto, das dauert ungefähr fünf Minuten. Im
           Kalender gibst Du Dein Auto für mögliche Anfragen frei. Sobald eine
           Nachbarin* Dein Auto ausleihen möchte, nimmt sie* Kontakt mit Dir auf
@@ -108,11 +175,11 @@
           per Knopfdruck und schlägst ihr* einen Termin vor, um den Erstcheck
           inkl. Vertragsunterzeichnung vorzunehmen.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-2'">
+        <p v-if="faqQuestion === 'owner-question-2'">
           Na klar, das empfehlen wir auch absolut! Schau Dir hier unseren
           Mustervertrag an. Du kannst ihn natürlich anpassen.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-3'">
+        <p v-if="faqQuestion === 'owner-question-3'">
           Keine! Der Mieter* wird den Wagen in dem Zustand zurückbringen, in dem
           er ihn ausgeliehen hat, mit gleichem Tankstand und im gleichen
           Reinigungszustand. Wir empfehlen zusätzlich eine Kilometerpauschale
@@ -120,7 +187,7 @@
           sollst als Vermieterin* weder draufzahlen noch Profit machen! Sharing
           is caring.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-4'">
+        <p v-if="faqQuestion === 'owner-question-4'">
           Plane vor der Übergabe eine halbe Stunde Zeit ein, um die Formalien
           mit Deinem Nachbarn* zu klären. Hier unterschreibt ihr beide den
           Vertrag und schaut euch das Auto an. Gibt es schon Beulen oder Kratzer
@@ -132,46 +199,88 @@
           längerfristigen Fahrgemeinschaften wird die Übergabe natürlich viel
           schneller vonstatten gehen.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-5'">
+        <p v-if="faqQuestion === 'owner-question-5'">
           Schau nach, ob der Tank nachgefüllt wurde und das Auto in dem Zustand
           ist, in dem Du es abgegeben hast. Achte dabei Kratzer, Beulen,
           Flecken, Krümel.... Und natürlich, dass Du den Schlüssel
           zurückbekommst.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-6'">
+        <p v-if="faqQuestion === 'owner-question-6'">
           Kopieren und an einem guten Ort im Auto aufbewahren, z.B. der
           Sonnenblende oder dem Handschuhfach. Ach ja: Informiere bitte den
           Mieter* über den Aufbewahrungsort.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-7'">
+        <p v-if="faqQuestion === 'owner-question-7'">
           Na klar! Es ist Dein Auto, Du kannst ohne Nennung von Gründen
           ablehnen.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-8'">
+        <p v-if="faqQuestion === 'owner-question-8'">
           Dann muss er* bezahlen, so schnell wie möglich, und ohne Diskussion.
           Wenn ihr euch nicht einig seid, wer den Strafzettel verursacht hat:
           dafür ist der Buchungskalender da. Hier ist die Buchung ja
           verzeichnet.
         </p>
 
-        <p v-if="faqOwnerQuestion === 'owner-question-9'">
+        <p v-if="faqQuestion === 'owner-question-9'">
           Sprich die Mieterin* bei der Rückgabe darauf an und vereinbare einen
           schnellstmöglichen Termin, an dem das Auto von ihr* gereinigt wird.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-10'">
+        <p v-if="faqQuestion === 'owner-question-10'">
           Siehe oben. Zur Not tanke selbst und schick dem Mieter* ein Foto von
           der Tankquittung, die er dann nachträglich bezahlt.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-11'">
+        <p v-if="faqQuestion === 'owner-question-11'">
           Dann blockiere sie*, so dass sie* Dein Auto nicht mehr anfragen kann.
           Und schreibe die problematischen Punkte in ihre Bewertung - aber bitte
           gemäßigt. Capp ist nicht der Ort für Wutbürger*, sondern für Menschen,
           die sich für eine gute Nachbarschaft und Klimaschutz einsetzen.
         </p>
-        <p v-if="faqOwnerQuestion === 'owner-question-12'">
+        <p v-if="faqQuestion === 'owner-question-12'">
           Das machen wir für Dich! Schreibe uns einfach eine Email an
           capp.carsharing@gmail.com, wir kümmern uns darum.
         </p>
+        <!------------------------------------------------------------------------------------------>
+        <!------------------------------/  Ausleiher-Answers-Text  /-------------------------------->
+        <!------------------------------------------------------------------------------------------>
+
+        <p v-if="faqQuestion === 'client-question-1'">
+          CAPP basiert auf dem Solidaritätsprinzip- Deine Nachbarn haben ein
+          Auto, dass sie gerne der Gemeinschaft zur Verfügung stellen möchten.
+          Wenn Du ein Auto benötigst, registrierst Du Dich auf CAPP. Dann kannst
+          Du Dir ein Auto aussuchen und auf Knopfdruck buchen. Du trägst dabei
+          nur die Fahrtkosten. Du gibst den Wagen so getankt und gereinigt
+          zurück, wie Du ihn übernommen hast und bezahlst eine faire
+          Verschleißpauschale.
+        </p>
+        <p v-if="faqQuestion === 'client-question-2'">
+          So unkompliziert wie nur möglich! Gib Deine Ausleihdaten im
+          Buchungskalender ein und schaue Dich auf unserem Marktplatz um, welche
+          Autos verfügbar sind. Wenn ein Auto Deine Vorstellungen trifft, kannst
+          Du direkt eine Buchungsanfrage losschicken.
+        </p>
+        <p v-if="faqQuestion === 'client-question-3'">
+          Wir lieben klare Absprachen - mit einem Kalender ist dokumentiert, wer
+          wann den Wagen gefahren hat und welche Buchung getätigt wurde. Sehr
+          hilfreich bei Strafzetteln und zur Vermeidung von Doppelbuchungen.
+        </p>
+
+         <p v-if="faqQuestion === 'client-question-4'">
+            Plane vor deiner ersten Fahrt eine halbe Stunde Zeit ein, um die Formalien mit Deinem Nachbarn* zu klären. Hier unterschreibt ihr beide den Vertrag und schaut euch das Auto an. Gibt es schon Beulen oder Kratzer im Lack? Hat das Fahrzeug Besonderheiten wie einen stotternden Fensterheber, eine manuell zu verriegelnde Tür oder ein Radio, das nur manche Sender abspielt? Wo schaltet man den Beifahrerairbag für die Babyschale aus und findet den Erste-Hilfe-Koffer und das Warndreieck? Und wo finde ich die Kopie vom Fahrzeugschein? Ihr checkt gemeinsam den Tankstand und notiert den Kilometerstand. Und dann kann es losgehen! 
+
+          </p>
+         <p v-if="faqQuestion === 'client-question-5'">
+          Zeig Deiner neuen Carsharing-Partnerin, dass Du gut mit ihrem Auto umgegangen bist. Das Auto sieht genauso sauber aus wie vor deiner Ausleihe und auch der Tank wurde nachgefüllt. Anhand des Kilometerstandes errechnet ihr die Verschleißpauschale, die Du dann direkt bezahlst. Wir empfehlen hier Bezahlsysteme wie z.B. PayPal. So habt ihr direkt einen Beleg über die Zahlung. Ach ja: Schlüsselübergabe nicht vergessen!
+
+          </p>
+         <p v-if="faqQuestion === 'client-question-6'">
+           Grundsätzlich wird alles im Vertrag und Gespräch geklärt und festgelegt, aber auf vier heikle Punkte gehen wir einmal explizit ein: Kläre unbedingt im Voraus ab, wenn Du 
+            
+  <ul>im Auto rauchen möchtest</ul> 
+<ul>Kinder mitfahren</ul>
+<ul>Haustiere transportiert werden sollen</ul>
+<ul>oder Du mit dem geliehenen Auto ins Ausland fährst</ul>
+
+          </p>
       </section>
     </section>
   </article>
@@ -180,11 +289,11 @@
 <script>
 export default {
   props: {
-    faqOwnerAnswer: {
+    faqQuestion: {
       type: String,
       required: true,
     },
-    faqOwnerQuestion: {
+    faqQuestion: {
       type: String,
       required: true,
     },

@@ -46,7 +46,6 @@
       </SmallCarCard>
     </section>
     <div v-else><p>Loading Cars...</p></div>
-
   </main>
   <ExpandMenue />
   <MessageSettingsCard />
@@ -79,14 +78,13 @@ import UserDataCard from "@/components/main-component/expand-site-cards/UserData
 import CarDataCard from "@/components/main-component/expand-site-cards/CarDataExpandCard.vue";
 import DataSafety from "@/components/main-component/expand-site-cards/DataSafetyExpandCard.vue";
 import FaqClient from "@/components/main-component/expand-site-cards/FaqClientExpandCard.vue";
-import FaqOwner from "@/components/main-component/expand-site-cards/FaqOwnerExpandCard.vue";
+import FaqOwner from "@/components/main-component/expand-site-cards/FaqExpandCard.vue";
 import Impressum from "@/components/main-component/expand-site-cards/ImpressumExpandCard.vue";
 import TeamSite from "@/components/main-component/expand-site-cards/TeamExpandCard.vue";
 import UserRules from "@/components/main-component/expand-site-cards/UseExpandCard.vue";
 import UserData from "@/components/main-component/expand-site-cards/UserDataExpandCard.vue";
 
 import { supabase } from "@/lib/supabaseClient";
-
 
 export default {
   components: {
