@@ -104,31 +104,21 @@ export default {
       </div>
       <div class="form-row">
         <!-- car_license_plate -->
-        <div class="capp-input__wrapper">
-          <label for="license-plate" class="capp-label__default"
-            >Kennzeichen</label
-          >
-          <input
-            type="text"
-            name="license-plate"
-            id="license-plate"
-            class="capp-input__default"
-            placeholder="z.B. A-BC 123"
-            v-model="licensePlateValue"
-          />
-        </div>
+        <input-text
+          :inputId="'license-plate'"
+          :inputType="'text'"
+          :inputPlaceholder="'z.B. A-BC 123'"
+          v-model:inputData="licensePlateValue"
+          >Kennzeichen</input-text
+        >
         <!-- img_source -->
-        <div class="capp-input__wrapper">
-          <label for="img-source" class="capp-label__default">Bildquelle</label>
-          <input
-            type="text"
-            name="img-source"
-            id="img-source"
-            class="capp-input__default"
-            placeholder="z.B. https://bildpfad/bildname.png"
-            v-model="imgSourceValue"
-          />
-        </div>
+        <input-text
+          :inputId="'img-source'"
+          :inputType="'text'"
+          :inputPlaceholder="'z.B. https://bildpfad/bildname.png'"
+          v-model:inputData="imgSourceValue"
+          >Bildquelle</input-text
+        >
       </div>
       <div class="form-row">
         <!-- insurance_type -->
@@ -148,18 +138,13 @@ export default {
           </select>
         </div>
         <!-- insurance_no -->
-        <div class="capp-input__wrapper">
-          <label for="insurance-number" class="capp-label__default"
-            >Versicherungs-Nr.</label
-          >
-          <input
-            type="text"
-            name="insurance-number"
-            id="insurance-number"
-            class="capp-input__default"
-            v-model="insuranceNumberValue"
-          />
-        </div>
+        <input-text
+          :inputId="'unsurance-number'"
+          :inputType="'text'"
+          :inputPlaceholder="'z.B. VN-1201333'"
+          v-model:inputData="insuranceNumberValue"
+          >Versicherungs-Nr.</input-text
+        >
       </div>
       <div class="form-row">
         <!-- fuel_type -->
@@ -197,7 +182,7 @@ export default {
         </div>
       </div>
       <div class="form-row">
-        <!-- kw -->
+        <!-- kw / PS 
         <div class="capp-input__wrapper">
           <label for="kw" class="capp-label__default">KiloWatt</label>
           <input
@@ -209,7 +194,14 @@ export default {
             v-model="kwValue"
           />
         </div>
-        <!-- max_speed -->
+        -->
+        <input-text
+          :inputId="'kw'"
+          :inputType="'number'"
+          v-model:inputData="kwValue"
+          >PS</input-text
+        >
+        <!-- max_speed 
         <div class="capp-input__wrapper">
           <label for="max-speed" class="capp-label__default"
             >Höchst-Tempo</label
@@ -223,9 +215,16 @@ export default {
             v-model="maxSpeedValue"
           />
         </div>
+        -->
+        <input-text
+          :inputId="'max-speed'"
+          :inputType="'number'"
+          v-model:inputData="maxSpeedValue"
+          >Höchst-Tempo</input-text
+        >
       </div>
       <div class="form-row">
-        <!-- year_of_construction -->
+        <!-- year_of_construction 
         <div class="capp-input__wrapper">
           <label for="year" class="capp-label__default">Baujahr</label>
           <input
@@ -237,7 +236,14 @@ export default {
             v-model="yearOfConstruction"
           />
         </div>
-        <!-- mileage -->
+        -->
+        <input-text
+          :inputId="'year'"
+          :inputType="'number'"
+          v-model:inputData="yearOfConstruction"
+          >Baujahr</input-text
+        >
+        <!-- mileage 
         <div class="capp-input__wrapper">
           <label for="mileage" class="capp-label__default">gefahrene km</label>
           <input
@@ -249,9 +255,16 @@ export default {
             v-model="mileageValue"
           />
         </div>
+        -->
+        <input-text
+          :inputId="'mileage'"
+          :inputType="'number'"
+          v-model:inputData="mileageValue"
+          >gefahrene Kilometer</input-text
+        >
       </div>
       <div class="form-row">
-        <!-- trunk_volume_in_liters -->
+        <!-- trunk_volume_in_liters 
         <div class="capp-input__wrapper">
           <label for="trunk-volume" class="capp-label__default"
             >Kofferraum-Volumen</label
@@ -265,7 +278,14 @@ export default {
             v-model="trunkVolume"
           />
         </div>
-        <!-- mileage -->
+        -->
+        <input-text
+          :inputId="'trunk-volume'"
+          :inputType="'number'"
+          v-model:inputData="trunkVolume"
+          >Kofferraum-Volumen</input-text
+        >
+        <!-- count of seats 
         <div class="capp-input__wrapper">
           <label for="seat-count" class="capp-label__default"
             >Anzahl Sitze</label
@@ -279,6 +299,13 @@ export default {
             v-model="seatCount"
           />
         </div>
+        -->
+        <input-text
+          :inputId="'seat-count'"
+          :inputType="'number'"
+          v-model:inputData="seatCount"
+          >Anzahl freie Sitze</input-text
+        >
       </div>
       <div class="form-row">
         <!-- gear -->
