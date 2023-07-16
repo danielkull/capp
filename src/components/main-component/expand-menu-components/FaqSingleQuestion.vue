@@ -155,9 +155,91 @@
     <label
       class="faq-question__header"
       v-if="faqQuestion === 'client-question-6'"
+
       :for="faqId"
     >
       Gibt es Einschränkungen, die ich bei der Anmietung beachten muss?
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-7'"
+      :for="faqId"
+    >
+      Was passiert, wenn ich ausnahmsweise doch einen Hund mitnehme, obwohl mir das untersagt wurde? 
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-8'"
+      :for="faqId"
+    >
+      Was passiert, wenn ich einen einen Strafzettel bekomme?
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-9'"
+      :for="faqId"
+    >
+      Wer darf fahren?
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-10'"
+      :for="faqId"
+    >
+      Wer darf mitfahren?
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-11'"
+      :for="faqId"
+    >
+      Wie verhalte ich mich, wenn ich während der Fahrt eine Panne habe?
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-12'"
+      :for="faqId"
+    >
+     Wie verhalte ich mich bei einem Unfall?
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-13'"
+      :for="faqId"
+    >
+     Was ist, wenn ich eine Verschmutzung verursache?
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-14'"
+      :for="faqId"
+    >
+    Was mache ich, wenn sich die Rückgabe des Autos verspätet?
+    </label>
+
+     <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-15'"
+      :for="faqId"
+    >
+     Was mache ich, wenn ich meine Buchung stornieren muss? 
+    </label>
+
+    <label
+      class="faq-question__header"
+      v-if="faqQuestion === 'client-question-16'"
+      :for="faqId"
+    >
+    Die Bewertung war unfair - kann ich sie im Nachhinein
+        löschen?
     </label>
 
     <!------------------------------------------------------>
@@ -280,6 +362,48 @@
 <ul>Haustiere transportiert werden sollen</ul>
 <ul>oder Du mit dem geliehenen Auto ins Ausland fährst</ul>
 
+          </p>
+
+
+           <p v-if="faqQuestion === 'client-question-7'">
+           Zweierlei kann passieren: Die Vermieterin* -oder Du selbst- lässt den Wagen grundreinigen, und zwar auf Deine Kosten. Außerdem kann Dich die Vermieterin* als Mieter* blockieren. Nicht gut fürs Karma, nicht gut für die Nachbarschaft. 
+          </p>
+           <p v-if="faqQuestion === 'client-question-8'">
+           Dann bezahlst, und zwar so schnell wie möglich, und ohne Diskussion. Und informiere unbedingt Deine Vermieterin*.  
+            Wenn ihr euch nicht einig seid, wer den Strafzettel verursacht hat: Schaut in den Buchungskalender. Er ist im Zweifel der Beleg für die Fahrt.
+          </p>
+           <p v-if="faqQuestion === 'client-question-9'">
+           Wer darf fahren?
+Du! So steht es im Vertrag. Wenn Du jemanden anderen fahren lassen möchtest, kläre das unbedingt mit Deiner Vermieterin* ab.
+
+          </p>
+
+           <p v-if="faqQuestion === 'client-question-10'">
+           Du hast im Vorfeld den Zweck der Fahrt und dementsprechend auch die möglichen Mitfahrenden mit dem Vermieter* geklärt.   
+          </p>
+           <p v-if="faqQuestion === 'client-question-11'">
+            Entweder bist du im ADAC oder es wurde auf dem Auto eine Pannenhilfe abgeschlossen. Das habt ihr vor der Fahrt vertraglich festgehalten.
+          </p>
+           <p v-if="faqQuestion === 'client-question-12'">
+          Informiere unbedingt den Vermieter*, um die weiteren Schritte zu klären. 
+(nachdem Du alle notwendigen Schritte zur Verkehrssicherung vorgenommen hast). 
+
+          </p>
+
+            <p v-if="faqQuestion === 'client-question-13'">
+            Bitte gib das Auto gereinigt zurück. Solltest Du Flecken ins Polster gemacht haben, kann die Vermieterin* eine professionelle Polsterreinigung in Auftrag geben, für die Du aufkommen musst. 
+
+          </p>
+            <p v-if="faqQuestion === 'client-question-14'">
+             Sobald abzusehen ist, dass Du Dich um mehr als 15 Minuten verspätest, informiere Deinen Vermieter darüber*. Sollte er* deswegen ebenfalls ein Auto mieten müssen, musst Du dafür die Kosten übernehmen.  
+
+          </p>
+            <p v-if="faqQuestion === 'client-question-15'">
+             Zieh die Buchung unbedingt über den Buchungskalender zurück. Nur so wird der Vermieter* informiert und das Auto wieder für andere Nachbarn* freigegeben. Kosten entstehen Dir keine - CAPP soll nicht wirtschaftlich sein, sondern nur die Umwelt entlasten und die Gesellschaft stärken.  
+          </p>
+            <p v-if="faqQuestion === 'client-question-16'">
+             Das machen wir für Dich! Schreibe uns einfach eine Email an
+            capp.carsharing@gmail.com, wir kümmern uns darum.
           </p>
       </section>
     </section>
