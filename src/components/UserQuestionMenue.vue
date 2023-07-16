@@ -271,20 +271,7 @@
               />
               <label :for="`feature-${feature.id}`">{{ feature.name }}</label>
             </li>
-            <!-- Sonstiges 
-            <li class="question-list__item">
-              <p>&nbsp;</p>
-              <label for="misc">Sonstiges</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="misc"
-                id="misc"
-                v-model="miscellaneous"
-                placeholder="Sonstiges"
-              />
-            </li>
-            -->
+            <!-- Sonstiges -->
             <input-text
               :inputId="'misc'"
               :inputType="'text'"
@@ -307,40 +294,43 @@
           h2textTrunkSize
         }}</label>
         <section class="question-list__list">
-          <ul class="question-list">
-            <li
-              class="question-list__item"
-              v-for="luggageTrunkSize in luggageTrunkSizes"
-              :key="luggageTrunkSize.id"
-            >
-              <input
-                class="capp-radio__default"
-                type="radio"
-                name="trunk-size"
-                :id="luggageTrunkSize.id"
-                :value="[
-                  luggageTrunkSize.id,
-                  luggageTrunkSize.min,
-                  luggageTrunkSize.max,
-                ]"
-                v-model="chosenTrunkSize"
-              />
-              <label :for="luggageTrunkSize.id"
-                >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.min }}-{{
-                  luggageTrunkSize.max
-                }}
-                Liter</label
+          <div>
+            <p>&nbsp;</p>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="luggageTrunkSize in luggageTrunkSizes"
+                :key="luggageTrunkSize.id"
               >
-            </li>
-            <!-- Eigene Angaben -->
-            <input-text
-              :inputId="'own-trunk-size'"
-              :inputType="'text'"
-              :inputPlaceholder="'Eigene Angaben'"
-              v-model:inputData="ownTrunkSize"
-              >Eigene Angaben</input-text
-            >
-          </ul>
+                <input
+                  class="capp-radio__default"
+                  type="radio"
+                  name="trunk-size"
+                  :id="luggageTrunkSize.id"
+                  :value="[
+                    luggageTrunkSize.id,
+                    luggageTrunkSize.min,
+                    luggageTrunkSize.max,
+                  ]"
+                  v-model="chosenTrunkSize"
+                />
+                <label :for="luggageTrunkSize.id"
+                  >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.min }}-{{
+                    luggageTrunkSize.max
+                  }}
+                  Liter</label
+                >
+              </li>
+              <!-- Eigene Angaben -->
+              <input-text
+                :inputId="'own-trunk-size'"
+                :inputType="'text'"
+                :inputPlaceholder="'Eigene Angaben'"
+                v-model:inputData="ownTrunkSize"
+                >Eigene Angaben</input-text
+              >
+            </ul>
+          </div>
         </section>
       </article>
       <!------------------------------------------------------------>
@@ -378,9 +368,16 @@
                   {{ limitation.name }}</label
                 >
               </li>
-              <li class="question-list__item">
-                <label for="min-age">Mindestalter</label>
-                <select name="min-age" id="min-age" v-model="chosenMinAge">
+              <li class="question-list__item capp-input__wrapper">
+                <label for="min-age" class="capp-label__default"
+                  >Mindestalter</label
+                >
+                <select
+                  class="capp-select__default"
+                  name="min-age"
+                  id="min-age"
+                  v-model="chosenMinAge"
+                >
                   <option
                     v-for="minAge in minAges"
                     :key="minAge.id"
@@ -762,6 +759,7 @@ ul.question-list {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
 }
 
 .padding-top {
@@ -818,8 +816,12 @@ ul.question-list {
 }
 
 label {
-  font-size: 1.1rem;
-  color: var(--font-color-light);
+  _font-size: 1.1rem;
+  _color: var(--font-color-light);
+  color: var(--primary-dark);
+  padding-block: calc(var(--s-font) / 2);
+  font-size: 1.15rem;
+  letter-spacing: 0.1rem;
 }
 
 label > img {
@@ -980,5 +982,27 @@ select {
 
 select:focus-within {
   outline-color: var(--primary-mid);
+}
+
+.capp-label__default {
+  display: block;
+  color: var(--primary-dark);
+
+  padding-block: calc(var(--s-font) / 2);
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+
+.capp-select__default {
+  display: block;
+  width: 100%;
+  border: 2px solid var(--clr-trans);
+  border-radius: 0.5rem;
+  padding-inline: 0.5rem;
+  padding-block: 1rem;
+  font-size: var(--m-font);
+  background: var(--clr-bg-main);
+  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
+  color: var(--font-color-dark);
 }
 </style>
