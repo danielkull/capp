@@ -78,10 +78,6 @@ import InputText from "@/components/input-elements/InputText.vue";
 import SelectDropDown from "@/components/input-elements/SelectDropDown.vue";
 import TextArea from "@/components/input-elements/TextArea.vue";
 import { supabase } from "@/lib/supabaseClient.js";
-// Holt uns den passenden Store
-import { userStateStore } from "@/stores/userStateStorage";
-// mapState und mapActions sind teile der Pinia Options API
-import { mapState, mapActions } from "pinia";
 
 export default {
   data() {
@@ -95,15 +91,6 @@ export default {
     };
   },
   components: { InputText, SelectDropDown, TextArea },
-  // Die Actions von Pina werden mit den methods ausgeführt in der Option API
-  methods: {
-    ...mapActions(userStateStore, { getUser: "getUser" }),
-  },
-  // Hier als Beispiel wird der normale State von Pina mit computed geladen
-  // Kann auch anders genutzt werden z.B. data()...
-  computed: {
-    ...mapState(userStateStore, ["users"]),
-  },
   created() {
     this.getPurposes();
     this.getCategorys();
