@@ -22,161 +22,78 @@
         }}</label>
         <section class="question-list__list">
           <ul class="question-list">
-            <li class="question-list__item personal-item">
-              <label for="username">Nickname</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="username"
-                id="username"
-                placeholder="Username"
-                v-model="usernameValue"
-                :class="{
-                  input__invalid:
-                    usernameValue.length > 0 && usernameValue.length < 5,
-                }"
-              />
-              <span>Muss mindestens 5 Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="password"
-                >Passwort&nbsp;<span
-                  id="password-toggle-text"
-                  @click="togglePassword()"
-                  >&lt;{{ inputTypeText }}&gt;</span
-                ></label
-              >
-              <input
-                :type="inputType"
-                class="capp-input__default"
-                name="password"
-                id="password"
-                v-model="passwordValue"
-                :class="{
-                  input__invalid:
-                    passwordValue.length > 0 && passwordValue.length < 10,
-                }"
-              />
-              <span>Muss mindestens 10 Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="firstname">Vorname</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="firstname"
-                id="firstname"
-                placeholder="Vorname"
-                v-model="firstnameValue"
-                :class="{
-                  input__invalid:
-                    firstnameValue.length === 1 ||
-                    /[0-9!?§$%&(){}€@#]/.test(firstnameValue),
-                }"
-              />
-              <span
-                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
-                Sonderzeichen enthalten.</span
-              >
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="lastname">Nachname</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="lastname"
-                id="lastname"
-                placeholder="Nachname"
-                v-model="lastnameValue"
-                :class="{
-                  input__invalid:
-                    lastnameValue.length === 1 ||
-                    /[0-9!?§$%&(){}€@#]/.test(lastnameValue),
-                }"
-              />
-              <span
-                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
-                Sonderzeichen enthalten.</span
-              >
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="email">E-Mail</label>
-              <input
-                type="email"
-                class="capp-input__default"
-                name="email"
-                id="email"
-                placeholder="E-Mail"
-                v-model="emailValue"
-                :class="{
-                  input__invalid:
-                    emailValue !== '' && !emailValue.includes('@'),
-                }"
-              />
-              <span>Muss das @-Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="phone">Telefon</label>
-              <input
-                type="tel"
-                class="capp-input__default"
-                name="phone"
-                id="phone"
-                placeholder="Telefon"
-                v-model="phoneValue"
-                :class="{ input__invalid: /[a-zA-Z]/.test(phoneValue) }"
-              />
-              <span>Darf keine Buchstaben enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="address">Straße, Haus-Nr.</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="address"
-                id="address"
-                placeholder="Straße, Haus-Nr."
-                v-model="addressValue"
-                :class="{ input__invalid: addressValue.length === 1 }"
-              />
-              <span>Muss mindestens 2 Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="zipcode">PLZ</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="zipcode"
-                id="zipcode"
-                placeholder="PLZ"
-                v-model="zipcodeValue"
-                :class="{
-                  input__invalid:
-                    zipcodeValue.length > 0 && zipcodeValue.length < 4,
-                }"
-              />
-              <span>Muss mindestens 4 Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="city">Wohnort</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="city"
-                id="city"
-                placeholder="Ort"
-                v-model="cityValue"
-                :class="{
-                  input__invalid:
-                    cityValue.length === 1 ||
-                    /[0-9!?§$%&(){}€@#]/.test(cityValue),
-                }"
-              />
-              <span
-                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
-                Sonderzeichen enthalten.</span
-              >
-            </li>
+            <!-- Username -->
+            <InputText
+              :inputId="'username'"
+              :inputType="'text'"
+              :inputPlaceholder="'Username'"
+              v-model:inputData="usernameValue"
+              >Nickname</InputText
+            >
+            <!-- Password -->
+            <input-text
+              :inputId="password"
+              :inputType="'password'"
+              :inputPlaceholder="'e.g. Pass-XY_word-2023'"
+              v-model:inputData="passwordValue"
+              >Password</input-text
+            >
+            <!-- Vorname -->
+            <input-text
+              :inputId="'firstname'"
+              :inputType="'text'"
+              :inputPlaceholder="'Vorname'"
+              v-model:inputData="firstnameValue"
+              >Vorname</input-text
+            >
+            <!-- Nachname -->
+            <input-text
+              :inputId="'lastname'"
+              :inputType="'text'"
+              :inputPlaceholder="'Nachname'"
+              v-model:inputData="lastnameValue"
+              >Nachname</input-text
+            >
+            <!-- E-Mail -->
+            <input-text
+              :inputId="'email'"
+              :inputType="'email'"
+              :inputPlaceholder="'meinKuerzel@provider.com'"
+              v-model:inputData="emailValue"
+              >E-Mail</input-text
+            >
+            <!-- Telefon -->
+            <input-text
+              :inputId="'phone'"
+              :inputType="'tel'"
+              :inputPlaceholder="'e.g. +49 231 33005318'"
+              v-model:inputData="phoneValue"
+              >Telefon</input-text
+            >
+            <!-- Adresse - Straße, Hausnummer -->
+            <input-text
+              :inputId="'address'"
+              :inputType="'text'"
+              :inputPlaceholder="'Straße, Hausnummer'"
+              v-model:inputData="addressValue"
+              >Straße, Haus-Nr.</input-text
+            >
+            <!-- PLZ / zipcode -->
+            <input-text
+              :inputId="'zipcode'"
+              :inputType="'text'"
+              :inputPlaceholder="'PLZ'"
+              v-model:inputData="zipcodeValue"
+              >PLZ</input-text
+            >
+            <!-- Wohnort / Stadt / City -->
+            <input-text
+              :inputId="'city'"
+              :inputType="'text'"
+              :inputPlaceholder="'Ort'"
+              v-model:inputData="cityValue"
+              >Wohnort</input-text
+            >
           </ul>
         </section>
       </article>
@@ -354,7 +271,7 @@
               />
               <label :for="`feature-${feature.id}`">{{ feature.name }}</label>
             </li>
-            <!-- Sonstiges -->
+            <!-- Sonstiges 
             <li class="question-list__item">
               <p>&nbsp;</p>
               <label for="misc">Sonstiges</label>
@@ -367,6 +284,14 @@
                 placeholder="Sonstiges"
               />
             </li>
+            -->
+            <input-text
+              :inputId="'misc'"
+              :inputType="'text'"
+              :inputPlaceholder="'Sonstiges'"
+              v-model:inputData="miscellaneous"
+              >Sonstiges</input-text
+            >
           </ul>
           <p hidden>{{ chosenFeatures }}</p>
         </section>
@@ -408,17 +333,13 @@
               >
             </li>
             <!-- Eigene Angaben -->
-            <li class="question-list__item">
-              <label for="own-trunk-size">Eigene Angaben</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="own-trunk-size"
-                id="own-trunk-size"
-                v-model="ownTrunkSize"
-                placeholder="Eigene Angaben"
-              />
-            </li>
+            <input-text
+              :inputId="'own-trunk-size'"
+              :inputType="'text'"
+              :inputPlaceholder="'Eigene Angaben'"
+              v-model:inputData="ownTrunkSize"
+              >Eigene Angaben</input-text
+            >
           </ul>
         </section>
       </article>
@@ -480,8 +401,9 @@
 <script>
 import { supabase } from "../lib/supabaseClient";
 import CheckBox from "./input-elements/CheckBox.vue";
+import InputText from "./input-elements/InputText.vue";
 export default {
-  components: { CheckBox },
+  components: { CheckBox, InputText },
   data() {
     return {
       title: "CAPP Fragebogen",
