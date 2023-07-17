@@ -72,9 +72,9 @@
             {{ n }}
           </div>
         </div>
-        <div class="button-wrapper">
-          <Button value="Buchen" />
-        </div>
+        <!-- Open Slot for example Calendar booking button -->
+        <slot></slot>
+        <!-- End of Slot -->
         <div class="calendar-footer"></div>
         <div class="date-time-formate">
           <div
@@ -171,6 +171,7 @@ export default {
   },
   computed: {
     currentDay() {
+      this.$emit("selectedDate", this.currentTime);
       return new Date(
         this.currentDate.year,
         this.currentDate.month,
@@ -477,11 +478,6 @@ h2 {
   pointer-events: none;
 }
 
-.button-wrapper {
-  position: absolute;
-  top: 62.5%;
-}
-
 .date-time-formate {
   font-family: "Courier New", Courier, monospace;
   font-weight: 600;
@@ -608,24 +604,12 @@ h2 {
 }
 
 @media screen and (min-width: 400px) {
-  .button-wrapper {
-    position: absolute;
-    top: 65%;
-  }
-
   .date-formate {
     font-size: 1rem;
   }
 
   .day-text-formate {
     padding-right: 5%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .button-wrapper {
-    position: absolute;
-    top: 75%;
   }
 }
 </style>
