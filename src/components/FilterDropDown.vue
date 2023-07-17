@@ -306,7 +306,7 @@ export default {
       h2filterCarType: "Auto-Typen",
       h2filterFuelType: "Treibstoff-Arten",
       h2filterGears: "Getriebe-Art",
-      h2filterTrunkSize: "Kofferaum-Größe",
+      h2filterTrunkSize: "Kofferraum-Größe",
       h2filterSeats: "Anzahl an freien Sitzen",
       h2features: "Ausstattung",
       h2smoker: "Raucher oder Nichtraucher?",
@@ -726,8 +726,12 @@ ul.question-list {
 }
 
 label {
-  font-size: 1.1rem;
-  color: var(--font-color-light);
+  _font-size: 1.1rem;
+  _color: var(--font-color-light);
+  color: var(--primary-dark);
+  padding-block: calc(var(--s-font) / 2);
+  font-size: 1.15rem;
+  letter-spacing: 0.1rem;
 }
 
 label > img {
