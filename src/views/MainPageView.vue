@@ -46,7 +46,6 @@
       </SmallCarCard>
     </section>
     <div v-else><p>Loading Cars...</p></div>
-
   </main>
   <ExpandMenue />
   <MessageSettingsCard />
@@ -86,7 +85,6 @@ import UserRules from "@/components/main-component/expand-site-cards/UseExpandCa
 import UserData from "@/components/main-component/expand-site-cards/UserDataExpandCard.vue";
 
 import { supabase } from "@/lib/supabaseClient";
-
 
 export default {
   components: {
