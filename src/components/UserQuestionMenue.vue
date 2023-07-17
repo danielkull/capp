@@ -368,6 +368,7 @@
                   {{ limitation.name }}</label
                 >
               </li>
+              <!-- 
               <li class="question-list__item capp-input__wrapper">
                 <label for="min-age" class="capp-label__default"
                   >Mindestalter</label
@@ -387,6 +388,14 @@
                   </option>
                 </select>
               </li>
+              -->
+              <select-drop-down
+                :selectId="'min-age'"
+                :givenData="minAges"
+                :defaultText="'--- Mindestalter'"
+                v-model:selectedData="chosenMinAge"
+                >Mindestalter</select-drop-down
+              >
             </ul>
             <p hidden>{{ chosenLimitations }}</p>
           </div>
@@ -399,8 +408,9 @@
 import { supabase } from "../lib/supabaseClient";
 import CheckBox from "./input-elements/CheckBox.vue";
 import InputText from "./input-elements/InputText.vue";
+import SelectDropDown from "./input-elements/SelectDropDown.vue";
 export default {
-  components: { CheckBox, InputText },
+  components: { CheckBox, InputText, SelectDropDown },
   data() {
     return {
       title: "CAPP Fragebogen",
