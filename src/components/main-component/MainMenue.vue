@@ -44,7 +44,7 @@
             </span>
           </li>
           <li>
-            <a href="#car-data">Angaben zum fahrzeug</a
+            <a href="#car-data">Angaben zum Fahrzeug</a
             ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@
             </span>
           </li>
           <li>
-            Geschlossen ANfragen<span class="icon-holder">
+            Geschlossene Anfragen<span class="icon-holder">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -289,17 +289,17 @@
             <section class="main-menue__list">
               <ul class="layer-2__list">
                 <li>
-                  Darkmodespan<span class="checkbox-holder"
+                  Nachtmodus<span class="checkbox-holder"
                     ><CheckBox id="dark-mode"
                   /></span>
                 </li>
                 <li>
-                  Kontrastmode<span class="checkbox-holder"
+                  Kontrastmodus<span class="checkbox-holder"
                     ><CheckBox id="contrast-mode"
                   /></span>
                 </li>
                 <li>
-                  Farbmode<span class="checkbox-holder"
+                  Farbmodus<span class="checkbox-holder"
                     ><CheckBox id="color-mode"
                   /></span>
                 </li>
@@ -381,7 +381,7 @@
             </span>
           </li>
           <li>
-            <a href="#faq-client">Ausleiher</a
+            <a href="#faq-client">FAQ Mieter*</a
             ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +401,7 @@
             </span>
           </li>
           <li>
-            <a href="#faq-owner">FAQ Verleiher</a
+            <a href="#faq-owner">FAQ Vermieter*</a
             ><span class="icon-holder"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
