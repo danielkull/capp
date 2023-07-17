@@ -177,7 +177,7 @@ export default {
         case "datetime-local":
           return "Wähle einfach das passende Datum und die Zeit aus.";
         case "tel":
-          return "Deine Telefon-Nummer darf keine Buchstaben enthalten.";
+          return "Deine Telefon-Nummer darf keine Buchstaben oder Sonderzeichen wie ?,!,&,%,$,§,#,@ enthalten. Zulässige Sonderzeichen sind +, -, /, () und Leerzeichen.";
         case "number":
           return "Gib hier eine Zahl ein - oder zähle den Wert mit dem up-Pfeil hoch bzw. mit dem down-Pfeil herunter.";
         default:
@@ -193,7 +193,7 @@ export default {
         case "password":
           return "Leider wurden die Passwort-Kriterien nicht erfüllt";
         case "tel":
-          return "Deine Telefon-Nummer enthält Buchstaben.";
+          return "Deine Telefon-Nummer enthält Buchstaben oder unzulässige Sonderzeichen.";
         default:
           return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
@@ -233,7 +233,7 @@ export default {
       }
     },
     validatePhoneNumber(value) {
-      const validationRequirments = new RegExp(/^(?=.*[0-9()-+])/);
+      const validationRequirments = new RegExp(/^[0-9()+/ \b \-]*$/);
       if (validationRequirments.test(value) || value === "") {
         this.isValid = true;
         this.isInValid = false;
