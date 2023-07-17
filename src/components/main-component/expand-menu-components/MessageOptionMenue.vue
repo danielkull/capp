@@ -4,18 +4,18 @@
       <section class="setting-content__question">
         <p>
           Zu welchen Neuigkeiten möchtest du eine Sofort-Benachrichtigung per
-          Mail erhalten ?
+          Mail erhalten?
         </p>
       </section>
       <section class="setting-content__options">
         <h3 class="options-header">Push-Benachrichtigungen</h3>
         <ul>
           <li>
-            <label for="privat-push">Neue Private Nachrichten im Postfach</label
+            <label for="privat-push">Neue private Nachrichten im Postfach</label
             ><CheckBox id="privat-push" />
           </li>
           <li>
-            <label for="group-push">Neue Gruppen Nachrichten im Postfach</label
+            <label for="group-push">Neue Gruppen-Nachrichten im Postfach</label
             ><CheckBox id="group-push" />
           </li>
           <li>
@@ -30,22 +30,22 @@
       <section class="setting-content__question">
         <p>
           Zu welchen Neuigkeiten möchtest du eine Sofort-Benachrichtigung per
-          Mail erhalten ?
+          Mail erhalten?
         </p>
       </section>
       <section class="setting-content__options">
-        <h3 class="options-header">Persöhnliche Nachrichten</h3>
+        <h3 class="options-header">Persönliche Nachrichten</h3>
         <ul>
           <li>
-            <label for="privat-msg">Neue persöhnliche Nachricht</label>
+            <label for="privat-msg">Neue persönliche Nachricht</label>
             <CheckBox id="privat-msg" />
           </li>
           <li>
-            <label for="new-date-msg">Neue Terminanfrage</label
+            <label for="new-date-msg">Neue Termin-Anfrage</label
             ><CheckBox id="new-date-msg" />
           </li>
           <li>
-            <label for="date-cancel-msg">Termin Absage</label
+            <label for="date-cancel-msg">Termin-Absage</label
             ><CheckBox id="date-cancel-msg" />
           </li>
           <li>
@@ -59,12 +59,12 @@
     <article class="setting-content__wrapper">
       <section class="setting-content__question">
         <p>
-          Zu welchen Gruppennachrichten möchtest du eine Sofort-Benachrichtigung
-          per Mail erhalten ?
+          Zu welchen Gruppen-Nachrichten möchtest du eine
+          Sofort-Benachrichtigung per Mail erhalten?
         </p>
       </section>
       <section class="setting-content__options">
-        <h3 class="options-header">Gruppen Aktivitäten</h3>
+        <h3 class="options-header">Gruppen-Aktivitäten</h3>
         <ul>
           <li>
             <label for="my-group-msg">Neue Gruppe</label
@@ -75,11 +75,11 @@
             ><CheckBox id="join-group-msg" />
           </li>
           <li>
-            <label for="my-group-msg">Neuigkeiten aus eigener Gruppe</label
+            <label for="my-group-msg">Neuigkeiten aus meiner Gruppe</label
             ><CheckBox id="my-group-msg" />
           </li>
           <li>
-            <label for="other-group-msg">Neuigkeiten aus meinen Gruppe</label
+            <label for="other-group-msg">Neuigkeiten aus anderen Gruppen</label
             ><CheckBox id="other-group-msg" />
           </li>
         </ul>
