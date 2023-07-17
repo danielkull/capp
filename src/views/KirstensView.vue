@@ -1,5 +1,6 @@
 <script>
 import { supabase } from "@/lib/supabaseClient";
+import UserQuestionMenue from "../components/UserQuestionMenue.vue";
 export default {
   data() {
     return {
@@ -14,7 +15,7 @@ export default {
       users: [],
     };
   },
-  components: {},
+  components: { UserQuestionMenue },
   mounted() {
     this.getBrands();
     this.getCarTypes();
@@ -168,6 +169,7 @@ export default {
       </p>
     </li>
   </ul>
+  <UserQuestionMenue />
 </template>
 
 <style scoped>
