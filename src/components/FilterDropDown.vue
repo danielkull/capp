@@ -1,12 +1,4 @@
 <template>
-  <h1>
-    <img
-      class="capp-logo"
-      src="../assets/car-icons/capp-logo.svg"
-      alt="CAPP Logo"
-      title="CAPP Logo"
-    />{{ title }}
-  </h1>
   <form>
     <section class="question-list__wrapper">
       <!-- Filtern nach Car Type -->
@@ -596,6 +588,7 @@ export default {
   border-radius: 1rem;
   overflow: hidden;
   width: 90%;
+  margin-top: 2.5rem;
   margin-inline: auto;
 }
 
@@ -610,11 +603,6 @@ h1 {
   padding-inline: 5rem;
   padding-block: 0 1rem;
   color: var(--primary-mid);
-}
-
-.capp-logo {
-  width: 5rem;
-  aspect-ratio: 1;
 }
 
 .question-list__header,
