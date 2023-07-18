@@ -30,7 +30,7 @@
               v-model:inputData="usernameValue"
               >Nickname</InputText
             >
-            <!-- Password -->
+            <!-- Password 
             <input-text
               :inputId="password"
               :inputType="'password'"
@@ -38,6 +38,7 @@
               v-model:inputData="passwordValue"
               >Password</input-text
             >
+            -->
             <!-- Vorname -->
             <input-text
               :inputId="'firstname'"
@@ -392,7 +393,7 @@
               <select-drop-down
                 :selectId="'min-age'"
                 :givenData="minAges"
-                :defaultText="'--- Mindestalter'"
+                :defaultText="'--- keine Angabe'"
                 v-model:selectedData="chosenMinAge"
                 >Mindestalter</select-drop-down
               >
@@ -419,8 +420,8 @@ export default {
       h2textFeatures: "Ausstattung",
       h2textTrunkSize: "Kofferraum-Größen",
       h2textLimitations: "Einschränkungen für die Vermietung",
-      inputType: "password",
-      inputTypeText: "show Password",
+      //inputType: "password",
+      //inputTypeText: "show Password",
       usernameValue: "",
       passwordValue: "",
       firstnameValue: "",
@@ -613,24 +614,7 @@ export default {
           iconSource: "Raucher.svg",
         },
       ],
-      minAges: [
-        {
-          id: 0,
-          name: "keine Angabe",
-        },
-        {
-          id: 18,
-          name: "18 Jahre",
-        },
-        {
-          id: 21,
-          name: "21 Jahre",
-        },
-        {
-          id: 25,
-          name: "25 Jahre",
-        },
-      ],
+      minAges: [18, 21, 25],
     };
   },
   mounted() {
