@@ -138,6 +138,7 @@
               <span class="text-holder">
                 <p>Passwort</p>
                 <input type="password" name="user-bsp-pw" value="Platzhalter" />
+                <p class="change-pw">Passwort vergessen ?</p>
               </span>
             </td>
           </tr>
@@ -243,6 +244,10 @@ tr:nth-child(even) {
 .text-holder > p {
   color: var(--text-mid);
   padding-left: 0.1rem;
+}
+.change-pw {
+  margin-top: 1rem;
+  text-align: right;
 }
 .text-holder > input {
   font-weight: var(--f-weight-m);
