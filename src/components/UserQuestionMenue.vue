@@ -197,22 +197,22 @@
                   type="radio"
                   class="capp-radio__default"
                   name="smoker"
-                  id="smoker-yes"
-                  value="yes"
+                  id="smoker-true"
+                  value="true"
                   v-model="isSmoker"
                 />
-                <label for="smoker-yes">Ja</label>
+                <label for="smoker-true">Ja</label>
               </li>
               <li class="question-list__item">
                 <input
                   type="radio"
                   class="capp-radio__default"
                   name="smoker"
-                  id="smoker-no"
-                  value="no"
+                  id="smoker-false"
+                  value="false"
                   v-model="isSmoker"
                 />
-                <label for="smoker-no">Nein</label>
+                <label for="smoker-false">Nein</label>
               </li>
             </ul>
 
@@ -223,22 +223,22 @@
                   type="radio"
                   class="capp-radio__default"
                   name="isofix"
-                  id="isofix-yes"
-                  value="yes"
+                  id="isofix-true"
+                  value="true"
                   v-model="hasIsofix"
                 />
-                <label for="isofix-yes">Ja</label>
+                <label for="isofix-true">Ja</label>
               </li>
               <li class="question-list__item">
                 <input
                   type="radio"
                   class="capp-radio__default"
                   name="isofix"
-                  id="isofix-no"
-                  value="no"
+                  id="isofix-false"
+                  value="false"
                   v-model="hasIsofix"
                 />
-                <label for="isofix-no">Nein</label>
+                <label for="isofix-false">Nein</label>
               </li>
             </ul>
           </div>
@@ -296,8 +296,7 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <p>&nbsp;</p>
-            <ul class="question-list">
+            <ul class="question-list" style="padding-block: 1rem">
               <li
                 class="question-list__item"
                 v-for="luggageTrunkSize in luggageTrunkSizes"
@@ -346,8 +345,7 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <p>&nbsp;</p>
-            <p>
+            <p style="padding-block: 1rem">
               Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
               kannst Du sie hier auswählen:
             </p>
@@ -420,8 +418,6 @@ export default {
       h2textFeatures: "Ausstattung",
       h2textTrunkSize: "Kofferraum-Größen",
       h2textLimitations: "Einschränkungen für die Vermietung",
-      //inputType: "password",
-      //inputTypeText: "show Password",
       usernameValue: "",
       passwordValue: "",
       firstnameValue: "",
@@ -457,17 +453,17 @@ export default {
         {
           id: 3,
           name: "Kleinwagen",
-          iconSource: "Cabrio.svg",
+          iconSource: "Kleinwagen.svg",
         },
         {
           id: 4,
           name: "Kombi",
-          iconSource: "Suv.svg",
+          iconSource: "Combi.svg",
         },
         {
           id: 5,
           name: "Limousine",
-          iconSource: "Suv.svg",
+          iconSource: "Limousine.svg",
         },
         {
           id: 6,
@@ -487,7 +483,7 @@ export default {
         {
           id: 9,
           name: "Van",
-          iconSource: "Transporter.svg",
+          iconSource: "Bus.svg",
         },
       ],
       fuelTypes: [
@@ -753,6 +749,7 @@ ul.question-list {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  _padding-block: 1rem;
   gap: 0.75rem;
 }
 
