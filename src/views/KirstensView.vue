@@ -68,6 +68,8 @@ export default {
 </script>
 
 <template>
+  <UserQuestionMenue />
+
   <h2>{{ h2brands }}</h2>
 
   <form @submit.prevent="addNewBrand(this.newBrand)">
@@ -169,7 +171,6 @@ export default {
       </p>
     </li>
   </ul>
-  <UserQuestionMenue />
 </template>
 
 <style scoped>
