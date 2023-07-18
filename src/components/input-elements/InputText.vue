@@ -136,7 +136,14 @@ export default {
       validator(value) {
         // Only input Element type specific names are allowed
         // List can be extented if needed
-        return ["text", "email", "password", "datetime-local"].includes(value);
+        return [
+          "text",
+          "email",
+          "password",
+          "datetime-local",
+          "tel",
+          "number",
+        ].includes(value);
       },
     },
     inputPlaceholder: {
@@ -169,6 +176,10 @@ export default {
           return "Ein sicheres Passwort hat mindestens 12 Zeichen. Benutze hierbei bitte eine Mischung aus Groß-, Kleinschreibung, Sonderzeichen und Zahlen.";
         case "datetime-local":
           return "Wähle einfach das passende Datum und die Zeit aus.";
+        case "tel":
+          return "Deine Telefon-Nummer darf keine Buchstaben oder Sonderzeichen wie ?,!,&,%,$,§,#,@ enthalten. Zulässige Sonderzeichen sind +, -, /, () und Leerzeichen.";
+        case "number":
+          return "Gib hier eine Zahl ein - oder zähle den Wert mit dem up-Pfeil hoch bzw. mit dem down-Pfeil herunter.";
         default:
           return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
@@ -181,6 +192,8 @@ export default {
           return "Die Mail-Adresse ist nicht korrekt.";
         case "password":
           return "Leider wurden die Passwort-Kriterien nicht erfüllt";
+        case "tel":
+          return "Deine Telefon-Nummer enthält Buchstaben oder unzulässige Sonderzeichen.";
         default:
           return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
@@ -219,6 +232,16 @@ export default {
         this.isInValid = true;
       }
     },
+    validatePhoneNumber(value) {
+      const validationRequirments = new RegExp(/^[0-9()+/ \b \-]*$/);
+      if (validationRequirments.test(value) || value === "") {
+        this.isValid = true;
+        this.isInValid = false;
+      } else {
+        this.isValid = false;
+        this.isInValid = true;
+      }
+    },
   },
   watch: {
     /* Watchers for Validation */
@@ -227,6 +250,8 @@ export default {
         this.validateEmail(value);
       } else if (this.inputType === "password") {
         this.validatePassword(value);
+      } else if (this.inputType === "tel") {
+        this.validatePhoneNumber(value);
       }
     },
   },

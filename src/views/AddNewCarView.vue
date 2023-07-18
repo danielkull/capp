@@ -1,12 +1,14 @@
 <script>
 import { supabase } from "@/lib/supabaseClient";
 import InputText from "../components/input-elements/InputText.vue";
+import SelectDropDown from "../components/input-elements/SelectDropDown.vue";
 export default {
   data() {
     return {
       title: "Neues Auto erfassen",
       carTypes: null,
       users: null,
+      insurances: ["Vollkasko", "Teilkasko"],
       fuelTypes: [
         "Autogas",
         "Benzin",
@@ -15,6 +17,7 @@ export default {
         "Hybrid",
         "Wasserstoff",
       ],
+      gears: ["Automatik", "Schaltung"],
       carTypeValue: "",
       userValue: "",
       licensePlateValue: "",
@@ -22,17 +25,17 @@ export default {
       insuranceValue: "",
       insuranceNumberValue: "",
       fuelTypeValue: "",
-      fuelConsumeValue: 0,
-      kwValue: 0,
-      maxSpeedValue: 0,
-      yearOfConstruction: 0,
-      mileageValue: 0,
-      trunkVolume: 0,
-      seatCount: 0,
+      fuelConsumeValue: "0",
+      kwValue: "0",
+      maxSpeedValue: "0",
+      yearOfConstruction: "0",
+      mileageValue: "0",
+      trunkVolume: "0",
+      seatCount: "0",
       gearValue: "",
     };
   },
-  components: { InputText },
+  components: { InputText, SelectDropDown },
   mounted() {
     this.getCarTypes();
     this.getUsers();
@@ -63,7 +66,7 @@ export default {
     <h1>{{ title }}</h1>
     <form>
       <div class="form-row">
-        <!-- type_id -->
+        <!-- type_id 
         <div class="capp-input__wrapper">
           <label for="car-model" class="capp-label__default"
             >Auto-Marke/Modell</label
@@ -86,7 +89,15 @@ export default {
             </option>
           </select>
         </div>
-        <!-- user_id -->
+        -->
+        <select-drop-down
+          :selectId="'car-model'"
+          :givenData="carTypes"
+          :defaultText="'--- Auto-Marke/Modell'"
+          v-model:selectedData="carTypeValue"
+          >Auto-Marke/Modell</select-drop-down
+        >
+        <!-- user_id 
         <div class="capp-input__wrapper">
           <label for="user" class="capp-label__default">User</label>
           <select
@@ -101,37 +112,35 @@ export default {
             </option>
           </select>
         </div>
+        -->
+        <select-drop-down
+          :selectId="'user'"
+          :givenData="users"
+          :defaultText="'--- Anbieter'"
+          v-model:selectedData="userValue"
+          >User</select-drop-down
+        >
       </div>
       <div class="form-row">
         <!-- car_license_plate -->
-        <div class="capp-input__wrapper">
-          <label for="license-plate" class="capp-label__default"
-            >Kennzeichen</label
-          >
-          <input
-            type="text"
-            name="license-plate"
-            id="license-plate"
-            class="capp-input__default"
-            placeholder="z.B. A-BC 123"
-            v-model="licensePlateValue"
-          />
-        </div>
+        <input-text
+          :inputId="'license-plate'"
+          :inputType="'text'"
+          :inputPlaceholder="'z.B. A-BC 123'"
+          v-model:inputData="licensePlateValue"
+          >Kennzeichen</input-text
+        >
         <!-- img_source -->
-        <div class="capp-input__wrapper">
-          <label for="img-source" class="capp-label__default">Bildquelle</label>
-          <input
-            type="text"
-            name="img-source"
-            id="img-source"
-            class="capp-input__default"
-            placeholder="z.B. https://bildpfad/bildname.png"
-            v-model="imgSourceValue"
-          />
-        </div>
+        <input-text
+          :inputId="'img-source'"
+          :inputType="'text'"
+          :inputPlaceholder="'z.B. https://bildpfad/bildname.png'"
+          v-model:inputData="imgSourceValue"
+          >Bildquelle</input-text
+        >
       </div>
       <div class="form-row">
-        <!-- insurance_type -->
+        <!-- insurance_type 
         <div class="capp-input__wrapper">
           <label for="insurance-type" class="capp-label__default"
             >Versicherung</label
@@ -147,22 +156,25 @@ export default {
             <option value="Teilkasko">Teilkasko</option>
           </select>
         </div>
+        -->
+        <select-drop-down
+          :selectId="'insurance-type'"
+          :givenData="insurances"
+          :defaultText="'--- Versicherungs-Art'"
+          v-model:selectedData="insuranceValue"
+          >Versicherung</select-drop-down
+        >
         <!-- insurance_no -->
-        <div class="capp-input__wrapper">
-          <label for="insurance-number" class="capp-label__default"
-            >Versicherungs-Nr.</label
-          >
-          <input
-            type="text"
-            name="insurance-number"
-            id="insurance-number"
-            class="capp-input__default"
-            v-model="insuranceNumberValue"
-          />
-        </div>
+        <input-text
+          :inputId="'unsurance-number'"
+          :inputType="'text'"
+          :inputPlaceholder="'z.B. VN-1201333'"
+          v-model:inputData="insuranceNumberValue"
+          >Versicherungs-Nr.</input-text
+        >
       </div>
       <div class="form-row">
-        <!-- fuel_type -->
+        <!-- fuel_type 
         <div class="capp-input__wrapper">
           <label for="fuel-type" class="capp-label__default">Kraftstoff</label>
           <select
@@ -181,7 +193,15 @@ export default {
             </option>
           </select>
         </div>
-        <!-- fuel_consume_per_km -->
+        -->
+        <select-drop-down
+          :selectId="'fuel-type'"
+          :givenData="fuelTypes"
+          :defaultText="'--- Kraftstoff'"
+          v-model:selectedData="fuelTypeValue"
+          >Kraftstoff</select-drop-down
+        >
+        <!-- fuel_consume_per_km 
         <div class="capp-input__wrapper">
           <label for="fuel-consume" class="capp-label__default"
             >Kraftstoffverbrauch / km</label
@@ -195,93 +215,58 @@ export default {
             v-model="fuelConsumeValue"
           />
         </div>
+        -->
+        <input-text
+          :inputId="'fuel-consume'"
+          :inputType="'text'"
+          v-model:inputData="fuelConsumeValue"
+          >Kraftstoffverbrauch in Liter/100 km</input-text
+        >
       </div>
       <div class="form-row">
-        <!-- kw -->
-        <div class="capp-input__wrapper">
-          <label for="kw" class="capp-label__default">KiloWatt</label>
-          <input
-            type="number"
-            step="1"
-            name="kw"
-            id="kw"
-            class="capp-input__default"
-            v-model="kwValue"
-          />
-        </div>
-        <!-- max_speed -->
-        <div class="capp-input__wrapper">
-          <label for="max-speed" class="capp-label__default"
-            >Höchst-Tempo</label
-          >
-          <input
-            type="number"
-            step="1"
-            name="max-speed"
-            id="max-speed"
-            class="capp-input__default"
-            v-model="maxSpeedValue"
-          />
-        </div>
+        <input-text
+          :inputId="'kw'"
+          :inputType="'text'"
+          v-model:inputData="kwValue"
+          >PS</input-text
+        >
+        <input-text
+          :inputId="'max-speed'"
+          :inputType="'text'"
+          v-model:inputData="maxSpeedValue"
+          >Höchst-Tempo</input-text
+        >
       </div>
       <div class="form-row">
-        <!-- year_of_construction -->
-        <div class="capp-input__wrapper">
-          <label for="year" class="capp-label__default">Baujahr</label>
-          <input
-            type="number"
-            step="1"
-            name="year"
-            id="year"
-            class="capp-input__default"
-            v-model="yearOfConstruction"
-          />
-        </div>
-        <!-- mileage -->
-        <div class="capp-input__wrapper">
-          <label for="mileage" class="capp-label__default">gefahrene km</label>
-          <input
-            type="number"
-            step="1"
-            name="mileage"
-            id="mileage"
-            class="capp-input__default"
-            v-model="mileageValue"
-          />
-        </div>
+        <input-text
+          :inputId="'year'"
+          :inputType="'text'"
+          v-model:inputData="yearOfConstruction"
+          >Baujahr</input-text
+        >
+        <input-text
+          :inputId="'mileage'"
+          :inputType="'text'"
+          v-model:inputData="mileageValue"
+          >Ungefährer Kilometerstand</input-text
+        >
       </div>
       <div class="form-row">
-        <!-- trunk_volume_in_liters -->
-        <div class="capp-input__wrapper">
-          <label for="trunk-volume" class="capp-label__default"
-            >Kofferraum-Volumen</label
-          >
-          <input
-            type="number"
-            step="1"
-            name="trunk-volume"
-            id="trunk-volume"
-            class="capp-input__default"
-            v-model="trunkVolume"
-          />
-        </div>
-        <!-- mileage -->
-        <div class="capp-input__wrapper">
-          <label for="seat-count" class="capp-label__default"
-            >Anzahl Sitze</label
-          >
-          <input
-            type="number"
-            step="1"
-            name="seat-count"
-            id="seat-count"
-            class="capp-input__default"
-            v-model="seatCount"
-          />
-        </div>
+        <input-text
+          :inputId="'trunk-volume'"
+          :inputType="'text'"
+          v-model:inputData="trunkVolume"
+          >Kofferraum-Volumen</input-text
+        >
+        <input-text
+          :inputId="'seat-count'"
+          :inputType="'text'"
+          v-model:inputData="seatCount"
+          >Anzahl freie Sitze</input-text
+        >
       </div>
       <div class="form-row">
-        <!-- gear -->
+        <!-- gear 
         <div class="capp-input__wrapper">
           <label for="gear" class="capp-label__default">Getriebe</label>
           <select
@@ -295,6 +280,14 @@ export default {
             <option value="Schaltung">Schaltung</option>
           </select>
         </div>
+        -->
+        <select-drop-down
+          :selectId="'gear'"
+          :givenData="gears"
+          :defaultText="'--- Getriebe'"
+          v-model:selectedData="gearValue"
+          >Getriebe</select-drop-down
+        >
         <!-- submit -->
         <div class="capp-input__wrapper">
           <label for="add-car" class="capp-label__default">&nbsp;</label>

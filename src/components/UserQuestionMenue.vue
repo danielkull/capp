@@ -22,161 +22,79 @@
         }}</label>
         <section class="question-list__list">
           <ul class="question-list">
-            <li class="question-list__item personal-item">
-              <label for="username">Nickname</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="username"
-                id="username"
-                placeholder="Username"
-                v-model="usernameValue"
-                :class="{
-                  input__invalid:
-                    usernameValue.length > 0 && usernameValue.length < 5,
-                }"
-              />
-              <span>Muss mindestens 5 Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="password"
-                >Passwort&nbsp;<span
-                  id="password-toggle-text"
-                  @click="togglePassword()"
-                  >&lt;{{ inputTypeText }}&gt;</span
-                ></label
-              >
-              <input
-                :type="inputType"
-                class="capp-input__default"
-                name="password"
-                id="password"
-                v-model="passwordValue"
-                :class="{
-                  input__invalid:
-                    passwordValue.length > 0 && passwordValue.length < 10,
-                }"
-              />
-              <span>Muss mindestens 10 Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="firstname">Vorname</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="firstname"
-                id="firstname"
-                placeholder="Vorname"
-                v-model="firstnameValue"
-                :class="{
-                  input__invalid:
-                    firstnameValue.length === 1 ||
-                    /[0-9!?§$%&(){}€@#]/.test(firstnameValue),
-                }"
-              />
-              <span
-                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
-                Sonderzeichen enthalten.</span
-              >
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="lastname">Nachname</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="lastname"
-                id="lastname"
-                placeholder="Nachname"
-                v-model="lastnameValue"
-                :class="{
-                  input__invalid:
-                    lastnameValue.length === 1 ||
-                    /[0-9!?§$%&(){}€@#]/.test(lastnameValue),
-                }"
-              />
-              <span
-                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
-                Sonderzeichen enthalten.</span
-              >
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="email">E-Mail</label>
-              <input
-                type="email"
-                class="capp-input__default"
-                name="email"
-                id="email"
-                placeholder="E-Mail"
-                v-model="emailValue"
-                :class="{
-                  input__invalid:
-                    emailValue !== '' && !emailValue.includes('@'),
-                }"
-              />
-              <span>Muss das @-Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="phone">Telefon</label>
-              <input
-                type="tel"
-                class="capp-input__default"
-                name="phone"
-                id="phone"
-                placeholder="Telefon"
-                v-model="phoneValue"
-                :class="{ input__invalid: /[a-zA-Z]/.test(phoneValue) }"
-              />
-              <span>Darf keine Buchstaben enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="address">Straße, Haus-Nr.</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="address"
-                id="address"
-                placeholder="Straße, Haus-Nr."
-                v-model="addressValue"
-                :class="{ input__invalid: addressValue.length === 1 }"
-              />
-              <span>Muss mindestens 2 Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="zipcode">PLZ</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="zipcode"
-                id="zipcode"
-                placeholder="PLZ"
-                v-model="zipcodeValue"
-                :class="{
-                  input__invalid:
-                    zipcodeValue.length > 0 && zipcodeValue.length < 4,
-                }"
-              />
-              <span>Muss mindestens 4 Zeichen enthalten.</span>
-            </li>
-            <li class="question-list__item personal-item">
-              <label for="city">Wohnort</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="city"
-                id="city"
-                placeholder="Ort"
-                v-model="cityValue"
-                :class="{
-                  input__invalid:
-                    cityValue.length === 1 ||
-                    /[0-9!?§$%&(){}€@#]/.test(cityValue),
-                }"
-              />
-              <span
-                >Muss mindestens 2 Zeichen, darf keine Ziffern oder
-                Sonderzeichen enthalten.</span
-              >
-            </li>
+            <!-- Username -->
+            <InputText
+              :inputId="'username'"
+              :inputType="'text'"
+              :inputPlaceholder="'Username'"
+              v-model:inputData="usernameValue"
+              >Nickname</InputText
+            >
+            <!-- Password 
+            <input-text
+              :inputId="password"
+              :inputType="'password'"
+              :inputPlaceholder="'e.g. Pass-XY_word-2023'"
+              v-model:inputData="passwordValue"
+              >Password</input-text
+            >
+            -->
+            <!-- Vorname -->
+            <input-text
+              :inputId="'firstname'"
+              :inputType="'text'"
+              :inputPlaceholder="'Vorname'"
+              v-model:inputData="firstnameValue"
+              >Vorname</input-text
+            >
+            <!-- Nachname -->
+            <input-text
+              :inputId="'lastname'"
+              :inputType="'text'"
+              :inputPlaceholder="'Nachname'"
+              v-model:inputData="lastnameValue"
+              >Nachname</input-text
+            >
+            <!-- E-Mail -->
+            <input-text
+              :inputId="'email'"
+              :inputType="'email'"
+              :inputPlaceholder="'meinKuerzel@provider.com'"
+              v-model:inputData="emailValue"
+              >E-Mail</input-text
+            >
+            <!-- Telefon -->
+            <input-text
+              :inputId="'phone'"
+              :inputType="'tel'"
+              :inputPlaceholder="'e.g. +49 231 33005318'"
+              v-model:inputData="phoneValue"
+              >Telefon</input-text
+            >
+            <!-- Adresse - Straße, Hausnummer -->
+            <input-text
+              :inputId="'address'"
+              :inputType="'text'"
+              :inputPlaceholder="'Straße, Hausnummer'"
+              v-model:inputData="addressValue"
+              >Straße, Haus-Nr.</input-text
+            >
+            <!-- PLZ / zipcode -->
+            <input-text
+              :inputId="'zipcode'"
+              :inputType="'text'"
+              :inputPlaceholder="'PLZ'"
+              v-model:inputData="zipcodeValue"
+              >PLZ</input-text
+            >
+            <!-- Wohnort / Stadt / City -->
+            <input-text
+              :inputId="'city'"
+              :inputType="'text'"
+              :inputPlaceholder="'Ort'"
+              v-model:inputData="cityValue"
+              >Wohnort</input-text
+            >
           </ul>
         </section>
       </article>
@@ -355,18 +273,13 @@
               <label :for="`feature-${feature.id}`">{{ feature.name }}</label>
             </li>
             <!-- Sonstiges -->
-            <li class="question-list__item">
-              <p>&nbsp;</p>
-              <label for="misc">Sonstiges</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="misc"
-                id="misc"
-                v-model="miscellaneous"
-                placeholder="Sonstiges"
-              />
-            </li>
+            <input-text
+              :inputId="'misc'"
+              :inputType="'text'"
+              :inputPlaceholder="'Sonstiges'"
+              v-model:inputData="miscellaneous"
+              >Sonstiges</input-text
+            >
           </ul>
           <p hidden>{{ chosenFeatures }}</p>
         </section>
@@ -382,44 +295,43 @@
           h2textTrunkSize
         }}</label>
         <section class="question-list__list">
-          <ul class="question-list">
-            <li
-              class="question-list__item"
-              v-for="luggageTrunkSize in luggageTrunkSizes"
-              :key="luggageTrunkSize.id"
-            >
-              <input
-                class="capp-radio__default"
-                type="radio"
-                name="trunk-size"
-                :id="luggageTrunkSize.id"
-                :value="[
-                  luggageTrunkSize.id,
-                  luggageTrunkSize.min,
-                  luggageTrunkSize.max,
-                ]"
-                v-model="chosenTrunkSize"
-              />
-              <label :for="luggageTrunkSize.id"
-                >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.min }}-{{
-                  luggageTrunkSize.max
-                }}
-                Liter</label
+          <div>
+            <p>&nbsp;</p>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="luggageTrunkSize in luggageTrunkSizes"
+                :key="luggageTrunkSize.id"
               >
-            </li>
-            <!-- Eigene Angaben -->
-            <li class="question-list__item">
-              <label for="own-trunk-size">Eigene Angaben</label>
-              <input
-                type="text"
-                class="capp-input__default"
-                name="own-trunk-size"
-                id="own-trunk-size"
-                v-model="ownTrunkSize"
-                placeholder="Eigene Angaben"
-              />
-            </li>
-          </ul>
+                <input
+                  class="capp-radio__default"
+                  type="radio"
+                  name="trunk-size"
+                  :id="luggageTrunkSize.id"
+                  :value="[
+                    luggageTrunkSize.id,
+                    luggageTrunkSize.min,
+                    luggageTrunkSize.max,
+                  ]"
+                  v-model="chosenTrunkSize"
+                />
+                <label :for="luggageTrunkSize.id"
+                  >{{ luggageTrunkSize.id }} {{ luggageTrunkSize.min }}-{{
+                    luggageTrunkSize.max
+                  }}
+                  Liter</label
+                >
+              </li>
+              <!-- Eigene Angaben -->
+              <input-text
+                :inputId="'own-trunk-size'"
+                :inputType="'text'"
+                :inputPlaceholder="'Eigene Angaben'"
+                v-model:inputData="ownTrunkSize"
+                >Eigene Angaben</input-text
+              >
+            </ul>
+          </div>
         </section>
       </article>
       <!------------------------------------------------------------>
@@ -457,9 +369,17 @@
                   {{ limitation.name }}</label
                 >
               </li>
-              <li class="question-list__item">
-                <label for="min-age">Mindestalter</label>
-                <select name="min-age" id="min-age" v-model="chosenMinAge">
+              <!-- 
+              <li class="question-list__item capp-input__wrapper">
+                <label for="min-age" class="capp-label__default"
+                  >Mindestalter</label
+                >
+                <select
+                  class="capp-select__default"
+                  name="min-age"
+                  id="min-age"
+                  v-model="chosenMinAge"
+                >
                   <option
                     v-for="minAge in minAges"
                     :key="minAge.id"
@@ -469,6 +389,14 @@
                   </option>
                 </select>
               </li>
+              -->
+              <select-drop-down
+                :selectId="'min-age'"
+                :givenData="minAges"
+                :defaultText="'--- keine Angabe'"
+                v-model:selectedData="chosenMinAge"
+                >Mindestalter</select-drop-down
+              >
             </ul>
             <p hidden>{{ chosenLimitations }}</p>
           </div>
@@ -480,8 +408,10 @@
 <script>
 import { supabase } from "../lib/supabaseClient";
 import CheckBox from "./input-elements/CheckBox.vue";
+import InputText from "./input-elements/InputText.vue";
+import SelectDropDown from "./input-elements/SelectDropDown.vue";
 export default {
-  components: { CheckBox },
+  components: { CheckBox, InputText, SelectDropDown },
   data() {
     return {
       title: "CAPP Fragebogen",
@@ -490,8 +420,8 @@ export default {
       h2textFeatures: "Ausstattung",
       h2textTrunkSize: "Kofferraum-Größen",
       h2textLimitations: "Einschränkungen für die Vermietung",
-      inputType: "password",
-      inputTypeText: "show Password",
+      //inputType: "password",
+      //inputTypeText: "show Password",
       usernameValue: "",
       passwordValue: "",
       firstnameValue: "",
@@ -684,24 +614,7 @@ export default {
           iconSource: "Raucher.svg",
         },
       ],
-      minAges: [
-        {
-          id: 0,
-          name: "keine Angabe",
-        },
-        {
-          id: 18,
-          name: "18 Jahre",
-        },
-        {
-          id: 21,
-          name: "21 Jahre",
-        },
-        {
-          id: 25,
-          name: "25 Jahre",
-        },
-      ],
+      minAges: [18, 21, 25],
     };
   },
   mounted() {
@@ -840,6 +753,7 @@ ul.question-list {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
 }
 
 .padding-top {
@@ -896,8 +810,12 @@ ul.question-list {
 }
 
 label {
-  font-size: 1.1rem;
-  color: var(--font-color-light);
+  _font-size: 1.1rem;
+  _color: var(--font-color-light);
+  color: var(--primary-dark);
+  padding-block: calc(var(--s-font) / 2);
+  font-size: 1.15rem;
+  letter-spacing: 0.1rem;
 }
 
 label > img {
@@ -1058,5 +976,27 @@ select {
 
 select:focus-within {
   outline-color: var(--primary-mid);
+}
+
+.capp-label__default {
+  display: block;
+  color: var(--primary-dark);
+
+  padding-block: calc(var(--s-font) / 2);
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+
+.capp-select__default {
+  display: block;
+  width: 100%;
+  border: 2px solid var(--clr-trans);
+  border-radius: 0.5rem;
+  padding-inline: 0.5rem;
+  padding-block: 1rem;
+  font-size: var(--m-font);
+  background: var(--clr-bg-main);
+  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
+  color: var(--font-color-dark);
 }
 </style>

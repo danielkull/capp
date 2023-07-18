@@ -70,11 +70,26 @@
         <option disabled value="">{{ defaultText }}</option>
         <option v-for="name in givenData" :value="name.id" :key="name.id">
           <p v-if="multiColumn">
+            <span v-if="Object.keys(name)[1] === 'car_type_name'">{{
+              Object.values(name)[4]["brand_name"]
+            }}</span>
             {{ Object.values(name)[1] }}
+            <span v-if="Object.keys(name)[1] === 'car_type_name'"
+              >( {{ Object.values(name)[2] }} )</span
+            >
+            <span v-if="Object.keys(name)[1] === 'username'">
+              <span
+                v-if="
+                  Object.values(name)[3] !== null &&
+                  Object.values(name)[4] !== null
+                "
+              >
+                -
+              </span>
+              {{ Object.values(name)[3] }} {{ Object.values(name)[4] }}
+            </span>
           </p>
-          <p v-else>
-            {{ name }}
-          </p>
+          <p v-else>{{ name }}</p>
         </option>
       </select>
       {{ multiColumn }}
@@ -198,6 +213,7 @@ export default {
 .capp-input__default:focus {
   outline-color: var(--primary-light);
 }
+
 .capp-input__help-wrapper {
   position: relative;
 }
