@@ -19,7 +19,10 @@
         <!-------------------------------------------------------------------->
 
         <!----------Hier COntent--------->
-
+        <TeamMember :teamMember="'Kirsten'" />
+        <TeamMember :teamMember="'Stefan'" />
+        <TeamMember :teamMember="'Daniel'" />
+        <TeamMember :teamMember="'Kerstin'" />
         <!-------------------------------------------------------------------->
       </section>
     </div>
@@ -27,7 +30,12 @@
 </template>
 
 <script>
-export default {};
+import TeamMember from "@/components/main-component/expand-menu-components/TeamSingle.vue";
+export default {
+  components: {
+    TeamMember,
+  },
+};
 </script>
 
 <style>

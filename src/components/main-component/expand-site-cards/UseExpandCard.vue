@@ -19,7 +19,7 @@
         <!-------------------------------------------------------------------->
 
         <!----------Hier COntent--------->
-
+        <TextContent :contentText="'user-use-content'" />
         <!-------------------------------------------------------------------->
       </section>
     </div>
@@ -27,7 +27,12 @@
 </template>
 
 <script>
-export default {};
+import TextContent from "@/components/main-component/expand-menu-components/ImpressumdatSecurText.vue";
+export default {
+  components: {
+    TextContent,
+  },
+};
 </script>
 
 <style>

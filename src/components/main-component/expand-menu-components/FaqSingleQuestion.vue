@@ -555,9 +555,4 @@ margin-right:0.8rem;
 
 
 
-
-/* .faq-question__header:hover {
-  background: var(--surface-hover);
-  color: var(--main-font-color-dark);
-} */
 </style>

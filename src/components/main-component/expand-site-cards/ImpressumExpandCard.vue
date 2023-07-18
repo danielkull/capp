@@ -1,5 +1,9 @@
 <template>
-  <section class="menue-expand__outer-wrapper" id="impressum">
+  <section
+    class="menue-expand__outer-wrapper"
+    id="impressum"
+    aria-name="Impressum-Capp-Hauptseite"
+  >
     <header>
       <a href="#" class="back-btn">
         <svg
@@ -16,18 +20,23 @@
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
-        <!-------------------------------------------------------------------->
-
-        <!----------Hier COntent--------->
-
-        <!-------------------------------------------------------------------->
+        <article class="content-wrapper">
+          <section class="impressum-content__holder">
+            <TextContent :contentText="'impressum-content'" />
+          </section>
+        </article>
       </section>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+import TextContent from "@/components/main-component/expand-menu-components/ImpressumdatSecurText.vue";
+export default {
+  components: {
+    TextContent,
+  },
+};
 </script>
 
 <style>
