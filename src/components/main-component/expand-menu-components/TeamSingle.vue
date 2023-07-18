@@ -47,25 +47,37 @@
         aria-name="Beschreibung des Teammitglieds"
         v-if="teamMember === 'Stefan'"
       >
-        TeststefanTestStefanTestStefan
+        Im Osten angesiedelt ist unser Chefdesigner von CAPP. Er hat ein Herz
+        für CSS, UI und UX, einen feinen Blick für Details und ein Händchen für
+        kreative Spielereien. Stefan weiß einfach immer, was gerade Phase ist.
+        Unser Motor, unser Freak.
       </p>
       <p
         aria-name="Beschreibung des Teammitglieds"
         v-if="teamMember === 'Kirsten'"
       >
-        TesteKirstenTestkirsten TesteKirstenTestkirsten TesteKirstenTestkirsten
+        Tief im Westen durchdringt Kirsten ausdauernd und tiefgründig die
+        Materie rund um JavaScript, CSS, Pinia und Supabase. Sie weiß, wo was
+        hingehört, warum die props nicht fehlen dürfen und was einen guten Code
+        ausmacht. Unsere heimliche Heldin.
       </p>
       <p
         aria-name="Beschreibung des Teammitglieds"
         v-if="teamMember === 'Daniel'"
       >
-        TestDanielTestDanielTestDanielTestDanielTestDanielTestDanielTestDanielTestDaniel
+        Im Süden sitzend, immer ruhig und gelassen, mit einem krassen Ein- und
+        Überblick in Front- und Backend. Er weiß gefühlt alles - oder findet es
+        heraus. Daniel beantwortet Fragen auch zum fünften Mal oder nachts um
+        drei. Unser Retter in Not.
       </p>
       <p
         aria-name="Beschreibung des Teammitglieds"
         v-if="teamMember === 'Kerstin'"
       >
-        TestKerstinTestKerstinTestKerstinTestKerstinTestKerstinTestKerstinTestKerstin
+        Im hohen Norden hat Kerstin die Organisation des Projektes übernommen.
+        Als Mutter der “CAPP” (zumindest war es ihre Idee) behält sie den
+        Überblick über die Stati der tausend issues, reviewed geflissentlich,
+        sorgt für den Content und die gute Laune. Unser kreatives Sprachrohr.
       </p>
     </section>
     <section class="logo-wrapper">
