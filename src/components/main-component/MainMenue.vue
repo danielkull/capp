@@ -469,7 +469,7 @@
         id="user-data"
         class="question-list__btn"
       /><label class="main-menue__list-header" for="user-data"
-        >Dein Konto
+        ><a href="logout-user">Logout</a>
         <span class="icon-holder"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -501,12 +501,6 @@ export default {
 </script>
 
 <style scoped>
-/* section:target {
-  translate: 0% 0;
-
-  display: block;
-} */
-
 /*=======================================*/
 .main-menue__wrapper {
   width: 100%;

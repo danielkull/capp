@@ -82,7 +82,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 section:target {
   translate: 0% 0;
 }
