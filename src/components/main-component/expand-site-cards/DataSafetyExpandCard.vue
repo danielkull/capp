@@ -1,5 +1,9 @@
 <template>
-  <section class="menue-expand__outer-wrapper" id="data-sec">
+  <section
+    class="menue-expand__outer-wrapper"
+    id="data-sec"
+    aria-name="Datenschutz-Capp-Hauptseite"
+  >
     <header>
       <a href="#" class="back-btn">
         <svg
@@ -16,18 +20,19 @@
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
-        <!-------------------------------------------------------------------->
-
-        <!----------Hier COntent--------->
-
-        <!-------------------------------------------------------------------->
+        <TextContent :contentText="'data-security-content'" />
       </section>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+import TextContent from "@/components/main-component/expand-menu-components/ImpressumdatSecurText.vue";
+export default {
+  components: {
+    TextContent,
+  },
+};
 </script>
 
 <style>
