@@ -25,13 +25,13 @@ export default {
       insuranceValue: "",
       insuranceNumberValue: "",
       fuelTypeValue: "",
-      fuelConsumeValue: 0,
-      kwValue: 0,
-      maxSpeedValue: 0,
-      yearOfConstruction: 0,
-      mileageValue: 0,
-      trunkVolume: 0,
-      seatCount: 0,
+      fuelConsumeValue: "0",
+      kwValue: "0",
+      maxSpeedValue: "0",
+      yearOfConstruction: "0",
+      mileageValue: "0",
+      trunkVolume: "0",
+      seatCount: "0",
       gearValue: "",
     };
   },
@@ -218,133 +218,49 @@ export default {
         -->
         <input-text
           :inputId="'fuel-consume'"
-          :inputType="'number'"
+          :inputType="'text'"
           v-model:inputData="fuelConsumeValue"
-          >Kraftstoffverbrauch / km</input-text
+          >Kraftstoffverbrauch in Liter/100 km</input-text
         >
       </div>
       <div class="form-row">
-        <!-- kw / PS 
-        <div class="capp-input__wrapper">
-          <label for="kw" class="capp-label__default">KiloWatt</label>
-          <input
-            type="number"
-            step="1"
-            name="kw"
-            id="kw"
-            class="capp-input__default"
-            v-model="kwValue"
-          />
-        </div>
-        -->
         <input-text
           :inputId="'kw'"
-          :inputType="'number'"
+          :inputType="'text'"
           v-model:inputData="kwValue"
           >PS</input-text
         >
-        <!-- max_speed 
-        <div class="capp-input__wrapper">
-          <label for="max-speed" class="capp-label__default"
-            >Höchst-Tempo</label
-          >
-          <input
-            type="number"
-            step="1"
-            name="max-speed"
-            id="max-speed"
-            class="capp-input__default"
-            v-model="maxSpeedValue"
-          />
-        </div>
-        -->
         <input-text
           :inputId="'max-speed'"
-          :inputType="'number'"
+          :inputType="'text'"
           v-model:inputData="maxSpeedValue"
           >Höchst-Tempo</input-text
         >
       </div>
       <div class="form-row">
-        <!-- year_of_construction 
-        <div class="capp-input__wrapper">
-          <label for="year" class="capp-label__default">Baujahr</label>
-          <input
-            type="number"
-            step="1"
-            name="year"
-            id="year"
-            class="capp-input__default"
-            v-model="yearOfConstruction"
-          />
-        </div>
-        -->
         <input-text
           :inputId="'year'"
-          :inputType="'number'"
+          :inputType="'text'"
           v-model:inputData="yearOfConstruction"
           >Baujahr</input-text
         >
-        <!-- mileage 
-        <div class="capp-input__wrapper">
-          <label for="mileage" class="capp-label__default">gefahrene km</label>
-          <input
-            type="number"
-            step="1"
-            name="mileage"
-            id="mileage"
-            class="capp-input__default"
-            v-model="mileageValue"
-          />
-        </div>
-        -->
         <input-text
           :inputId="'mileage'"
-          :inputType="'number'"
+          :inputType="'text'"
           v-model:inputData="mileageValue"
           >Ungefährer Kilometerstand</input-text
         >
       </div>
       <div class="form-row">
-        <!-- trunk_volume_in_liters 
-        <div class="capp-input__wrapper">
-          <label for="trunk-volume" class="capp-label__default"
-            >Kofferraum-Volumen</label
-          >
-          <input
-            type="number"
-            step="1"
-            name="trunk-volume"
-            id="trunk-volume"
-            class="capp-input__default"
-            v-model="trunkVolume"
-          />
-        </div>
-        -->
         <input-text
           :inputId="'trunk-volume'"
-          :inputType="'number'"
+          :inputType="'text'"
           v-model:inputData="trunkVolume"
           >Kofferraum-Volumen</input-text
         >
-        <!-- count of seats 
-        <div class="capp-input__wrapper">
-          <label for="seat-count" class="capp-label__default"
-            >Anzahl Sitze</label
-          >
-          <input
-            type="number"
-            step="1"
-            name="seat-count"
-            id="seat-count"
-            class="capp-input__default"
-            v-model="seatCount"
-          />
-        </div>
-        -->
         <input-text
           :inputId="'seat-count'"
-          :inputType="'number'"
+          :inputType="'text'"
           v-model:inputData="seatCount"
           >Anzahl freie Sitze</input-text
         >
