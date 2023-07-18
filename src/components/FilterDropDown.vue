@@ -89,7 +89,6 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <p>&nbsp;</p>
             <ul class="question-list">
               <li
                 class="question-list__item"
@@ -100,9 +99,10 @@
                   type="radio"
                   name="filter-gear"
                   :id="gear.id"
-                  :value="gear.id"
+                  :value="gear.name"
                   v-model="chosenGear"
                   class="capp-radio__default"
+                  @change="filterCarsByGear()"
                 />
                 <label :for="gear.id">{{ gear.name }}</label>
               </li>
@@ -133,7 +133,7 @@
                   :name="seatCount.id"
                   :id="seatCount.id"
                   v-model="seatCount.checked"
-                  @change="chooseSeatCounts()"
+                  @change="chooseSeatCounts(), filterCarsBySeatCount()"
                   class="capp-btn__default"
                 />
                 <label :for="seatCount.id">{{ seatCount.name }}</label>
@@ -161,22 +161,24 @@
                   type="radio"
                   class="capp-radio__default"
                   name="smoker"
-                  id="smoker-yes"
-                  value="yes"
+                  id="smoker-true"
+                  value="true"
                   v-model="isSmoker"
+                  @change="filterCarsBySmoking()"
                 />
-                <label for="smoker-yes">Ja</label>
+                <label for="smoker-true">Ja</label>
               </li>
               <li class="question-list__item">
                 <input
                   type="radio"
                   class="capp-radio__default"
                   name="smoker"
-                  id="smoker-no"
-                  value="no"
+                  id="smoker-false"
+                  value="false"
                   v-model="isSmoker"
+                  @change="filterCarsBySmoking()"
                 />
-                <label for="smoker-no">Nein</label>
+                <label for="smoker-false">Nein</label>
               </li>
             </ul>
           </div>
@@ -200,27 +202,31 @@
                   type="radio"
                   class="capp-radio__default"
                   name="isofix"
-                  id="isofix-yes"
-                  value="yes"
+                  id="isofix-true"
+                  value="true"
                   v-model="hasIsofix"
+                  @change="filterCarsByIsofix()"
                 />
-                <label for="isofix-yes">Ja</label>
+                <label for="isofix-true">Ja</label>
               </li>
               <li class="question-list__item">
                 <input
                   type="radio"
                   class="capp-radio__default"
                   name="isofix"
-                  id="isofix-no"
-                  value="no"
+                  id="isofix-false"
+                  value="false"
                   v-model="hasIsofix"
+                  @change="filterCarsByIsofix()"
                 />
-                <label for="isofix-no">Nein</label>
+                <label for="isofix-false">Nein</label>
               </li>
             </ul>
           </div>
         </section>
       </article>
+      <!-- Filtern nach Mindest-Alter -->
+
       <!-- Filtern nach Kofferaum-Größe -->
       <article class="question-list__categorie">
         <input
@@ -306,13 +312,16 @@ export default {
       h2filterCarType: "Auto-Typen",
       h2filterFuelType: "Treibstoff-Arten",
       h2filterGears: "Getriebe-Art",
+      h2minAge: "Mindest-Alter",
       h2filterTrunkSize: "Kofferraum-Größe",
-      h2filterSeats: "Anzahl an freien Sitzen",
+      h2filterSeats: "Anzahl Sitze",
       h2features: "Ausstattung",
-      h2smoker: "Raucher oder Nichtraucher?",
+      h2smoker: "Ist Rauchen im Auto erlaubt?",
       h2isofix: "Isofix Kindersitz-Halterung vorhanden?",
       isSmoker: "",
       hasIsofix: "",
+      cars: null,
+      filteredCars: null,
       carTypes: [
         {
           id: 1,
@@ -335,13 +344,13 @@ export default {
         {
           id: 4,
           name: "Kombi",
-          iconSource: "Suv.svg",
+          iconSource: "Combi.svg",
           checked: false,
         },
         {
           id: 5,
           name: "Limousine",
-          iconSource: "Suv.svg",
+          iconSource: "Limousine.svg",
           checked: false,
         },
         {
@@ -365,11 +374,12 @@ export default {
         {
           id: 9,
           name: "Van",
-          iconSource: "Transporter.svg",
+          iconSource: "Bus.svg",
           checked: false,
         },
       ],
       chosenCarTypes: [],
+      chosenCarTypeNames: [],
       fuelTypes: [
         {
           id: "autogas",
@@ -443,6 +453,26 @@ export default {
         },
       ],
       chosenSeatCounts: [],
+      chosenSeatCountIDs: [],
+      minAges: [
+        {
+          id: 18,
+          name: "18 Jahre",
+          checked: false,
+        },
+        {
+          id: 21,
+          name: "21 Jahre",
+          checked: false,
+        },
+        {
+          id: 25,
+          name: "25 Jahre",
+          checked: false,
+        },
+      ],
+      chosenMinAges: [],
+      chosenMinAgeIDs: [],
       trunkSizes: [
         {
           id: "S",
@@ -486,6 +516,8 @@ export default {
         },
       ],
       chosenTrunkSizes: [],
+      chosenTrunkSizeIDs: [],
+      chosenTrunkSizeRanges: [],
       features: [],
       chosenFeatures: [],
     };
@@ -518,6 +550,9 @@ export default {
       this.chosenCarTypes = this.chosenCarTypes.filter((carType) => {
         return carType.checked === true;
       });
+      this.chosenCarTypeNames = this.chosenCarTypes.map((chosenCarType) => {
+        return chosenCarType.name;
+      });
     },
     chooseFuelTypes() {
       this.fuelTypes.forEach((fuelType) => {
@@ -546,6 +581,9 @@ export default {
       this.chosenSeatCounts = this.chosenSeatCounts.filter((seatCount) => {
         return seatCount.checked === true;
       });
+      this.chosenSeatCountIDs = this.chosenSeatCounts.map((chosenSeatCount) => {
+        return chosenSeatCount.id;
+      });
     },
     chooseTrunkSizes() {
       this.trunkSizes.forEach((trunkSize) => {
@@ -560,6 +598,14 @@ export default {
       this.chosenTrunkSizes = this.chosenTrunkSizes.filter((trunkSize) => {
         return trunkSize.checked === true;
       });
+      this.chosenTrunkSizeIDs = this.chosenTrunkSizes.map((chosenTrunkSize) => {
+        return chosenTrunkSize.id;
+      });
+      this.chosenTrunkSizeRanges = this.chosenTrunkSizes.map(
+        (chosenTrunkSize) => {
+          return [chosenTrunkSize.min, chosenTrunkSize.max];
+        }
+      );
     },
     chooseFeatures() {
       this.features.forEach((feature) => {
@@ -585,6 +631,76 @@ export default {
       chosenItems = chosenItems.filter((item) => {
         return item.checked === true;
       });
+    },
+    //chosenGear
+    async filterCarsByGear() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .eq("gear", this.chosenGear);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //hasIsofix
+    async filterCarsByIsofix() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .eq("has_isofix", this.hasIsofix);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //isSmoker
+    async filterCarsBySmoking() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .eq("is_smoker", this.isSmoker);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //chosenSeatCountIDs
+    async filterCarsBySeatCount() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .in("count_of_seats", this.chosenSeatCountIDs);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //chosenCarTypeNames
+    async filterCarsByCarType() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .in("category", this.chosenCarTypeNames);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
     },
   },
 };
