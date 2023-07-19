@@ -12,11 +12,11 @@
 
     <article class="article__wrapper">
       <ul class="link-wrapper" role="Liste der Links des Footers">
-        <li><a href="http://">Impressum</a></li>
+        <li><a href="#impressum">Impressum</a></li>
         |
-        <li><a href="http://">Datenschutz</a></li>
+        <li><a href="#data-sec">Datenschutz</a></li>
         |
-        <li><a href="http://">Über Uns</a></li>
+        <li><a href="#team">Über Uns</a></li>
         |
         <li><a href="http://">Referenzen</a></li>
       </ul>
