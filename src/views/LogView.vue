@@ -370,16 +370,6 @@ main {
   width: 100%;
   height: 100%;
 
-  /* background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%); */
-
-  background: linear-gradient(
-    to top,
-    var(--surface-light) 10%,
-    transparent 10%
-  );
-
-  background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%);
-
   background: linear-gradient(
     to right,
 
@@ -475,7 +465,7 @@ main {
   border-radius: 2rem 2rem 0 0;
   width: 100%;
   height: max-content;
-  background: var(--surface-light);
+  background: var(--bg-log);
   box-shadow: 0px 0px 25px var(--foot-shd-d);
   border-top: var(--s-brd) solid var(--foot-brd);
   padding-top: 5vh;

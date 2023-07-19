@@ -196,7 +196,7 @@
   --text-mid: var(--clr-font-light);
   --text-dark: var(--clr-font-lightest);
   --clr-logo: var(--clr-font-lightest);
-  --bg-log: var(--clr-sur-l);
+  --bg-log: var(--clr-sur-d);
   --btn-outl: var(--list-color);
   --btn-outl-act: var(--main-font-color-dark);
   --clr-f-act: var(--surface-hover);
@@ -224,6 +224,12 @@
   --img-sh-filter: hsla(0, 0%, 37%, 0.2);
   --clr-font-commentar: var(--main-font-color-light);
   --clr-shadow-top: hsla(0, 0%, 3%, 0.9);
+  /*===============Epand menue switch=================*/
+
+  --foot-filter: blur(5px);
+  --foot-shd: hsla(0, 0%, 0%, 0.2);
+  --foot-shd-d: hsla(0, 0%, 0%, 0.4);
+  --foot-brd: var(--surface-light);
   /*===============Epand menue switch=================*/
   --brd-top: white;
   --bg-content: var(--menue-bg);
