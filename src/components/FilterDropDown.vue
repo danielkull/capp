@@ -66,7 +66,7 @@
                   :name="`fuelType-${fuelType.id}`"
                   :id="`fuelType-${fuelType.id}`"
                   v-model="fuelType.checked"
-                  @change="chooseFuelTypes()"
+                  @change="chooseFuelTypes(), filterCarsByFuelType()"
                 />
                 <label :for="`fuelType-${fuelType.id}`">{{
                   fuelType.name
@@ -419,6 +419,7 @@ export default {
         },
       ],
       chosenFuelTypes: [],
+      chosenFuelTypeNames: [],
       gears: [
         {
           id: "automatic",
@@ -567,6 +568,9 @@ export default {
       this.chosenFuelTypes = this.chosenFuelTypes.filter((fuelType) => {
         return fuelType.checked === true;
       });
+      this.chosenFuelTypeNames = this.chosenFuelTypes.map((chosenFuelType) => {
+        return chosenFuelType.name;
+      });
     },
     chooseSeatCounts() {
       this.seatCounts.forEach((seatCount) => {
@@ -631,6 +635,20 @@ export default {
       chosenItems = chosenItems.filter((item) => {
         return item.checked === true;
       });
+    },
+    //chosenFuelTypeNames
+    async filterCarsByFuelType() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .in("fuel_type", this.chosenFuelTypeNames);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
     },
     //chosenGear
     async filterCarsByGear() {
