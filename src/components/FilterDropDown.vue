@@ -283,7 +283,7 @@
                   :name="trunkSize.id"
                   :id="trunkSize.id"
                   v-model="trunkSize.checked"
-                  @change="chooseTrunkSizes()"
+                  @change="chooseTrunkSizes(), filterCarsByTrunkSize()"
                   class="capp-btn__default"
                 />
                 <label :for="trunkSize.id"
@@ -741,16 +741,35 @@ export default {
     },
     //chosenSeatCountIDs
     async filterCarsBySeatCount() {
-      const { data } = await supabase
-        .from("cars")
-        .select(
-          `*, 
+      if (this.chosenSeatCountIDs.includes(6)) {
+        const { data } = await supabase
+          .from("cars")
+          .select(
+            `*, 
           users (id, username, firstname, lastname), 
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
-        )
-        .in("count_of_seats", this.chosenSeatCountIDs);
-      this.filteredCars = data;
+          )
+          .or(
+            "count_of_seats.in.(" +
+              this.chosenSeatCountIDs +
+              "), count_of_seats.gte.6"
+          );
+        //.in("count_of_seats", this.chosenSeatCountIDs)
+        //.gte("count_of_seats", 6);
+        this.filteredCars = data;
+      } else {
+        const { data } = await supabase
+          .from("cars")
+          .select(
+            `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+          )
+          .in("count_of_seats", this.chosenSeatCountIDs);
+        this.filteredCars = data;
+      }
       console.log(this.filteredCars);
     },
     //chosenMinAgeIDs
@@ -764,6 +783,21 @@ export default {
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .in("min_age", this.chosenMinAgeIDs);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //chosenTrunkSizeRanges
+    async filterCarsByTrunkSize() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .gte("trunk_volume_in_liters", this.chosenTrunkSizeRanges[0][0])
+        .lte("trunk_volume_in_liters", this.chosenTrunkSizeRanges[0][1]);
       this.filteredCars = data;
       console.log(this.filteredCars);
     },
