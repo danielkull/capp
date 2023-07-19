@@ -4,8 +4,8 @@
       <table width="100%">
         <thead>
           <tr>
-            <th width="30%">Basis Info</th>
-            <th width="70%">
+            <th width="40%">Versicherung</th>
+            <th width="60%">
               <label for="change-btn"
                 ><input type="button" value="" id="change-btn" /><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -28,31 +28,35 @@
         </thead>
         <tbody>
           <tr>
-            <td>Anrede</td>
-            <td>Herr</td>
+            <td>Führerschein- <br />nummer</td>
+            <td>1236666</td>
           </tr>
           <tr>
-            <td>Nachname</td>
-            <td>Musteetzwe</td>
+            <td>Versicherung</td>
+            <td>vollkasko</td>
           </tr>
           <tr>
-            <td>Vorname</td>
-            <td>Max</td>
+            <td>
+              Versicherungs- <br />
+              nummer
+            </td>
+            <td>HC12344</td>
+          </tr>
+          <tr>
+            <td>Kennzeichen</td>
+            <td>CC-DD234</td>
           </tr>
         </tbody>
       </table>
     </article>
 
-    <!------------------------------------------------------------------------------------------------>
-
-    <!------------------------------------------------------------------------------------------------>
-
+    <!-------------------------------------------------------------->
     <article class="user-table__wrapper">
       <table width="100%">
         <thead>
           <tr>
-            <th width="30%">Adresse</th>
-            <th width="70%">
+            <th width="40%">Fahrzeug Info</th>
+            <th width="60%">
               <label for="change-btn"
                 ><input type="button" value="" id="change-btn" /><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -75,33 +79,37 @@
         </thead>
         <tbody>
           <tr>
-            <td>Straße</td>
-            <td>Fantasystraße</td>
+            <td>Automarke</td>
+            <td>Renault</td>
           </tr>
           <tr>
-            <td>PLZ</td>
-            <td>000000</td>
+            <td>Modell</td>
+            <td>Twingo</td>
           </tr>
           <tr>
-            <td>Ort</td>
-            <td>Musterhausen</td>
+            <td>Kennzeichen</td>
+            <td>CC-DD234</td>
+          </tr>
+          <tr>
+            <td>Baujahr</td>
+            <td>2011</td>
+          </tr>
+          <tr>
+            <td>Ladevol.</td>
+            <td>175 l</td>
           </tr>
         </tbody>
       </table>
     </article>
-    <!------------------------------------------------------------------------------------------------>
-
-    <!------------------------------------------------------------------------------------------------>
+    <!-------------------------------------------------------------->
     <article class="user-table__wrapper">
       <table width="100%">
         <thead>
-          <tr class="mail-pw-wrapper">
-            <th width="100%">
+          <tr>
+            <th width="40%">Leistung</th>
+            <th width="60%">
               <label for="change-btn"
-                >E-Mail und Passwort<input
-                  type="button"
-                  value=""
-                  id="change-btn" /><svg
+                ><input type="button" value="" id="change-btn" /><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   height="100%"
@@ -122,25 +130,20 @@
         </thead>
         <tbody>
           <tr>
-            <td class="mail-col">
-              <span class="text-holder">
-                <p>E-Mail</p>
-                <input
-                  type="email"
-                  name="user-bsp-mail"
-                  value="max-mustermann@webadresse.com"
-                />
-              </span>
-            </td>
+            <td>Getriebe</td>
+            <td>Schaltung</td>
           </tr>
           <tr>
-            <td class="pw-col">
-              <span class="text-holder">
-                <p>Passwort</p>
-                <input type="password" name="user-bsp-pw" value="Platzhalter" />
-                <p class="change-pw">Passwort vergessen ?</p>
-              </span>
-            </td>
+            <td>Verbauch / km</td>
+            <td>1.25 l</td>
+          </tr>
+          <tr>
+            <td>PS</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>Höchst-<br />geschwind.</td>
+            <td>175 Kmh</td>
           </tr>
         </tbody>
       </table>
@@ -202,7 +205,7 @@ table :is(td, input, p) {
 table :is(th) {
   font-size: calc(var(--s-font) * 1.2);
   font-weight: var(--f-weight-reg);
-  text-align: center;
+  text-align: left;
   color: var(--text-dark);
   border-bottom: var(--m-brd) solid var(--check-checked);
   padding-bottom: calc(var(--s-pad) / 2);
@@ -231,54 +234,4 @@ tr:nth-child(even) {
 }
 
 /*===============================================*/
-
-.text-holder {
-  display: block;
-  width: 100%;
-  height: auto;
-  padding: 0;
-}
-.text-holder input {
-  width: 100%;
-}
-.text-holder > p {
-  color: var(--text-mid);
-  padding-left: 0.1rem;
-}
-.change-pw {
-  margin-top: 1rem;
-  text-align: right;
-}
-.text-holder > input {
-  font-weight: var(--f-weight-m);
-  color: var(--text-light);
-}
-.mail-col,
-.pw-col {
-  padding-inline: 0;
-  border-bottom: var(--s-brd) solid transparent;
-}
-.mail-col {
-  border-bottom: var(--s-brd) solid var(--clr-brd-top);
-}
-.mail-pw-wrapper label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding-block: calc(var(--s-pad) - 0.7rem);
-}
-input[type="email"],
-input[type="password"] {
-  appearance: none;
-  border: none;
-  outline: none;
-  pointer-events: none;
-  padding-top: calc(var(--s-pad) - 0.7rem);
-}
-
-input[type="password"] {
-  letter-spacing: 0.1em;
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-}
 </style>
