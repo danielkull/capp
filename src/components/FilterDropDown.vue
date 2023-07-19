@@ -226,7 +226,40 @@
         </section>
       </article>
       <!-- Filtern nach Mindest-Alter -->
-
+      <article class="question-list__categorie">
+        <input
+          type="checkbox"
+          name="question"
+          id="filter-min-age"
+          class="question-list__btn"
+        /><label class="question-list__header" for="filter-min-age">{{
+          h2minAge
+        }}</label>
+        <section class="question-list__list">
+          <div>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="minAge in minAges"
+                :key="minAge.id"
+              >
+                <input
+                  type="checkbox"
+                  :name="minAge.id"
+                  :id="minAge.id"
+                  v-model="minAge.checked"
+                  @change="chooseMinAges(), filterCarsByMinAge()"
+                  class="capp-btn__default"
+                />
+                <label :for="minAge.id" class="capp-label__default">{{
+                  minAge.name
+                }}</label>
+              </li>
+            </ul>
+            <p hidden>{{ chosenMinAges }}</p>
+          </div>
+        </section>
+      </article>
       <!-- Filtern nach Kofferaum-Größe -->
       <article class="question-list__categorie">
         <input
@@ -589,6 +622,20 @@ export default {
         return chosenSeatCount.id;
       });
     },
+    chooseMinAges() {
+      this.minAges.forEach((minAge) => {
+        minAge.checked != minAge.checked;
+        if (minAge.checked === true && !this.chosenMinAges.includes(minAge)) {
+          this.chosenMinAges.push(minAge);
+        }
+      });
+      this.chosenMinAges = this.chosenMinAges.filter((minAge) => {
+        return minAge.checked === true;
+      });
+      this.chosenMinAgeIDs = this.chosenMinAges.map((chosenMinAge) => {
+        return chosenMinAge.id;
+      });
+    },
     chooseTrunkSizes() {
       this.trunkSizes.forEach((trunkSize) => {
         trunkSize.checked != trunkSize.checked;
@@ -703,6 +750,20 @@ export default {
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .in("count_of_seats", this.chosenSeatCountIDs);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //chosenMinAgeIDs
+    async filterCarsByMinAge() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*, 
+          users (id, username, firstname, lastname), 
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .in("min_age", this.chosenMinAgeIDs);
       this.filteredCars = data;
       console.log(this.filteredCars);
     },
