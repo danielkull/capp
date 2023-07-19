@@ -489,9 +489,6 @@ export default {
   overflow: hidden;
   width: 100%;
   padding-inline: var(--list-padding);
- 
-  
-  /* box-shadow: inset 0px 3px 5px var(--box-shadow-light); */
 }
 
 .faq-answer__holder {

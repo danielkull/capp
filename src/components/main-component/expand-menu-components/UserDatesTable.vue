@@ -41,6 +41,9 @@
           </tr>
         </tbody>
       </table>
+      <span class="link-wrapper">
+        <a href="#delete">Konto löschen ?</a>
+      </span>
     </article>
 
     <!------------------------------------------------------------------------------------------------>
@@ -196,7 +199,20 @@ label svg {
   height: var(--m-font);
   fill: var(--text-light);
 }
-table :is(td, input, p) {
+
+.link-wrapper {
+  display: block;
+
+  width: 100%;
+  text-align: end;
+  padding-block: 1rem 0.3rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-light);
+}
+table :is(td, input, p, a) {
   font-size: clamp(0.9rem, 3vw, 1.3rem);
 }
 table :is(th) {
@@ -275,6 +291,7 @@ input[type="password"] {
   outline: none;
   pointer-events: none;
   padding-top: calc(var(--s-pad) - 0.7rem);
+  background: none;
 }
 
 input[type="password"] {

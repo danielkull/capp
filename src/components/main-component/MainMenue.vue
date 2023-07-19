@@ -457,7 +457,8 @@
         id="user-data"
         class="question-list__btn"
       /><label class="main-menue__list-header" for="user-data"
-        >Abmelden
+        ><a href="logout-user">Logout</a>
+        Abmelden
         <span class="icon-holder"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -489,6 +490,8 @@ export default {
 </script>
 
 <style scoped>
+/*=======================================*/
+
 .main-menue__wrapper {
   width: 100%;
   height: 75vh;
