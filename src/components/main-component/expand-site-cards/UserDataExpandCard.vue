@@ -66,7 +66,7 @@ section:target {
   display: flex;
   flex-direction: column;
   background: var(--menue-bg);
-  margin-top: -1vh;
+  margin-top: -2vh;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   box-shadow: inset 0 10px 20px var(--box-shd);
   border-top: 1px solid var(--brd-top);

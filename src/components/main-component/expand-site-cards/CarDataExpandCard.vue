@@ -19,7 +19,7 @@
         <!-------------------------------------------------------------------->
 
         <!----------Hier COntent--------->
-
+        <CarDataTable />
         <!-------------------------------------------------------------------->
       </section>
     </div>
@@ -27,7 +27,12 @@
 </template>
 
 <script>
-export default {};
+import CarDataTable from "@/components/main-component/expand-menu-components/CarDataTable.vue";
+export default {
+  components: {
+    CarDataTable,
+  },
+};
 </script>
 
 <style scoped>
