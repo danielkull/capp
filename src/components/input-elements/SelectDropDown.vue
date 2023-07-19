@@ -175,9 +175,13 @@ export default {
 .capp-input__wrapper {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  flex-direction: row;
+  /* gap: 1rem; */
+
+  padding-top: 1rem;
+  background: red;
 }
 .capp-input__wrapper span {
   width: 100%;
@@ -185,22 +189,22 @@ export default {
 .capp-label__default {
   display: block;
   color: var(--primary-dark);
-
+  padding-left: 1rem;
   padding-block: calc(var(--s-font) / 2);
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   letter-spacing: 0.1rem;
 }
 
 .capp-input__default {
   display: block;
-  width: 100%;
+  width: 80%;
   border: 2px solid var(--clr-trans);
   border-radius: 0.5rem;
   padding-inline: 0.5rem;
-  padding-block: 1rem;
-  font-size: var(--m-font);
+  padding-block: 0.5rem;
+  font-size: inherit;
   background: var(--clr-bg-main);
-  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
+  /* box-shadow: inset 0 5px 5px -2px var(--secondary-dark); */
   color: var(--font-color-dark);
 }
 .capp-input__default:hover {
@@ -232,18 +236,19 @@ export default {
 
 .capp-input__help {
   position: absolute;
-  top: 20p;
-  left: 0;
+  top: -60px;
+  left: -270px;
   display: block;
-  font-size: 1.2rem;
-  background: var(--secondary-light);
-  border: 1px solid var(--primary-dark);
+  font-size: var(--s-font);
+  background: var(--clr-sur-l);
+  color: var(--text-mid);
   border-radius: 1rem;
-  width: 20rem;
+  width: 80vw;
   height: auto;
-  padding: 1rem;
+  padding: var(--s-pad);
   text-align: start;
   z-index: 10;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 50px rgb(0, 0, 0, 0.4);
 }
 /*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 

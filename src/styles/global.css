@@ -125,7 +125,7 @@
   /*           default-btn*/
   /*============================================*/
 
-  --btn-height-default: calc(var(--font-size) * 2);
+  --btn-height-default: 0.8rem;
   --btn-height-small: 1rem;
   --circle-radius: 100%;
 

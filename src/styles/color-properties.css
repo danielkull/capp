@@ -80,7 +80,7 @@
   --list-default: var(--list-color);
   /*=========checkbox===*/
   --check-default: var(--list-color);
-  --check-checked: var(--clr-prime-m);
+  --check-checked: var(--clr-prime-l);
   --clr-after-btn: var(--clr-sur-l);
   /*=========menue===========*/
   --menue-icon-def: var(--main-font-color-light);

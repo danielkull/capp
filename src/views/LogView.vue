@@ -138,6 +138,7 @@
         <!-- ============== End of Sign In Page ==================== -->
       </article>
     </main>
+    <QuestionMenu />
   </section>
 </template>
 
@@ -148,9 +149,9 @@ import BackButton from "@/components/input-elements/BackButton.vue";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { supabase } from "@/lib/supabaseClient.js";
 import router from "../router";
-
+import QuestionMenu from "@/components/main-component/expand-menu-components/QuestionMenuExpand.vue";
 export default {
-  components: { InputText, LogButton, BackButton },
+  components: { InputText, LogButton, BackButton, QuestionMenu },
   data() {
     return {
       startPage: true,
