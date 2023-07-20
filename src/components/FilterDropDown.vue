@@ -260,6 +260,44 @@
           </div>
         </section>
       </article>
+      <!-- Filtern nach Kofferaum-Größen -->
+      <article class="question-list__categorie">
+        <input
+          type="checkbox"
+          name="question"
+          id="filter-trunk-sizes"
+          class="question-list__btn"
+        /><label class="question-list__header" for="filter-trunk-sizes">{{
+          h2filterTrunkSizes
+        }}</label>
+        <section class="question-list__list">
+          <div>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="trunkSize in trunkSizes"
+                :key="trunkSize.id"
+              >
+                <input
+                  type="checkbox"
+                  :name="trunkSize.id"
+                  :id="trunkSize.id"
+                  v-model="trunkSize.checked"
+                  @change="chooseTrunkSizes()"
+                  class="capp-btn__default"
+                />
+                <label :for="trunkSize.id"
+                  >{{ trunkSize.id }} {{ trunkSize.min }}-{{
+                    trunkSize.max
+                  }}
+                  Liter</label
+                >
+              </li>
+            </ul>
+            <p hidden>{{ chosenTrunkSizes }}</p>
+          </div>
+        </section>
+      </article>
       <!-- Filtern nach Kofferaum-Größe -->
       <article class="question-list__categorie">
         <input
@@ -279,12 +317,13 @@
                 :key="trunkSize.id"
               >
                 <input
-                  type="checkbox"
-                  :name="trunkSize.id"
+                  type="radio"
+                  name="trunk-size"
                   :id="trunkSize.id"
-                  v-model="trunkSize.checked"
-                  @change="chooseTrunkSizes(), filterCarsByTrunkSize()"
-                  class="capp-btn__default"
+                  :value="[trunkSize.id, trunkSize.min, trunkSize.max]"
+                  v-model="chosenTrunkSize"
+                  @change="filterCarsByTrunkSize()"
+                  class="capp-radio__default"
                 />
                 <label :for="trunkSize.id"
                   >{{ trunkSize.id }} {{ trunkSize.min }}-{{
@@ -347,6 +386,7 @@ export default {
       h2filterGears: "Getriebe-Art",
       h2minAge: "Mindest-Alter",
       h2filterTrunkSize: "Kofferraum-Größe",
+      h2filterTrunkSizes: "Kofferraum-Größen",
       h2filterSeats: "Anzahl Sitze",
       h2features: "Ausstattung",
       h2smoker: "Ist Rauchen im Auto erlaubt?",
@@ -549,6 +589,7 @@ export default {
           checked: false,
         },
       ],
+      chosenTrunkSize: "",
       chosenTrunkSizes: [],
       chosenTrunkSizeIDs: [],
       chosenTrunkSizeRanges: [],
@@ -688,9 +729,9 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .in("fuel_type", this.chosenFuelTypeNames);
@@ -702,9 +743,9 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .eq("gear", this.chosenGear);
@@ -716,9 +757,9 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .eq("has_isofix", this.hasIsofix);
@@ -730,9 +771,9 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .eq("is_smoker", this.isSmoker);
@@ -745,9 +786,9 @@ export default {
         const { data } = await supabase
           .from("cars")
           .select(
-            `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+            `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
           )
           .or(
@@ -762,9 +803,9 @@ export default {
         const { data } = await supabase
           .from("cars")
           .select(
-            `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+            `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
           )
           .in("count_of_seats", this.chosenSeatCountIDs);
@@ -777,27 +818,29 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .in("min_age", this.chosenMinAgeIDs);
       this.filteredCars = data;
       console.log(this.filteredCars);
     },
-    //chosenTrunkSizeRanges
+    //chosenTrunkSizeRanges //chosenTrunkSize
     async filterCarsByTrunkSize() {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
-        .gte("trunk_volume_in_liters", this.chosenTrunkSizeRanges[0][0])
-        .lte("trunk_volume_in_liters", this.chosenTrunkSizeRanges[0][1]);
+        .gte("trunk_volume_in_liters", this.chosenTrunkSize[1])
+        .lte("trunk_volume_in_liters", this.chosenTrunkSize[2]);
+      //.gte("trunk_volume_in_liters", this.chosenTrunkSizeRanges[0][0])
+      //.lte("trunk_volume_in_liters", this.chosenTrunkSizeRanges[0][1]);
       this.filteredCars = data;
       console.log(this.filteredCars);
     },
@@ -807,16 +850,18 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, 
-          users (id, username, firstname, lastname), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          `*,
+          users (id, username, firstname, lastname),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .in("car_types(category)", this.chosenCarTypeNames);
       */
       const { data } = await supabase
         .from("car_types")
-        .select("*, brands(brand_name), cars(*)")
+        .select(
+          "*, brands(brand_name), cars(*, users(username, zipcode, city))"
+        )
         .in("category", this.chosenCarTypeNames);
 
       this.filteredCars = data;
@@ -973,6 +1018,10 @@ label {
   padding-block: calc(var(--s-font) / 2);
   font-size: 1.15rem;
   letter-spacing: 0.1rem;
+}
+
+input[type="radio"] ~ label {
+  line-height: 2;
 }
 
 label > img {
