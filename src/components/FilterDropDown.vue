@@ -33,7 +33,7 @@
                   :name="`carType-${carType.id}`"
                   :id="`carType-${carType.id}`"
                   v-model="carType.checked"
-                  @change="chooseCarTypes()"
+                  @change="chooseCarTypes(), filterCarsByCarType()"
                 />
                 <label :for="`carType-${carType.id}`">{{ carType.name }}</label>
               </li>
@@ -803,6 +803,7 @@ export default {
     },
     //chosenCarTypeNames
     async filterCarsByCarType() {
+      /*
       const { data } = await supabase
         .from("cars")
         .select(
@@ -811,8 +812,19 @@ export default {
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
+        .in("car_types(category)", this.chosenCarTypeNames);
+      */
+      const { data } = await supabase
+        .from("car_types")
+        .select("*, brands(brand_name), cars(*)")
         .in("category", this.chosenCarTypeNames);
+
       this.filteredCars = data;
+
+      this.filteredCars = this.filteredCars.filter((filteredCar) => {
+        return filteredCar.cars.length > 0;
+      });
+
       console.log(this.filteredCars);
     },
   },
