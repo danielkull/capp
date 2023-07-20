@@ -36,6 +36,8 @@
   --clr-seat-act: var(--secondary-color);
   --clr-type-icon: var(--primary-dark);
   /*==========================================*/
+  /*=========questionmenue========*/
+  --quest-menu-bg: var(--clr-bg);
   /*================text color für Mode Switch=======================*/
   --text-light: var(--main-font-color-light);
   --text-mid: hsl(0, 0%, 33%);
@@ -206,6 +208,7 @@
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
   --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
   /*====================================*/
+
   --nav-icon-def: var(--primary-dark);
   --nav-icon-act: var(--list-color);
   /*====IMG car card===========*/

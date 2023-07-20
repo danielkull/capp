@@ -25,11 +25,11 @@ section {
   display: block;
   width: 100vw;
   height: 100vh;
-  background: red;
-  translate: 50% 0;
+  background: blue;
+  translate: 0% 0;
 }
 article {
-  background: var(--bg-log);
+  background: var(--quest-menu-bg);
   height: 90vh;
   margin-top: 10vh;
   padding-inline: 1rem;

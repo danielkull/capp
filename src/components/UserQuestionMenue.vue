@@ -20,15 +20,7 @@
               v-model:inputData="usernameValue"
               >Nickname</InputText
             >
-            <!-- Password 
-            <input-text
-              :inputId="password"
-              :inputType="'password'"
-              :inputPlaceholder="'e.g. Pass-XY_word-2023'"
-              v-model:inputData="passwordValue"
-              >Password</input-text
-            >
-            -->
+
             <!-- Vorname -->
             <input-text
               :inputId="'firstname'"
@@ -289,6 +281,7 @@
               >
             </li>
             <!-- Sonstiges -->
+
             <input-text
               :inputId="'misc'"
               :inputType="'text'"
@@ -312,9 +305,11 @@
         >
         <section class="question-list__list">
           <div>
-            <ul class="question-list radio-list">
+            <ul
+              class="question-list radio-list ul-input__text trunk-size__list"
+            >
               <li
-                class="question-list__item"
+                class="question-list__item trunk__list"
                 v-for="luggageTrunkSize in luggageTrunkSizes"
                 :key="luggageTrunkSize.id"
               >
@@ -339,6 +334,7 @@
               </li>
               <!-- Eigene Angaben -->
             </ul>
+
             <input-text
               :inputId="'own-trunk-size'"
               :inputType="'text'"
@@ -362,8 +358,8 @@
         <section class="question-list__list">
           <div>
             <p>
-              Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
-              kannst Du sie hier auswählen:
+              Gibt es Einschränkungen für die Vermietung Deines Autos? <br />
+              Dann kannst Du sie hier auswählen:
             </p>
             <ul class="question-list">
               <li
@@ -405,6 +401,7 @@
                 </select>
               </li>
               -->
+
               <select-drop-down
                 :selectId="'min-age'"
                 :givenData="minAges"
@@ -712,10 +709,10 @@ export default {
   justify-content: space-between;
   padding-block: calc(var(--s-pad) * 1.5);
   padding-inline: var(--s-pad);
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: var(--font-list-header);
   color: var(--text-light);
   font-weight: var(--f-weight-m);
-  background: var(--bg-log);
+  background: var(--menue-bg);
 }
 .question-list__btn {
   all: unset;
@@ -747,7 +744,7 @@ export default {
   padding-inline: var(--list-padding);
   list-style-type: none;
   background: var(--clr-sur-d);
-  border-radius: 0 0 2rem 2rem;
+  border-radius: var(--m-brd-rad);
 }
 
 ul.question-list {
@@ -757,7 +754,7 @@ ul.question-list {
 }
 
 .padding-top {
-  padding-top: 1rem;
+  padding-top: var(--s-pad);
 }
 
 .question-list__list {
@@ -767,15 +764,18 @@ ul.question-list {
 }
 .question-list__list p {
   padding-block: var(--s-pad);
-  padding-inline: var(--s-pad);
+  padding-left: 0.5rem;
+  line-height: 1.4rem;
   margin-bottom: var(--s-marg);
   font-weight: var(--f-weight-light);
-  width: 100%;
+  width: 90%;
   margin-inline: auto;
   border-radius: 0 0 var(--m-brd-rad) var(--m-brd-rad);
-  background: var(--bg-log);
+  text-align: center;
   color: var(--text-light);
-  border-bottom: var(--s-brd) solid var(--clr-prime-m);
+
+  border-bottom: 1px solid var(--primary-middle);
+  border-radius: 0 0 1.5rem 1.5rem;
 }
 
 .question-list__car-info {
@@ -783,17 +783,20 @@ ul.question-list {
 }
 
 .question-list__car-info ul.question-list {
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--xs-pad);
 }
 
 .question-list__car-info h3 {
   line-height: 1.75;
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: var(--font-hr3);
   color: var(--text-light);
-  padding-block: 0.5rem;
-  padding-left: var(--m-pad);
-  background: var(--bg-log);
-  border-bottom: 1px solid var(--clr-prime-m);
+  padding-block: var(--s-pad);
+  /* padding-left: var(--m-pad); */
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 90%;
+  margin-inline: auto;
+  border-bottom: 1px solid var(--primary-middle);
   border-radius: 0 0 1.5rem 1.5rem;
 }
 .question-list__car-info h3:first-of-type {
@@ -804,12 +807,17 @@ ul.question-list {
   display: grid;
   grid-template-rows: 1fr;
   background: var(--bg-log);
-  padding-block: 0rem 1rem;
+  padding-block: 0rem var(--s-pad);
+  background: var(--quest-menu-bg);
 }
 .question-list__btn:checked ~ .question-list__header::after {
-  background: var(--clr-prime-m);
+  background: var(--primary-middle);
   rotate: 90deg;
 }
+.question-list__categorie:has(.question-list__btn:checked) {
+  border: none;
+}
+
 .question-list__item {
   padding-block: var(--list-item-padding);
   padding-inline: var(--list-item-padding);
@@ -830,10 +838,17 @@ label {
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  padding-block: 0.5rem;
+  padding-block: var(--xs-pad);
   padding-inline: var(--s-pad);
-  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-size: var(--font-list-label);
   color: var(--text-light);
+}
+.trunk-size__list :is(label) {
+  font-size: var(--font-list-label-s);
+}
+.trunk-size__list li:last-of-type {
+  grid-column: 1/3;
+  padding-right: 8.7rem;
 }
 
 /* Input Elements */
@@ -844,10 +859,10 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"] {
-  font-size: 1.1rem;
+  font-size: var(--s-font);
   color: black;
   padding: 0.25rem 0.35rem;
-  border: 1px solid var(--secondary-mid);
+  border: var(--s-brd) solid var(--secondary-mid);
   border-radius: 0.35rem;
 }
 
@@ -862,16 +877,24 @@ input[type="text"]:focus-within,
 input[type="email"]:focus-within,
 input[type="password"]:focus-within,
 input[type="tel"]:focus-within {
-  outline: 2px solid var(--primary-light);
+  outline: var(--m-brd) solid var(--primary-light);
 }
-
+.capp-input__wrapper {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  margin-inline: auto;
+  margin-bottom: 1.3rem;
+}
 .capp-input__default {
   display: block;
   width: 100%;
-  border: 2px solid var(--clr-trans);
+  border: var(--m-brd) solid var(--clr-trans);
   border-radius: 0.5rem;
-  padding-inline: 0.5rem;
-  padding-block: 1rem;
+  padding-inline: var(--xs-pad);
+  padding-block: var(--s-pad);
   font-size: var(--m-font);
   background: var(--clr-bg-main);
   box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
@@ -924,7 +947,7 @@ input[type="checkbox"] {
   height: var(--btn-height-default);
   border-radius: var(--circle-radius);
   margin: var(--margin-default);
-  border: 1px solid var(--clr-trans);
+  border: var(--s-brd) solid var(--clr-trans);
   position: relative;
 }
 .capp-radio__default::after {
@@ -938,7 +961,7 @@ input[type="checkbox"] {
   height: var(--btn-height-default);
   transition: 0.3s;
   border-radius: var(--circle-radius);
-  outline: 1px solid var(--text-light);
+  outline: var(--s-brd) solid var(--text-light);
   outline-offset: 0px;
 }
 .capp-radio__default:checked::after {
@@ -953,45 +976,12 @@ label:has(.capp-btn__default:checked:checked) {
   color: var(--text-mid);
 }
 
-/* Checkboxen */
-/* .capp-btn__default {
-  cursor: pointer;
-  appearance: none;
-  display: block;
-  position: relative;
-  width: calc(var(--btn-height-default) * 1.5);
-  height: calc(var(--btn-height-default) * 0.75);
-  border-radius: var(--btn-height-default);
-  margin-block: var(--margin-default) 5px;
-  background: var(--secondary-mid);
-}
-.capp-btn__default::after {
-  content: "";
-  position: absolute;
-  display: block;
-  top: -2%;
-  left: -10%;
-  width: calc(var(--btn-height-default) * 0.75);
-  aspect-ratio: 1;
-  border-radius: var(--circle-radius);
-  background: var(--secondary-dark);
-  transition: 0.3s ease-out;
-}
-.capp-btn__default:checked {
-  background: var(--primary-light);
-}
-.capp-btn__default:checked::after {
-  left: 50.2%;
-  transition: 0.3s ease-out;
-  background: var(--primary-dark);
-} */
-
 /* ===================Select=================== */
 select {
   padding: 0.35rem 0.5rem;
   font-size: 1.1rem;
   margin-left: 0.35rem;
-
+  margin-bottom: 1rem;
   border-radius: 0.25rem;
   border: 1px solid var(--secondary-mid);
   color: var(--font-color-dark);

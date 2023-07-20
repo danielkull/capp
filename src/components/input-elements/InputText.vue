@@ -265,6 +265,7 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   gap: 1rem;
+  padding-top: 0.5rem;
 }
 .capp-input__wrapper span {
   width: 100%;
@@ -272,9 +273,9 @@ export default {
 .capp-label__default {
   display: block;
   color: var(--primary-dark);
-
+  padding-left: 0.2rem;
   padding-block: calc(var(--s-font) / 2);
-  font-size: clamp(var(--s-font), 5vw, var(--m-font));
+  font-size: var(--font-list-label);
   letter-spacing: 0.1rem;
 }
 
