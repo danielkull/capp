@@ -264,8 +264,6 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 1rem;
-  padding-top: 0.5rem;
 }
 .capp-input__wrapper span {
   width: 100%;
@@ -274,8 +272,8 @@ export default {
   display: block;
   color: var(--primary-dark);
   padding-left: 0.2rem;
-  padding-block: calc(var(--s-font) / 2);
-  font-size: var(--font-list-label);
+  padding-block: var(--s-font);
+  font-size: var(--font-list-label-s);
   letter-spacing: 0.1rem;
 }
 
@@ -286,11 +284,13 @@ export default {
   border-radius: 0.5rem;
   padding-inline: 0.5rem;
   padding-block: 1rem;
-  font-size: var(--s-font);
-  background: var(--clr-bg-main);
-  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
-  color: var(--font-color-dark);
-  caret-color: var(--clr-prime-m);
+  font-size: var(--font-list-label-s);
+  background: var(--clr-sur-l);
+
+  caret-color: var(--primary-middle);
+  color: var(--text-light);
+  outline: none;
+  border: 1px solid transparent;
 }
 input[type="password"] {
   font-family: Verdana;
@@ -309,7 +309,8 @@ input[type="password"]::placeholder {
 }
 
 .capp-input__default:focus {
-  outline-color: var(--primary-light);
+  border: 1px solid var(--primary-dark);
+  background: var(--clr-sur-d);
 }
 
 /* ====== Invalid and Valid Styling ====== */
@@ -341,6 +342,7 @@ input[type="password"]::placeholder {
   all: unset;
   width: calc(var(--s-font) * 2);
   height: calc(var(--s-font) * 2);
+  padding-top: 0.5rem;
 }
 .capp-input__btn:active > svg {
   fill: var(--primary-mid);

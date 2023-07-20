@@ -155,7 +155,7 @@
 }
 :root.dark-theme {
   /*===== Neue =====*/
-  --clr-bg: hsl(0, 0%, 3%);
+  --clr-bg: hsl(0, 0%, 4%);
   --surface-dark: hsl(0, 0%, 10%);
   --surface-light: hsl(0, 0%, 16%);
   --surface-hover: hsl(0, 0%, 25%);
