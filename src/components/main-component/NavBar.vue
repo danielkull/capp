@@ -5,8 +5,9 @@
       name="nav-menue"
       id="user-icon"
       class="nav-bar__btn-icons"
-    /><label class="nav-bar__icon-frame" for="user-icon"
-      ><svg
+    />
+    <label class="nav-bar__icon-frame" for="user-icon">
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
@@ -25,8 +26,9 @@
       name="nav-menue"
       id="calendar-icon"
       class="nav-bar__btn-icons"
-    /><label class="nav-bar__icon-frame" for="calendar-icon"
-      ><svg
+    />
+    <label class="nav-bar__icon-frame" for="calendar-icon">
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
@@ -48,8 +50,9 @@
       name="nav-menue"
       id="message-icon"
       class="nav-bar__btn-icons"
-    /><label class="nav-bar__icon-frame" for="message-icon"
-      ><svg
+    />
+    <label class="nav-bar__icon-frame" for="message-icon">
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
@@ -71,7 +74,8 @@
       name="nav-menue"
       id="menue-icon"
       class="nav-bar__btn-icons"
-    /><label class="nav-bar__icon-frame" for="menue-icon">
+    />
+    <label class="nav-bar__icon-frame" for="menue-icon">
       <div class="menue-wrapper">
         <span class="menue-strip menue-strip1"></span
         ><span class="menue-strip menue-strip2"></span
@@ -82,7 +86,11 @@
   <article class="nav-bar__menu-wrapper">
     <section class="nav-bar__menu-user menue-cards"></section>
     <section class="nav-bar__menu-calender menue-cards"></section>
-    <section class="nav-bar__menu-message menue-cards"></section>
+    <section class="nav-bar__menu-message menue-cards">
+      <section class="menu-message__wrapper">
+        <MessageMenu></MessageMenu>
+      </section>
+    </section>
     <section class="nav-bar__menu-main menue-cards">
       <section class="menu-main__wrapper">
         <MainMenue />
@@ -93,10 +101,12 @@
 
 <script>
 import MainMenue from "@/components/main-component/MainMenue.vue";
+import MessageMenu from "@/components/main-component/MessageMenu.vue";
 
 export default {
   components: {
     MainMenue,
+    MessageMenu,
   },
 };
 </script>
@@ -251,9 +261,11 @@ svg {
   margin-top: 220%;
 }
 .nav-bar__menu-message {
-  background: dodgerblue;
-
+  background: var(--clr-sur-d);
+  padding: var(--m-pad) var(--s-pad);
+  border-top: 2px solid var(--list-color);
   margin-top: 220%;
+  color: var(--clr-font-commentar);
 }
 
 :has(#user-icon:checked) .nav-bar__menu-user {
@@ -277,5 +289,17 @@ svg {
   margin-inline: auto;
   background: var(--surface-light);
   /* margin-top: 0%; */
+}
+
+.menu-message__wrapper {
+  height: 100%;
+  width: 100%;
+  margin-inline: auto;
+  background: var(--clr-sur-d);
+  overflow: scroll;
+}
+.menu-message__wrapper::-webkit-scrollbar {
+  appearance: none;
+  width: 0;
 }
 </style>

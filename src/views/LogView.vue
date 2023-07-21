@@ -192,9 +192,9 @@ export default {
       // If somebody is logged in send the user to the mainView
       // Das MUSS für die Entwicklung ausgeklammert werden. Für die Build version
       // wird es wieder eingeklammert.
-      /* if (this.authenticationStore.session) {
-        router.push({ name: "mainView" });
-      } */
+      // if (this.authenticationStore.session) {
+      //   router.push({ name: "mainView" });
+      // }
     },
     emptyFormData() {
       this.email = null;

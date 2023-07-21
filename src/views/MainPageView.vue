@@ -46,7 +46,6 @@
       </SmallCarCard>
     </section>
     <div v-else><p>Loading Cars...</p></div>
-
   </main>
   <ExpandMenue />
   <MessageSettingsCard />
@@ -86,7 +85,7 @@ import UserRules from "@/components/main-component/expand-site-cards/UseExpandCa
 import UserData from "@/components/main-component/expand-site-cards/UserDataExpandCard.vue";
 
 import { supabase } from "@/lib/supabaseClient";
-
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 
 export default {
   components: {
@@ -117,12 +116,35 @@ export default {
       cars: null,
     };
   },
+  setup() {
+    const authenticationStore = useAuthenticationStore();
+    return { authenticationStore };
+  },
+  created() {
+    const emptySession = this.checkForEmptyObject(
+      this.authenticationStore.session
+    );
+    if (emptySession) {
+      this.getSessionInfos();
+    }
+  },
   mounted() {
     this.getBrands();
     this.getCarTypes();
     this.getCars();
   },
   methods: {
+    getSessionInfos() {
+      this.authenticationStore.getSession();
+      this.authenticationStore.onAuthStateChange();
+    },
+    checkForEmptyObject(objectName) {
+      return (
+        objectName &&
+        Object.keys(objectName).length === 0 &&
+        objectName.constructor === Object
+      );
+    },
     async getBrands() {
       const { data } = await supabase.from("brands").select();
       this.brands = data;
@@ -140,8 +162,8 @@ export default {
       const { data } = await supabase
         .from("cars")
         .select(
-          `*, users ( id, username, firstname, lastname, address, zipcode, city ), 
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ), 
+          `*, users ( id, username, firstname, lastname, address, zipcode, city ),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .order("id", { ascending: true });
@@ -310,6 +332,7 @@ main::-webkit-scrollbar {
   border-radius: 0 0 1.5rem 1.5rem;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 .filter-choice-frame {
   position: absolute;

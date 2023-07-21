@@ -170,8 +170,15 @@ export default {
     this.getCurrentDate();
   },
   computed: {
+    currentDateToTimeFormat() {
+      const month = ("0" + this.currentDate.month).slice(-2)
+      const day = ("0" + this.currentDate.date).slice(-2)
+      const selectedDate = `${this.currentDate.year}-${month}-${day}T${this.currentTime}`;
+      return selectedDate;
+    },
     currentDay() {
-      this.$emit("selectedDate", this.currentTime);
+      this.currentDateToTimeFormat;
+      this.$emit("selectedDate", this.currentDateToTimeFormat);
       return new Date(
         this.currentDate.year,
         this.currentDate.month,

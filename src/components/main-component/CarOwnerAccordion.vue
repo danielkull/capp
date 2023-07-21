@@ -104,13 +104,10 @@
     </article>
     <!-------------------------------------------------------------------------------------->
     <article class="car-info__categorie">
-      <input
-        type="checkbox"
-        name="hier Namen für Kategorie eintragen"
-        id="equipment-3"
-        class="car-info__btn"
-      /><label class="car-info__header" for="equipment-3"
-        >Kalender<svg
+      <a href="#booking-calendar" class="car-info__header car-info__link"
+        >Buchungs Kalender
+
+        <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
           height="100%"
@@ -125,18 +122,7 @@
             d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
           />
         </svg>
-      </label>
-      <section class="car-info__list calendar">
-        <section class="placeholder">
-          <!--
-          <h2>
-            Buchen Sie hier Ihren nächsten Fahrt-Termin bei
-            {{ userName }}!
-          </h2>
-          -->
-          <calendar />
-        </section>
-      </section>
+      </a>
     </article>
     <!-------------------------------------------------------------------------------------->
     <article class="car-info__categorie">
@@ -174,12 +160,11 @@
 <script>
 import EquipmentList from "@/components/car-equipment/car-equipment.vue";
 import MessageField from "@/components/input-elements/TextArea.vue";
-import Calendar from "@/components/Calendar.vue";
+
 export default {
   components: {
     EquipmentList,
     MessageField,
-    Calendar,
   },
   props: {
     featureItems: {
@@ -274,6 +259,11 @@ h2 {
   background: var(--clr-sur-d);
   font-weight: 500;
 }
+
+.car-info__link{
+  text-decoration: none;
+}
+
 .car-info__btn {
   all: unset;
   position: absolute;

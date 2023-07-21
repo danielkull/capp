@@ -3,23 +3,10 @@
     <header class="customer-review__header">
       <section class="customer-review__header-profil-wrapper">
         <article class="user-profile__image-small">
-          <span class="user-profile__image-small__wrapper">
-            <!-- Die :alt und :title Daten müssen noch überarbeitet werden -->
-            <!-- Nicht jeder User hat auch einen brand Naame und CarType -->
-            <!-- Die Werte müssten auch eher aus den Rout Infos geholt werden, statt als props übertragen zu werden -->
-            <img
-              :src="imgSource"
-              :alt="brandName + ' ' + carTypeName + ' von ' + userName"
-              :title="brandName + ' ' + carTypeName + ' von ' + userName"
-            />
-          </span>
+          <span class="user-profile__image-small__wrapper"> </span>
         </article>
-        <h3 class="customer-review__header-username">Reviewer Username</h3>
+        <h3 class="customer-review__header-username">Msg from Username</h3>
       </section>
-      <RatingBar
-        :ratingGroup="'Reviewer Username'"
-        :scalingIsActive="true"
-      ></RatingBar>
     </header>
 
     <p class="customer-review-text">
@@ -32,30 +19,7 @@
 </template>
 
 <script>
-import RatingBar from "@/components/messenger/RatingBar.vue";
-
-export default {
-  name: "CustomerReviews",
-  components: { RatingBar },
-  props: {
-    imgSource: {
-      type: String,
-      required: true,
-    },
-    userName: {
-      type: String,
-      required: true,
-    },
-    brandName: {
-      type: String,
-      required: true,
-    },
-    carTypeName: {
-      type: String,
-      required: true,
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped>
