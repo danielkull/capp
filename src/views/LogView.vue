@@ -151,11 +151,10 @@ import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { supabase } from "@/lib/supabaseClient.js";
 import router from "../router";
 import QuestionMenu from "@/components/main-component/expand-menu-components/QuestionMenuExpand.vue";
-export default {
-  components: { InputText, LogButton, BackButton, QuestionMenu },
 import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
 export default {
-  components: { InputText, LogButton, BackButton, ImpressumFooter },
+ components: { InputText, LogButton, BackButton, ImpressumFooter,QuestionMenu },
+export default {
   data() {
     return {
       startPage: true,
