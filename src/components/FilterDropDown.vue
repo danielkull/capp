@@ -309,28 +309,81 @@
           h2features
         }}</label>
         <section class="question-list__list">
-          <ul class="question-list">
-            <li
-              class="question-list__item"
-              v-for="feature in features"
-              :key="feature.id"
-            >
-              <input
-                type="checkbox"
-                class="capp-btn__default"
-                :name="`feature-${feature.id}`"
-                :id="`feature-${feature.id}`"
-                v-model="feature.checked"
-                @change="chooseFeatures()"
-              />
-              <label :for="`feature-${feature.id}`">{{ feature.name }}</label>
-            </li>
-          </ul>
-          <p hidden>{{ chosenFeatures }}</p>
+          <div>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="feature in features"
+                :key="feature.id"
+              >
+                <input
+                  type="checkbox"
+                  class="capp-btn__default"
+                  :name="`feature-${feature.id}`"
+                  :id="`feature-${feature.id}`"
+                  v-model="feature.checked"
+                  @change="chooseFeatures()"
+                />
+                <label :for="`feature-${feature.id}`">{{ feature.name }}</label>
+              </li>
+            </ul>
+            <p hidden>{{ chosenFeatures }}</p>
+          </div>
+        </section>
+      </article>
+      <!-- Filtern nach Postleitzahl (zipcode) -->
+      <article class="question-list__categorie">
+        <input
+          type="checkbox"
+          name="question"
+          id="filter-zipcode"
+          class="question-list__btn"
+        /><label class="question-list__header" for="filter-zipcode">{{
+          h2zipcode
+        }}</label>
+        <section class="question-list__list">
+          <div>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="zipcode in zipcodes"
+                :key="zipcode"
+              >
+                <input
+                  type="radio"
+                  name="zipcode"
+                  :id="`zipcode-${zipcode}`"
+                  :value="zipcode"
+                  v-model="chosenZipCode"
+                  class="capp-radio__default"
+                  @change="filterCarsByZipCode()"
+                />
+                <label :for="`zipcode-${zipcode}`" class="capp-label__default"
+                  >{{ zipcode }}xxxx</label
+                >
+              </li>
+            </ul>
+          </div>
         </section>
       </article>
     </section>
   </form>
+
+  <ul>
+    <li
+      v-for="filteredCar in filteredCars"
+      :key="filteredCar.id"
+      style="margin-bottom: 2rem"
+    >
+      {{ filteredCar.car_types.brands.brand_name }}
+      {{ filteredCar.car_types.car_type_name }} <br />
+      {{ filteredCar.car_types.category }} <br />
+      {{ filteredCar.users.address }}, {{ filteredCar.users.zipcode }}
+      {{ filteredCar.users.city }} <br />
+      Kofferraum-Volumen: {{ filteredCar.trunk_volume_in_liters }} l<br />
+      Anzahl Sitze: {{ filteredCar.count_of_seats }}<br />
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -352,10 +405,15 @@ export default {
       h2features: "Ausstattung",
       h2smoker: "Ist Rauchen im Auto erlaubt?",
       h2isofix: "Isofix Kindersitz-Halterung vorhanden?",
+      h2zipcode: "Postleitzahl",
       isSmoker: "",
       hasIsofix: "",
+      //(filtered) cars -------------------------------
       cars: null,
       filteredCars: null,
+      filteredCarTypes: null,
+      filteredUsers: null,
+      //carTypes -------------------------------
       carTypes: [
         {
           id: 1,
@@ -414,6 +472,7 @@ export default {
       ],
       chosenCarTypes: [],
       chosenCarTypeNames: [],
+      //fuelTypes -------------------------------
       fuelTypes: [
         {
           id: "autogas",
@@ -454,6 +513,7 @@ export default {
       ],
       chosenFuelTypes: [],
       chosenFuelTypeNames: [],
+      //gear -------------------------------
       gears: [
         {
           id: "automatic",
@@ -465,6 +525,7 @@ export default {
         },
       ],
       chosenGear: "",
+      //seatCounts -------------------------------
       seatCounts: [
         {
           id: 2,
@@ -489,6 +550,7 @@ export default {
       ],
       chosenSeatCounts: [],
       chosenSeatCountIDs: [],
+      //minAges -------------------------------
       minAges: [
         {
           id: 18,
@@ -508,6 +570,7 @@ export default {
       ],
       chosenMinAges: [],
       chosenMinAgeIDs: [],
+      //trunkSizes -------------------------------
       trunkSizes: [
         {
           id: "S",
@@ -551,6 +614,10 @@ export default {
         },
       ],
       chosenTrunkSize: "",
+      //zipcodes -------------------------------
+      zipcodes: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      chosenZipCode: "",
+      //features -------------------------------
       features: [],
       chosenFeatures: [],
     };
@@ -774,30 +841,65 @@ export default {
     },
     //chosenCarTypeNames
     async filterCarsByCarType() {
-      /*
-      const { data } = await supabase
-        .from("cars")
-        .select(
-          `*,
-          users (id, username, firstname, lastname, address, zipcode, city),
-          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
-          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
-        )
-        .in("car_types(category)", this.chosenCarTypeNames);
-      */
       const { data } = await supabase
         .from("car_types")
         .select(
-          "*, brands(brand_name), cars(*, users(id, username, firstname, lastname, address, zipcode, city))"
+          `*, brands(brand_name), 
+          cars(
+            *, 
+            users(id, username, firstname, lastname, address, zipcode, city), 
+            car_types(car_type_name, category, brands(brand_name)), 
+            cars_features(id, car_id, feature_id, features(id, feature_name))
+          )`
         )
         .in("category", this.chosenCarTypeNames);
 
-      this.filteredCars = data;
+      this.filteredCarTypes = data;
 
-      this.filteredCars = this.filteredCars.filter((filteredCar) => {
-        return filteredCar.cars.length > 0;
+      this.filteredCarTypes = this.filteredCarTypes.filter(
+        (filteredCarType) => {
+          return filteredCarType.cars.length > 0;
+        }
+      );
+      console.log(this.filteredCarTypes);
+
+      this.filteredCars = [];
+
+      this.filteredCarTypes.forEach((filteredCarType) => {
+        filteredCarType.cars.forEach((car) => {
+          this.filteredCars.push(car);
+        });
       });
+      console.log(this.filteredCars);
+    },
+    //chosenZipCode
+    async filterCarsByZipCode() {
+      const { data } = await supabase
+        .from("users")
+        .select(
+          `*, 
+          cars(
+            *, 
+            users(username, firstname, lastname, address, zipcode, city), 
+            car_types(car_type_name, category, brands(brand_name)), 
+            cars_features(id, car_id, feature_id, features(id, feature_name))
+          )`
+        )
+        .like("zipcode", `${this.chosenZipCode}%`);
+      this.filteredUsers = data;
 
+      this.filteredUsers = this.filteredUsers.filter((filteredUser) => {
+        return filteredUser.cars.length > 0;
+      });
+      console.log(this.filteredUsers);
+
+      this.filteredCars = [];
+
+      this.filteredUsers.forEach((filteredUser) => {
+        filteredUser.cars.forEach((car) => {
+          this.filteredCars.push(car);
+        });
+      });
       console.log(this.filteredCars);
     },
   },
