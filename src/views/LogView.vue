@@ -153,8 +153,14 @@ import router from "../router";
 import QuestionMenu from "@/components/main-component/expand-menu-components/QuestionMenuExpand.vue";
 import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
 export default {
- components: { InputText, LogButton, BackButton, ImpressumFooter,QuestionMenu },
-export default {
+  components: {
+    InputText,
+    LogButton,
+    BackButton,
+    ImpressumFooter,
+    QuestionMenu,
+  },
+
   data() {
     return {
       startPage: true,
