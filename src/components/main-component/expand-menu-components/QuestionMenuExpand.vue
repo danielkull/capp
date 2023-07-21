@@ -38,12 +38,12 @@ export default {
 
 <style scoped>
 section:target {
-  translate: 0% 0;
+  translate: 0% 0%;
 }
 .menue-expand__inner-wrapper,
 .menue-expand__outer-wrapper {
-  min-width: 100vw;
-  min-width: 100dvw;
+  min-width: 100%;
+  /* min-width: 10%0; */
 }
 
 .menue-expand__outer-wrapper {
@@ -51,9 +51,9 @@ section:target {
   overflow: hidden;
   position: absolute;
   z-index: 15;
-  top: 0%;
-  left: 0%;
-  translate: 0% 0;
+  top: 0px;
+  left: 0px;
+  translate: 0 -100%;
   min-height: 100vh;
   min-height: 100dvh;
   background: linear-gradient(to top, var(--clr-bg) 30%, transparent),
@@ -72,7 +72,9 @@ section:target {
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   box-shadow: inset 0 10px 20px var(--box-shd);
   border-top: 1px solid var(--list-color);
+  overflow: hidden;
 }
+
 header {
   display: flex;
   justify-content: space-between;
