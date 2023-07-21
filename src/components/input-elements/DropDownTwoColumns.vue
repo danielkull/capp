@@ -6,8 +6,7 @@
 <!-- Zudem benötigt es noch ein v-model:selectedData="AusgewählteDatei" -->
 <!-- Deine "AusgewählteDatei" kannst du in data() auffangen -->
 <!-- Um der Select Komponent daten zu geben musst du :givenData="DataPackage" mit deinen Daten befüllen  -->
-<!-- Ein Datenpacket kann ein enum sein (mit nur einer Daten Spalte) wie "fuel_type" oder "category"-->
-<!-- Oder auch zwei Spaltige Daten mit Id und name wie "purpose" oder "brands" -->
+<!-- Ein Datenpacket muss zwei Spaltige sein. Mit Id und name wie "purpose" oder "brands" -->
 
 <!-- Das ist ein beispiel wie man DatenPackete mit zwei Spalten aus Supabase holt -->
 <!-- async getPurposes() {
@@ -21,27 +20,6 @@
     alert(error.message);
   }
 }, -->
-<!-- Bei enum Werten muss man allerdings das etwas anders machen:-->
-<!-- async getCategorys() {
-  try {
-    const { data, error } = await supabase.rpc("get_category");
-
-    if (error) throw error;
-
-    if (data) {
-      this.categoryData = data;
-    }
-  } catch (error) {
-    alert(error.message);
-  }
-}, -->
-<!-- mit .rpc() kann man eine Supabase Funktion aufrufen die man davor erstellen muss -->
-<!-- Folgende Funktionen wurden bereits erstellt und können genutzt werden: -->
-<!-- get_category -->
-<!-- get_fuel -->
-<!-- get_gear -->
-<!-- get_insurance -->
-<!-- get_route_status -->
 
 <!-- Hier ein Beispiel wie eine Komponente Aussehen könnte -->
 <!-- <SelectDropDown
@@ -68,12 +46,9 @@
         :required="isRequired"
       >
         <option disabled value="">{{ defaultText }}</option>
-        <option v-for="name in givenData" :value="name.id" :key="name.id">
-          <p v-if="multiColumn">
-            {{ Object.values(name)[1] }}
-          </p>
-          <p v-else>
-            {{ name }}
+        <option v-for=" item in givenData" :value="item.id" :key="item.id">
+          <p>
+            {{ Object.values(item)[1] }}
           </p>
         </option>
       </select>
@@ -123,7 +98,7 @@ export default {
     },
     defaultText: {
       type: String,
-      default: "--For what do you need the car?",
+      default: "--Click me",
     },
     isRequired: {
       type: Boolean,
@@ -133,23 +108,8 @@ export default {
   emits: ["update:selectedData"],
   data() {
     return {
-      multiColumn: null,
       showHelp: false,
     };
-  },
-  methods: {
-    givenDataCorrection() {
-      this.givenData.filter((item) => {
-        if (item.id !== undefined) {
-          this.multiColumn = true;
-        } else {
-          this.multiColumn = false;
-        }
-      });
-    },
-  },
-  beforeUpdate() {
-    this.givenDataCorrection();
   },
 };
 </script>
