@@ -382,6 +382,11 @@
       {{ filteredCar.users.city }} <br />
       Kofferraum-Volumen: {{ filteredCar.trunk_volume_in_liters }} l<br />
       Anzahl Sitze: {{ filteredCar.count_of_seats }}<br />
+      Getriebe: {{ filteredCar.gear }}<br />
+      Treibstoff: {{ filteredCar.fuel_type }}<br />
+      Rauchen erlaubt: {{ filteredCar.is_smoker }}<br />
+      Isofix vorhanden: {{ filteredCar.has_isofix }}<br />
+      Mindestalter: {{ filteredCar.min_age }}
     </li>
   </ul>
 </template>
