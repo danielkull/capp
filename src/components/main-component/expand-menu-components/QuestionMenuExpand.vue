@@ -115,7 +115,7 @@ header h2 {
   margin-inline: auto;
   padding-inline: var(--s-pad);
   border-radius: var(--s-brd-rad) var(--s-brd-rad) 0 0;
-  background: var(--bg-content);
+  background: var(--menue-bg);
 
   overflow: scroll;
 }
