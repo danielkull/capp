@@ -260,44 +260,6 @@
           </div>
         </section>
       </article>
-      <!-- Filtern nach Kofferaum-Größen -->
-      <article class="question-list__categorie">
-        <input
-          type="checkbox"
-          name="question"
-          id="filter-trunk-sizes"
-          class="question-list__btn"
-        /><label class="question-list__header" for="filter-trunk-sizes">{{
-          h2filterTrunkSizes
-        }}</label>
-        <section class="question-list__list">
-          <div>
-            <ul class="question-list">
-              <li
-                class="question-list__item"
-                v-for="trunkSize in trunkSizes"
-                :key="trunkSize.id"
-              >
-                <input
-                  type="checkbox"
-                  :name="trunkSize.id"
-                  :id="trunkSize.id"
-                  v-model="trunkSize.checked"
-                  @change="chooseTrunkSizes()"
-                  class="capp-btn__default"
-                />
-                <label :for="trunkSize.id"
-                  >{{ trunkSize.id }} {{ trunkSize.min }}-{{
-                    trunkSize.max
-                  }}
-                  Liter</label
-                >
-              </li>
-            </ul>
-            <p hidden>{{ chosenTrunkSizes }}</p>
-          </div>
-        </section>
-      </article>
       <!-- Filtern nach Kofferaum-Größe -->
       <article class="question-list__categorie">
         <input
@@ -333,7 +295,6 @@
                 >
               </li>
             </ul>
-            <p hidden>{{ chosenTrunkSizes }}</p>
           </div>
         </section>
       </article>
@@ -590,9 +551,6 @@ export default {
         },
       ],
       chosenTrunkSize: "",
-      chosenTrunkSizes: [],
-      chosenTrunkSizeIDs: [],
-      chosenTrunkSizeRanges: [],
       features: [],
       chosenFeatures: [],
     };
@@ -612,6 +570,8 @@ export default {
         });
       }
     },
+    //Choose Functions
+    //Choose Car Types
     chooseCarTypes() {
       this.carTypes.forEach((carType) => {
         carType.checked != carType.checked;
@@ -629,6 +589,7 @@ export default {
         return chosenCarType.name;
       });
     },
+    //Choose Fuel Types
     chooseFuelTypes() {
       this.fuelTypes.forEach((fuelType) => {
         fuelType.checked != fuelType.checked;
@@ -646,6 +607,7 @@ export default {
         return chosenFuelType.name;
       });
     },
+    //Choose Seat Counts
     chooseSeatCounts() {
       this.seatCounts.forEach((seatCount) => {
         seatCount.checked != seatCount.checked;
@@ -663,6 +625,7 @@ export default {
         return chosenSeatCount.id;
       });
     },
+    //Choose MinAges
     chooseMinAges() {
       this.minAges.forEach((minAge) => {
         minAge.checked != minAge.checked;
@@ -677,28 +640,7 @@ export default {
         return chosenMinAge.id;
       });
     },
-    chooseTrunkSizes() {
-      this.trunkSizes.forEach((trunkSize) => {
-        trunkSize.checked != trunkSize.checked;
-        if (
-          trunkSize.checked === true &&
-          !this.chosenTrunkSizes.includes(trunkSize)
-        ) {
-          this.chosenTrunkSizes.push(trunkSize);
-        }
-      });
-      this.chosenTrunkSizes = this.chosenTrunkSizes.filter((trunkSize) => {
-        return trunkSize.checked === true;
-      });
-      this.chosenTrunkSizeIDs = this.chosenTrunkSizes.map((chosenTrunkSize) => {
-        return chosenTrunkSize.id;
-      });
-      this.chosenTrunkSizeRanges = this.chosenTrunkSizes.map(
-        (chosenTrunkSize) => {
-          return [chosenTrunkSize.min, chosenTrunkSize.max];
-        }
-      );
-    },
+    //Choose Features
     chooseFeatures() {
       this.features.forEach((feature) => {
         feature.checked != feature.checked;
@@ -713,24 +655,14 @@ export default {
         return feature.checked === true;
       });
     },
-    chooseItems(items, chosenItems) {
-      items.forEach((item) => {
-        item.checked != item.checked;
-        if (item.checked === true && !chosenItems.includes(item)) {
-          chosenItems.push(item);
-        }
-      });
-      chosenItems = chosenItems.filter((item) => {
-        return item.checked === true;
-      });
-    },
+    //Filter Functions
     //chosenFuelTypeNames
     async filterCarsByFuelType() {
       const { data } = await supabase
         .from("cars")
         .select(
           `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
@@ -744,7 +676,7 @@ export default {
         .from("cars")
         .select(
           `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
@@ -758,7 +690,7 @@ export default {
         .from("cars")
         .select(
           `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
@@ -772,7 +704,7 @@ export default {
         .from("cars")
         .select(
           `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
@@ -787,7 +719,7 @@ export default {
           .from("cars")
           .select(
             `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
           )
@@ -796,15 +728,13 @@ export default {
               this.chosenSeatCountIDs +
               "), count_of_seats.gte.6"
           );
-        //.in("count_of_seats", this.chosenSeatCountIDs)
-        //.gte("count_of_seats", 6);
         this.filteredCars = data;
       } else {
         const { data } = await supabase
           .from("cars")
           .select(
             `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
           )
@@ -819,7 +749,7 @@ export default {
         .from("cars")
         .select(
           `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
@@ -827,20 +757,18 @@ export default {
       this.filteredCars = data;
       console.log(this.filteredCars);
     },
-    //chosenTrunkSizeRanges //chosenTrunkSize
+    //chosenTrunkSize
     async filterCarsByTrunkSize() {
       const { data } = await supabase
         .from("cars")
         .select(
           `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
         .gte("trunk_volume_in_liters", this.chosenTrunkSize[1])
         .lte("trunk_volume_in_liters", this.chosenTrunkSize[2]);
-      //.gte("trunk_volume_in_liters", this.chosenTrunkSizeRanges[0][0])
-      //.lte("trunk_volume_in_liters", this.chosenTrunkSizeRanges[0][1]);
       this.filteredCars = data;
       console.log(this.filteredCars);
     },
@@ -851,7 +779,7 @@ export default {
         .from("cars")
         .select(
           `*,
-          users (id, username, firstname, lastname),
+          users (id, username, firstname, lastname, address, zipcode, city),
           car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
           cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
         )
@@ -860,7 +788,7 @@ export default {
       const { data } = await supabase
         .from("car_types")
         .select(
-          "*, brands(brand_name), cars(*, users(username, zipcode, city))"
+          "*, brands(brand_name), cars(*, users(id, username, firstname, lastname, address, zipcode, city))"
         )
         .in("category", this.chosenCarTypeNames);
 
