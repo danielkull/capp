@@ -79,7 +79,9 @@
   <article class="nav-bar__menu-wrapper">
     <section class="nav-bar__menu-user menue-cards"></section>
     <section class="nav-bar__menu-calender menue-cards"></section>
-    <section class="nav-bar__menu-message menue-cards"></section>
+    <section class="nav-bar__menu-message menue-cards">
+      <Messenger />
+    </section>
     <section class="nav-bar__menu-main menue-cards">
       <section class="menu-main__wrapper">
         <MainMenue />
@@ -90,10 +92,12 @@
 
 <script>
 import MainMenue from "@/components/main-component/MainMenue.vue";
+import Messenger from "@/components/messenger/messenger-placeholder/MessengerWindow.vue";
 
 export default {
   components: {
     MainMenue,
+    Messenger,
   },
 };
 </script>
@@ -221,14 +225,15 @@ svg {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background: red;
+  background: var(--clr-bg);
   position: fixed;
   z-index: 8;
   margin-top: 220%;
   margin-top: 25%;
-
+  overflow: hidden;
   transition: margin 0.5s ease-in-out;
   border-radius: 2rem;
+  border-top: 1px solid var(--list-color);
 }
 .nav-bar__menu-user {
   z-index: 9;
@@ -248,7 +253,7 @@ svg {
   margin-top: 220%;
 }
 .nav-bar__menu-message {
-  background: dodgerblue;
+  background: var(--clr-bg);
 
   margin-top: 220%;
 }
