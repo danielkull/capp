@@ -85,12 +85,12 @@
   </nav>
   <article class="nav-bar__menu-wrapper">
     <section class="nav-bar__menu-user menue-cards"></section>
-    <section class="nav-bar__menu-calender menue-cards"></section>
-    <section class="nav-bar__menu-message menue-cards">
+    <section class="nav-bar__menu-calender menue-cards">
       <section class="menu-message__wrapper">
         <MessageMenu></MessageMenu>
       </section>
     </section>
+    <section class="nav-bar__menu-message menue-cards"></section>
     <section class="nav-bar__menu-main menue-cards">
       <section class="menu-main__wrapper">
         <MainMenue />
@@ -257,8 +257,11 @@ svg {
   margin-top: 220%;
 }
 .nav-bar__menu-calender {
-  background: olive;
+  background: var(--clr-sur-d);
+  padding: var(--m-pad) var(--s-pad);
+  border-top: 2px solid var(--list-color);
   margin-top: 220%;
+  color: var(--clr-font-commentar);
 }
 .nav-bar__menu-message {
   background: var(--clr-sur-d);

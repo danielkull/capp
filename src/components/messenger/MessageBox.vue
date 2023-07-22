@@ -189,13 +189,18 @@ export default {
 
 <style scoped>
 .booking-message-section {
-  width: 90%;
+  width: 95%;
   margin-inline: auto;
   background: var(--surface-light);
   margin-top: 1rem;
   border-radius: var(--s-brd-rad);
   padding-inline: 1rem;
   padding-block: 0.2rem 0.4rem;
+  box-shadow: 0px 0px 20px hsla(0, 1%, 34%, 0.3);
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
+  border-right: 1px solid hsla(0, 0%, 0%, 0.2);
+  border-top: 1px solid hsl(0, 0%, 100%);
+  border-left: 1px solid hsl(0, 0%, 100%);
 }
 
 .booking-message__header {
