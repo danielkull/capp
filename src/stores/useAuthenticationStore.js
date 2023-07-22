@@ -14,7 +14,7 @@ export const useAuthenticationStore = defineStore("authentication", {
         // console.log("GetSesstion Data: ",data)
         this.session.value = data.session;
         // Simple check for not being null
-        if(!data){
+        if (data.session ) {
           this.getProfileData();
         }
       });
@@ -52,7 +52,7 @@ export const useAuthenticationStore = defineStore("authentication", {
           this.activeUser = data;
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       } finally {
         this.loading = false;
       }

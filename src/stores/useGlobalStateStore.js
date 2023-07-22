@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useGlobalStateStore = defineStore("globaalState", {
+export const useGlobalStateStore = defineStore("globalState", {
   state: () => ({
     currentDate: null,
     currentCarId: null,

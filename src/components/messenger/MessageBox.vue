@@ -1,29 +1,194 @@
 <template>
-  <article class="commentar-section__customer-review">
-    <header class="customer-review__header">
-      <section class="customer-review__header-profil-wrapper">
+  <article class="booking-message-section">
+    <header class="booking-message__header">
+      <section class="booking-message__header-profil-wrapper">
         <article class="user-profile__image-small">
           <span class="user-profile__image-small__wrapper"> </span>
         </article>
-        <h3 class="customer-review__header-username">Msg from Username</h3>
+        <h3 class="booking-message__information-title">
+          {{ checkWhoBooks }}
+        </h3>
       </section>
     </header>
-
-    <p class="customer-review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto
-      dolorum aut autem ad, neque molestias necessitatibus accusamus? Assumenda
-      porro quasi soluta blanditiis quae, debitis voluptate laborum quos dicta
-      at.
-    </p>
+    <main>
+      <p class="booking-message__period">
+        {{ period }}
+      </p>
+    </main>
+    <footer class="booking-message__footer">
+      <div
+        class="booking-message__status"
+        :style="{ 'outline-color': statusBgColor, color: statusColor }"
+      >
+        {{ checkCurrentStatus }}
+      </div>
+      <div
+        class="booking-message__status"
+        :class="{
+          'message-from-you': msgFromMe,
+          'message-for-you': !msgFromMe,
+        }"
+      >
+        {{ whoSendMsg }}
+      </div>
+      <Button
+        value="Details"
+        id="msg-btn__details"
+        class="booking-messsage__button"
+        @click.prevent="showExtendedMsg = true"
+      ></Button>
+    </footer>
+  </article>
+  <article v-if="showExtendedMsg" class="extended-booking-message-section">
+    <header class="extended-booking-message__header">
+      <div
+        class="booking-message__status"
+        :style="{ 'outline-color': statusBgColor, color: statusColor }"
+      >
+        {{ checkCurrentStatus }}
+      </div>
+      <div
+        class="booking-message__status"
+        :class="{
+          'message-from-you': msgFromMe,
+          'message-for-you': !msgFromMe,
+        }"
+      >
+        {{ whoSendMsg }}
+      </div>
+      <BackButton
+        value="Zurück"
+        id="extended-msg-btn__back"
+        @click.prevent="showExtendedMsg = false"
+      ></BackButton>
+    </header>
+    <main class="extended-booking-message__main">
+      <h3 class="booking-message__information-title extended-title">
+        Absender:
+      </h3>
+      <p class="message-text">{{ msgSender }}</p>
+      <h3 class="booking-message__information-title extended-title">
+        Empfänger:
+      </h3>
+      <p class="message-text">{{ msgReceiver }}</p>
+      <h4 class="booking-message__information-title extended-title">
+        Zeitraum:
+      </h4>
+      <p class="message-text">{{ period }}</p>
+      <h4 class="booking-message__information-title extended-title">
+        Anlass fürs Ausleihen:
+      </h4>
+      <p class="message-text">{{ checkCurrentPurpose }}</p>
+      <h4 class="booking-message__information-title extended-title">
+        Persönliche Nachricht des Absenders:
+      </h4>
+      <p class="message-text">{{ routeData.booking_msg }}</p>
+    </main>
+    <footer class="extended-booking-message__footer">
+      <Button
+        value="Akzeptieren"
+        id="extended-msg-btn__accept"
+        class="booking-messsage__button"
+        @click.prevent="changeRouteStatus('accepted')"
+      ></Button>
+      <Button
+        value="Ablehnen"
+        id="extended-msg-btn__decline"
+        class="booking-messsage__button decline-btn"
+        @click.prevent="changeRouteStatus('declined')"
+      ></Button>
+    </footer>
   </article>
 </template>
 
 <script>
-export default {};
+import Button from "@/components/input-elements/Button.vue";
+import BackButton from "@/components/input-elements/BackButton.vue";
+import { supabase } from "@/lib/supabaseClient.js";
+
+export default {
+  emits: ["updateRouteStatus"],
+  props: ["routeData", "period", "activeUser"],
+  components: { Button, BackButton },
+  data() {
+    return {
+      msgFromMe: true,
+      msgSender: "",
+      msgReceiver: "",
+      showExtendedMsg: false,
+      bookingPurpose: "N/A",
+      statusBgColor: "var(--secondary-color)",
+      statusColor: "var(--primary-very-dark)",
+    };
+  },
+  computed: {
+    checkCurrentPurpose() {
+      if (this.routeData.purpose_id === null) {
+        return this.bookingPurpose;
+      } else {
+        return (this.bookingPurpose = this.routeData.purpose_id.purpose_name);
+      }
+    },
+    checkCurrentStatus() {
+      switch (this.routeData.status) {
+        case "accepted":
+          this.statusBgColor = "var(--primary-middle)";
+          this.statusColor = "var(--text-dark)";
+          return "Bestätigt";
+        case "pending":
+          this.statusBgColor = "var(--secondary-color)";
+          this.statusColor = "var(--text-dark)";
+          return "Ausstehend";
+        case "declined":
+          this.statusBgColor = "var(--accent-color-light)";
+          this.statusColor = "var(--text-dark)";
+          return "Abgelehnt";
+        default:
+          this.statusBgColor = "var(--secondary-color)";
+          this.statusColor = "var(--text-dark)";
+      }
+    },
+    checkWhoBooks() {
+      if (this.activeUser[0].username === this.routeData.user_id.username) {
+        this.msgFromMe = true;
+        this.msgSender = this.activeUser[0].username;
+        this.msgReceiver = this.routeData.car_id.user_id.username;
+        return `Deine Buchungsanfrage an ${this.routeData.car_id.user_id.username}`;
+      } else if (
+        this.activeUser[0].username !== this.routeData.user_id.username
+      ) {
+        this.msgFromMe = false;
+        this.msgSender = this.routeData.car_id.user_id.username;
+        this.msgReceiver = this.activeUser[0].username;
+        return `${this.routeData.user_id.username} hat dir eine Buchungsanfrage geschickt.`;
+      }
+    },
+    whoSendMsg() {
+      if (this.msgFromMe) {
+        return "Msg gesendet";
+      } else {
+        return "Msg erhalten";
+      }
+    },
+  },
+  methods: {
+    async changeRouteStatus(newStatus) {
+      const { data, error } = await supabase
+        .from("routes")
+        .update({ status: newStatus })
+        .eq("id", this.routeData.id)
+        .select("id, status");
+      console.log("Data: ", data);
+      console.log("Error: ", error);
+      this.$emit("updateRouteStatus", data);
+      this.showExtendedMsg = false;
+    },
+  },
+};
 </script>
 
 <style scoped>
-.commentar-section__customer-review {
+.booking-message-section {
   width: 90%;
   margin-inline: auto;
   background: var(--surface-light);
@@ -33,29 +198,36 @@ export default {};
   padding-block: 0.2rem 0.4rem;
 }
 
-.customer-review__header {
+.booking-message__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
 }
 
-.customer-review__header-profil-wrapper {
+.booking-message__header-profil-wrapper {
   display: inherit;
   align-items: center;
 }
 
-.customer-review__header-username {
+.booking-message__information-title {
   font-weight: bold;
   font-size: 0.8rem;
   margin-left: 0.5rem;
 }
-.customer-review-text {
-  font-size: 0.9rem;
+.message-text {
+  font-size: 1.1rem;
   padding-bottom: 0.5rem;
   width: 100%;
   text-align: start;
 }
+
+.booking-message__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.5rem;
+}
+
 /* Customer Image Profil same as UserProfileView.vue Img */
 
 /*==================Profilbild-Klein-===============================*/
@@ -87,4 +259,71 @@ export default {};
 }
 /*========================================================*/
 /*==================Profilbilder-Ende===============================*/
+
+/* ===== Status icons======= */
+.booking-message__status {
+  max-width: fit-content;
+  outline: 2px solid black;
+  background: var(--list-color);
+  margin-block: 0.5rem;
+  border-radius: calc(var(--font-size) - 0.6rem);
+  font-weight: 600;
+  padding: calc(0.1rem + 0.5vh) calc(0.5rem + 0.5vw);
+  font-size: clamp(0.8rem, 3vw, 1.2rem);
+}
+.extended-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  text-decoration: underline;
+}
+.message-from-you {
+  background: var(--list-color);
+  outline: 2px solid var(--clr-font-lightest);
+}
+.message-for-you {
+  background: var(--list-color);
+  outline: 2px solid var(--secondary-light);
+}
+/* ===== End of Status icons======= */
+
+/* ======== Buttons ========= */
+.booking-messsage__button {
+  padding: calc(0.5rem + 0.5vh) calc(0.5rem + 0.5vw);
+  font-size: clamp(0.1rem, 3vw, 0.8rem);
+  outline-offset: clamp(0.1rem, 1vw, 0.2rem);
+}
+.decline-btn {
+  color: var(--accent-color-light);
+  border-color: var(--accent-color-light);
+}
+/* ======== End ofButtons ========= */
+
+/* ======== Extended Message styles ======== */
+
+.extended-booking-message__header,
+.extended-booking-message__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 1rem;
+}
+.extended-booking-message-section {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-inline: auto;
+  background: var(--surface-light);
+  margin-top: 1rem;
+  border-radius: var(--s-brd-rad);
+  padding-inline: 1rem;
+  padding-block: 0.2rem 0.4rem;
+  overflow: scroll;
+}
+.extended-booking-message-section::-webkit-scrollbar {
+  appearance: none;
+  width: 0;
+}
+/* ======== End ofExtended Message styles ======== */
 </style>

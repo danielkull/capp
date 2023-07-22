@@ -61,6 +61,7 @@ export default {
   methods: {
     showSelectedDate(value) {
       this.newDate = value;
+      console.log(this.newDate);
     },
   },
 };

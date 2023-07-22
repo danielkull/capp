@@ -127,12 +127,12 @@ export default {
   beforeUpdate() {
     this.store = this.globalStateStore.currentDate;
     this.carId = this.globalStateStore.currentCarId;
-    this.bookStartDate = this.globalStateStore.currentDate;
-    this.bookEndDate = this.globalStateStore.currentDate;
   },
   computed: {
     checkForData() {
       this.globalStateStore.updateCurrentData;
+      this.bookStartDate = this.globalStateStore.currentDate;
+      this.bookEndDate = this.globalStateStore.currentDate;
     },
   },
   methods: {
@@ -162,7 +162,7 @@ export default {
       if (this.bookingFormComplete()) {
         // Deactivated for develop puropse of getting back to car-profile
         this.createRoute();
-        this.$router.go(-1);
+        this.$router.go(-2);
       }
     },
     bookingFormComplete() {

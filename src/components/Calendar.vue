@@ -171,8 +171,8 @@ export default {
   },
   computed: {
     currentDateToTimeFormat() {
-      const month = ("0" + this.currentDate.month).slice(-2)
-      const day = ("0" + this.currentDate.date).slice(-2)
+      const month = ("0" + (this.currentDate.month + 1)).slice(-2);
+      const day = ("0" + this.currentDate.date).slice(-2);
       const selectedDate = `${this.currentDate.year}-${month}-${day}T${this.currentTime}`;
       return selectedDate;
     },
@@ -238,6 +238,7 @@ export default {
     getCurrentDate() {
       let today = new Date();
       this.currentDate.date = today.getDate();
+      // + 1, because .getMonth() starts with 0
       this.currentDate.month = today.getMonth();
       this.currentDate.year = today.getFullYear();
       this.currentDate.hours = today.getHours();

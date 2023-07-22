@@ -126,6 +126,7 @@ export default {
     );
     if (emptySession) {
       this.getSessionInfos();
+      this.message = this.authenticationStore;
     }
   },
   mounted() {
@@ -255,6 +256,7 @@ main::-webkit-scrollbar {
 }
 .mainpage__card-page {
   width: 90%;
+  margin-bottom: 10rem;
   margin-inline: auto;
 }
 

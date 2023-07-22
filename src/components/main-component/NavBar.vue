@@ -297,6 +297,7 @@ svg {
   margin-inline: auto;
   background: var(--clr-sur-d);
   overflow: scroll;
+  margin-bottom: 6rem;
 }
 .menu-message__wrapper::-webkit-scrollbar {
   appearance: none;
