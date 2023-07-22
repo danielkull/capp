@@ -88,16 +88,26 @@
       </section>
     </section>
   </article>
+  <section class="live-msg-wrapper" id="live-msg__wrapper">
+    <input type="checkbox" name="" id="chat-window" />
+    <label for="chat-window">
+      <!-- <MessagePin user.id="2" /> -->
+    </label>
+    <MessageChat />
+  </section>
 </template>
 
 <script>
 import MainMenue from "@/components/main-component/MainMenue.vue";
 import Messenger from "@/components/messenger/messenger-placeholder/MessengerWindow.vue";
-
+import MessageChat from "@/components/messenger/messenger-placeholder/MessageChatWindow.vue";
+import MessagePin from "@/components/messenger/messenger-placeholder/MessagePin.vue";
 export default {
   components: {
     MainMenue,
     Messenger,
+    MessageChat,
+    MessagePin,
   },
 };
 </script>
@@ -279,5 +289,48 @@ svg {
   margin-inline: auto;
   background: var(--surface-light);
   /* margin-top: 0%; */
+}
+/*=======================================================*/
+.live-msg-wrapper {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+
+  background: linear-gradient(
+    to right,
+    var(--clr-prime-m) 40%,
+    var(--clr-prime-vd)
+  );
+  position: absolute;
+  overflow: hidden;
+
+  z-index: 15;
+  top: 0px;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  translate: 0% 0%;
+}
+.live-msg-wrapper input[type="checkbox"] {
+  appearance: none;
+  position: absolute;
+  top: -9999px;
+  width: 0;
+}
+.live-msg-wrapper label {
+  font-size: 2rem;
+  display: block;
+  padding-inline: 3rem;
+  height: 3.8rem;
+  border-radius: 0;
+  width: 100%;
+  background: rgb(255, 0, 0, 0.5);
+  background: hsl(0, 0%, 10%, 0.7);
+  border-radius: 1.5rem 1.5rem 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#live-msg__wrapper:has(#chat-window:checked) {
+  translate: 0% 0%;
 }
 </style>

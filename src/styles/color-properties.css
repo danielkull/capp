@@ -51,7 +51,8 @@
   --bg-shd-d: var(--clr-prime-vd);
   /*==================================*/
   /*============Neu Messeger===============*/
-  --sur-dark-shd: hsl(0, 0%, 92%);
+  --sur-dark-shd: hsl(0, 0%, 94%);
+  --sur-light-shd: var(--surface-light);
   /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
 
@@ -208,9 +209,9 @@
   --bg-shd-l: var(--clr-sur-d);
   --bg-shd-d: var(--clr-bg);
   /*============Neu Messeger===============*/
-
+  --state-red: hsl(0, 83%, 54%);
   --sur-dark-shd: hsl(0, 0%, 7%);
-
+  --sur-light-shd: var(--clr-sur-d);
   /*==================================*/
   /*=============Car-type=====================*/
   --clr-type-icon: var(--primary-very-dark);

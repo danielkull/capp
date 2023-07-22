@@ -60,7 +60,7 @@ export default {
           lastMessage: "23.5.2023",
           text: "Ich wollte fix zu Cantina und bräuchte nen floten Schlitten.",
           userImg:
-            "https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg",
+            "https://cdn.pixabay.com/photo/2020/01/10/11/39/girl-4755130_1280.jpg",
         },
         {
           id: 5,
@@ -69,7 +69,7 @@ export default {
           lastMessage: "26.6.2023",
           text: "Mein Lamborgini ist grad in der Reinigung, muss aber schnell nach Metropolis.",
           userImg:
-            "https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg",
+            "https://cdn.pixabay.com/photo/2018/02/16/14/38/portrait-3157821_1280.jpg",
         },
         {
           id: 6,
@@ -78,7 +78,7 @@ export default {
           lastMessage: "13.5.2123",
           text: "Mein Spinner fliegt nicht mehr. Muss aber irgendwie zur Tyrell Corp.",
           userImg:
-            "https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg",
+            "https://cdn.pixabay.com/photo/2016/03/26/22/28/person-1281607_1280.jpg",
         },
         {
           id: 7,
@@ -115,29 +115,41 @@ export default {
 
 <style scoped>
 .msg-user__wrapper {
-  background: linear-gradient(60deg, var(--clr-sur-d), var(--sur-dark-shd));
-  margin-top: 0.5rem;
   width: 100%;
   height: max-content;
   display: flex;
   align-items: center;
   justify-content: left;
+  margin-top: calc(var(--s-pad) / 2);
   padding-inline: 0.5rem;
   padding-block: 0.7rem;
   border-radius: 0.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-marg);
+  background: linear-gradient(60deg, var(--sur-light-shd), var(--sur-dark-shd));
+  border-left: var(--s-brd) solid var(--surface-light);
+  border-top: var(--s-brd) solid var(--surface-light);
+}
+.msg-user__wrapper:nth-child(2) .msg-img__holder .msg-img__user div,
+.msg-user__wrapper:nth-child(3) .msg-img__holder .msg-img__user div,
+.msg-user__wrapper:nth-child(5) .msg-img__holder .msg-img__user div {
+  background: var(--primary-mid);
+}
+.msg-user__wrapper:nth-child(4) .msg-img__holder .msg-img__user div,
+.msg-user__wrapper:nth-child(7) .msg-img__holder .msg-img__user div,
+.msg-user__wrapper:nth-child(9) .msg-img__holder .msg-img__user div {
+  background: var(--list-color);
 }
 .msg-user__state {
   display: block;
   width: 1rem;
   aspect-ratio: 1;
   border-radius: 100%;
-  border: 4px solid var(--clr-sur-d);
+  border: 4px solid var(--sur-light-shd);
   z-index: 10;
   position: absolute;
   top: 80%;
   left: 80%;
-  background: red;
+  background: var(--state-red);
 }
 .msg-img__holder {
   position: relative;
@@ -151,7 +163,7 @@ export default {
   height: max-content;
   display: grid;
   place-content: center;
-  border: 1px solid black;
+
   border-radius: 0.7rem 0.7rem 0rem 0.7rem;
   overflow: hidden;
   filter: contrast(0.8) grayscale(0.3);
@@ -170,7 +182,7 @@ export default {
 }
 .msg-user__name {
   text-align: left;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
   font-weight: 600;
   color: var(--text-mid);
 }
@@ -179,17 +191,20 @@ export default {
   text-align: right;
 
   font-size: 0.9rem;
-  font-weight: 500;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  font-weight: var(--f-weight-m);
   color: var(--text-light);
   opacity: 0.8;
 }
 .msg-user__text {
   grid-column: 1/3;
-  font-size: 0.9rem;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
   color: var(--text-light);
   text-align: left;
   width: 100%;
   font-style: italic;
   opacity: 0.6;
+  max-height: clamp(2rem, 3vw, 4rem);
+  overflow: hidden;
 }
 </style>

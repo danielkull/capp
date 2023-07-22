@@ -1,4 +1,10 @@
 <template>
+  <!-- <section class="live-msg-wrapper" id="live-msg__wrapper">
+    <input type="checkbox" name="" id="chat-window" />
+    <label for="chat-window">Chat</label>
+    <MessageChat />
+  </section> -->
+
   <section class="msg-view__wrapper">
     <span class="msg-header"
       ><h3>Angepinnt</h3>
@@ -50,11 +56,12 @@
 <script>
 import MessageSingle from "@/components/messenger/messenger-placeholder/MessageSingle.vue";
 import MessagePin from "@/components/messenger/messenger-placeholder/MessagePin.vue";
-
+import MessageChat from "@/components/messenger/messenger-placeholder/MessageChatWindow.vue";
 export default {
   components: {
     MessageSingle,
     MessagePin,
+    MessageChat,
   },
 };
 </script>
@@ -65,13 +72,14 @@ export default {
   height: 95%;
   border-radius: 1.5rem 1.5rem 0 0;
   padding: 1rem;
+  margin-inline: auto;
   background: var(--clr-bg);
 }
 .msg-view__pin-wrapper {
   background: var(--clr-bg);
   width: 100%;
   height: 20%;
-  margin-bottom: 1rem;
+
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -91,6 +99,8 @@ export default {
   justify-content: space-between;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--primary-middle);
+  background: transparent;
+  /* box-shadow: 0 5px 40px rgba(0, 0, 0, 0.7); */
 }
 h3 {
   color: var(--text-light);
@@ -113,18 +123,19 @@ h3 {
   padding: 0.3rem;
   opacity: 0.8;
 }
-.msg-shadow {
+/* .msg-shadow {
   position: absolute;
-  top: 20%;
-  left: 0;
+  top: 18%;
+  left: 0%;
   display: block;
-  width: 100%;
+  width: 310px;
   height: 2rem;
-  border-bottom: 10px solid transparent;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
   background: transparent;
+  border-bottom: 4px solid transparent;
+  box-shadow: 0 35px 40px rgba(0, 0, 0, 0.7);
+
   z-index: 19;
-}
+} */
 .msg-view__all-wrapper::-webkit-scrollbar {
   appearance: none;
   width: 0;
@@ -132,5 +143,40 @@ h3 {
 .msg-view__pin-wrapper::-webkit-scrollbar {
   appearance: none;
   width: 0;
+}
+/*=================================*/
+section:target {
+  translate: 0% 0;
+}
+.live-msg-wrapper {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: var(--clr-bg);
+  background: red;
+  position: absolute;
+  z-index: 15;
+  top: 0px;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  translate: 0% 0%;
+}
+.live-msg-wrapper input[type="checkbox"] {
+  appearance: none;
+  position: absolute;
+  top: -9999px;
+  width: 0;
+}
+label {
+  font-size: 2rem;
+  display: block;
+  padding-inline: 3rem;
+  height: 5rem;
+  width: 100%;
+  background: green;
+}
+#live-msg__wrapper:has(#chat-window:checked) {
+  translate: 0% 0%;
 }
 </style>
