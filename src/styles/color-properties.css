@@ -214,6 +214,12 @@
   --sur-light-shd: var(--clr-sur-d);
   --other-txt: hsl(0, 0%, 20%, 1);
   --own-txt: hsl(141, 45%, 30%);
+  --clr-chat-footer: hsl(0, 0%, 10%, 0.7);
+  --clr-chat-header: var(--clr-chat-footer);
+  --brd-chat-f-h: hsl(0, 0%, 30%, 0.7);
+  --shd-f-h-light: rgba(0, 0, 0, 0.8);
+  --shd-f-h-dark: rgba(0, 0, 0, 0.9);
+
   /*==================================*/
   /*=============Car-type=====================*/
   --clr-type-icon: var(--primary-very-dark);

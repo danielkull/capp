@@ -306,14 +306,14 @@ article time {
   column-gap: 2rem;
   align-items: center;
   padding-inline: 1rem;
-  background: hsl(0, 0%, 10%, 0.7);
+  background: var(--clr-chat-footer);
   backdrop-filter: blur(3px);
   position: absolute;
-  border-top: 1px solid hsl(0, 0%, 30%, 0.7);
+  border-top: 1px solid var(--brd-chat-f-h);
   bottom: 0;
   left: 0;
   transition: height 0.2s ease-in-out;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px var(--shd-f-h-dark), 0 0 50px var(--shd-f-h-light);
 }
 .chat-footer :is(svg) {
   fill: var(--primary-middle);
@@ -366,7 +366,7 @@ button:active svg:nth-child(1) {
   padding: 1rem 0.4rem;
 }
 .chat__micro-svg {
-  background: hsl(0, 0%, 30%, 0.7);
+  background: var(--brd-chat-f-h);
   border-radius: 100%;
   height: max-content;
   padding: 0.5rem;

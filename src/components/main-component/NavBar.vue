@@ -94,7 +94,7 @@
     :style="{ translate: msgChatTranslate }"
   >
     <input
-      @click.prevent="changeTranslateChat('0% 100%')"
+      @click.prevent="changeTranslateChat('-100% 0%')"
       type="button"
       name=""
       id="chat-window"
@@ -282,7 +282,7 @@ svg {
   margin-top: 25%;
   overflow: hidden;
   transition: margin 0.5s ease-in-out;
-  border-radius: 2rem;
+  border-radius: var(--m-pad);
   border-top: 1px solid var(--list-color);
 }
 .nav-bar__menu-user {
@@ -348,7 +348,7 @@ svg {
   top: 0px;
   left: 0;
   transition: translate 0.3s ease-in-out;
-  translate: 0% 100%;
+  translate: -100% 0%;
   margin-top: 0rem;
 }
 .live-msg-wrapper input[type="checkbox"] {
@@ -364,21 +364,22 @@ svg {
   z-index: 50;
   top: 0;
   left: 0;
-  font-size: 2rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   padding-inline: 3rem;
-  height: 3.8rem;
+  padding-top: var(--s-pad);
+  height: 4.8rem;
   border-radius: 0;
   width: 100%;
-  border-bottom: 1px solid hsl(0, 0%, 30%, 0.7);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 0, 0, 0.8);
+  background: var(--clr-chat-header);
+  border-bottom: 1px solid var(--brd-chat-f-h);
+  box-shadow: 0 0 20px var(--shd-f-h-dark), 0 0 50px var(--shd-f-h-light);
   backdrop-filter: blur(3px);
-  border-radius: 1.5rem 1.5rem 0 0;
+  border-radius: 0 0 1.5rem 1.5rem;
 }
-/* #live-msg__wrapper:has(#chat-window:checked) {
-  translate: 0% 100%;
-  /* display: none; 
-} */
-/*=========================*/
+#chat-window {
+  all: unset;
+  position: absolute;
+} /*=========================*/
 
 .msg-user__pin-wrapper {
   width: 100%;
@@ -419,22 +420,5 @@ svg {
   height: 2.5rem;
   width: 4rem;
   object-fit: cover;
-}
-
-.msg-user__pin-wrapper:nth-child(2) .msg-img__pin-holder .msg-img__pin-user div,
-.msg-user__pin-wrapper:nth-child(3) .msg-img__pin-holder .msg-img__pin-user div,
-.msg-user__pin-wrapper:nth-child(5)
-  .msg-img__pin-holder
-  .msg-img__pin-user
-  div {
-  background: var(--primary-mid);
-}
-.msg-user__pin-wrapper:nth-child(4) .msg-img__pin-holder .msg-img__pin-user div,
-.msg-user__pin-wrapper:nth-child(7) .msg-img__pin-holder .msg-img__pin-user div,
-.msg-user__pin-wrapper:nth-child(9)
-  .msg-img__pin-holder
-  .msg-img__pin-user
-  div {
-  background: var(--list-color);
 }
 </style>
