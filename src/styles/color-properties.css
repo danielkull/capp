@@ -212,6 +212,8 @@
   --state-red: hsl(0, 83%, 54%);
   --sur-dark-shd: hsl(0, 0%, 7%);
   --sur-light-shd: var(--clr-sur-d);
+  --other-txt: hsl(0, 0%, 20%, 1);
+  --own-txt: hsl(141, 45%, 30%);
   /*==================================*/
   /*=============Car-type=====================*/
   --clr-type-icon: var(--primary-very-dark);

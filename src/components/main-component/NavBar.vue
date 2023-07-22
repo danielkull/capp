@@ -325,8 +325,12 @@ svg {
   width: 100%;
   background: rgb(255, 0, 0, 0.5);
   background: hsl(0, 0%, 10%, 0.7);
+  background: hsl(141, 45%, 48%, 0.4);
+  backdrop-filter: blur(3px);
   border-radius: 1.5rem 1.5rem 0 0;
   position: absolute;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  z-index: 50;
   top: 0;
   left: 0;
 }
