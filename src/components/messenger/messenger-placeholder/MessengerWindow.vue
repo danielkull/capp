@@ -30,6 +30,7 @@
     <span class="msg-header"
       ><h3>Alle Nachrichten <span class="msg-shadow"></span></h3>
       <div class="svg-wrapper">
+        <button @click="chatBtn"></button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
@@ -56,12 +57,18 @@
 <script>
 import MessageSingle from "@/components/messenger/messenger-placeholder/MessageSingle.vue";
 import MessagePin from "@/components/messenger/messenger-placeholder/MessagePin.vue";
-import MessageChat from "@/components/messenger/messenger-placeholder/MessageChatWindow.vue";
+
 export default {
+  emits: ["changeTranslate"],
+
   components: {
     MessageSingle,
     MessagePin,
-    MessageChat,
+  },
+  methods: {
+    chatBtn() {
+      this.$emit("changeTranslate", "0% 0%");
+    },
   },
 };
 </script>
@@ -123,19 +130,7 @@ h3 {
   padding: 0.3rem;
   opacity: 0.8;
 }
-/* .msg-shadow {
-  position: absolute;
-  top: 18%;
-  left: 0%;
-  display: block;
-  width: 310px;
-  height: 2rem;
-  background: transparent;
-  border-bottom: 4px solid transparent;
-  box-shadow: 0 35px 40px rgba(0, 0, 0, 0.7);
 
-  z-index: 19;
-} */
 .msg-view__all-wrapper::-webkit-scrollbar {
   appearance: none;
   width: 0;
@@ -148,7 +143,7 @@ h3 {
 section:target {
   translate: 0% 0;
 }
-.live-msg-wrapper {
+/* .live-msg-wrapper {
   text-align: center;
   width: 100%;
   height: 100%;
@@ -178,5 +173,5 @@ label {
 }
 #live-msg__wrapper:has(#chat-window:checked) {
   translate: 0% 0%;
-}
+} */
 </style>

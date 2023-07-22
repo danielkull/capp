@@ -80,7 +80,7 @@
     <section class="nav-bar__menu-user menue-cards"></section>
     <section class="nav-bar__menu-calender menue-cards"></section>
     <section class="nav-bar__menu-message menue-cards">
-      <Messenger />
+      <Messenger @change-translate="changeTranslateChat" />
     </section>
     <section class="nav-bar__menu-main menue-cards">
       <section class="menu-main__wrapper">
@@ -88,10 +88,31 @@
       </section>
     </section>
   </article>
-  <section class="live-msg-wrapper" id="live-msg__wrapper">
-    <input type="checkbox" name="" id="chat-window" />
-    <label for="chat-window">
-      <!-- <MessagePin user.id="2" /> -->
+  <section
+    class="live-msg-wrapper"
+    id="live-msg__wrapper"
+    :style="{ translate: msgChatTranslate }"
+  >
+    <input
+      @click.prevent="changeTranslateChat('0% 100%')"
+      type="button"
+      name=""
+      id="chat-window"
+    />
+    <label for="chat-window"
+      ><article role="Messenger-Card-User" class="msg-user__pin-wrapper">
+        <section class="msg-img__pin-holder">
+          <figure class="msg-img__pin-user">
+            <div class="msg-user__pin-state"></div>
+
+            <img
+              src="https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg"
+              alt=""
+            />
+          </figure>
+        </section>
+      </article>
+      <p>Luke Skywalker</p>
     </label>
     <MessageChat />
   </section>
@@ -103,11 +124,21 @@ import Messenger from "@/components/messenger/messenger-placeholder/MessengerWin
 import MessageChat from "@/components/messenger/messenger-placeholder/MessageChatWindow.vue";
 import MessagePin from "@/components/messenger/messenger-placeholder/MessagePin.vue";
 export default {
+  data() {
+    return {
+      msgChatTranslate: "",
+    };
+  },
   components: {
     MainMenue,
     Messenger,
     MessageChat,
     MessagePin,
+  },
+  methods: {
+    changeTranslateChat(value) {
+      this.msgChatTranslate = value;
+    },
   },
 };
 </script>
@@ -146,8 +177,9 @@ export default {
   top: -99999px;
 }
 label {
-  display: grid;
-  place-content: center;
+  display: flex;
+  flex-direction: row;
+
   width: 4rem;
   aspect-ratio: 1;
   border-radius: 0.5rem;
@@ -155,6 +187,14 @@ label {
   border: solid;
   border-width: var(--s-brd);
   border-color: var(--clr-trans);
+}
+label p {
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  width: 100%;
+  text-align: left;
+  font-weight: 500;
+  color: var(--primary-middle);
+  margin-left: -9rem;
 }
 svg {
   width: 90%;
@@ -295,7 +335,7 @@ svg {
   text-align: center;
   width: 100%;
   height: 100vh;
-
+  display: block;
   background: linear-gradient(
     to right,
     var(--clr-prime-m) 40%,
@@ -307,8 +347,9 @@ svg {
   z-index: 15;
   top: 0px;
   left: 0;
-  transition: 0.3s ease-in-out;
-  translate: 0% 0%;
+  transition: translate 0.3s ease-in-out;
+  translate: 0% 100%;
+  margin-top: 0rem;
 }
 .live-msg-wrapper input[type="checkbox"] {
   appearance: none;
@@ -317,24 +358,83 @@ svg {
   width: 0;
 }
 .live-msg-wrapper label {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  left: 0;
   font-size: 2rem;
-  display: block;
   padding-inline: 3rem;
   height: 3.8rem;
   border-radius: 0;
   width: 100%;
-  background: rgb(255, 0, 0, 0.5);
-  background: hsl(0, 0%, 10%, 0.7);
-  background: hsl(141, 45%, 48%, 0.4);
+  border-bottom: 1px solid hsl(0, 0%, 30%, 0.7);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(3px);
   border-radius: 1.5rem 1.5rem 0 0;
-  position: absolute;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-  z-index: 50;
-  top: 0;
-  left: 0;
 }
-#live-msg__wrapper:has(#chat-window:checked) {
-  translate: 0% 0%;
+/* #live-msg__wrapper:has(#chat-window:checked) {
+  translate: 0% 100%;
+  /* display: none; 
+} */
+/*=========================*/
+
+.msg-user__pin-wrapper {
+  width: 100%;
+  height: max-content;
+  margin-left: -2rem;
+}
+.msg-user__pin-state {
+  display: block;
+  width: 1.2rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  z-index: 10;
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  translate: -50% 0;
+  border: 4px solid var(--clr-bg);
+  background: var(--error-color);
+}
+
+.msg-img__pin-holder {
+  position: relative;
+  width: 30%;
+  height: max-content;
+}
+.msg-img__pin-user {
+  width: max-content;
+  height: max-content;
+  display: grid;
+  place-content: center;
+  border-radius: calc(var(--s-brd-rad) * 1.5);
+  border: 6px solid var(--clr-bg);
+  margin-right: -1.5rem;
+}
+.msg-img__pin-user > img {
+  filter: saturate(0.3);
+  border-radius: var(--s-brd-rad);
+  height: 2.5rem;
+  width: 4rem;
+  object-fit: cover;
+}
+
+.msg-user__pin-wrapper:nth-child(2) .msg-img__pin-holder .msg-img__pin-user div,
+.msg-user__pin-wrapper:nth-child(3) .msg-img__pin-holder .msg-img__pin-user div,
+.msg-user__pin-wrapper:nth-child(5)
+  .msg-img__pin-holder
+  .msg-img__pin-user
+  div {
+  background: var(--primary-mid);
+}
+.msg-user__pin-wrapper:nth-child(4) .msg-img__pin-holder .msg-img__pin-user div,
+.msg-user__pin-wrapper:nth-child(7) .msg-img__pin-holder .msg-img__pin-user div,
+.msg-user__pin-wrapper:nth-child(9)
+  .msg-img__pin-holder
+  .msg-img__pin-user
+  div {
+  background: var(--list-color);
 }
 </style>
