@@ -288,21 +288,9 @@
             ></label>
             <section class="main-menue__list">
               <ul class="layer-2__list">
-                <li>
-                  Nachtmodus<span class="checkbox-holder"
-                    ><CheckBox id="dark-mode"
-                  /></span>
-                </li>
-                <li>
-                  Kontrastmodus<span class="checkbox-holder"
-                    ><CheckBox id="contrast-mode"
-                  /></span>
-                </li>
-                <li>
-                  Farbmodus<span class="checkbox-holder"
-                    ><CheckBox id="color-mode"
-                  /></span>
-                </li>
+                <li>Nachtmodus <CheckBox id="dark-mode" /></li>
+                <li>Kontrastmodus <CheckBox id="contrast-mode" /></li>
+                <li>Farbmodus <CheckBox id="color-mode" /></li>
               </ul>
             </section>
           </article>
@@ -469,7 +457,8 @@
         id="user-data"
         class="question-list__btn"
       /><label class="main-menue__list-header" for="user-data"
-        >Dein Konto
+        ><a href="logout-user">Logout</a>
+        Abmelden
         <span class="icon-holder"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -501,18 +490,14 @@ export default {
 </script>
 
 <style scoped>
-/* section:target {
-  translate: 0% 0;
-
-  display: block;
-} */
-
 /*=======================================*/
+
 .main-menue__wrapper {
   width: 100%;
-  height: 70vh;
-  margin-top: 2rem;
-
+  height: 78vh;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  background: var(--menue-bg);
   overflow: scroll;
 }
 .question-list__wrapper {
@@ -540,23 +525,11 @@ export default {
   padding-block: 0.9rem;
   padding-inline: 1rem;
   font-size: var(--header-question-list);
-  color: var(--main-font-color-light);
+  color: var(--text-light);
   background: var(--menue-bg);
   border-bottom: 1px solid var(--list-color);
 }
-.under-menue__layer-1 {
-  --header-question-list: clamp(1rem, 2vw, 1.5rem);
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 0.5rem;
-  padding-inline: 1rem;
-  font-size: var(--header-question-list);
-  color: var(--main-font-color-light);
-  background: var(--menue-bg);
-}
+.under-menue__layer-1,
 .under-menue__layer-2 {
   --header-question-list: clamp(1rem, 2vw, 1.5rem);
   position: relative;
@@ -564,11 +537,17 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 0.5rem;
-  padding-inline: 1.5rem 1rem;
+  padding-block: calc(var(--s-pad) / 2);
   font-size: var(--header-question-list);
-  color: var(--main-font-color-light);
-  background: var(--surface-light);
+  color: var(--text-light);
+  background: var(--menue-bg);
+}
+
+.under-menue__layer-1 {
+  padding-inline: var(--s-pad);
+}
+.under-menue__layer-2 {
+  padding-inline: calc(var(--s-pad) + 0.5rem) var(--s-pad);
 }
 .question-list__btn {
   all: unset;
@@ -579,11 +558,13 @@ export default {
 .main-menue__choice > .main-menue__list > * {
   overflow: hidden;
   width: 100%;
-  padding-inline: var(--list-padding);
   list-style-type: none;
   box-shadow: inset 0px 3px 5px var(--box-shadow-light);
 }
-
+* > a {
+  text-decoration: none;
+  color: var(--text-mid);
+}
 /*=============================================================*/
 /*                      Menue-Lists                          */
 /*=============================================================*/
@@ -595,27 +576,20 @@ export default {
 }
 
 .layer-1__list > li,
-.layer-2__list > li,
-.layer-3__list > li {
+.layer-2__list > li {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding-block: 0.2rem;
   margin-top: 0.2rem;
+  color: var(--text-mid);
 }
 .layer-1__list > li {
-  /* background: olive; */
-  padding-inline: 2rem 1rem;
+  padding-inline: 1.5rem 1rem;
 }
-.layer-2__list > li {
-  /* background: green; */
-  padding-inline: 2rem 0rem;
-}
-.layer-3__list > li {
-  /* background: pink; */
-  padding-inline: 2.2rem 0rem;
-  padding-block: 0.2rem;
+.layer-2__list {
+  padding-inline: 1.8rem 0rem;
 }
 
 .question-list__btn:checked ~ .main-menue__list {
@@ -639,15 +613,15 @@ export default {
   width: 1.7rem;
   aspect-ratio: 1;
 }
-
 /*=======================================================*/
 /*            Icon - Animation                           */
 /*=======================================================*/
-label :is(svg) {
+section :is(svg) {
   fill: var(--list-default);
 }
 
-.question-list__btn:checked ~ label :is(svg) {
+.question-list__btn:checked ~ label :is(svg),
+a:active ~ span :is(svg) {
   fill: var(--list-actv);
 }
 

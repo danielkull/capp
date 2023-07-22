@@ -447,7 +447,7 @@ export default {
 }
 
 .faq-question__header {
-  --header-question-list: clamp(1rem, 2vw, 1.5rem);
+  
   position: relative;
   width: 100%;
   display: flex;
@@ -489,9 +489,6 @@ export default {
   overflow: hidden;
   width: 100%;
   padding-inline: var(--list-padding);
- 
-  
-  /* box-shadow: inset 0px 3px 5px var(--box-shadow-light); */
 }
 
 .faq-answer__holder {
@@ -516,7 +513,7 @@ ul{
   grid-template-rows: 1fr;
   background: var(--clr-sur-d);
   padding-block: 0.8rem 1.3rem;
-  font-weight: 400;
+  font-weight: var(--f-weight-reg);
     border-radius: 0 0 1.2rem 1.2rem;
     border-bottom: var(--s-brd) solid var(--primary-middle);
 }

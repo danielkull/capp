@@ -82,7 +82,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 section:target {
   translate: 0% 0;
 }
@@ -102,8 +102,8 @@ section:target {
   translate: -100% 0;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(to top, white 30%, transparent),
-    linear-gradient(to left, var(--bg-shd-l), var(--bg-shd-d));
+  background: linear-gradient(to top, var(--clr-bg) 30%, transparent),
+    linear-gradient(to right, var(--clr-prime-m) 40%, var(--clr-prime-vd));
   width: 0;
 
   transition: 0.2s;
