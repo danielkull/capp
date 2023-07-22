@@ -50,9 +50,9 @@
       name="nav-menue"
       id="message-icon"
       class="nav-bar__btn-icons"
-    />
-    <label class="nav-bar__icon-frame" for="message-icon">
-      <svg
+      @toggle="testToggle"
+    /><label class="nav-bar__icon-frame" for="message-icon"
+      ><svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
@@ -74,8 +74,8 @@
       name="nav-menue"
       id="menue-icon"
       class="nav-bar__btn-icons"
-    />
-    <label class="nav-bar__icon-frame" for="menue-icon">
+      @click="testItem"
+    /><label class="nav-bar__icon-frame" for="menue-icon">
       <div class="menue-wrapper">
         <span class="menue-strip menue-strip1"></span
         ><span class="menue-strip menue-strip2"></span
@@ -102,11 +102,32 @@
 <script>
 import MainMenue from "@/components/main-component/MainMenue.vue";
 import MessageMenu from "@/components/main-component/MessageMenu.vue";
+const btn = document.querySelector("menue-icon");
 
 export default {
   components: {
     MainMenue,
     MessageMenu,
+  },
+
+  methods: {
+    testItem() {
+      this.$emit("toggle", this.item);
+      console.log("halloo");
+    },
+    testToggle() {
+      console.log("geklappt");
+    },
+  },
+
+  methods: {
+    testItem() {
+      this.$emit("toggle", this.item);
+      console.log("halloo");
+    },
+    testToggle() {
+      console.log("geklappt");
+    },
   },
 };
 </script>

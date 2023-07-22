@@ -136,7 +136,14 @@ export default {
       validator(value) {
         // Only input Element type specific names are allowed
         // List can be extented if needed
-        return ["text", "email", "password", "datetime-local"].includes(value);
+        return [
+          "text",
+          "email",
+          "password",
+          "datetime-local",
+          "tel",
+          "number",
+        ].includes(value);
       },
     },
     inputPlaceholder: {
@@ -169,6 +176,10 @@ export default {
           return "Ein sicheres Passwort hat mindestens 12 Zeichen. Benutze hierbei bitte eine Mischung aus Groß-, Kleinschreibung, Sonderzeichen und Zahlen.";
         case "datetime-local":
           return "Wähle einfach das passende Datum und die Zeit aus.";
+        case "tel":
+          return "Deine Telefon-Nummer darf keine Buchstaben oder Sonderzeichen wie ?,!,&,%,$,§,#,@ enthalten. Zulässige Sonderzeichen sind +, -, /, () und Leerzeichen.";
+        case "number":
+          return "Gib hier eine Zahl ein - oder zähle den Wert mit dem up-Pfeil hoch bzw. mit dem down-Pfeil herunter.";
         default:
           return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
@@ -181,6 +192,8 @@ export default {
           return "Die Mail-Adresse ist nicht korrekt.";
         case "password":
           return "Leider wurden die Passwort-Kriterien nicht erfüllt";
+        case "tel":
+          return "Deine Telefon-Nummer enthält Buchstaben oder unzulässige Sonderzeichen.";
         default:
           return "Da ist wohl was schief gelaufen?! Hierfür haben wir gerade keinen Hilfetext parat. Sollte das Problem noch einmal auftreten, kontaktiere uns unter 'capp.carsharing@gmail.com'.";
       }
@@ -219,6 +232,16 @@ export default {
         this.isInValid = true;
       }
     },
+    validatePhoneNumber(value) {
+      const validationRequirments = new RegExp(/^[0-9()+/ \b \-]*$/);
+      if (validationRequirments.test(value) || value === "") {
+        this.isValid = true;
+        this.isInValid = false;
+      } else {
+        this.isValid = false;
+        this.isInValid = true;
+      }
+    },
   },
   watch: {
     /* Watchers for Validation */
@@ -227,6 +250,8 @@ export default {
         this.validateEmail(value);
       } else if (this.inputType === "password") {
         this.validatePassword(value);
+      } else if (this.inputType === "tel") {
+        this.validatePhoneNumber(value);
       }
     },
   },
@@ -239,7 +264,6 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 1rem;
 }
 .capp-input__wrapper span {
   width: 100%;
@@ -247,9 +271,9 @@ export default {
 .capp-label__default {
   display: block;
   color: var(--primary-dark);
-
-  padding-block: calc(var(--s-font) / 2);
-  font-size: clamp(var(--s-font), 5vw, var(--m-font));
+  padding-left: 0.2rem;
+  padding-block: var(--s-font);
+  font-size: var(--font-list-label-s);
   letter-spacing: 0.1rem;
 }
 
@@ -260,11 +284,13 @@ export default {
   border-radius: 0.5rem;
   padding-inline: 0.5rem;
   padding-block: 1rem;
-  font-size: var(--s-font);
-  background: var(--clr-bg-main);
-  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
-  color: var(--font-color-dark);
-  caret-color: var(--clr-prime-m);
+  font-size: var(--font-list-label-s);
+  background: var(--clr-sur-l);
+
+  caret-color: var(--primary-middle);
+  color: var(--text-light);
+  outline: none;
+  border: 1px solid transparent;
 }
 input[type="password"] {
   font-family: Verdana;
@@ -283,7 +309,8 @@ input[type="password"]::placeholder {
 }
 
 .capp-input__default:focus {
-  outline-color: var(--primary-light);
+  border: 1px solid var(--primary-dark);
+  background: var(--clr-sur-d);
 }
 
 /* ====== Invalid and Valid Styling ====== */
@@ -315,6 +342,7 @@ input[type="password"]::placeholder {
   all: unset;
   width: calc(var(--s-font) * 2);
   height: calc(var(--s-font) * 2);
+  padding-top: 0.5rem;
 }
 .capp-input__btn:active > svg {
   fill: var(--primary-mid);

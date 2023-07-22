@@ -58,7 +58,8 @@
   <TeamSite />
   <UserRules />
   <UserData />
-
+  <DeleteCard />
+  <LogoutCard />
   <footer>
     <NavBarMenue />
   </footer>
@@ -83,7 +84,8 @@ import Impressum from "@/components/main-component/expand-site-cards/ImpressumEx
 import TeamSite from "@/components/main-component/expand-site-cards/TeamExpandCard.vue";
 import UserRules from "@/components/main-component/expand-site-cards/UseExpandCard.vue";
 import UserData from "@/components/main-component/expand-site-cards/UserDataExpandCard.vue";
-
+import DeleteCard from "@/components/main-component/expand-site-cards/DeleteExpandCard.vue";
+import LogoutCard from "@/components/main-component/expand-site-cards/DeleteExpandCard.vue";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 
@@ -107,6 +109,8 @@ export default {
     TeamSite,
     UserRules,
     UserData,
+    DeleteCard,
+    LogoutCard,
   },
   data() {
     return {

@@ -4,7 +4,6 @@
   --surface-dark: hsl(0, 0%, 96%);
   --surface-light: hsl(0, 0%, 98%);
   --surface-hover: hsl(0, 0%, 88%);
-  --list-color: hsl(0, 0%, 89%);
   --surface-hover: hsl(0, 0%, 93%);
   --list-color: hsl(0, 0%, 82%);
   --primary-very-dark: hsl(141, 45%, 25%);
@@ -16,7 +15,7 @@
   --accent-color-light: hsl(349, 100%, 35%);
   --logo-font-color: var(--surface-light);
   --main-font-color-dark: hsl(0, 0%, 15%);
-  --main-font-color-light: hsl(0, 0%, 73%);
+  --main-font-color-light: hsl(0, 0%, 65%);
   --clr-trans: transparent;
   /*======================================================*/
   --clr-sur-d: var(--surface-dark);
@@ -37,6 +36,8 @@
   --clr-seat-act: var(--secondary-color);
   --clr-type-icon: var(--primary-dark);
   /*==========================================*/
+  /*=========questionmenue========*/
+  --quest-menu-bg: var(--clr-bg);
   /*================text color für Mode Switch=======================*/
   --text-light: var(--main-font-color-light);
   --text-mid: hsl(0, 0%, 33%);
@@ -81,19 +82,28 @@
   --list-default: var(--list-color);
   /*=========checkbox===*/
   --check-default: var(--list-color);
-  --check-checked: var(--clr-prime-m);
+  --check-checked: var(--clr-prime-l);
   --clr-after-btn: var(--clr-sur-l);
   /*=========menue===========*/
   --menue-icon-def: var(--main-font-color-light);
   --menue-icon-act: var(--clr-prime-m);
   --menue-bg: var(--surface-light);
-  /*========================================*/
+  /*==============logdoter==========================*/
+  --foot-bg: hsl(0, 0%, 98%), 20%;
+  --foot-filter: blur(5px);
+  --foot-shd: hsla(0, 0%, 0%, 0.2);
+  --foot-shd-d: hsla(0, 0%, 0%, 0.4);
+  --foot-brd: var(--surface-light);
   /*===============Epand menue switch=================*/
   --brd-top: rgb(0, 0, 0, 0.6);
   --bg-content: transparent;
   --box-shd: rgb(0, 0, 0, 0.6);
   --sec-bg: transparent;
   --shd-single-cards: rgba(102, 100, 100, 0.15);
+  /*============================*/
+  --shd-log-delete: rgb(255, 255, 255, 0.3);
+  --card-shd-l: rgb(0, 0, 0);
+  --card-shd-d: rgb(0, 0, 0, 0.6);
   /*============== Neue Ende =======*/
   --color: 140, 45%;
   --l: 40%;
@@ -147,13 +157,10 @@
   --bg-list-surface: var(--secondary-light);
 
   /*====================================================================*/
-  /*===== Message Filter =====*/
-  --filter-background:
-  /*====================================================================*/
 }
 :root.dark-theme {
   /*===== Neue =====*/
-  --clr-bg: hsl(0, 0%, 3%);
+  --clr-bg: hsl(0, 0%, 4%);
   --surface-dark: hsl(0, 0%, 10%);
   --surface-light: hsl(0, 0%, 16%);
   --surface-hover: hsl(0, 0%, 25%);
@@ -191,7 +198,7 @@
   --text-mid: var(--clr-font-light);
   --text-dark: var(--clr-font-lightest);
   --clr-logo: var(--clr-font-lightest);
-  --bg-log: var(--clr-sur-l);
+  --bg-log: var(--clr-sur-d);
   --btn-outl: var(--list-color);
   --btn-outl-act: var(--main-font-color-dark);
   --clr-f-act: var(--surface-hover);
@@ -206,6 +213,7 @@
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
   --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
   /*====================================*/
+
   --nav-icon-def: var(--primary-dark);
   --nav-icon-act: var(--list-color);
   /*====IMG car card===========*/
@@ -220,11 +228,21 @@
   --clr-font-commentar: var(--main-font-color-light);
   --clr-shadow-top: hsla(0, 0%, 3%, 0.9);
   /*===============Epand menue switch=================*/
+
+  --foot-filter: blur(5px);
+  --foot-shd: hsla(0, 0%, 0%, 0.2);
+  --foot-shd-d: hsla(0, 0%, 0%, 0.4);
+  --foot-brd: var(--surface-light);
+  /*===============Epand menue switch=================*/
   --brd-top: white;
   --bg-content: var(--menue-bg);
   --box-shd: transparent;
   --sec-bg: var(--clr-sur-d);
   --shd-single-cards: rgba(102, 100, 100, 0.15);
+  /*===============================*/
+  --card-shd-d: rgb(0, 0, 0);
+  --card-shd-l: rgb(0, 0, 0, 0.6);
+  --shd-log-delete: rgba(26, 26, 26, 0.4);
   /*===== Neues Ende =====*/
   /*====Dreieck==Acordion=======*/
   --box-shadow-light: hsla(0, 0%, 12%, 0.2);
@@ -258,8 +276,4 @@
   --font-color-light: hsl(0, 0%, 57%);
   --error-color: hsl(349, 54%, 53%);
   --accent-color: hsl(43, 92%, 36%);
-
-  /*===== Message Filter =====*/
-  
-  /*====================================================================*/
 }

@@ -1,10 +1,14 @@
 <template>
   <section class="log-view-wrapper">
     <main>
-      <article
-        class="logIn-card__wrapper"
-        :class="{ 'in-motion': motionActive }"
-      >
+      <!--------------------------------------------------------------------->
+      <!------------------------Nur fürs coden------------------------------------->
+
+      <article>
+        <div class="quest-tbn">
+          <a href="#user-data">Fragebogen</a>
+        </div>
+        class="logIn-card__wrapper" :class="{ 'in-motion': motionActive }" >
         <section class="logIn-card__logo-capp">
           <h1>CAPP</h1>
           <!-- === Start Page Section for Log In und Sign In === -->
@@ -138,6 +142,8 @@
         <!-- ============== End of Sign In Page ==================== -->
       </article>
     </main>
+    <QuestionMenu />
+    <ImpressumFooter />
   </section>
 </template>
 
@@ -148,9 +154,17 @@ import BackButton from "@/components/input-elements/BackButton.vue";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { supabase } from "@/lib/supabaseClient.js";
 import router from "../router";
-
+import QuestionMenu from "@/components/main-component/expand-menu-components/QuestionMenuExpand.vue";
+import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
 export default {
-  components: { InputText, LogButton, BackButton },
+  components: {
+    InputText,
+    LogButton,
+    BackButton,
+    ImpressumFooter,
+    QuestionMenu,
+  },
+
   data() {
     return {
       startPage: true,
@@ -354,6 +368,17 @@ export default {
 </script>
 
 <style scoped>
+/*==============================*/
+.quest-tbn {
+  display: block;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 10rem;
+  height: 3rem;
+  background: red;
+  z-index: 15;
+}
 .log-view-wrapper {
   width: 100vw;
   height: 100vh;
@@ -367,22 +392,14 @@ export default {
 
 main {
   width: 100%;
-  height: 100%;
-
-  /* background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%); */
-
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
   background: linear-gradient(
-    to top,
-    var(--surface-light) 10%,
-    transparent 10%
-  );
+    to right,
 
-  background: linear-gradient(to top, var(--clr-sur-l) 10%, transparent 10%);
-
-  background: radial-gradient(
-    circle at 50% 15vw,
-    transparent 40%,
-    var(--bg-log) 40.1%
+    var(--bg-shd-l) 20%,
+    var(--bg-shd-d) 100%
   );
 }
 .logIn-card__wrapper {
@@ -413,6 +430,7 @@ main {
   font-size: clamp(4rem, 10vw, 6rem);
   color: var(--clr-logo);
   font-family: var(--font-logo);
+  padding-bottom: 5rem;
 }
 /*================================================*/
 /*                  Logo-Ende                     */
@@ -433,10 +451,14 @@ main {
 
 .login-card__start-page {
   translate: 0 0;
-  z-index: 11;
+  z-index: 14;
   background-color: var(--bg-log);
-  border-radius: 2rem;
-  padding-top: 2rem;
+  border-radius: 2rem 2rem 0 0;
+  padding-top: 10vh;
+  padding-bottom: 20vh;
+  box-shadow: 0px 0px 25px var(--foot-shd-d);
+  border-top: var(--s-brd) solid var(--foot-brd);
+  margin-top: 20vh;
 }
 
 .slide-enter-active {
@@ -458,19 +480,22 @@ main {
 /*            Login Page:       ;                    */
 /*===================================================*/
 .logIn-card__logIn-page {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  border-radius: 2rem;
+  border-radius: 2rem 2rem 0 0;
   width: 100%;
   height: max-content;
-  position: absolute;
-  z-index: 10;
-  bottom: 20px;
-  background: var(--surface-light);
-  padding-top: 3rem;
-  left: 0px;
+  background: var(--bg-log);
+  box-shadow: 0px 0px 25px var(--foot-shd-d);
+  border-top: var(--s-brd) solid var(--foot-brd);
+  padding-top: 5vh;
+  padding-bottom: 15vh;
 }
 .logIn-card__logIn-input {
   width: 80%;

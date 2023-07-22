@@ -1,5 +1,6 @@
 <script>
 import { supabase } from "@/lib/supabaseClient";
+import UserQuestionMenue from "../components/UserQuestionMenue.vue";
 export default {
   data() {
     return {
@@ -14,7 +15,7 @@ export default {
       users: [],
     };
   },
-  components: {},
+  components: { UserQuestionMenue },
   mounted() {
     this.getBrands();
     this.getCarTypes();
@@ -67,6 +68,8 @@ export default {
 </script>
 
 <template>
+  <UserQuestionMenue />
+
   <h2>{{ h2brands }}</h2>
 
   <form @submit.prevent="addNewBrand(this.newBrand)">

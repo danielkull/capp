@@ -1,15 +1,21 @@
 <template>
   <label for=""></label>
-  <input type="radio" id="" name="filter" class="capp-radio__default" />
+  <input type="radio" id="" name="" class="capp-radio__default" />
 </template>
 
 <script>
-/* export default {
-  props: {
-    radioSelector: "Test",
-  },
-}; */
-// Hier noch Props einfügen.
+export default {
+  // props: {
+  //   radioId: {
+  //     type: String,
+  //     required: true,
+  //   },
+  //   radioName: {
+  //     type: String,
+  //     required: true,
+  //   },
+  // },
+};
 </script>
 
 <style scoped>
@@ -17,7 +23,7 @@
   all: unset;
   display: block;
   width: var(--btn-height-default);
-  aspect-ratio: 1;
+  height: var(--btn-height-default);
   border-radius: var(--circle-radius);
   margin: var(--margin-default);
   border: 1px solid var(--clr-trans);

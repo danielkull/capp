@@ -70,11 +70,26 @@
         <option disabled value="">{{ defaultText }}</option>
         <option v-for="name in givenData" :value="name.id" :key="name.id">
           <p v-if="multiColumn">
+            <span v-if="Object.keys(name)[1] === 'car_type_name'">{{
+              Object.values(name)[4]["brand_name"]
+            }}</span>
             {{ Object.values(name)[1] }}
+            <span v-if="Object.keys(name)[1] === 'car_type_name'"
+              >( {{ Object.values(name)[2] }} )</span
+            >
+            <span v-if="Object.keys(name)[1] === 'username'">
+              <span
+                v-if="
+                  Object.values(name)[3] !== null &&
+                  Object.values(name)[4] !== null
+                "
+              >
+                -
+              </span>
+              {{ Object.values(name)[3] }} {{ Object.values(name)[4] }}
+            </span>
           </p>
-          <p v-else>
-            {{ name }}
-          </p>
+          <p v-else>{{ name }}</p>
         </option>
       </select>
     </span>
@@ -158,9 +173,11 @@ export default {
 .capp-input__wrapper {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  flex-direction: row;
+
+  padding-top: 1rem;
 }
 .capp-input__wrapper span {
   width: 100%;
@@ -169,22 +186,23 @@ export default {
   display: block;
   color: var(--primary-dark);
 
-  padding-block: calc(var(--s-font) / 2);
-  font-size: 1.5rem;
+  padding-block: var(--s-font);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   letter-spacing: 0.1rem;
 }
 
 .capp-input__default {
   display: block;
-  width: 100%;
+  width: 80%;
   border: 2px solid var(--clr-trans);
   border-radius: 0.5rem;
   padding-inline: 0.5rem;
-  padding-block: 1rem;
-  font-size: var(--m-font);
-  background: var(--clr-bg-main);
-  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
-  color: var(--font-color-dark);
+  padding-block: 0.5rem;
+  font-size: inherit;
+  background: var(--clr-sur-l);
+  color: var(--text-light);
+  outline: none;
+  border: 1px solid transparent;
 }
 .capp-input__default:hover {
   cursor: pointer;
@@ -194,8 +212,9 @@ export default {
 }
 
 .capp-input__default:focus {
-  outline-color: var(--primary-light);
+  border: 1px solid var(--primary-dark);
 }
+
 .capp-input__help-wrapper {
   position: relative;
 }
@@ -203,10 +222,11 @@ export default {
   all: unset;
   width: calc(var(--s-font) * 2);
   aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  right: 10%;
 }
-.capp-input__btn:active > svg {
-  fill: var(--primary-mid);
-}
+
 .capp-input__btn svg {
   fill: var(--secondary-default);
   position: relative;
@@ -214,19 +234,19 @@ export default {
 
 .capp-input__help {
   position: absolute;
-  top: 60px;
-  left: -280px;
+  top: -60px;
+  left: -300px;
   display: block;
   font-size: var(--s-font);
   background: var(--clr-sur-l);
-  color: var(--text-mid);
+  color: var(--text-light);
   border-radius: 1rem;
-  width: 20rem;
+  width: 80vw;
   height: auto;
   padding: var(--s-pad);
   text-align: start;
   z-index: 10;
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 50px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 60px rgb(0, 0, 0, 0.4);
 }
 /*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 
