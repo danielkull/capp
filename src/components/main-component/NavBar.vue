@@ -46,6 +46,7 @@
       name="nav-menue"
       id="message-icon"
       class="nav-bar__btn-icons"
+      @toggle="testToggle"
     /><label class="nav-bar__icon-frame" for="message-icon"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +69,7 @@
       name="nav-menue"
       id="menue-icon"
       class="nav-bar__btn-icons"
+      @click="testItem"
     /><label class="nav-bar__icon-frame" for="menue-icon">
       <div class="menue-wrapper">
         <span class="menue-strip menue-strip1"></span
@@ -120,9 +122,11 @@
 
 <script>
 import MainMenue from "@/components/main-component/MainMenue.vue";
+
 import Messenger from "@/components/messenger/messenger-placeholder/MessengerWindow.vue";
 import MessageChat from "@/components/messenger/messenger-placeholder/MessageChatWindow.vue";
 import MessagePin from "@/components/messenger/messenger-placeholder/MessagePin.vue";
+const btn = document.querySelector("menue-icon");
 export default {
   data() {
     return {
@@ -138,6 +142,16 @@ export default {
   methods: {
     changeTranslateChat(value) {
       this.msgChatTranslate = value;
+    },
+  },
+
+  methods: {
+    testItem() {
+      this.$emit("toggle", this.item);
+      console.log("halloo");
+    },
+    testToggle() {
+      console.log("geklappt");
     },
   },
 };

@@ -36,6 +36,8 @@
   --clr-seat-act: var(--secondary-color);
   --clr-type-icon: var(--primary-dark);
   /*==========================================*/
+  /*=========questionmenue========*/
+  --quest-menu-bg: var(--clr-bg);
   /*================text color für Mode Switch=======================*/
   --text-light: var(--main-font-color-light);
   --text-mid: hsl(0, 0%, 33%);
@@ -84,7 +86,7 @@
   --list-default: var(--list-color);
   /*=========checkbox===*/
   --check-default: var(--list-color);
-  --check-checked: var(--clr-prime-m);
+  --check-checked: var(--clr-prime-l);
   --clr-after-btn: var(--clr-sur-l);
   /*=========menue===========*/
   --menue-icon-def: var(--main-font-color-light);
@@ -162,7 +164,9 @@
 }
 :root.dark-theme {
   /*===== Neue =====*/
+
   --clr-bg: hsl(0, 0%, 5%);
+
   --surface-dark: hsl(0, 0%, 10%);
   --surface-light: hsl(0, 0%, 16%);
   --surface-hover: hsl(0, 0%, 25%);
@@ -229,6 +233,7 @@
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
   --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
   /*====================================*/
+
   --nav-icon-def: var(--primary-dark);
   --nav-icon-act: var(--list-color);
   /*====IMG car card===========*/
