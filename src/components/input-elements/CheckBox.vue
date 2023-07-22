@@ -12,7 +12,7 @@
 export default {};
 </script>
 
-<style scoped>
+<style>
 .capp-btn__default {
   --after-heigth: 1.7rem;
   cursor: pointer;

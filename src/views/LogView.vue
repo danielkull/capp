@@ -1,10 +1,14 @@
 <template>
   <section class="log-view-wrapper">
     <main>
-      <article
-        class="logIn-card__wrapper"
-        :class="{ 'in-motion': motionActive }"
-      >
+      <!--------------------------------------------------------------------->
+      <!------------------------Nur fürs coden------------------------------------->
+
+      <article>
+        <div class="quest-tbn">
+          <a href="#user-data">Fragebogen</a>
+        </div>
+        class="logIn-card__wrapper" :class="{ 'in-motion': motionActive }" >
         <section class="logIn-card__logo-capp">
           <h1>CAPP</h1>
           <!-- === Start Page Section for Log In und Sign In === -->
@@ -138,6 +142,7 @@
         <!-- ============== End of Sign In Page ==================== -->
       </article>
     </main>
+    <QuestionMenu />
     <ImpressumFooter />
   </section>
 </template>
@@ -149,10 +154,17 @@ import BackButton from "@/components/input-elements/BackButton.vue";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { supabase } from "@/lib/supabaseClient.js";
 import router from "../router";
+import QuestionMenu from "@/components/main-component/expand-menu-components/QuestionMenuExpand.vue";
 import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
-
 export default {
-  components: { InputText, LogButton, BackButton, ImpressumFooter },
+  components: {
+    InputText,
+    LogButton,
+    BackButton,
+    ImpressumFooter,
+    QuestionMenu,
+  },
+
   data() {
     return {
       startPage: true,
@@ -355,6 +367,17 @@ export default {
 </script>
 
 <style scoped>
+/*==============================*/
+.quest-tbn {
+  display: block;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 10rem;
+  height: 3rem;
+  background: red;
+  z-index: 15;
+}
 .log-view-wrapper {
   width: 100vw;
   height: 100vh;
@@ -368,8 +391,9 @@ export default {
 
 main {
   width: 100%;
-  height: 100%;
-
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
   background: linear-gradient(
     to right,
 
@@ -426,13 +450,14 @@ main {
 
 .login-card__start-page {
   translate: 0 0;
-  z-index: 11;
+  z-index: 14;
   background-color: var(--bg-log);
   border-radius: 2rem 2rem 0 0;
   padding-top: 10vh;
   padding-bottom: 20vh;
   box-shadow: 0px 0px 25px var(--foot-shd-d);
   border-top: var(--s-brd) solid var(--foot-brd);
+  margin-top: 20vh;
 }
 
 .slide-enter-active {

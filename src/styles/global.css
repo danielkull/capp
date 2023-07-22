@@ -108,6 +108,7 @@
   --margin-default: 1rem;
   --padding-default: 1rem;
   --s-marg: var(--margin-default);
+  --xs-pad: calc(var(--s-pad) / 2);
   --s-pad: var(--padding-default);
   --m-pad: calc(var(--padding-default) * 2);
 
@@ -121,11 +122,16 @@
   --f-weight-m: 500;
   --f-weight-l: 600;
   --f-weight-bold: 700;
+  --font-hr3: clamp(1.1rem, 2vw, 1.5rem);
+  --font-list-header: clamp(1rem, 2vw, 1.5rem);
+  --font-list-label: clamp(1rem, 3vw, 1.3rem);
+  --font-list-label-s: clamp(0.9rem, 3vw, 1.2rem);
+
   /*============================================*/
   /*           default-btn*/
   /*============================================*/
 
-  --btn-height-default: calc(var(--font-size) * 2);
+  --btn-height-default: 0.8rem;
   --btn-height-small: 1rem;
   --circle-radius: 100%;
 

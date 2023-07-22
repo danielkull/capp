@@ -494,7 +494,7 @@ export default {
 
 .main-menue__wrapper {
   width: 100%;
-  height: 75vh;
+  height: 78vh;
   padding-top: 2rem;
   padding-bottom: 3rem;
   background: var(--menue-bg);
