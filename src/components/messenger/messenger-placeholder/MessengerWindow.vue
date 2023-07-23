@@ -131,37 +131,4 @@ h3 {
   appearance: none;
   width: 0;
 }
-/*=================================*/
-section:target {
-  translate: 0% 0;
-}
-.live-msg-wrapper {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 1.5rem 1.5rem 0 0;
-  background: var(--clr-bg);
-  background: red;
-  position: absolute;
-  z-index: 15;
-  top: 0px;
-  left: 0;
-  transition: 0.3s ease-in-out;
-  translate: 0% 0%;
-}
-.live-msg-wrapper input[type="checkbox"] {
-  appearance: none;
-  position: absolute;
-  top: -9999px;
-  width: 0;
-}
-label {
-  font-size: 2rem;
-  display: block;
-  padding-inline: 3rem;
-  height: 5rem;
-  width: 100%;
-  background: green;
-}
 
-</style>
