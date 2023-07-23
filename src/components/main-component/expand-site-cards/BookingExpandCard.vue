@@ -25,13 +25,13 @@
             v-model:inputData="bookStartDate"
             :inputId="'book-start-date'"
             :inputType="'datetime-local'"
-            >Start Zeitpunkt
+            ><h3>Start Zeitpunkt</h3>
           </InputText>
           <InputText
             v-model:inputData="bookEndDate"
             :inputId="'book-end-date'"
             :inputType="'datetime-local'"
-            >End Zeitpunkt
+            ><h3>End Zeitpunkt</h3>
           </InputText>
           <DropDownTwoColumns
             v-model:selectedData="purposeSelected"
@@ -40,7 +40,7 @@
             :defaultText="'-- Bitte hier auswählen'"
             :isRequired="true"
           >
-            Wähle deinen Grund für die Fahrt
+            <h3>Wähle deinen Grund für die Fahrt</h3>
           </DropDownTwoColumns>
           <TextAreaWithoutButton
             v-model:inputData="bookingMsg"
@@ -51,6 +51,7 @@
             rows="5"
           >
           </TextAreaWithoutButton>
+
           <Button
             id="booking-btn"
             :value="loading ? 'Loading...' : 'Send Request'"
@@ -230,8 +231,11 @@ section:target {
   translate: -100% 0;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(to top, white 30%, transparent),
-    linear-gradient(to right, var(--clr-prime-m) 40%, var(--clr-prime-vd));
+  background: linear-gradient(
+    to right,
+    var(--clr-prime-m) 40%,
+    var(--clr-prime-vd)
+  );
   width: 0;
   transition: 0.2s;
 }
@@ -240,11 +244,11 @@ section:target {
   min-height: 90.5dvh;
   display: flex;
   flex-direction: column;
-  background: var(--menue-bg);
+  background: var(--clr-bg);
   margin-top: -1vh;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   box-shadow: inset 0 10px 20px var(--box-shd);
-  border-top: 1px solid var(--brd-top);
+  border-top: 1px solid var(--clr-sur-l);
 }
 .menue-expand__outer-wrapper header {
   width: 90%;
@@ -256,11 +260,20 @@ section:target {
   margin-inline: auto;
 }
 header h2 {
-  font-weight: 100;
+  font-weight: var(--f-expand-header);
   color: var(--logo-font-color);
   letter-spacing: 0.05em;
   font-size: var(--m-font);
   height: 100%;
+}
+h3 {
+  color: var(--primary-middle);
+  font-size: clamp(0.9rem, 3vw, 2rem);
+  font-weight: var(--f-weight-m);
+  margin-top: var(--xs-marg);
+  padding-bottom: var(--xs-pad);
+
+  line-height: 1.5em;
 }
 .back-btn {
   width: max-content;
@@ -289,16 +302,16 @@ header h2 {
 
 /* ==== Input is Invalid CSS ==== */
 .capp-input__invalid-input {
-  font-size: var(--s-font);
+  font-size: var(--font-list-label-s);
   width: 100%;
-  height: max-content;
+  height: auto;
   text-align: center;
   padding-right: calc(var(--s-font) / 2);
-  margin-top: calc(var(--s-font) / 1.5);
 }
 .input__valid {
   color: transparent;
 }
+
 .input__invalid {
   color: var(--error-color);
 }

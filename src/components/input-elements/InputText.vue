@@ -282,15 +282,16 @@ export default {
   width: 100%;
   border: 2px solid var(--clr-trans);
   border-radius: 0.5rem;
-  padding-inline: 0.5rem;
-  padding-block: 1rem;
+  padding-inline: var(--xs-pad);
+  padding-block: var(--s-pad);
   font-size: var(--font-list-label-s);
   background: var(--clr-sur-l);
-
+  font-family: "Roboto", sans-serif;
   caret-color: var(--primary-middle);
   color: var(--text-light);
+
   outline: none;
-  border: 1px solid transparent;
+  border: var(--s-brd) solid transparent;
 }
 input[type="password"] {
   font-family: Verdana;
@@ -336,7 +337,9 @@ input[type="password"]::placeholder {
   width: max-content;
   height: max-content;
   place-content: center;
-  top: 20px;
+  /* top: 20px; */
+  translate: 0 85%;
+  margin-left: 1rem;
 }
 .capp-input__btn {
   all: unset;
@@ -345,10 +348,10 @@ input[type="password"]::placeholder {
   padding-top: 0.5rem;
 }
 .capp-input__btn:active > svg {
-  fill: var(--primary-mid);
+  fill: var(--primary-middle);
 }
 .capp-input__btn svg {
-  fill: var(--secondary-default);
+  fill: var(--list-default);
   position: relative;
 }
 
@@ -357,16 +360,16 @@ input[type="password"]::placeholder {
   top: 60px;
   left: -280px;
   display: block;
-  font-size: var(--s-font);
+  font-size: var(--font-list-label);
   background: var(--clr-sur-l);
   color: var(--text-mid);
-  border-radius: 1rem;
+  border-radius: var(--s-brd-rad);
   width: 20rem;
   height: auto;
   padding: var(--s-pad);
   text-align: start;
   z-index: 10;
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 50px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px var(--foot-shd-d), 0 0 50px var(--foot-shd-d);
 }
 /*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 
@@ -391,10 +394,10 @@ input[type="password"]::placeholder {
   cursor: pointer;
   width: 1.5rem;
   aspect-ratio: 1;
-  fill: var(--secondary-dark);
+  fill: var(--clr-sur-d);
 }
 .pw-sight:active > svg {
-  fill: var(--primary-dark);
+  fill: var(--primary-middle);
 }
 
 /*======================================================================= */
