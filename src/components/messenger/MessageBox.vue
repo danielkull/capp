@@ -18,7 +18,11 @@
     <footer class="booking-message__footer">
       <div
         class="booking-message__status"
-        :style="{ 'outline-color': statusBgColor, color: statusColor }"
+        :style="{
+          'outline-color': statusOutlineColor,
+          color: statusColor,
+          'background-color': statusBgColor,
+        }"
       >
         {{ checkCurrentStatus }}
       </div>
@@ -43,7 +47,11 @@
     <header class="extended-booking-message__header">
       <div
         class="booking-message__status"
-        :style="{ 'outline-color': statusBgColor, color: statusColor }"
+        :style="{
+          'outline-color': statusOutlineColor,
+          color: statusColor,
+          'background-color': statusBgColor,
+        }"
       >
         {{ checkCurrentStatus }}
       </div>
@@ -119,6 +127,7 @@ export default {
       bookingPurpose: "N/A",
       statusBgColor: "var(--secondary-color)",
       statusColor: "var(--primary-very-dark)",
+      statusOutlineColor: "var(--secondary-color)",
     };
   },
   computed: {
@@ -133,19 +142,23 @@ export default {
       switch (this.routeData.status) {
         case "accepted":
           this.statusBgColor = "var(--primary-middle)";
-          this.statusColor = "var(--text-dark)";
+          this.statusColor = "var(--clr-bg)";
+          this.statusOutlineColor = "var(--primary-middle)";
           return "Bestätigt";
         case "pending":
-          this.statusBgColor = "var(--secondary-color)";
+          this.statusBgColor = "transparent";
           this.statusColor = "var(--text-dark)";
+          this.statusOutlineColor = "var(--secondary-color)";
           return "Ausstehend";
         case "declined":
           this.statusBgColor = "var(--accent-color-light)";
-          this.statusColor = "var(--text-dark)";
+          this.statusColor = "var(--clr-bg)";
+          this.statusOutlineColor = "var(--accent-color-light)";
           return "Abgelehnt";
         default:
           this.statusBgColor = "var(--secondary-color)";
           this.statusColor = "var(--text-dark)";
+          this.statusOutlineColor = "var(--secondary-color)";
       }
     },
     checkWhoBooks() {
@@ -165,9 +178,9 @@ export default {
     },
     whoSendMsg() {
       if (this.msgFromMe) {
-        return "Msg gesendet";
+        return "Gesendet";
       } else {
-        return "Msg erhalten";
+        return "Erhalten";
       }
     },
   },
@@ -196,11 +209,11 @@ export default {
   border-radius: var(--s-brd-rad);
   padding-inline: 1rem;
   padding-block: 0.2rem 0.4rem;
-  box-shadow: 0px 0px 20px hsla(0, 1%, 34%, 0.3);
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
-  border-right: 1px solid hsla(0, 0%, 0%, 0.2);
-  border-top: 1px solid hsl(0, 0%, 100%);
-  border-left: 1px solid hsl(0, 0%, 100%);
+  box-shadow: 0px 0px 20px var(--card-shadow);
+  border-bottom: 1px solid var(--card-shadow);
+  border-right: 1px solid var(--card-shadow);
+  border-top: 1px solid var(--clr-sur-l);
+  border-left: 1px solid var(--clr-sur-l);
 }
 
 .booking-message__header {
@@ -268,7 +281,7 @@ export default {
 /* ===== Status icons======= */
 .booking-message__status {
   max-width: fit-content;
-  outline: 2px solid black;
+  outline: 1px solid black;
   background: var(--list-color);
   margin-block: 0.5rem;
   border-radius: calc(var(--font-size) - 0.6rem);
@@ -282,20 +295,28 @@ export default {
   text-decoration: underline;
 }
 .message-from-you {
-  background: var(--list-color);
-  outline: 2px solid var(--clr-font-lightest);
+  color: var(--clr-font-lightest);
+  background: transparent;
+  outline: 1px solid var(--list-color);
 }
 .message-for-you {
+  color: var(--clr-font-lightest);
   background: var(--list-color);
-  outline: 2px solid var(--secondary-light);
+  outline: 1px solid var(--list-color);
 }
 /* ===== End of Status icons======= */
 
 /* ======== Buttons ========= */
 .booking-messsage__button {
-  padding: calc(0.5rem + 0.5vh) calc(0.5rem + 0.5vw);
-  font-size: clamp(0.1rem, 3vw, 0.8rem);
+  padding-block: 0.1rem;
+  font-size: clamp(0.8rem, 3vw, 1.2rem);
+  text-transform: none;
   outline-offset: clamp(0.1rem, 1vw, 0.2rem);
+  outline: none;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  height: 1.5rem;
+  margin-block: 0.4rem;
 }
 .decline-btn {
   color: var(--accent-color-light);
