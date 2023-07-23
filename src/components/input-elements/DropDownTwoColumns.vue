@@ -6,8 +6,7 @@
 <!-- Zudem benötigt es noch ein v-model:selectedData="AusgewählteDatei" -->
 <!-- Deine "AusgewählteDatei" kannst du in data() auffangen -->
 <!-- Um der Select Komponent daten zu geben musst du :givenData="DataPackage" mit deinen Daten befüllen  -->
-<!-- Ein Datenpacket kann ein enum sein (mit nur einer Daten Spalte) wie "fuel_type" oder "category"-->
-<!-- Oder auch zwei Spaltige Daten mit Id und name wie "purpose" oder "brands" -->
+<!-- Ein Datenpacket muss zwei Spaltige sein. Mit Id und name wie "purpose" oder "brands" -->
 
 <!-- Das ist ein beispiel wie man DatenPackete mit zwei Spalten aus Supabase holt -->
 <!-- async getPurposes() {
@@ -21,27 +20,6 @@
     alert(error.message);
   }
 }, -->
-<!-- Bei enum Werten muss man allerdings das etwas anders machen:-->
-<!-- async getCategorys() {
-  try {
-    const { data, error } = await supabase.rpc("get_category");
-
-    if (error) throw error;
-
-    if (data) {
-      this.categoryData = data;
-    }
-  } catch (error) {
-    alert(error.message);
-  }
-}, -->
-<!-- mit .rpc() kann man eine Supabase Funktion aufrufen die man davor erstellen muss -->
-<!-- Folgende Funktionen wurden bereits erstellt und können genutzt werden: -->
-<!-- get_category -->
-<!-- get_fuel -->
-<!-- get_gear -->
-<!-- get_insurance -->
-<!-- get_route_status -->
 
 <!-- Hier ein Beispiel wie eine Komponente Aussehen könnte -->
 <!-- <SelectDropDown
@@ -68,28 +46,10 @@
         :required="isRequired"
       >
         <option disabled value="">{{ defaultText }}</option>
-        <option v-for="name in givenData" :value="name.id" :key="name.id">
-          <p v-if="multiColumn">
-            <span v-if="Object.keys(name)[1] === 'car_type_name'">{{
-              Object.values(name)[4]["brand_name"]
-            }}</span>
-            {{ Object.values(name)[1] }}
-            <span v-if="Object.keys(name)[1] === 'car_type_name'"
-              >( {{ Object.values(name)[2] }} )</span
-            >
-            <span v-if="Object.keys(name)[1] === 'username'">
-              <span
-                v-if="
-                  Object.values(name)[3] !== null &&
-                  Object.values(name)[4] !== null
-                "
-              >
-                -
-              </span>
-              {{ Object.values(name)[3] }} {{ Object.values(name)[4] }}
-            </span>
+        <option v-for=" item in givenData" :value="item.id" :key="item.id">
+          <p>
+            {{ Object.values(item)[1] }}
           </p>
-          <p v-else>{{ name }}</p>
         </option>
       </select>
     </span>
@@ -138,7 +98,7 @@ export default {
     },
     defaultText: {
       type: String,
-      default: "--For what do you need the car?",
+      default: "--Click me",
     },
     isRequired: {
       type: Boolean,
@@ -148,23 +108,8 @@ export default {
   emits: ["update:selectedData"],
   data() {
     return {
-      multiColumn: null,
       showHelp: false,
     };
-  },
-  methods: {
-    givenDataCorrection() {
-      this.givenData.filter((item) => {
-        if (item.id !== undefined) {
-          this.multiColumn = true;
-        } else {
-          this.multiColumn = false;
-        }
-      });
-    },
-  },
-  beforeUpdate() {
-    this.givenDataCorrection();
   },
 };
 </script>
@@ -173,11 +118,9 @@ export default {
 .capp-input__wrapper {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  flex-direction: row;
-
-  padding-top: 1rem;
+  gap: 1rem;
 }
 .capp-input__wrapper span {
   width: 100%;
@@ -186,23 +129,22 @@ export default {
   display: block;
   color: var(--primary-dark);
 
-  padding-block: var(--s-font);
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  padding-block: calc(var(--s-font) / 2);
+  font-size: 1.5rem;
   letter-spacing: 0.1rem;
 }
 
 .capp-input__default {
   display: block;
-  width: 80%;
+  width: 100%;
   border: 2px solid var(--clr-trans);
   border-radius: 0.5rem;
   padding-inline: 0.5rem;
-  padding-block: 0.5rem;
-  font-size: inherit;
-  background: var(--clr-sur-l);
-  color: var(--text-light);
-  outline: none;
-  border: 1px solid transparent;
+  padding-block: 1rem;
+  font-size: var(--m-font);
+  background: var(--clr-bg-main);
+  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
+  color: var(--font-color-dark);
 }
 .capp-input__default:hover {
   cursor: pointer;
@@ -212,9 +154,8 @@ export default {
 }
 
 .capp-input__default:focus {
-  border: 1px solid var(--primary-dark);
+  outline-color: var(--primary-light);
 }
-
 .capp-input__help-wrapper {
   position: relative;
 }
@@ -222,11 +163,10 @@ export default {
   all: unset;
   width: calc(var(--s-font) * 2);
   aspect-ratio: 1;
-  position: absolute;
-  top: 50%;
-  right: 10%;
 }
-
+.capp-input__btn:active > svg {
+  fill: var(--primary-mid);
+}
 .capp-input__btn svg {
   fill: var(--secondary-default);
   position: relative;
@@ -234,19 +174,19 @@ export default {
 
 .capp-input__help {
   position: absolute;
-  top: -60px;
-  left: -300px;
+  top: 60px;
+  left: -280px;
   display: block;
   font-size: var(--s-font);
   background: var(--clr-sur-l);
-  color: var(--text-light);
+  color: var(--text-mid);
   border-radius: 1rem;
-  width: 80vw;
+  width: 20rem;
   height: auto;
   padding: var(--s-pad);
   text-align: start;
   z-index: 10;
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 60px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 50px rgb(0, 0, 0, 0.4);
 }
 /*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 

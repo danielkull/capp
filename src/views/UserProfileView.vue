@@ -191,6 +191,8 @@
           </section>
         </article>
       </div>
+      <BookingExpandCard></BookingExpandCard>
+      <BookingCalendarExpandCard></BookingCalendarExpandCard>
     </main>
   </body>
   <div v-else>
@@ -209,11 +211,19 @@ import TrunkType from "@/components/icon-type/TrunkType.vue";
 import DifferentType from "@/components/icon-type/DifferentTypes.vue";
 import SeatIconsFrame from "@/components/icon-type/SeatIcons.vue";
 import CarItemsMenue from "@/components/main-component/CarOwnerAccordion.vue";
+import InputText from "@/components/input-elements/InputText.vue";
+
+import BookingCalendarExpandCard from "@/components/main-component/expand-site-cards/BookingCalendarExpandCard.vue";
+import BookingExpandCard from "@/components/main-component/expand-site-cards/BookingExpandCard.vue";
+import { useGlobalStateStore } from "@/stores/useGlobalStateStore";
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+
 export default {
   data() {
     return {
       carID: this.$route.params.id,
       car: null,
+      store: null,
     };
   },
   components: {
@@ -226,11 +236,40 @@ export default {
     DifferentType,
     SeatIconsFrame,
     CarItemsMenue,
+    InputText,
+    BookingCalendarExpandCard,
+    BookingExpandCard,
+  },
+  setup() {
+    // Initialize the store at the begining
+    const globalStateStore = useGlobalStateStore();
+    const authenticationStore = useAuthenticationStore();
+    return { globalStateStore, authenticationStore };
+  },
+  created() {
+    const emptySession = this.checkForEmptyObject(
+      this.authenticationStore.session
+    );
+    if (emptySession) {
+      this.getSessionInfos();
+    }
   },
   mounted() {
     this.getCar();
+    this.globalStateStore.saveCurrentCarId(this.carID);
   },
   methods: {
+    getSessionInfos() {
+      this.authenticationStore.getSession();
+      this.authenticationStore.onAuthStateChange();
+    },
+    checkForEmptyObject(objectName) {
+      return (
+        objectName &&
+        Object.keys(objectName).length === 0 &&
+        objectName.constructor === Object
+      );
+    },
     async getCar() {
       const { data } = await supabase
         .from("cars")

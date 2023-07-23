@@ -16,7 +16,7 @@ export default {};
   box-shadow: 0 0 0 0 var(--primary-middle) inset;
   transition-duration: 0.5s, 0.2s;
   transition-property: box-shadow, color;
-  background: var(--bg-log);
+  background: transparent;
   outline: var(--m-brd) solid var(--btn-outl);
   outline-offset: clamp(0.3rem, 2vw, 0.5rem);
   text-align: center;

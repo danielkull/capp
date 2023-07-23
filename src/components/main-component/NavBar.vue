@@ -5,8 +5,9 @@
       name="nav-menue"
       id="user-icon"
       class="nav-bar__btn-icons"
-    /><label class="nav-bar__icon-frame" for="user-icon"
-      ><svg
+    />
+    <label class="nav-bar__icon-frame" for="user-icon">
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
@@ -17,15 +18,17 @@
         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
         <path
           d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"
-        /></svg
-    ></label>
+        />
+      </svg>
+    </label>
     <input
       type="checkbox"
       name="nav-menue"
       id="calendar-icon"
       class="nav-bar__btn-icons"
-    /><label class="nav-bar__icon-frame" for="calendar-icon"
-      ><svg
+    />
+    <label class="nav-bar__icon-frame" for="calendar-icon">
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
@@ -39,8 +42,9 @@
         <path
           class="calender-path"
           d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
-        /></svg
-    ></label>
+        />
+      </svg>
+    </label>
     <input
       type="checkbox"
       name="nav-menue"
@@ -62,8 +66,9 @@
         <path
           class="path"
           d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
-        /></svg
-    ></label>
+        />
+      </svg>
+    </label>
     <input
       type="checkbox"
       name="nav-menue"
@@ -80,7 +85,11 @@
   </nav>
   <article class="nav-bar__menu-wrapper">
     <section class="nav-bar__menu-user menue-cards"></section>
-    <section class="nav-bar__menu-calender menue-cards"></section>
+    <section class="nav-bar__menu-calender menue-cards">
+      <section class="menu-message__wrapper">
+        <MessageMenu></MessageMenu>
+      </section>
+    </section>
     <section class="nav-bar__menu-message menue-cards">
       <Messenger @change-translate="changeTranslateChat" />
     </section>
@@ -122,6 +131,7 @@
 
 <script>
 import MainMenue from "@/components/main-component/MainMenue.vue";
+import MessageMenu from "@/components/main-component/MessageMenu.vue";
 
 import Messenger from "@/components/messenger/messenger-placeholder/MessengerWindow.vue";
 import MessageChat from "@/components/messenger/messenger-placeholder/MessageChatWindow.vue";
@@ -135,14 +145,23 @@ export default {
   },
   components: {
     MainMenue,
+    MessageMenu,
     Messenger,
     MessageChat,
     MessagePin,
   },
+
   methods: {
+    testItem() {
+      this.$emit("toggle", this.item);
+      console.log("halloo");
+    },
+    testToggle() {
+      console.log("geklappt");
+    },
     changeTranslateChat(value) {
       this.msgChatTranslate = value;
-    },
+    },    
   },
 
 };
@@ -302,13 +321,17 @@ svg {
   margin-top: 220%;
 }
 .nav-bar__menu-calender {
-  background: olive;
+  background: var(--clr-sur-d);
+  padding: var(--m-pad) var(--s-pad);
+  border-top: 2px solid var(--list-color);
   margin-top: 220%;
+  color: var(--clr-font-commentar);
 }
 .nav-bar__menu-message {
   background: var(--clr-bg);
 
   margin-top: 220%;
+  color: var(--clr-font-commentar);
 }
 
 :has(#user-icon:checked) .nav-bar__menu-user {
@@ -420,5 +443,18 @@ svg {
   height: 2.5rem;
   width: 4rem;
   object-fit: cover;
+}
+
+.menu-message__wrapper {
+  height: 100%;
+  width: 100%;
+  margin-inline: auto;
+  background: var(--clr-sur-d);
+  overflow: scroll;
+  margin-bottom: 6rem;
+}
+.menu-message__wrapper::-webkit-scrollbar {
+  appearance: none;
+  width: 0;
 }
 </style>

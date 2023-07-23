@@ -4,6 +4,9 @@
       <section class="customer-review__header-profil-wrapper">
         <article class="user-profile__image-small">
           <span class="user-profile__image-small__wrapper">
+            <!-- Die :alt und :title Daten müssen noch überarbeitet werden -->
+            <!-- Nicht jeder User hat auch einen brand Naame und CarType -->
+            <!-- Die Werte müssten auch eher aus den Rout Infos geholt werden, statt als props übertragen zu werden -->
             <img
               :src="imgSource"
               :alt="brandName + ' ' + carTypeName + ' von ' + userName"

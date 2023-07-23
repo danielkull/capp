@@ -1,5 +1,13 @@
 <template>
-  <section class="menue-expand__outer-wrapper" id="test-test">
+  <!-- Anleitung: -->
+  <!-- Die id in section ist auf default. Wenn man diese Componente einsetzt, -->
+  <!-- dann muss man die id dort umbenennen (Die id wird auch für den <a> link verwendet) -->
+  <!-- Beispiel -->
+  <!-- <ExpandCardDefaultFrame id="meine-neue-seite" :pageHeader="'Das ist mein Seite'"></ExpandCardDefaultFrame> -->
+  <!-- Und der Link um auf diese Seite zu kommen wäre dann: -->
+  <!-- <a href="#meine-neue-seite">Hier klicken um zu meiner neuen Seite zu kommen</a> -->
+
+  <section class="menue-expand__outer-wrapper" id="default">
     <header>
       <a href="#" class="back-btn">
         <svg
@@ -13,14 +21,14 @@
           />
         </svg>
       </a>
-      <h2 class="menue-expand__site-header">Platzhalter</h2>
+      <h2 class="menue-expand__site-header">{{ pageHeader }}</h2>
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
         <!-------------------------------------------------------------------->
 
         <!----------Hier COntent--------->
-
+        <slot></slot>
         <!-------------------------------------------------------------------->
       </section>
     </div>
@@ -28,7 +36,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    pageHeader: {
+      type: String,
+      default: "My new Page",
+    },
+  },
+};
 </script>
 
 <style>
@@ -51,7 +66,7 @@ section:target {
   translate: -100% 0;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(to top, var(--clr-bg) 30%, transparent),
+  background: linear-gradient(to top, white 30%, transparent),
     linear-gradient(to right, var(--clr-prime-m) 40%, var(--clr-prime-vd));
   width: 0;
   transition: 0.2s;

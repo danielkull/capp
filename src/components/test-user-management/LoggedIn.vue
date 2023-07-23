@@ -13,7 +13,7 @@
     ></Button>
   </div>
   <div>
-    <Calender></Calender>
+    <Calendar></Calendar>
     <div>
       <input
         type="datetime-local"
@@ -88,14 +88,14 @@
 
 <script>
 import UserEvaluation from "@/components/UserEvaluation.vue";
-import Calender from "@/components/Calender.vue";
+import Calendar from "@/components/Calendar.vue";
 import Button from "@/components/input-elements/Button.vue";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { useCarStore } from "@/stores/useCarStore";
 import { supabase } from "@/lib/supabaseClient";
 
 export default {
-  components: { Button, Calender, UserEvaluation },
+  components: { Button, Calendar, UserEvaluation },
   data() {
     return {
       loading: false,
@@ -125,7 +125,6 @@ export default {
       // console.log("Destination: ",typeof this.requestRouteData.destination)
       try {
         const activeUser = await this.authenticationStore.activeUser[0].id;
-
 
         const { data, error } = await supabase.from("routes").insert({
           user_id: activeUser,

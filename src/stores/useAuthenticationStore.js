@@ -13,6 +13,10 @@ export const useAuthenticationStore = defineStore("authentication", {
         // Benötige diesen Consoel.log später für die entwicklung
         // console.log("GetSesstion Data: ",data)
         this.session.value = data.session;
+        // Simple check for not being null
+        if (data.session ) {
+          this.getProfileData();
+        }
       });
     },
     async onAuthStateChange() {
@@ -48,7 +52,7 @@ export const useAuthenticationStore = defineStore("authentication", {
           this.activeUser = data;
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       } finally {
         this.loading = false;
       }

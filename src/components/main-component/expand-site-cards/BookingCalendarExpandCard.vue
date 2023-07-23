@@ -1,5 +1,5 @@
 <template>
-  <section class="menue-expand__outer-wrapper" id="test-test">
+  <section class="menue-expand__outer-wrapper" id="booking-calendar">
     <header>
       <a href="#" class="back-btn">
         <svg
@@ -13,14 +13,24 @@
           />
         </svg>
       </a>
-      <h2 class="menue-expand__site-header">Platzhalter</h2>
+      <h2 class="menue-expand__site-header">Buchungs Kalender</h2>
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
         <!-------------------------------------------------------------------->
 
-        <!----------Hier COntent--------->
-
+        <!----------Hier Content--------->
+        <Calendar @selectedDate="showSelectedDate">
+          <div class="calendar-button-wrapper">
+            <a href="#booking-page" class="car-info__link">
+              <Button
+                value="Buchen"
+                @click="globalStateStore.saveCurrentDate(newDate)"
+              >
+              </Button>
+            </a>
+          </div>
+        </Calendar>
         <!-------------------------------------------------------------------->
       </section>
     </div>
@@ -28,10 +38,36 @@
 </template>
 
 <script>
-export default {};
+import Calendar from "@/components/Calendar.vue";
+import Button from "@/components/input-elements/Button.vue";
+import { useGlobalStateStore } from "@/stores/useGlobalStateStore.js";
+
+export default {
+  components: {
+    Calendar,
+    Button,
+  },
+  data() {
+    return {
+      newDate: null,
+    };
+  },
+  setup() {
+    // Initialize the store at the begining
+    const globalStateStore = useGlobalStateStore();
+
+    return { globalStateStore };
+  },
+  methods: {
+    showSelectedDate(value) {
+      this.newDate = value;
+      console.log(this.newDate);
+    },
+  },
+};
 </script>
 
-<style>
+<style scoped>
 section:target {
   translate: 0% 0;
 }
@@ -51,7 +87,7 @@ section:target {
   translate: -100% 0;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(to top, var(--clr-bg) 30%, transparent),
+  background: linear-gradient(to top, white 30%, transparent),
     linear-gradient(to right, var(--clr-prime-m) 40%, var(--clr-prime-vd));
   width: 0;
   transition: 0.2s;
@@ -107,4 +143,32 @@ header h2 {
 
   overflow: scroll;
 }
+/* ====== Beginn: Calendar Button style ====== */
+.calendar-button-wrapper {
+  position: absolute;
+  top: 62.5%;
+}
+
+.car-info__link {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 400px) {
+  .calendar-button-wrapper {
+    top: 65%;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .calendar-button-wrapper {
+    top: 70%;
+  }
+}
+
+@media screen and (min-width: 468px) {
+  .calendar-button-wrapper {
+    top: 75%;
+  }
+}
+/* ====== End: Calendar Button style ====== */
 </style>

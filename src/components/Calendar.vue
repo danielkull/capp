@@ -72,9 +72,9 @@
             {{ n }}
           </div>
         </div>
-        <div class="button-wrapper">
-          <Button value="Buchen" />
-        </div>
+        <!-- Open Slot for example Calendar booking button -->
+        <slot></slot>
+        <!-- End of Slot -->
         <div class="calendar-footer"></div>
         <div class="date-time-formate">
           <div
@@ -170,7 +170,15 @@ export default {
     this.getCurrentDate();
   },
   computed: {
+    currentDateToTimeFormat() {
+      const month = ("0" + (this.currentDate.month + 1)).slice(-2);
+      const day = ("0" + this.currentDate.date).slice(-2);
+      const selectedDate = `${this.currentDate.year}-${month}-${day}T${this.currentTime}`;
+      return selectedDate;
+    },
     currentDay() {
+      this.currentDateToTimeFormat;
+      this.$emit("selectedDate", this.currentDateToTimeFormat);
       return new Date(
         this.currentDate.year,
         this.currentDate.month,
@@ -230,6 +238,7 @@ export default {
     getCurrentDate() {
       let today = new Date();
       this.currentDate.date = today.getDate();
+      // + 1, because .getMonth() starts with 0
       this.currentDate.month = today.getMonth();
       this.currentDate.year = today.getFullYear();
       this.currentDate.hours = today.getHours();
@@ -477,11 +486,6 @@ h2 {
   pointer-events: none;
 }
 
-.button-wrapper {
-  position: absolute;
-  top: 62.5%;
-}
-
 .date-time-formate {
   font-family: "Courier New", Courier, monospace;
   font-weight: 600;
@@ -608,24 +612,12 @@ h2 {
 }
 
 @media screen and (min-width: 400px) {
-  .button-wrapper {
-    position: absolute;
-    top: 65%;
-  }
-
   .date-formate {
     font-size: 1rem;
   }
 
   .day-text-formate {
     padding-right: 5%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .button-wrapper {
-    position: absolute;
-    top: 75%;
   }
 }
 </style>
