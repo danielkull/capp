@@ -25,7 +25,7 @@
                   :name="`carType-${carType.id}`"
                   :id="`carType-${carType.id}`"
                   v-model="carType.checked"
-                  @change="chooseCarTypes()"
+                  @change="chooseCarTypes(), filterCarsByCarType()"
                 />
                 <label :for="`carType-${carType.id}`">{{ carType.name }}</label>
               </li>
@@ -58,7 +58,7 @@
                   :name="`fuelType-${fuelType.id}`"
                   :id="`fuelType-${fuelType.id}`"
                   v-model="fuelType.checked"
-                  @change="chooseFuelTypes()"
+                  @change="chooseFuelTypes(), filterCarsByFuelType()"
                 />
                 <label :for="`fuelType-${fuelType.id}`">{{
                   fuelType.name
@@ -81,7 +81,6 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <p>&nbsp;</p>
             <ul class="question-list">
               <li
                 class="question-list__item"
@@ -92,9 +91,10 @@
                   type="radio"
                   name="filter-gear"
                   :id="gear.id"
-                  :value="gear.id"
+                  :value="gear.name"
                   v-model="chosenGear"
                   class="capp-radio__default"
+                  @change="filterCarsByGear()"
                 />
                 <label :for="gear.id">{{ gear.name }}</label>
               </li>
@@ -125,7 +125,7 @@
                   :name="seatCount.id"
                   :id="seatCount.id"
                   v-model="seatCount.checked"
-                  @change="chooseSeatCounts()"
+                  @change="chooseSeatCounts(), filterCarsBySeatCount()"
                   class="capp-btn__default"
                 />
                 <label :for="seatCount.id">{{ seatCount.name }}</label>
@@ -153,22 +153,24 @@
                   type="radio"
                   class="capp-radio__default"
                   name="smoker"
-                  id="smoker-yes"
-                  value="yes"
+                  id="smoker-true"
+                  value="true"
                   v-model="isSmoker"
+                  @change="filterCarsBySmoking()"
                 />
-                <label for="smoker-yes">Ja</label>
+                <label for="smoker-true">Ja</label>
               </li>
               <li class="question-list__item">
                 <input
                   type="radio"
                   class="capp-radio__default"
                   name="smoker"
-                  id="smoker-no"
-                  value="no"
+                  id="smoker-false"
+                  value="false"
                   v-model="isSmoker"
+                  @change="filterCarsBySmoking()"
                 />
-                <label for="smoker-no">Nein</label>
+                <label for="smoker-false">Nein</label>
               </li>
             </ul>
           </div>
@@ -192,24 +194,61 @@
                   type="radio"
                   class="capp-radio__default"
                   name="isofix"
-                  id="isofix-yes"
-                  value="yes"
+                  id="isofix-true"
+                  value="true"
                   v-model="hasIsofix"
+                  @change="filterCarsByIsofix()"
                 />
-                <label for="isofix-yes">Ja</label>
+                <label for="isofix-true">Ja</label>
               </li>
               <li class="question-list__item">
                 <input
                   type="radio"
                   class="capp-radio__default"
                   name="isofix"
-                  id="isofix-no"
-                  value="no"
+                  id="isofix-false"
+                  value="false"
                   v-model="hasIsofix"
+                  @change="filterCarsByIsofix()"
                 />
-                <label for="isofix-no">Nein</label>
+                <label for="isofix-false">Nein</label>
               </li>
             </ul>
+          </div>
+        </section>
+      </article>
+      <!-- Filtern nach Mindest-Alter -->
+      <article class="question-list__categorie">
+        <input
+          type="checkbox"
+          name="question"
+          id="filter-min-age"
+          class="question-list__btn"
+        /><label class="question-list__header" for="filter-min-age">{{
+          h2minAge
+        }}</label>
+        <section class="question-list__list">
+          <div>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="minAge in minAges"
+                :key="minAge.id"
+              >
+                <input
+                  type="checkbox"
+                  :name="minAge.id"
+                  :id="minAge.id"
+                  v-model="minAge.checked"
+                  @change="chooseMinAges(), filterCarsByMinAge()"
+                  class="capp-btn__default"
+                />
+                <label :for="minAge.id" class="capp-label__default">{{
+                  minAge.name
+                }}</label>
+              </li>
+            </ul>
+            <p hidden>{{ chosenMinAges }}</p>
           </div>
         </section>
       </article>
@@ -232,12 +271,13 @@
                 :key="trunkSize.id"
               >
                 <input
-                  type="checkbox"
-                  :name="trunkSize.id"
+                  type="radio"
+                  name="trunk-size"
                   :id="trunkSize.id"
-                  v-model="trunkSize.checked"
-                  @change="chooseTrunkSizes()"
-                  class="capp-btn__default"
+                  :value="[trunkSize.id, trunkSize.min, trunkSize.max]"
+                  v-model="chosenTrunkSize"
+                  @change="filterCarsByTrunkSize()"
+                  class="capp-radio__default"
                 />
                 <label :for="trunkSize.id"
                   >{{ trunkSize.id }} {{ trunkSize.min }}-{{
@@ -247,7 +287,6 @@
                 >
               </li>
             </ul>
-            <p hidden>{{ chosenTrunkSizes }}</p>
           </div>
         </section>
       </article>
@@ -262,28 +301,86 @@
           h2features
         }}</label>
         <section class="question-list__list">
-          <ul class="question-list">
-            <li
-              class="question-list__item"
-              v-for="feature in features"
-              :key="feature.id"
-            >
-              <input
-                type="checkbox"
-                class="capp-btn__default"
-                :name="`feature-${feature.id}`"
-                :id="`feature-${feature.id}`"
-                v-model="feature.checked"
-                @change="chooseFeatures()"
-              />
-              <label :for="`feature-${feature.id}`">{{ feature.name }}</label>
-            </li>
-          </ul>
-          <p hidden>{{ chosenFeatures }}</p>
+          <div>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="feature in features"
+                :key="feature.id"
+              >
+                <input
+                  type="checkbox"
+                  class="capp-btn__default"
+                  :name="`feature-${feature.id}`"
+                  :id="`feature-${feature.id}`"
+                  v-model="feature.checked"
+                  @change="chooseFeatures()"
+                />
+                <label :for="`feature-${feature.id}`">{{ feature.name }}</label>
+              </li>
+            </ul>
+            <p hidden>{{ chosenFeatures }}</p>
+          </div>
+        </section>
+      </article>
+      <!-- Filtern nach Postleitzahl (zipcode) -->
+      <article class="question-list__categorie">
+        <input
+          type="checkbox"
+          name="question"
+          id="filter-zipcode"
+          class="question-list__btn"
+        /><label class="question-list__header" for="filter-zipcode">{{
+          h2zipcode
+        }}</label>
+        <section class="question-list__list">
+          <div>
+            <ul class="question-list">
+              <li
+                class="question-list__item"
+                v-for="zipcode in zipcodes"
+                :key="zipcode"
+              >
+                <input
+                  type="radio"
+                  name="zipcode"
+                  :id="`zipcode-${zipcode}`"
+                  :value="zipcode"
+                  v-model="chosenZipCode"
+                  class="capp-radio__default"
+                  @change="filterCarsByZipCode()"
+                />
+                <label :for="`zipcode-${zipcode}`" class="capp-label__default"
+                  >{{ zipcode }}xxxx</label
+                >
+              </li>
+            </ul>
+          </div>
         </section>
       </article>
     </section>
   </form>
+
+  <ul>
+    <li
+      v-for="filteredCar in filteredCars"
+      :key="filteredCar.id"
+      style="margin-bottom: 2rem"
+    >
+      {{ filteredCar.car_types.brands.brand_name }}
+      {{ filteredCar.car_types.car_type_name }} <br />
+      {{ filteredCar.car_types.category }} <br />
+      {{ filteredCar.users.address }}, {{ filteredCar.users.zipcode }}
+      {{ filteredCar.users.city }} <br />
+      Kofferraum-Volumen: {{ filteredCar.trunk_volume_in_liters }} l<br />
+      Anzahl Sitze: {{ filteredCar.count_of_seats }}<br />
+      Getriebe: {{ filteredCar.gear }}<br />
+      Treibstoff: {{ filteredCar.fuel_type }}<br />
+      Rauchen erlaubt: {{ filteredCar.is_smoker }}<br />
+      Isofix vorhanden: {{ filteredCar.has_isofix }}<br />
+      Mindestalter: {{ filteredCar.min_age }}
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -298,13 +395,22 @@ export default {
       h2filterCarType: "Auto-Typen",
       h2filterFuelType: "Treibstoff-Arten",
       h2filterGears: "Getriebe-Art",
+      h2minAge: "Mindest-Alter",
       h2filterTrunkSize: "Kofferraum-Größe",
-      h2filterSeats: "Anzahl an freien Sitzen",
+      h2filterTrunkSizes: "Kofferraum-Größen",
+      h2filterSeats: "Anzahl Sitze",
       h2features: "Ausstattung",
-      h2smoker: "Raucher oder Nichtraucher?",
+      h2smoker: "Ist Rauchen im Auto erlaubt?",
       h2isofix: "Isofix Kindersitz-Halterung vorhanden?",
+      h2zipcode: "Postleitzahl",
       isSmoker: "",
       hasIsofix: "",
+      //(filtered) cars -------------------------------
+      cars: null,
+      filteredCars: null,
+      filteredCarTypes: null,
+      filteredUsers: null,
+      //carTypes -------------------------------
       carTypes: [
         {
           id: 1,
@@ -327,13 +433,13 @@ export default {
         {
           id: 4,
           name: "Kombi",
-          iconSource: "Suv.svg",
+          iconSource: "Combi.svg",
           checked: false,
         },
         {
           id: 5,
           name: "Limousine",
-          iconSource: "Suv.svg",
+          iconSource: "Limousine.svg",
           checked: false,
         },
         {
@@ -357,11 +463,13 @@ export default {
         {
           id: 9,
           name: "Van",
-          iconSource: "Transporter.svg",
+          iconSource: "Bus.svg",
           checked: false,
         },
       ],
       chosenCarTypes: [],
+      chosenCarTypeNames: [],
+      //fuelTypes -------------------------------
       fuelTypes: [
         {
           id: "autogas",
@@ -401,6 +509,8 @@ export default {
         },
       ],
       chosenFuelTypes: [],
+      chosenFuelTypeNames: [],
+      //gear -------------------------------
       gears: [
         {
           id: "automatic",
@@ -412,6 +522,7 @@ export default {
         },
       ],
       chosenGear: "",
+      //seatCounts -------------------------------
       seatCounts: [
         {
           id: 2,
@@ -435,6 +546,28 @@ export default {
         },
       ],
       chosenSeatCounts: [],
+      chosenSeatCountIDs: [],
+      //minAges -------------------------------
+      minAges: [
+        {
+          id: 18,
+          name: "18 Jahre",
+          checked: false,
+        },
+        {
+          id: 21,
+          name: "21 Jahre",
+          checked: false,
+        },
+        {
+          id: 25,
+          name: "25 Jahre",
+          checked: false,
+        },
+      ],
+      chosenMinAges: [],
+      chosenMinAgeIDs: [],
+      //trunkSizes -------------------------------
       trunkSizes: [
         {
           id: "S",
@@ -477,7 +610,11 @@ export default {
           checked: false,
         },
       ],
-      chosenTrunkSizes: [],
+      chosenTrunkSize: "",
+      //zipcodes -------------------------------
+      zipcodes: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      chosenZipCode: "",
+      //features -------------------------------
       features: [],
       chosenFeatures: [],
     };
@@ -497,6 +634,8 @@ export default {
         });
       }
     },
+    //Choose Functions
+    //Choose Car Types
     chooseCarTypes() {
       this.carTypes.forEach((carType) => {
         carType.checked != carType.checked;
@@ -510,7 +649,11 @@ export default {
       this.chosenCarTypes = this.chosenCarTypes.filter((carType) => {
         return carType.checked === true;
       });
+      this.chosenCarTypeNames = this.chosenCarTypes.map((chosenCarType) => {
+        return chosenCarType.name;
+      });
     },
+    //Choose Fuel Types
     chooseFuelTypes() {
       this.fuelTypes.forEach((fuelType) => {
         fuelType.checked != fuelType.checked;
@@ -524,7 +667,11 @@ export default {
       this.chosenFuelTypes = this.chosenFuelTypes.filter((fuelType) => {
         return fuelType.checked === true;
       });
+      this.chosenFuelTypeNames = this.chosenFuelTypes.map((chosenFuelType) => {
+        return chosenFuelType.name;
+      });
     },
+    //Choose Seat Counts
     chooseSeatCounts() {
       this.seatCounts.forEach((seatCount) => {
         seatCount.checked != seatCount.checked;
@@ -538,21 +685,26 @@ export default {
       this.chosenSeatCounts = this.chosenSeatCounts.filter((seatCount) => {
         return seatCount.checked === true;
       });
+      this.chosenSeatCountIDs = this.chosenSeatCounts.map((chosenSeatCount) => {
+        return chosenSeatCount.id;
+      });
     },
-    chooseTrunkSizes() {
-      this.trunkSizes.forEach((trunkSize) => {
-        trunkSize.checked != trunkSize.checked;
-        if (
-          trunkSize.checked === true &&
-          !this.chosenTrunkSizes.includes(trunkSize)
-        ) {
-          this.chosenTrunkSizes.push(trunkSize);
+    //Choose MinAges
+    chooseMinAges() {
+      this.minAges.forEach((minAge) => {
+        minAge.checked != minAge.checked;
+        if (minAge.checked === true && !this.chosenMinAges.includes(minAge)) {
+          this.chosenMinAges.push(minAge);
         }
       });
-      this.chosenTrunkSizes = this.chosenTrunkSizes.filter((trunkSize) => {
-        return trunkSize.checked === true;
+      this.chosenMinAges = this.chosenMinAges.filter((minAge) => {
+        return minAge.checked === true;
+      });
+      this.chosenMinAgeIDs = this.chosenMinAges.map((chosenMinAge) => {
+        return chosenMinAge.id;
       });
     },
+    //Choose Features
     chooseFeatures() {
       this.features.forEach((feature) => {
         feature.checked != feature.checked;
@@ -567,16 +719,185 @@ export default {
         return feature.checked === true;
       });
     },
-    chooseItems(items, chosenItems) {
-      items.forEach((item) => {
-        item.checked != item.checked;
-        if (item.checked === true && !chosenItems.includes(item)) {
-          chosenItems.push(item);
+    //Filter Functions
+    //chosenFuelTypeNames
+    async filterCarsByFuelType() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*,
+          users (id, username, firstname, lastname, address, zipcode, city),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .in("fuel_type", this.chosenFuelTypeNames);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //chosenGear
+    async filterCarsByGear() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*,
+          users (id, username, firstname, lastname, address, zipcode, city),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .eq("gear", this.chosenGear);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //hasIsofix
+    async filterCarsByIsofix() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*,
+          users (id, username, firstname, lastname, address, zipcode, city),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .eq("has_isofix", this.hasIsofix);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //isSmoker
+    async filterCarsBySmoking() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*,
+          users (id, username, firstname, lastname, address, zipcode, city),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .eq("is_smoker", this.isSmoker);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //chosenSeatCountIDs
+    async filterCarsBySeatCount() {
+      if (this.chosenSeatCountIDs.includes(6)) {
+        const { data } = await supabase
+          .from("cars")
+          .select(
+            `*,
+          users (id, username, firstname, lastname, address, zipcode, city),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+          )
+          .or(
+            "count_of_seats.in.(" +
+              this.chosenSeatCountIDs +
+              "), count_of_seats.gte.6"
+          );
+        this.filteredCars = data;
+      } else {
+        const { data } = await supabase
+          .from("cars")
+          .select(
+            `*,
+          users (id, username, firstname, lastname, address, zipcode, city),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+          )
+          .in("count_of_seats", this.chosenSeatCountIDs);
+        this.filteredCars = data;
+      }
+      console.log(this.filteredCars);
+    },
+    //chosenMinAgeIDs
+    async filterCarsByMinAge() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*,
+          users (id, username, firstname, lastname, address, zipcode, city),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .in("min_age", this.chosenMinAgeIDs);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //chosenTrunkSize
+    async filterCarsByTrunkSize() {
+      const { data } = await supabase
+        .from("cars")
+        .select(
+          `*,
+          users (id, username, firstname, lastname, address, zipcode, city),
+          car_types ( id, car_type_name, category, brand_id, brands ( id, brand_name ) ),
+          cars_features ( id, car_id, feature_id, features ( id, feature_name ) )`
+        )
+        .gte("trunk_volume_in_liters", this.chosenTrunkSize[1])
+        .lte("trunk_volume_in_liters", this.chosenTrunkSize[2]);
+      this.filteredCars = data;
+      console.log(this.filteredCars);
+    },
+    //chosenCarTypeNames
+    async filterCarsByCarType() {
+      const { data } = await supabase
+        .from("car_types")
+        .select(
+          `*, brands(brand_name), 
+          cars(
+            *, 
+            users(id, username, firstname, lastname, address, zipcode, city), 
+            car_types(car_type_name, category, brands(brand_name)), 
+            cars_features(id, car_id, feature_id, features(id, feature_name))
+          )`
+        )
+        .in("category", this.chosenCarTypeNames);
+
+      this.filteredCarTypes = data;
+
+      this.filteredCarTypes = this.filteredCarTypes.filter(
+        (filteredCarType) => {
+          return filteredCarType.cars.length > 0;
         }
+      );
+      console.log(this.filteredCarTypes);
+
+      this.filteredCars = [];
+
+      this.filteredCarTypes.forEach((filteredCarType) => {
+        filteredCarType.cars.forEach((car) => {
+          this.filteredCars.push(car);
+        });
       });
-      chosenItems = chosenItems.filter((item) => {
-        return item.checked === true;
+      console.log(this.filteredCars);
+    },
+    //chosenZipCode
+    async filterCarsByZipCode() {
+      const { data } = await supabase
+        .from("users")
+        .select(
+          `*, 
+          cars(
+            *, 
+            users(username, firstname, lastname, address, zipcode, city), 
+            car_types(car_type_name, category, brands(brand_name)), 
+            cars_features(id, car_id, feature_id, features(id, feature_name))
+          )`
+        )
+        .like("zipcode", `${this.chosenZipCode}%`);
+      this.filteredUsers = data;
+
+      this.filteredUsers = this.filteredUsers.filter((filteredUser) => {
+        return filteredUser.cars.length > 0;
       });
+      console.log(this.filteredUsers);
+
+      this.filteredCars = [];
+
+      this.filteredUsers.forEach((filteredUser) => {
+        filteredUser.cars.forEach((car) => {
+          this.filteredCars.push(car);
+        });
+      });
+      console.log(this.filteredCars);
     },
   },
 };
@@ -720,6 +1041,10 @@ label {
   padding-block: calc(var(--s-font) / 2);
   font-size: 1.15rem;
   letter-spacing: 0.1rem;
+}
+
+input[type="radio"] ~ label {
+  line-height: 2;
 }
 
 label > img {
