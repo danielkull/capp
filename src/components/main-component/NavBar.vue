@@ -271,9 +271,7 @@ svg {
   width: 70%;
   align-self: end;
 }
-
 /*==================================================*/
-
 .menue-cards {
   width: 100%;
   height: 100%;
@@ -325,9 +323,7 @@ svg {
 :has(#menue-icon:checked) .nav-bar__menu-main {
   margin-top: 16.1%;
 }
-
 /*=============================================================*/
-
 .menu-main__wrapper {
   width: 100%;
   height: 100%;
@@ -384,8 +380,7 @@ svg {
 #chat-window {
   all: unset;
   position: absolute;
-} /*=========================*/
-
+} 
 .msg-user__pin-wrapper {
   width: 100%;
   height: max-content;
