@@ -42,7 +42,7 @@
           </p>
         </div>
       </article>
-      <!------------------------------------------->
+  
       <article class="chat-text__other-user">
         <div class="text-user__other txt-user">
           <time datetime="12:32">10:32</time>
@@ -54,7 +54,7 @@
           </p>
         </div>
       </article>
-      <!------------------------------------------->
+     
       <article class="chat-text__own">
         <div class="text-user__own txt-user">
           <time datetime="12:32">11:05</time>
@@ -70,11 +70,10 @@
           </p>
         </div>
       </article>
-      <!------------------------------------------->
-      <article class="chat__time-stamp">
+          <article class="chat__time-stamp">
         <day>Dienstag</day> <date>24.5.23</date>
       </article>
-      <!------------------------------------------->
+      
       <article class="chat-text__other-user">
         <div class="text-user__other txt-user">
           <time datetime="12:32">11:45</time>
@@ -90,7 +89,7 @@
           </p>
         </div>
       </article>
-      <!------------------------------------------->
+
     </section>
 
     <section class="chat-footer">
