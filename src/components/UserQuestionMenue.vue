@@ -179,6 +179,26 @@
             <h3>Raucher</h3>
             <ul class="question-list radio-list">
               <li class="question-list__item">
+                <input
+                  type="radio"
+                  class="capp-radio__default"
+                  name="smoker"
+                  id="smoker-true"
+                  value="true"
+                  v-model="isSmoker"
+                />
+                <label for="smoker-true">Ja</label>
+              </li>
+              <li class="question-list__item">
+                <input
+                  type="radio"
+                  class="capp-radio__default"
+                  name="smoker"
+                  id="smoker-false"
+                  value="false"
+                  v-model="isSmoker"
+                />
+                <label for="smoker-false">Nein</label>
                 <label for="smoker-yes">
                   <input
                     type="radio"
@@ -209,12 +229,26 @@
             <h3>Isofix Kindersitz-Halterung</h3>
             <ul class="question-list radio-list">
               <li class="question-list__item">
-                <!-- <RadioButton
-                  :radioName="isofix"
-                  :radioId="isofix - yes"
-                  value="yes"
+                <input
+                  type="radio"
+                  class="capp-radio__default"
+                  name="isofix"
+                  id="isofix-true"
+                  value="true"
                   v-model="hasIsofix"
-                /> -->
+                />
+                <label for="isofix-true">Ja</label>
+              </li>
+              <li class="question-list__item">
+                <input
+                  type="radio"
+                  class="capp-radio__default"
+                  name="isofix"
+                  id="isofix-false"
+                  value="false"
+                  v-model="hasIsofix"
+                />
+                <label for="isofix-false">Nein</label>
                 <label for="isofix - yes">
                   <input
                     type="radio"
@@ -227,13 +261,7 @@
                   Ja</label
                 >
               </li>
-              <li class="question-list__item">
-                <!-- <RadioButton
-                  :radioName="'isofix'"
-                  :radioId="'isofix-no'"
-                  value="no"
-                  v-model="hasIsofix"
-                /> -->
+              <li class="question-list__item">          
                 <label for="isofix - no">
                   <input
                     type="radio"
@@ -305,10 +333,11 @@
         >
         <section class="question-list__list">
           <div>
+
             <ul
               class="question-list radio-list ul-input__text trunk-size__list"
             >
-              <li
+            <li
                 class="question-list__item trunk__list"
                 v-for="luggageTrunkSize in luggageTrunkSizes"
                 :key="luggageTrunkSize.id"
@@ -357,6 +386,10 @@
         }}</label>
         <section class="question-list__list">
           <div>
+            <p >
+              Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
+              kannst Du sie hier auswählen:
+                 </p>
             <p>
               Gibt es Einschränkungen für die Vermietung Deines Autos? <br />
               Dann kannst Du sie hier auswählen:
@@ -433,8 +466,6 @@ export default {
       h2textFeatures: "Ausstattung",
       h2textTrunkSize: "Kofferraum-Größen",
       h2textLimitations: "Einschränkungen für die Vermietung",
-      //inputType: "password",
-      //inputTypeText: "show Password",
       usernameValue: "",
       passwordValue: "",
       firstnameValue: "",
@@ -470,17 +501,17 @@ export default {
         {
           id: 3,
           name: "Kleinwagen",
-          iconSource: "Cabrio.svg",
+          iconSource: "Kleinwagen.svg",
         },
         {
           id: 4,
           name: "Kombi",
-          iconSource: "Suv.svg",
+          iconSource: "Combi.svg",
         },
         {
           id: 5,
           name: "Limousine",
-          iconSource: "Suv.svg",
+          iconSource: "Limousine.svg",
         },
         {
           id: 6,
@@ -500,7 +531,7 @@ export default {
         {
           id: 9,
           name: "Van",
-          iconSource: "Transporter.svg",
+          iconSource: "Bus.svg",
         },
       ],
       fuelTypes: [
@@ -751,6 +782,7 @@ ul.question-list {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
 }
 
 .padding-top {
@@ -791,7 +823,6 @@ ul.question-list {
   font-size: var(--font-hr3);
   color: var(--text-light);
   padding-block: var(--s-pad);
-  /* padding-left: var(--m-pad); */
   margin-bottom: 2rem;
   text-align: center;
   width: 90%;
@@ -1014,14 +1045,10 @@ select:focus-within {
 }
 
 @media screen and (max-width: 400px) {
-  /* .question-list__car-info {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  } */
   ul.radio-list {
     list-style-type: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    /* gap: 0.35rem; */
   }
 }
 @media screen and (min-width: 900px) {
