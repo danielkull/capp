@@ -333,7 +333,7 @@
         >
         <section class="question-list__list">
           <div>
-            <ul class="question-list" style="padding-block: 1rem">
+
             <ul
               class="question-list radio-list ul-input__text trunk-size__list"
             >
@@ -386,7 +386,7 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <p style="padding-block: 1rem">
+            <p >
               Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
               kannst Du sie hier auswählen:
             <p>
