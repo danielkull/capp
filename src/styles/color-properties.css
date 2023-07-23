@@ -271,7 +271,7 @@
   /*=========checkbox===*/
   --check-default: var(--list-color);
   --check-checked: var(--clr-prime-d);
-  --clr-after-btn: var(--clr-font-lightest);
+  --clr-after-btn: var(--clr-font-light);
   /*=======carmenue=======*/
   --menue-icon-act: var(--primary-middle);
   /*============tetfield================*/

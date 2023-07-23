@@ -128,11 +128,11 @@
   --font-list-header: clamp(1rem, 3vw, 1.5rem);
   --font-list-label: clamp(1rem, 3vw, 1.3rem);
   --font-list-label-s: clamp(0.9rem, 3vw, 1.2rem);
-
+  --font-list-label-xs: clamp(0.8rem, 3vw, 1.1rem);
   /*============================================*/
   /*           default-btn*/
   /*============================================*/
-
+  --btn-height-s: 0.6rem;
   --btn-height-default: 0.8rem;
   --btn-height-small: 1rem;
   --circle-radius: 100%;

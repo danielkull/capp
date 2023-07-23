@@ -161,9 +161,8 @@ export default {
     },
     changeTranslateChat(value) {
       this.msgChatTranslate = value;
-    },    
+    },
   },
-
 };
 </script>
 
@@ -403,7 +402,7 @@ svg {
 #chat-window {
   all: unset;
   position: absolute;
-} 
+}
 .msg-user__pin-wrapper {
   width: 100%;
   height: max-content;

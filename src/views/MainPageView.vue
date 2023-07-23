@@ -17,7 +17,7 @@
         </label>
       </span>
     </article>
-    <div class="main-page__shadow"></div>
+    <!-- <div class="main-page__shadow"></div> -->
   </header>
 
   <main class="app-mainpage__main-page main-page-style">
@@ -323,39 +323,26 @@ main::-webkit-scrollbar {
 }
 
 :has(#filter-box:checked) .filter-choice {
-  translate: 0 0px;
+  translate: 0 -17px;
 }
 /*====================================================*/
 
 .filter-choice {
-  background: var(--secondray-ligth);
-  height: 40rem;
+  height: max-content;
+  padding-bottom: 1.5rem;
   width: 100%;
   translate: 0 -650px;
   transition: 0.6s ease-in-out;
-  background: var(--secondary-light);
+  background: var(--clr-bg);
   position: absolute;
-  border-radius: 0 0 1.5rem 1.5rem;
+  border-bottom: 2px solid var(--clr-sur-l);
+  box-shadow: 0 0 20px var(--shd-f-h-dark), 0 0 40px var(--shd-f-h-light);
+  border-radius: 0 0 1.2rem 1.2rem;
   top: 0;
   left: 0;
-  z-index: 10;
-}
-.filter-choice-frame {
-  position: absolute;
-  transition: 0.8s ease-in-out;
-  border-radius: 0 0 1.5rem 1.5rem;
-  top: 0;
-  left: 0;
-  height: 30rem;
-  width: 100%;
-  translate: 0 -650px;
-  background-color: rgb(255 255 255 / 0);
-  backdrop-filter: blur(2px);
-}
-:has(#filter-box:checked) .filter-choice-frame {
-  translate: 0 600px;
-  background-color: rgb(255 255 255 / 0.3);
-  backdrop-filter: blur(2px);
+  z-index: 12;
+  position: sticky;
+  top: -13rem;
 }
 
 /* ===== Router link ===== */
