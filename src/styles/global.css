@@ -107,7 +107,9 @@
   --icon-margin: 0.1rem;
   --margin-default: 1rem;
   --padding-default: 1rem;
+  --xs-marg: calc(var(--s-marg) / 2);
   --s-marg: var(--margin-default);
+  --m-marg: calc(var(--margin-default) * 2);
   --xs-pad: calc(var(--s-pad) / 2);
   --s-pad: var(--padding-default);
   --m-pad: calc(var(--padding-default) * 2);
@@ -116,14 +118,14 @@
   --m-brd: 2px;
   --l-brd: 3px;
   /*===========================*/
-
+  --f-expand-header: 100;
   --f-weight-light: 300;
   --f-weight-reg: 400;
   --f-weight-m: 500;
   --f-weight-l: 600;
   --f-weight-bold: 700;
   --font-hr3: clamp(1.1rem, 2vw, 1.5rem);
-  --font-list-header: clamp(1rem, 2vw, 1.5rem);
+  --font-list-header: clamp(1rem, 3vw, 1.5rem);
   --font-list-label: clamp(1rem, 3vw, 1.3rem);
   --font-list-label-s: clamp(0.9rem, 3vw, 1.2rem);
 

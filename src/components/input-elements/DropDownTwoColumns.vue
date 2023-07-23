@@ -46,7 +46,7 @@
         :required="isRequired"
       >
         <option disabled value="">{{ defaultText }}</option>
-        <option v-for=" item in givenData" :value="item.id" :key="item.id">
+        <option v-for="item in givenData" :value="item.id" :key="item.id">
           <p>
             {{ Object.values(item)[1] }}
           </p>
@@ -120,7 +120,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 1rem;
+  margin-bottom: calc(2rem + 1vh);
 }
 .capp-input__wrapper span {
   width: 100%;
@@ -128,7 +128,6 @@ export default {
 .capp-label__default {
   display: block;
   color: var(--primary-dark);
-
   padding-block: calc(var(--s-font) / 2);
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
@@ -137,24 +136,23 @@ export default {
 .capp-input__default {
   display: block;
   width: 100%;
-  border: 2px solid var(--clr-trans);
+  border: var(--m-brd) solid var(--clr-trans);
   border-radius: 0.5rem;
-  padding-inline: 0.5rem;
-  padding-block: 1rem;
-  font-size: var(--m-font);
-  background: var(--clr-bg-main);
-  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
-  color: var(--font-color-dark);
+  padding-inline: var(--xs-pad);
+  padding-block: var(--s-pad);
+
+  font-size: var(--font-list-label-s);
+  background: var(--clr-sur-l);
+  color: var(--text-light);
+  outline: none;
+  border: 1px solid transparent;
 }
 .capp-input__default:hover {
   cursor: pointer;
 }
-.capp-input__default::placeholder {
-  opacity: 0.5;
-}
 
 .capp-input__default:focus {
-  outline-color: var(--primary-light);
+  border-color: var(--primary-middle);
 }
 .capp-input__help-wrapper {
   position: relative;
@@ -165,28 +163,31 @@ export default {
   aspect-ratio: 1;
 }
 .capp-input__btn:active > svg {
-  fill: var(--primary-mid);
+  fill: var(--primary-middle);
 }
 .capp-input__btn svg {
-  fill: var(--secondary-default);
+  fill: var(--list-default);
   position: relative;
 }
-
+.capp-input__help-wrapper {
+  translate: 0 100%;
+  margin-left: 1rem;
+}
 .capp-input__help {
   position: absolute;
   top: 60px;
-  left: -280px;
+  left: -300px;
   display: block;
-  font-size: var(--s-font);
+  font-size: var(--font-list-label);
   background: var(--clr-sur-l);
   color: var(--text-mid);
-  border-radius: 1rem;
-  width: 20rem;
+  border-radius: var(--s-brd-rad);
+  width: 18rem;
   height: auto;
   padding: var(--s-pad);
   text-align: start;
   z-index: 10;
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 50px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px var(--foot-shd-d), 0 0 50px var(--foot-shd-d);
 }
 /*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 

@@ -1,5 +1,4 @@
 <template>
-
   <section class="msg-view__wrapper">
     <span class="msg-header"
       ><h3>Angepinnt</h3>
@@ -107,7 +106,6 @@ h3 {
   color: var(--text-light);
   font-size: 1.2rem;
   font-weight: 500;
-  position: relative; 
 }
 .msg-header svg {
   fill: var(--text-light);
