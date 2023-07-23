@@ -20,8 +20,8 @@
         <!-------------------------------------------------------------------->
 
         <!----------Hier Content--------->
-        <Calendar @selectedDate="showSelectedDate">
-          <div class="calendar-button-wrapper">
+        <Calendar @selectedDate="showSelectedDate"
+          ><div class="calendar-button-wrapper">
             <a href="#booking-page" class="car-info__link">
               <Button
                 value="Buchen"
@@ -31,6 +31,15 @@
             </a>
           </div>
         </Calendar>
+        <!-- <div class="calendar-button-wrapper">
+          <a href="#booking-page" class="car-info__link">
+            <Button
+              value="Buchen"
+              @click="globalStateStore.saveCurrentDate(newDate)"
+            >
+            </Button>
+          </a>
+        </div> -->
         <!-------------------------------------------------------------------->
       </section>
     </div>
@@ -87,7 +96,7 @@ section:target {
   translate: -100% 0;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(to top, white 30%, transparent),
+  background: linear-gradient(to top, var(--clr-bg) 30%, transparent),
     linear-gradient(to right, var(--clr-prime-m) 40%, var(--clr-prime-vd));
   width: 0;
   transition: 0.2s;
@@ -101,7 +110,8 @@ section:target {
   margin-top: -1vh;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   box-shadow: inset 0 10px 20px var(--box-shd);
-  border-top: 1px solid var(--brd-top);
+  border-top: var(--s-brd) solid var(--brd-top);
+  overflow: hidden;
 }
 .menue-expand__outer-wrapper header {
   width: 90%;
@@ -133,20 +143,19 @@ header h2 {
 .menue-expand__site-main {
   /*============Hintergund für DarkMode============*/
   display: block;
-  width: 95%;
+  width: 100%;
   height: 90.5vh;
   margin-top: 0.2rem;
-  margin-inline: auto;
-  padding-inline: var(--s-pad);
   border-radius: var(--s-brd-rad) var(--s-brd-rad) 0 0;
-  background: var(--bg-content);
-
+  background-color: var(--clr-sur-d);
   overflow: scroll;
 }
 /* ====== Beginn: Calendar Button style ====== */
 .calendar-button-wrapper {
   position: absolute;
-  top: 62.5%;
+  margin-top: 17vh;
+  left: 50%;
+  translate: -50% 0;
 }
 
 .car-info__link {
