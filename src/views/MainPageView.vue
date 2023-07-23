@@ -330,12 +330,13 @@ main::-webkit-scrollbar {
 .filter-choice {
   height: max-content;
   padding-bottom: 1.5rem;
+  padding-top: 0.2rem;
   width: 100%;
   translate: 0 -650px;
   transition: 0.6s ease-in-out;
-  background: var(--clr-bg);
+  background: var(--filter-menue-bg);
   position: absolute;
-  border-bottom: 2px solid var(--clr-sur-l);
+  border-bottom: 2px solid var(--filter-brd);
   box-shadow: 0 0 20px var(--shd-f-h-dark), 0 0 40px var(--shd-f-h-light);
   border-radius: 0 0 1.2rem 1.2rem;
   top: 0;

@@ -1022,7 +1022,7 @@ export default {
   width: 95%;
   margin-top: 1.5rem;
   margin-inline: auto;
-  background: var(--clr-bg);
+  background: var(--filter-menue-bg);
 }
 
 .question-list__header,
@@ -1041,7 +1041,7 @@ export default {
   padding-inline: 1rem;
   font-size: var(--font-list-label-s);
   color: var(--text-light);
-  background: var(--clr-bg);
+  background: var(--filter-menue-bg);
   border-bottom: 1px solid var(--clr-brd);
 }
 
