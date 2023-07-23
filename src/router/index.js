@@ -36,7 +36,7 @@ const routes = [
     meta: {
       // Wird bei der Finalen Version auf true gesetzt damit Route mit Auth funktioniert
       // Bei entwicklung ist es erstmal hinterlich, daher false
-      needsAuth: false,
+      needsAuth: true,
     },
   },
   {
@@ -66,7 +66,7 @@ const routes = [
     meta: {
       // Wird bei der Finalen Version auf true gesetzt damit Route mit Auth funktioniert
       // Bei entwicklung ist es erstmal hinterlich, daher false
-      needsAuth: false,
+      needsAuth: true,
     },
   },
   {

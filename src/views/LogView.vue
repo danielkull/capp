@@ -5,7 +5,6 @@
       <!------------------------Nur fürs coden------------------------------------->
 
       <article>
-        class="logIn-card__wrapper" :class="{ 'in-motion': motionActive }" >
         <section class="logIn-card__logo-capp">
           <h1>CAPP</h1>
           <!-- === Start Page Section for Log In und Sign In === -->
@@ -55,11 +54,11 @@
             <!-- Msg for the User if input is in any way invalid after cklicking the LogIn/Sign in button -->
             <div>
               <p
-                v-if="InputIsInValid"
+                v-if="inputIsInValid"
                 class="capp-input__invalid-input"
                 :class="{
-                  input__valid: !InputIsInValid,
-                  input__invalid: InputIsInValid,
+                  input__valid: !inputIsInValid,
+                  input__invalid: inputIsInValid,
                 }"
               >
                 {{ invalidInputMsg }}
@@ -113,11 +112,11 @@
             <!-- Msg for the User if input is in any way invalid after cklicking the LogIn/Sign in button -->
             <div>
               <p
-                v-if="InputIsInValid"
+                v-if="inputIsInValid"
                 class="capp-input__invalid-input"
                 :class="{
-                  input__valid: !InputIsInValid,
-                  input__invalid: InputIsInValid,
+                  input__valid: !inputIsInValid,
+                  input__invalid: inputIsInValid,
                 }"
               >
                 {{ invalidInputMsg }}
@@ -166,14 +165,13 @@ export default {
       startPage: true,
       logInPage: false,
       signInPage: false,
-      motionActive: false,
       loading: false,
       email: null,
       password: null,
       username: null,
       isEmailValid: false,
       isPasswordValid: false,
-      InputIsInValid: false,
+      inputIsInValid: false,
       invalidInputMsg: "",
     };
   },
@@ -253,7 +251,7 @@ export default {
       this.emptyFormData();
       this.loading = true;
       this.invalidInputMsg = "";
-      this.InputIsInValid = false;
+      this.inputIsInValid = false;
       if (switchToPage === "logIn") {
         this.logInPage = !this.logInPage;
       } else if (switchToPage === "signIn") {
@@ -263,9 +261,7 @@ export default {
       this.hideSlide();
     },
     hideSlide() {
-      this.motionActive = true;
       setTimeout(() => {
-        this.motionActive = false;
         this.loading = false;
       }, 1000);
     },
@@ -293,7 +289,7 @@ export default {
         }
       } else {
         this.invalidInputMsg = "Deine Anmeldedaten sind leider unvollständig.";
-        this.InputIsInValid = true;
+        this.inputIsInValid = true;
       }
     },
     async handleSignIn() {
@@ -316,13 +312,13 @@ export default {
           if (duplicateUsername & duplicateMail) {
             this.invalidInputMsg =
               "Leider gibt es bereits den Usernamen, sowie die Mailadresse";
-            this.InputIsInValid = true;
+            this.inputIsInValid = true;
           } else if (duplicateUsername) {
             this.invalidInputMsg = "Leider gibt es bereits den Usernamen";
-            this.InputIsInValid = true;
+            this.inputIsInValid = true;
           } else if (duplicateMail) {
             this.invalidInputMsg = "Leider gibt es bereits die Mailadresse";
-            this.InputIsInValid = true;
+            this.inputIsInValid = true;
             // If They don't exist, sign Up this new user
           } else if (!duplicateUsername & !duplicateMail) {
             const { error } = await supabase.auth.signUp({
@@ -355,7 +351,7 @@ export default {
         }
       } else {
         this.invalidInputMsg = "Deine Anmeldedaten sind leider unvollständig.";
-        this.InputIsInValid = true;
+        this.inputIsInValid = true;
       }
     },
     toLowerCase(value) {
@@ -399,19 +395,6 @@ main {
     var(--bg-shd-l) 20%,
     var(--bg-shd-d) 100%
   );
-}
-.logIn-card__wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.in-motion {
-  overflow: hidden;
 }
 /*================================================*/
 /*                  Logo                          */

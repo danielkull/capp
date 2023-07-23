@@ -63,18 +63,29 @@
           </ul>
         </section>
       </article>
-      <p>
-        Wenn du dich nur als User zum Ausleihen von Autos anmelden möchtest,
-        dann fülle bitte die "{{ h2personal }}" aus und drücke diesen Button. In
-        deinen Einstellungen kannst du später immernoch ein Auto registieren
-        wenn du möchtest.
-      </p>
-      <Button
-        :value="loading ? 'Loading...' : 'User Daten Updaten'"
-        :disabled="loading"
-        id="sign-in-as-user-btn"
-        @click.prevent="handleUserRegistration"
-      ></Button>
+      <section class="question-list__info-section">
+        <p class="question-list__info-text">
+          Du willst nur User sein? Fülle bitte die "{{ h2personal }}" .
+        </p>
+        <Button
+          class="question-list__update-data-btn"
+          :value="loading ? 'Loading...' : 'User daten hinzufügen'"
+          :disabled="loading"
+          id="sign-in-as-user-btn"
+          @click.prevent="handleUserRegistration"
+        ></Button>
+        <p
+          v-if="inputIsInValidUser"
+          class="capp-input__invalid-input"
+          :class="{
+            input__valid: !inputIsInValidUser,
+            input__invalid: inputIsInValidUser,
+          }"
+        >
+          Leider fehlt eine der folgende Angaben:
+          {{ invalidInputMsg }}
+        </p>
+      </section>
       <!------------------------------------------------------------>
       <article class="question-list__categorie">
         <input
@@ -121,7 +132,7 @@
                     class="capp-radio__default"
                     name="fuel-type"
                     :id="`fuel-${fuelType.id}`"
-                    :value="fuelType.id"
+                    :value="fuelType.name"
                     v-model="chosenFuelType"
                   />
                   {{ fuelType.name }}</label
@@ -142,7 +153,7 @@
                     class="capp-radio__default"
                     name="transmission-type"
                     :id="`trans-${gear.id}`"
-                    :value="gear.id"
+                    :value="gear.name"
                     v-model="chosenGear"
                   />
                   {{ gear.name }}</label
@@ -369,27 +380,6 @@
                   {{ limitation.name }}</label
                 >
               </li>
-              <!-- 
-              <li class="question-list__item capp-input__wrapper">
-                <label for="min-age" class="capp-label__default"
-                  >Mindestalter</label
-                >
-                <select
-                  class="capp-select__default"
-                  name="min-age"
-                  id="min-age"
-                  v-model="chosenMinAge"
-                >
-                  <option
-                    v-for="minAge in minAges"
-                    :key="minAge.id"
-                    :value="minAge.id"
-                  >
-                    {{ minAge.name }}
-                  </option>
-                </select>
-              </li>
-              -->
 
               <select-drop-down
                 :selectId="'min-age'"
@@ -403,17 +393,29 @@
           </div>
         </section>
       </article>
-      <p>
-        Falls du gleich ein Auto mit registieren möchtest, dann fülle bitte das
-        gesamte Formular aus und drücke auf den Button um nicht als Car Owner zu
-        registieren.
-      </p>
-      <Button
-        :value="loading ? 'Loading...' : 'Anmelden als Car Owner'"
-        :disabled="loading"
-        id="sign-in-as-user-btn"
-        @click.prevent="handleCarOwnerRegistration"
-      ></Button>
+      <section class="question-list__info-section">
+        <p class="question-list__info-text">
+          Du möchtest ein Auto registieren? Fülle bitte das gesamte Formular.
+        </p>
+        <Button
+          class="question-list__update-data-btn"
+          :value="loading ? 'Loading...' : 'Anmelden als Car Owner'"
+          :disabled="loading"
+          id="sign-in-as-user-btn"
+          @click.prevent="handleCarOwnerRegistration"
+        ></Button>
+        <p
+          v-if="inputIsInValidOwner"
+          class="capp-input__invalid-input"
+          :class="{
+            input__valid: !inputIsInValidOwner,
+            input__invalid: inputIsInValidOwner,
+          }"
+        >
+          Leider fehlt eine der folgende Angaben:
+          {{ invalidInputMsg }}
+        </p>
+      </section>
     </section>
   </form>
 </template>
@@ -434,6 +436,9 @@ export default {
       // === General data pairs for this side ===
       activeUser: null,
       loading: false,
+      inputIsInValidUser: false,
+      inputIsInValidOwner: false,
+      invalidInputMsg: "",
       // = End of General data pairs =
       // === Naming of accordion category rows ===
       h2personal: "Persönliche Informationen",
@@ -713,14 +718,13 @@ export default {
     },
     carOwnerFormIsFilled() {
       if (
-        (this.chosenCarType !== "" &&
-          this.chosenFuelType !== "" &&
-          this.chosenGear !== "" &&
-          this.chosenSeatCount !== "" &&
-          this.isSmoker !== "" &&
-          this.hasIsofix !== "" &&
-          this.chosenTrunkSize !== "") ||
-        this.ownTrunkSize !== ""
+        this.chosenCarType !== "" &&
+        this.chosenFuelType !== "" &&
+        this.chosenGear !== "" &&
+        this.chosenSeatCount !== "" &&
+        this.isSmoker !== "" &&
+        this.hasIsofix !== "" &&
+        (this.chosenTrunkSize !== "" || this.ownTrunkSize !== "")
       ) {
         return true;
       } else {
@@ -728,66 +732,183 @@ export default {
         return false;
       }
     },
+    invalidInputFeedback(value) {
+      // First if checks gives feedback what in User Form is empty
+      const userFeedbackArr = [];
+      const ownerFeedbackArr = [];
+      if (value === "user" || value === "carOwner") {
+        this.inputIsInValidUser = true;
+        if (this.firstnameValue === "") {
+          ownerFeedbackArr.push("Vorname");
+        }
+        if (this.lastnameValue === "") {
+          ownerFeedbackArr.push("Nachname");
+        }
+        if (this.phoneValue === "") {
+          ownerFeedbackArr.push("Telefon Nummer");
+        }
+        if (this.addressValue === "") {
+          ownerFeedbackArr.push("Adresse");
+        }
+        if (this.zipcodeValue === "") {
+          ownerFeedbackArr.push("Postleitzahl");
+        }
+        if (this.cityValue === "") {
+          ownerFeedbackArr.push("Stadt");
+        }
+        // Second checks gives feedback what in Car Owner Form is empty
+      }
+      if (value === "carOwner") {
+        this.inputIsInValidUser = false;
+        this.inputIsInValidOwner = true;
+        if (this.chosenCarType === "") {
+          ownerFeedbackArr.push("Auto Typ");
+        }
+        if (this.chosenFuelType === "") {
+          ownerFeedbackArr.push("Treibstoff");
+        }
+        if (this.chosenGear === "") {
+          ownerFeedbackArr.push("Schaltung");
+        }
+        if (this.chosenSeatCount === "") {
+          ownerFeedbackArr.push("Sitz Anzahl");
+        }
+        if (this.isSmoker === "") {
+          ownerFeedbackArr.push("Raucher Status");
+        }
+        if (this.hasIsofix === "") {
+          ownerFeedbackArr.push("Isofix Vorhanden");
+        }
+        if (this.chosenTrunkSize === "" && this.ownTrunkSize === "") {
+          ownerFeedbackArr.push("Kofferraum Größe");
+        }
+      }
+      this.invalidInputMsg = ` ${userFeedbackArr.join(
+        ", "
+      )} ${ownerFeedbackArr.join(", ")}`;
+    },
+    defineTrunkVolumn() {
+      if (this.ownTrunkSize !== "") {
+        return Number(this.ownTrunkSize);
+      } else if (this.chosenTrunkSize !== "") {
+        return this.chosenTrunkSize[2];
+      }
+    },
     async handleUserRegistration() {
       // Get the active user for the update process
       this.activeUser = await this.authenticationStore.activeUser[0].id;
       if (this.userFormIsFilled()) {
         this.loading = true;
-        try {
-          // Update the respective data from the active User
-          const { error } = await supabase
-            .from("users")
-            .update({
-              firstname: this.firstnameValue,
-              lastname: this.lastnameValue,
-              phone: this.phoneValue,
-              address: this.addressValue,
-              zipcode: this.zipcodeValue,
-              city: this.cityValue,
-            })
-            .eq("id", this.activeUser);
-          if (error) throw error;
-        } catch (error) {
-          alert(error.message);
-        } finally {
-          this.loading = false;
-        }
+        // Performe update of User Data
+        this.addUpdateUserInSupabase();
+        // Send the new user on its way
+        this.$router.push({
+          name: "mainView",
+        });
       } else {
-        console.log("Nope");
-        // Hier eine invalid msg
-        // Feedback what is missing
+        this.invalidInputFeedback("user");
       }
     },
     async handleCarOwnerRegistration() {
       this.activeUser = await this.authenticationStore.activeUser[0].id;
+
       if (this.carOwnerFormIsFilled() && this.userFormIsFilled()) {
         this.loading = true;
+        let trunkVolumn = this.defineTrunkVolumn();
+        let carTypeId = 0;
+        let carId = 0;
+        // Performe update of User Data
+        this.addUpdateUserInSupabase();
+        //Create first Car Typ entrie to get it's Id
+        try {
+          const { data, error } = await supabase
+            .from("car_types")
+            .insert({
+              car_type_name: "",
+              brand_id: 57,
+              category: this.chosenCarType,
+            })
+            .select();
+
+          if (data) {
+            carTypeId = data[0].id;
+          }
+          if (error) {
+            throw error;
+          } else {
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+
         try {
           // Update the respective data from the active User
-          const { data, error } = await supabase.from("cars").insert({
-            type_id: xxx,
-            user_id: this.activeUser,
-            trunk_volume_in_liters: xxx,
-            img_source: xxx,
-            fuel_type: this.chosenFuelType,
-            gear: this.chosenGear,
-            count_of_seats: this.chosenSeatCount,
-            is_smoker: this.isSmoker,
-            has_isofix: this.hasIsofix,
-          });
-          console.log(data);
+          const { data, error } = await supabase
+            .from("cars")
+            .insert({
+              type_id: carTypeId,
+              user_id: this.activeUser,
+              trunk_volume_in_liters: trunkVolumn,
+              fuel_type: this.chosenFuelType,
+              gear: this.chosenGear,
+              count_of_seats: this.chosenSeatCount,
+              is_smoker: this.isSmoker,
+              has_isofix: this.hasIsofix,
+            })
+            .select();
+          if (data) {
+            carId = data[0].id;
+            // After car is created, use Id to create its features
+            this.addFeaturesToCarInSupabase(carId);
+          }
           if (error) throw error;
-          console.log("Jupp");
         } catch (error) {
           alert(error.message);
         } finally {
           this.loading = false;
         }
       } else {
-        console.log("Nope");
-        // Hier eine invalid msg
-        // Feedback what is missing
+        this.invalidInputFeedback("carOwner");
       }
+    },
+    async addUpdateUserInSupabase() {
+      try {
+        // Update the respective data from the active User
+        const { error } = await supabase
+          .from("users")
+          .update({
+            firstname: this.firstnameValue,
+            lastname: this.lastnameValue,
+            phone: this.phoneValue,
+            address: this.addressValue,
+            zipcode: this.zipcodeValue,
+            city: this.cityValue,
+          })
+          .eq("id", this.activeUser);
+        if (error) throw error;
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        this.loading = false;
+      }
+    },
+    async addFeaturesToCarInSupabase(carId) {
+      if (this.chosenFeatures.length > 0) {
+        for (let i = 0; i < this.chosenFeatures.length; i++) {
+          try {
+            const { error } = await supabase
+              .from("cars_features")
+              .insert({ car_id: carId, feature_id: this.chosenFeatures[i].id });
+            if (error) throw error;
+          } catch (error) {
+            alert(error.message);
+          }
+        }
+      }
+      // Send the new Owner on its way
+      this.$router.push({
+        name: "mainView",
+      });
     },
   },
 };
@@ -1032,6 +1153,45 @@ select {
 
 select:focus-within {
   outline-color: var(--primary-mid);
+}
+
+/* ==== Input is Invalid CSS ==== */
+.capp-input__invalid-input {
+  font-size: var(--s-font);
+  width: 100%;
+  height: max-content;
+  text-align: center;
+  padding-right: calc(var(--s-font) / 2);
+}
+.input__valid {
+  color: transparent;
+}
+.input__invalid {
+  color: var(--error-color);
+}
+/* === Info text area === */
+.question-list__info-text {
+  width: 100%;
+  text-align: center;
+  font-size: var(--font-list-header);
+  color: var(--text-light);
+  font-weight: var(--f-weight-m);
+}
+
+/*  ===== Button for inserting the Data ===== */
+.question-list__update-data-btn {
+  margin-block: 1.5rem;
+  font-size: 0.8rem;
+  width: 70%;
+  margin-inline: auto;
+}
+
+.question-list__info-section {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  padding: 0 1rem;
+  margin-block: 1rem;
 }
 
 @media screen and (max-width: 400px) {
