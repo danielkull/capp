@@ -4,7 +4,7 @@
   --surface-dark: hsl(0, 0%, 96%);
   --surface-light: hsl(0, 0%, 98%);
   --surface-hover: hsl(0, 0%, 88%);
-  --surface-hover: hsl(0, 0%, 93%);
+
   --list-color: hsl(0, 0%, 82%);
   --primary-very-dark: hsl(141, 45%, 25%);
   --primary-dark: hsl(141, 45%, 40%);
@@ -51,7 +51,19 @@
   --clr-f: var(--clr-prime-m);
   --bg-shd-l: var(--clr-prime-m);
   --bg-shd-d: var(--clr-prime-vd);
-  /*==================================*/
+  /*============chat===================*/
+  --sur-dark-shd: hsl(0, 0%, 7%);
+  --sur-light-shd: var(--clr-sur-d);
+  --other-txt: var(--list-color);
+  --own-txt: var(--primary-mid);
+  --clr-chat-footer: hsl(141, 45%, 40%, 0.7);
+  --clr-chat-header: var(--clr-chat-footer);
+  --brd-chat-f-h: hsla(0, 3%, 93%, 0.7);
+  --shd-f-h-light: rgba(0, 0, 0, 0.4);
+  --shd-f-h-dark: rgba(0, 0, 0, 0.6);
+  --text-field-clr: hsla(0, 100%, 100%, 0.4);
+  --clr-text-brd: hsla(0, 3%, 93%, 0.9);
+  --clr-header-name: hsla(0, 3%, 93%, 0.9);
   /*============Neu Messeger===============*/
   --sur-dark-shd: hsl(0, 0%, 94%);
   --sur-light-shd: var(--surface-light);
@@ -223,7 +235,8 @@
   --brd-chat-f-h: hsl(0, 0%, 30%, 0.7);
   --shd-f-h-light: rgba(0, 0, 0, 0.8);
   --shd-f-h-dark: rgba(0, 0, 0, 0.9);
-
+  --clr-text-brd: hsl(0, 0%, 30%, 0.7);
+  --clr-header-name: var(--primary-middle);
   /*==================================*/
   /*=============Car-type=====================*/
   --clr-type-icon: var(--primary-very-dark);
@@ -277,7 +290,7 @@
   /*============tetfield================*/
   --clr-txt-bg: var(--clr-prime-l);
   /*=========menue===========*/
-
+  --text-field-clr: hsl(0, 0%, 8%, 0.8);
   --menue-bg: var(--clr-bg);
 
   /*===== Neue Ende =====*/

@@ -42,7 +42,7 @@
           </p>
         </div>
       </article>
-  
+
       <article class="chat-text__other-user">
         <div class="text-user__other txt-user">
           <time datetime="12:32">10:32</time>
@@ -54,7 +54,7 @@
           </p>
         </div>
       </article>
-     
+
       <article class="chat-text__own">
         <div class="text-user__own txt-user">
           <time datetime="12:32">11:05</time>
@@ -70,10 +70,10 @@
           </p>
         </div>
       </article>
-          <article class="chat__time-stamp">
+      <article class="chat__time-stamp">
         <day>Dienstag</day> <date>24.5.23</date>
       </article>
-      
+
       <article class="chat-text__other-user">
         <div class="text-user__other txt-user">
           <time datetime="12:32">11:45</time>
@@ -89,7 +89,6 @@
           </p>
         </div>
       </article>
-
     </section>
 
     <section class="chat-footer">
@@ -188,7 +187,7 @@ article {
 article time {
   width: 100%;
   height: max-content;
-  color: var(--text-light);
+  color: var(--text-mid);
   font-size: clamp(0.8rem, 3vw, 1.1rem);
   font-weight: 600;
   padding-top: 0.5rem;
@@ -342,13 +341,13 @@ button:active svg:nth-child(1) {
 .chat-msg {
   font-size: 0.9rem;
   padding: 0.4rem;
-  background: hsl(0, 0%, 8%, 0.8);
+  background: var(--text-field-clr);
   height: max-content;
   width: 90%;
-  border: 1px solid hsl(0, 0%, 30%, 0.7);
+  border: 1px solid var(--clr-text-brd);
   border-radius: 2rem;
   outline: none;
-  color: var(--text-light);
+  color: var(--text-mid);
   caret-color: var(--primary-middle);
   transition: padding 0.1s ease-in-out;
 }
@@ -356,7 +355,7 @@ button:active svg:nth-child(1) {
   outline: 2px solid var(--primary-middle);
 }
 .chat-msg:focus ~ button svg {
-  fill: hsl(0, 0%, 40%);
+  fill: var(--clr-header-name);
 }
 .chat-footer:has(.chat-msg:focus) {
   height: 15vh;
