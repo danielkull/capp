@@ -107,15 +107,12 @@ export default {
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--primary-middle);
   background: transparent;
-  /* box-shadow: 0 5px 40px rgba(0, 0, 0, 0.7); */
 }
 h3 {
   color: var(--text-light);
   font-size: 1.2rem;
   font-weight: 500;
-
   position: relative;
-  /* padding-bottom: 1rem; */
 }
 .msg-header svg {
   fill: var(--text-light);
@@ -139,39 +136,4 @@ h3 {
   appearance: none;
   width: 0;
 }
-/*=================================*/
-section:target {
-  translate: 0% 0;
-}
-/* .live-msg-wrapper {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 1.5rem 1.5rem 0 0;
-  background: var(--clr-bg);
-  background: red;
-  position: absolute;
-  z-index: 15;
-  top: 0px;
-  left: 0;
-  transition: 0.3s ease-in-out;
-  translate: 0% 0%;
-}
-.live-msg-wrapper input[type="checkbox"] {
-  appearance: none;
-  position: absolute;
-  top: -9999px;
-  width: 0;
-}
-label {
-  font-size: 2rem;
-  display: block;
-  padding-inline: 3rem;
-  height: 5rem;
-  width: 100%;
-  background: green;
-}
-#live-msg__wrapper:has(#chat-window:checked) {
-  translate: 0% 0%;
-} */
 </style>
