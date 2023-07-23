@@ -1,9 +1,4 @@
 <template>
-  <!-- <section class="live-msg-wrapper" id="live-msg__wrapper">
-    <input type="checkbox" name="" id="chat-window" />
-    <label for="chat-window">Chat</label>
-    <MessageChat />
-  </section> -->
 
   <section class="msg-view__wrapper">
     <span class="msg-header"
@@ -107,15 +102,12 @@ export default {
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--primary-middle);
   background: transparent;
-  /* box-shadow: 0 5px 40px rgba(0, 0, 0, 0.7); */
 }
 h3 {
   color: var(--text-light);
   font-size: 1.2rem;
   font-weight: 500;
-
-  position: relative;
-  /* padding-bottom: 1rem; */
+  position: relative; 
 }
 .msg-header svg {
   fill: var(--text-light);
@@ -143,7 +135,7 @@ h3 {
 section:target {
   translate: 0% 0;
 }
-/* .live-msg-wrapper {
+.live-msg-wrapper {
   text-align: center;
   width: 100%;
   height: 100%;
@@ -171,7 +163,5 @@ label {
   width: 100%;
   background: green;
 }
-#live-msg__wrapper:has(#chat-window:checked) {
-  translate: 0% 0%;
-} */
+
 </style>
