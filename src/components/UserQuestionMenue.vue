@@ -389,6 +389,7 @@
             <p >
               Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
               kannst Du sie hier auswählen:
+                 </p>
             <p>
               Gibt es Einschränkungen für die Vermietung Deines Autos? <br />
               Dann kannst Du sie hier auswählen:
