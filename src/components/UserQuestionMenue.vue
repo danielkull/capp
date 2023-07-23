@@ -12,15 +12,6 @@
         }}</label>
         <section class="question-list__list">
           <ul class="question-list">
-            <!-- Username -->
-            <InputText
-              :inputId="'username'"
-              :inputType="'text'"
-              :inputPlaceholder="'Username'"
-              v-model:inputData="usernameValue"
-              >Nickname</InputText
-            >
-
             <!-- Vorname -->
             <input-text
               :inputId="'firstname'"
@@ -36,14 +27,6 @@
               :inputPlaceholder="'Nachname'"
               v-model:inputData="lastnameValue"
               >Nachname</input-text
-            >
-            <!-- E-Mail -->
-            <input-text
-              :inputId="'email'"
-              :inputType="'email'"
-              :inputPlaceholder="'meinKuerzel@provider.com'"
-              v-model:inputData="emailValue"
-              >E-Mail</input-text
             >
             <!-- Telefon -->
             <input-text
@@ -80,6 +63,18 @@
           </ul>
         </section>
       </article>
+      <p>
+        Wenn du dich nur als User zum Ausleihen von Autos anmelden möchtest,
+        dann fülle bitte die "{{ h2personal }}" aus und drücke diesen Button. In
+        deinen Einstellungen kannst du später immernoch ein Auto registieren
+        wenn du möchtest.
+      </p>
+      <Button
+        :value="loading ? 'Loading...' : 'User Daten Updaten'"
+        :disabled="loading"
+        id="sign-in-as-user-btn"
+        @click.prevent="handleUserRegistration"
+      ></Button>
       <!------------------------------------------------------------>
       <article class="question-list__categorie">
         <input
@@ -179,38 +174,19 @@
             <h3>Raucher</h3>
             <ul class="question-list radio-list">
               <li class="question-list__item">
-                <input
-                  type="radio"
-                  class="capp-radio__default"
-                  name="smoker"
-                  id="smoker-true"
-                  value="true"
-                  v-model="isSmoker"
-                />
-                <label for="smoker-true">Ja</label>
-              </li>
-              <li class="question-list__item">
-                <input
-                  type="radio"
-                  class="capp-radio__default"
-                  name="smoker"
-                  id="smoker-false"
-                  value="false"
-                  v-model="isSmoker"
-                />
-                <label for="smoker-false">Nein</label>
                 <label for="smoker-yes">
                   <input
                     type="radio"
                     class="capp-radio__default"
                     name="smoker"
                     id="smoker-yes"
-                    value="yes"
+                    value="true"
                     v-model="isSmoker"
                   />
                   Ja</label
                 >
               </li>
+
               <li class="question-list__item">
                 <label for="smoker-no">
                   <input
@@ -218,7 +194,7 @@
                     class="capp-radio__default"
                     name="smoker"
                     id="smoker-no"
-                    value="no"
+                    value="false"
                     v-model="isSmoker"
                   />
                   Nein</label
@@ -229,46 +205,26 @@
             <h3>Isofix Kindersitz-Halterung</h3>
             <ul class="question-list radio-list">
               <li class="question-list__item">
-                <input
-                  type="radio"
-                  class="capp-radio__default"
-                  name="isofix"
-                  id="isofix-true"
-                  value="true"
-                  v-model="hasIsofix"
-                />
-                <label for="isofix-true">Ja</label>
-              </li>
-              <li class="question-list__item">
-                <input
-                  type="radio"
-                  class="capp-radio__default"
-                  name="isofix"
-                  id="isofix-false"
-                  value="false"
-                  v-model="hasIsofix"
-                />
-                <label for="isofix-false">Nein</label>
                 <label for="isofix - yes">
                   <input
                     type="radio"
                     class="capp-radio__default"
                     name="isofix"
                     id="isofix-yes"
-                    value="yes"
+                    value="true"
                     v-model="hasIsofix"
                   />
                   Ja</label
                 >
               </li>
-              <li class="question-list__item">          
+              <li class="question-list__item">
                 <label for="isofix - no">
                   <input
                     type="radio"
                     class="capp-radio__default"
                     name="isofix"
                     id="isofix-no"
-                    value="no"
+                    value="false"
                     v-model="hasIsofix"
                   />
                   Nein</label
@@ -309,14 +265,15 @@
               >
             </li>
             <!-- Sonstiges -->
-
-            <input-text
+            <!-- Wird erstmal nicht benutzt -->
+            <!--           <input-text
               :inputId="'misc'"
               :inputType="'text'"
               :inputPlaceholder="'Sonstiges'"
               v-model:inputData="miscellaneous"
               >Sonstiges</input-text
-            >
+            > -->
+            <!-- ========================== -->
           </ul>
           <p hidden>{{ chosenFeatures }}</p>
         </section>
@@ -333,11 +290,10 @@
         >
         <section class="question-list__list">
           <div>
-
             <ul
               class="question-list radio-list ul-input__text trunk-size__list"
             >
-            <li
+              <li
                 class="question-list__item trunk__list"
                 v-for="luggageTrunkSize in luggageTrunkSizes"
                 :key="luggageTrunkSize.id"
@@ -386,10 +342,10 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <p >
+            <p>
               Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
               kannst Du sie hier auswählen:
-                 </p>
+            </p>
             <p>
               Gibt es Einschränkungen für die Vermietung Deines Autos? <br />
               Dann kannst Du sie hier auswählen:
@@ -447,34 +403,54 @@
           </div>
         </section>
       </article>
+      <p>
+        Falls du gleich ein Auto mit registieren möchtest, dann fülle bitte das
+        gesamte Formular aus und drücke auf den Button um nicht als Car Owner zu
+        registieren.
+      </p>
+      <Button
+        :value="loading ? 'Loading...' : 'Anmelden als Car Owner'"
+        :disabled="loading"
+        id="sign-in-as-user-btn"
+        @click.prevent="handleCarOwnerRegistration"
+      ></Button>
     </section>
   </form>
 </template>
 <script>
 import { supabase } from "../lib/supabaseClient";
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+
 import CheckBox from "./input-elements/CheckBox.vue";
 import RadioButton from "./input-elements/RadioButton.vue";
 import InputText from "./input-elements/InputText.vue";
 import SelectDropDown from "./input-elements/SelectDropDown.vue";
+import Button from "@/components/input-elements/Button.vue";
+
 export default {
-  components: { CheckBox, InputText, SelectDropDown, RadioButton },
+  components: { CheckBox, InputText, SelectDropDown, RadioButton, Button },
   data() {
     return {
-      title: "CAPP Fragebogen",
+      // === General data pairs for this side ===
+      activeUser: null,
+      loading: false,
+      // = End of General data pairs =
+      // === Naming of accordion category rows ===
       h2personal: "Persönliche Informationen",
       h2textInfo: "Angaben zum Fahrzeug",
       h2textFeatures: "Ausstattung",
       h2textTrunkSize: "Kofferraum-Größen",
       h2textLimitations: "Einschränkungen für die Vermietung",
-      usernameValue: "",
-      passwordValue: "",
+      // = End of Naming =
+      // === User Data ===
       firstnameValue: "",
       lastnameValue: "",
-      emailValue: "",
       phoneValue: "",
       addressValue: "",
       zipcodeValue: "",
       cityValue: "",
+      // = End of User Data =
+      // === Car Owner Data ===
       chosenCarType: "",
       chosenFuelType: "",
       chosenGear: "",
@@ -484,7 +460,9 @@ export default {
       chosenTrunkSize: "",
       ownTrunkSize: "",
       chosenFeatures: [],
+      // Wird erstmal nicht benutzt
       miscellaneous: "",
+      // ==============
       chosenLimitations: [],
       chosenMinAge: "",
       carTypes: [
@@ -661,10 +639,24 @@ export default {
       minAges: [18, 21, 25],
     };
   },
+  setup() {
+    // Initialize the store at the begining
+    const authenticationStore = useAuthenticationStore();
+
+    return { authenticationStore };
+  },
+  created() {
+    // Get all seasion and user data from the auth Store if availabel
+    this.getSessionInfos();
+  },
   mounted() {
     this.getFeatures();
   },
   methods: {
+    async getSessionInfos() {
+      await this.authenticationStore.getSession();
+      await this.authenticationStore.onAuthStateChange();
+    },
     async getFeatures() {
       const { data } = await supabase.from("features").select();
       const carFeaturesFromDB = data;
@@ -704,13 +696,97 @@ export default {
         return limitation.checked === false;
       });
     },
-    togglePassword() {
-      if (this.inputType === "password") {
-        this.inputType = "text";
-        this.inputTypeText = "hide Password";
+    userFormIsFilled() {
+      if (
+        this.firstnameValue !== "" &&
+        this.lastnameValue !== "" &&
+        this.phoneValue !== "" &&
+        this.addressValue !== "" &&
+        this.zipcodeValue !== "" &&
+        this.cityValue !== ""
+      ) {
+        return true;
       } else {
-        this.inputType = "password";
-        this.inputTypeText = "show Password";
+        // Feedback what is missing
+        return false;
+      }
+    },
+    carOwnerFormIsFilled() {
+      if (
+        (this.chosenCarType !== "" &&
+          this.chosenFuelType !== "" &&
+          this.chosenGear !== "" &&
+          this.chosenSeatCount !== "" &&
+          this.isSmoker !== "" &&
+          this.hasIsofix !== "" &&
+          this.chosenTrunkSize !== "") ||
+        this.ownTrunkSize !== ""
+      ) {
+        return true;
+      } else {
+        // Feedback what is missing
+        return false;
+      }
+    },
+    async handleUserRegistration() {
+      // Get the active user for the update process
+      this.activeUser = await this.authenticationStore.activeUser[0].id;
+      if (this.userFormIsFilled()) {
+        this.loading = true;
+        try {
+          // Update the respective data from the active User
+          const { error } = await supabase
+            .from("users")
+            .update({
+              firstname: this.firstnameValue,
+              lastname: this.lastnameValue,
+              phone: this.phoneValue,
+              address: this.addressValue,
+              zipcode: this.zipcodeValue,
+              city: this.cityValue,
+            })
+            .eq("id", this.activeUser);
+          if (error) throw error;
+        } catch (error) {
+          alert(error.message);
+        } finally {
+          this.loading = false;
+        }
+      } else {
+        console.log("Nope");
+        // Hier eine invalid msg
+        // Feedback what is missing
+      }
+    },
+    async handleCarOwnerRegistration() {
+      this.activeUser = await this.authenticationStore.activeUser[0].id;
+      if (this.carOwnerFormIsFilled() && this.userFormIsFilled()) {
+        this.loading = true;
+        try {
+          // Update the respective data from the active User
+          const { data, error } = await supabase.from("cars").insert({
+            type_id: xxx,
+            user_id: this.activeUser,
+            trunk_volume_in_liters: xxx,
+            img_source: xxx,
+            fuel_type: this.chosenFuelType,
+            gear: this.chosenGear,
+            count_of_seats: this.chosenSeatCount,
+            is_smoker: this.isSmoker,
+            has_isofix: this.hasIsofix,
+          });
+          console.log(data);
+          if (error) throw error;
+          console.log("Jupp");
+        } catch (error) {
+          alert(error.message);
+        } finally {
+          this.loading = false;
+        }
+      } else {
+        console.log("Nope");
+        // Hier eine invalid msg
+        // Feedback what is missing
       }
     },
   },
@@ -784,11 +860,6 @@ ul.question-list {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 0.75rem;
 }
-
-.padding-top {
-  padding-top: var(--s-pad);
-}
-
 .question-list__list {
   display: grid;
   grid-template-rows: 0fr;
@@ -887,8 +958,6 @@ label {
 /* Input Text, Email, Tel, Password */
 
 input[type="text"],
-input[type="email"],
-input[type="password"],
 input[type="tel"] {
   font-size: var(--s-font);
   color: black;
@@ -898,70 +967,13 @@ input[type="tel"] {
 }
 
 input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="password"]::placeholder,
 input[type="tel"]::placeholder {
   color: var(--secondary-mid);
 }
 
 input[type="text"]:focus-within,
-input[type="email"]:focus-within,
-input[type="password"]:focus-within,
 input[type="tel"]:focus-within {
   outline: var(--m-brd) solid var(--primary-light);
-}
-.capp-input__wrapper {
-  width: 90%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1rem;
-  margin-inline: auto;
-  margin-bottom: 1.3rem;
-}
-.capp-input__default {
-  display: block;
-  width: 100%;
-  border: var(--m-brd) solid var(--clr-trans);
-  border-radius: 0.5rem;
-  padding-inline: var(--xs-pad);
-  padding-block: var(--s-pad);
-  font-size: var(--m-font);
-  background: var(--clr-bg-main);
-  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
-  color: var(--font-color-dark);
-}
-.capp-input__default:hover {
-  cursor: pointer;
-}
-.capp-input__default::placeholder {
-  opacity: 0.5;
-}
-
-.capp-input__default:focus {
-  outline-color: var(--primary-light);
-}
-
-.capp-input__default.input__invalid {
-  color: var(--error-color);
-}
-
-.capp-input__default.input__invalid:focus {
-  outline-color: var(--error-color);
-}
-
-.capp-input__default ~ span {
-  display: none;
-}
-
-.capp-input__default.input__invalid ~ span {
-  display: block;
-  color: var(--error-color);
-}
-
-span#password-toggle-text {
-  font-size: 0.75rem;
-  color: var(--primary-dark);
 }
 
 /*============== Radio Buttons =============*/
@@ -1020,28 +1032,6 @@ select {
 
 select:focus-within {
   outline-color: var(--primary-mid);
-}
-
-.capp-label__default {
-  display: block;
-  color: var(--primary-dark);
-
-  padding-block: calc(var(--s-font) / 2);
-  font-size: 1.5rem;
-  letter-spacing: 0.1rem;
-}
-
-.capp-select__default {
-  display: block;
-  width: 100%;
-  border: 2px solid var(--clr-trans);
-  border-radius: 0.5rem;
-  padding-inline: 0.5rem;
-  padding-block: 1rem;
-  font-size: var(--m-font);
-  background: var(--clr-bg-main);
-  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
-  color: var(--font-color-dark);
 }
 
 @media screen and (max-width: 400px) {

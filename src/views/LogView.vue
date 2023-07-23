@@ -5,9 +5,6 @@
       <!------------------------Nur fürs coden------------------------------------->
 
       <article>
-        <div class="quest-tbn">
-          <a href="#user-data">Fragebogen</a>
-        </div>
         class="logIn-card__wrapper" :class="{ 'in-motion': motionActive }" >
         <section class="logIn-card__logo-capp">
           <h1>CAPP</h1>
@@ -142,7 +139,6 @@
         <!-- ============== End of Sign In Page ==================== -->
       </article>
     </main>
-    <QuestionMenu />
     <ImpressumFooter />
   </section>
 </template>
@@ -151,18 +147,18 @@
 import InputText from "@/components/input-elements/InputText.vue";
 import LogButton from "@/components/input-elements/Button.vue";
 import BackButton from "@/components/input-elements/BackButton.vue";
+import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
+import router from "../router";
+
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { supabase } from "@/lib/supabaseClient.js";
-import router from "../router";
-import QuestionMenu from "@/components/main-component/expand-menu-components/QuestionMenuExpand.vue";
-import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
+
 export default {
   components: {
     InputText,
     LogButton,
     BackButton,
     ImpressumFooter,
-    QuestionMenu,
   },
 
   data() {
@@ -206,9 +202,9 @@ export default {
       // If somebody is logged in send the user to the mainView
       // Das MUSS für die Entwicklung ausgeklammert werden. Für die Build version
       // wird es wieder eingeklammert.
-      // if (this.authenticationStore.session) {
-      //   router.push({ name: "mainView" });
-      // }
+      if (this.authenticationStore.session) {
+        router.push({ name: "mainView" });
+      }
     },
     emptyFormData() {
       this.email = null;
@@ -342,7 +338,9 @@ export default {
               if (responseInsertNewRow.error) {
                 throw error;
               } else {
-                router.push({ name: "addNewCarView" });
+                this.$router.push({
+                  name: "userQuestionView",
+                });
               }
             } else {
               throw error;
