@@ -87,26 +87,28 @@
           >
             Heute
           </div>
-          <div class="date-time-value">
-            <div
-              class="time-formate"
-              :class="{
-                showTime: isMonthListHidden,
-                hideTime: !isMonthListHidden,
-              }"
-            >
-              {{ currentTime }}
+          <span class="test">
+            <div class="date-time-value">
+              <div
+                class="time-formate"
+                :class="{
+                  showTime: isMonthListHidden,
+                  hideTime: !isMonthListHidden,
+                }"
+              >
+                {{ currentTime }}
+              </div>
+              <div
+                class="date-formate"
+                :class="{
+                  showTime: isMonthListHidden,
+                  hideTime: !isMonthListHidden,
+                }"
+              >
+                {{ weekDayNames[currentDay] }}, {{ currentDatum }}
+              </div>
             </div>
-            <div
-              class="date-formate"
-              :class="{
-                showTime: isMonthListHidden,
-                hideTime: !isMonthListHidden,
-              }"
-            >
-              {{ weekDayNames[currentDay] }}, {{ currentDatum }}
-            </div>
-          </div>
+          </span>
         </div>
         <div
           class="month-list"
@@ -288,44 +290,39 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 500;
-  text-align: center;
-  line-height: 1.5;
+.test {
+  display: none;
 }
-
 .container {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   position: relative;
-  top: 3.5%;
   right: 0;
   width: 100%;
+  height: 100%;
 }
 
 .calendar {
   width: 100%;
   max-width: 450px;
-  height: 610px;
+  height: 95%;
+  margin-top: 5%;
   padding: 2rem 1.25rem 0rem 1.25rem;
-  background-color: whitesmoke;
-  border-radius: 25px;
+  background-color: var(--clr-sur-d);
+  border-radius: var(--m-brd-rad);
   overflow: hidden;
+  box-shadow: 0 0 20px var(--card-shadow);
 }
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0.25rem;
-  background-color: var(--primary-mid);
-  color: var(--secondary-light);
-  border-radius: 1rem;
+  padding-block: 1rem;
+  color: var(--text-mid);
+  border-top: var(--s-brd) solid var(--primary-middle);
+  border-bottom: var(--s-brd) solid var(--primary-middle);
 }
-
 .calendar-body {
   padding: 0.5rem;
 }
@@ -333,7 +330,8 @@ h2 {
 .calendar-week-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  font-weight: 600;
+  font-weight: var(--f-weight-bold);
+  margin-top: var(--s-marg);
   cursor: pointer;
 }
 
@@ -341,12 +339,13 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--primary-dark);
-  transition: color 0.5s ease-in-out, transform 0.5s ease-in-out;
+  color: var(--primary-middle);
+  font-size: var(--font-list-label);
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .calendar-week-days > div:hover {
-  color: var(--primary-mid);
+  color: var(--primary-middle);
   transform: scale(1.2);
 }
 
@@ -354,7 +353,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
-  color: black;
+  color: var(--text-mid);
 }
 
 .calendar-days > div {
@@ -362,21 +361,21 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 0.5rem;
   position: relative;
   cursor: pointer;
+  font-size: var(--font-list-label);
+  font-weight: var(--f-weight-m);
   animation: to-top 1s forwards;
 }
 
 .month-picker {
   padding: 5px 10px;
-  border-radius: 10px;
   cursor: pointer;
 }
 
 .month-picker:hover {
-  background-color: var(--list-hover);
-  color: var(--primary-dark);
+  color: var(--primary-middle);
 }
 
 .year-picker,
@@ -403,20 +402,19 @@ h2 {
 
 .year-change:hover,
 .day-change:hover {
-  background-color: var(--secondary-light);
-  color: var(--primary-dark);
+  color: var(--primary-middle);
 }
 
 .year-change:hover > pre {
   color: var(--primary-dark);
 }
 
-.calendar-footer {
+/* .calendar-footer {
   padding: 10px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
+} */
 
 #year:hover,
 #month:hover,
@@ -424,6 +422,7 @@ h2 {
   cursor: pointer;
   transform: scale(1.2);
   transition: all 0.2s ease-in-out;
+  color: var(--primary-middle);
 }
 
 .calendar-days div span {
@@ -432,7 +431,7 @@ h2 {
 
 .calendar-days div:hover {
   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-  background-color: var(--secondary-light);
+  background-color: var(--surface-hover);
   border-radius: 20%;
   color: var(--primary-dark);
 }
@@ -487,25 +486,25 @@ h2 {
 }
 
 .date-time-formate {
-  font-family: "Courier New", Courier, monospace;
   font-weight: 600;
   position: relative;
-  _display: inline;
-  top: 140px;
-  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
   color: var(--secondary-dark);
+  margin-top: 2rem;
+  height: 3rem;
 }
 
 .day-text-formate {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 1.5rem;
+  font-size: var(--font-hr3);
   font-weight: 500;
-  text-transform: uppercase;
   color: var(--primary-dark);
-  padding-right: 3.5%;
-  border-right: 3px solid var(--primary-light);
-  position: absolute;
-  left: -1rem;
+  padding-left: 1rem;
+  padding-bottom: 0.3rem;
+  margin-right: 0rem;
+  border-bottom: 1px solid var(--primary-dark);
+  /* left: -1rem; */
 }
 
 .date-time-value {
@@ -515,37 +514,40 @@ h2 {
   left: 30%;
   top: -5px;
   text-align: left;
+  display: none;
 }
 
 .time-formate {
   font-size: 1.25rem;
+  display: none;
 }
 
 .date-formate {
   font-size: 0.9rem;
+  display: none;
 }
 
-.day-text-formate.hideTime,
+/* .day-text-formate.hideTime,
 .time-formate.hideTime,
 .date-formate.hideTime {
   animation: hideTime 1.5s forwards;
-}
+} */
 
-.day-text-formate.showTime,
+/* .day-text-formate.showTime,
 .time-formate.showTime,
 .date-formate.showTime {
   animation: showTime 1s forwards;
-}
+} */
 
 .day-hidden {
   color: var(--secondary-mid);
 }
 
 .dayActive {
-  color: white;
-  background-color: var(--primary-light);
+  color: hsl(0, 0%, 98%);
+  background-color: var(--primary-dark);
   font-weight: 700;
-  border-radius: 50%;
+  border-radius: 0.2rem;
   aspect-ratio: 1;
 }
 
