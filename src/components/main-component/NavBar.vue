@@ -145,15 +145,6 @@ export default {
     },
   },
 
-  methods: {
-    testItem() {
-      this.$emit("toggle", this.item);
-      console.log("halloo");
-    },
-    testToggle() {
-      console.log("geklappt");
-    },
-  },
 };
 </script>
 
