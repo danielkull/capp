@@ -52,6 +52,10 @@
   --bg-shd-l: var(--clr-prime-m);
   --bg-shd-d: var(--clr-prime-vd);
   /*==================================*/
+  /*============Neu Messeger===============*/
+  --sur-dark-shd: hsl(0, 0%, 94%);
+  --sur-light-shd: var(--surface-light);
+  /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
 
   --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
@@ -160,7 +164,9 @@
 }
 :root.dark-theme {
   /*===== Neue =====*/
-  --clr-bg: hsl(0, 0%, 4%);
+
+  --clr-bg: hsl(0, 0%, 5%);
+
   --surface-dark: hsl(0, 0%, 10%);
   --surface-light: hsl(0, 0%, 16%);
   --surface-hover: hsl(0, 0%, 25%);
@@ -183,6 +189,7 @@
   --clr-error: var(--accent-color-dark);
   --clr-error-hover: var(--accent-color-light);
   /*======================================================*/
+
   --clr-prime-vd: var(--clr-bg);
   --clr-prime-d: var(--primary-dark);
   --clr-prime-m: var(--surface-dark);
@@ -205,6 +212,19 @@
   --clr-f: var(--list-color);
   --bg-shd-l: var(--clr-sur-d);
   --bg-shd-d: var(--clr-bg);
+  /*============Neu Messeger===============*/
+  --state-red: hsl(0, 83%, 54%);
+  --sur-dark-shd: hsl(0, 0%, 7%);
+  --sur-light-shd: var(--clr-sur-d);
+  --other-txt: hsl(0, 0%, 20%, 1);
+  --own-txt: hsl(141, 45%, 30%);
+  --clr-chat-footer: hsl(0, 0%, 10%, 0.7);
+  --clr-chat-header: var(--clr-chat-footer);
+  --brd-chat-f-h: hsl(0, 0%, 30%, 0.7);
+  --shd-f-h-light: rgba(0, 0, 0, 0.8);
+  --shd-f-h-dark: rgba(0, 0, 0, 0.9);
+
+  /*==================================*/
   /*=============Car-type=====================*/
   --clr-type-icon: var(--primary-very-dark);
   --clr-bord-icon: var(--clr-prime-l);
