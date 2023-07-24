@@ -60,7 +60,7 @@
   --sur-light-shd: var(--clr-sur-d);
   --other-txt: var(--list-color);
   --own-txt: var(--primary-mid);
-  --clr-chat-footer: hsl(141, 45%, 40%, 0.7);
+  --clr-chat-footer: rgba(56, 148, 88, 0.7);
   --clr-chat-header: var(--clr-chat-footer);
   --brd-chat-f-h: hsla(0, 3%, 93%, 0.7);
   --shd-f-h-light: rgba(0, 0, 0, 0.4);

@@ -386,7 +386,7 @@ svg {
   display: flex;
   align-items: center;
   position: absolute;
-  z-index: 50;
+  z-index: 100;
   top: 0;
   left: 0;
   font-size: clamp(2rem, 5vw, 3rem);
@@ -399,6 +399,7 @@ svg {
   border-bottom: 1px solid var(--brd-chat-f-h);
   box-shadow: 0 0 20px var(--shd-f-h-dark), 0 0 50px var(--shd-f-h-light);
   backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   border-radius: 0 0 1.5rem 1.5rem;
 }
 #chat-window {
