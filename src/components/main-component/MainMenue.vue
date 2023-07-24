@@ -452,12 +452,15 @@
     <!----------------------------------------->
     <article class="main-menue__choice">
       <input
-        type="checkbox"
+        type="button"
         name="Nutzer-Angaben"
         id="user-data"
         class="question-list__btn"
-      /><label class="main-menue__list-header" for="user-data"
-        ><a href="logout-user">Logout</a>
+      /><label
+        @click.prevent="logOut"
+        class="main-menue__list-header"
+        for="user-data"
+      >
         Abmelden
         <span class="icon-holder"
           ><svg
@@ -484,8 +487,22 @@
 <script>
 import CheckBox from "@/components/input-elements/CheckBox.vue";
 import ExpandMenue from "@/components/main-component/ExpandMenueFrame.vue";
+
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+
 export default {
   components: { CheckBox, ExpandMenue },
+  setup() {
+    const authenticationStore = useAuthenticationStore();
+
+    return { authenticationStore };
+  },
+  methods: {
+    async logOut() {
+      await this.authenticationStore.logOut();
+      location.reload();
+    },
+  },
 };
 </script>
 
