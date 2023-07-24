@@ -288,7 +288,7 @@
             ></label>
             <section class="main-menue__list">
               <ul class="layer-2__list">
-                <li>Nachtmodus <CheckBox id="dark-mode" /></li>
+                <li>Nachtmodus <DarkModeButton /></li>
                 <li>Kontrastmodus <CheckBox id="contrast-mode" /></li>
                 <li>Farbmodus <CheckBox id="color-mode" /></li>
               </ul>
@@ -483,9 +483,11 @@
 
 <script>
 import CheckBox from "@/components/input-elements/CheckBox.vue";
+import DarkModeButton from "@/components/input-elements/DarkModeButton.vue";
+
 import ExpandMenue from "@/components/main-component/ExpandMenueFrame.vue";
 export default {
-  components: { CheckBox, ExpandMenue },
+  components: { CheckBox, ExpandMenue, DarkModeButton },
 };
 </script>
 

@@ -6,6 +6,9 @@
 
       <article>
         <section class="logIn-card__logo-capp">
+          <span class="theme-btn-holder">
+            <DarkModeButton class="dm-btn"
+          /></span>
           <h1>CAPP</h1>
           <!-- === Start Page Section for Log In und Sign In === -->
         </section>
@@ -148,6 +151,7 @@ import LogButton from "@/components/input-elements/Button.vue";
 import BackButton from "@/components/input-elements/BackButton.vue";
 import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
 import router from "../router";
+import DarkModeButton from "@/components/input-elements/DarkModeButton.vue";
 
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { supabase } from "@/lib/supabaseClient.js";
@@ -158,6 +162,7 @@ export default {
     LogButton,
     BackButton,
     ImpressumFooter,
+    DarkModeButton,
   },
 
   data() {
@@ -400,9 +405,10 @@ main {
 /*                  Logo                          */
 /*================================================*/
 .logIn-card__logo-capp {
-  display: grid;
-  place-content: center;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   width: 100%;
   height: 30%;
@@ -412,6 +418,35 @@ main {
   color: var(--clr-logo);
   font-family: var(--font-logo);
   padding-bottom: 5rem;
+}
+.theme-btn-holder {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 95%;
+  margin-inline: auto;
+  margin-top: 5%;
+}
+.capp-btn__default {
+  background: none;
+  /* background: red; */
+
+  border: 1px solid var(--check-default);
+}
+.capp-btn__default:checked::after {
+  background: radial-gradient(
+    circle at 20%,
+    transparent 40%,
+    var(--check-default) 41% 40%,
+    var(--check-default)
+  );
+}
+
+.capp-btn__default::after {
+  background: var(--check-default);
+  transition: 0.1s ease-in;
+}
+.capp-btn__default:checked {
+  background: none;
 }
 /*================================================*/
 /*                  Logo-Ende                     */

@@ -1,10 +1,5 @@
 <script>
-import DarkModeButton from "@/components/input-elements/DarkModeButton.vue";
-export default {
-  components: {
-    DarkModeButton,
-  },
-};
+export default {};
 </script>
 
 <template>
@@ -20,10 +15,9 @@ export default {
     <router-link to="/testUserManagementView"
       >User/Data Managment Test Bereich</router-link
     >|
-    <router-link :to="{ name: 'userQuestionView'}"
+    <router-link :to="{ name: 'userQuestionView' }"
       >User Question Form</router-link
     >|
-    <DarkModeButton />
   </nav>
   <router-view />
 </template>
