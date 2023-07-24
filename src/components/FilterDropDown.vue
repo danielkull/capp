@@ -472,7 +472,8 @@
     </section>
   </form>
 
-  <!-- <ul>
+  <!-- 
+  <ul>
     <li
       v-for="filteredCar in filteredCars"
       :key="filteredCar.id"
@@ -491,7 +492,8 @@
       Isofix vorhanden: {{ filteredCar.has_isofix }}<br />
       Mindestalter: {{ filteredCar.min_age }}
     </li>
-  </ul> -->
+  </ul>
+  -->
 </template>
 
 <script>
@@ -843,7 +845,6 @@ export default {
         )
         .in("fuel_type", this.chosenFuelTypeNames);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //chosenGear
     async filterCarsByGear() {
@@ -857,7 +858,6 @@ export default {
         )
         .eq("gear", this.chosenGear);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //hasIsofix
     async filterCarsByIsofix() {
@@ -871,7 +871,6 @@ export default {
         )
         .eq("has_isofix", this.hasIsofix);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //isSmoker
     async filterCarsBySmoking() {
@@ -885,7 +884,6 @@ export default {
         )
         .eq("is_smoker", this.isSmoker);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //chosenSeatCountIDs
     async filterCarsBySeatCount() {
@@ -916,7 +914,6 @@ export default {
           .in("count_of_seats", this.chosenSeatCountIDs);
         this.filteredCars = data;
       }
-      console.log(this.filteredCars);
     },
     //chosenMinAgeIDs
     async filterCarsByMinAge() {
@@ -930,7 +927,6 @@ export default {
         )
         .in("min_age", this.chosenMinAgeIDs);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //chosenTrunkSize
     async filterCarsByTrunkSize() {
@@ -945,7 +941,6 @@ export default {
         .gte("trunk_volume_in_liters", this.chosenTrunkSize[1])
         .lte("trunk_volume_in_liters", this.chosenTrunkSize[2]);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //chosenCarTypeNames
     async filterCarsByCarType() {
@@ -969,7 +964,6 @@ export default {
           return filteredCarType.cars.length > 0;
         }
       );
-      console.log(this.filteredCarTypes);
 
       this.filteredCars = [];
 
@@ -978,7 +972,6 @@ export default {
           this.filteredCars.push(car);
         });
       });
-      console.log(this.filteredCars);
     },
     //chosenZipCode
     async filterCarsByZipCode() {
@@ -999,7 +992,6 @@ export default {
       this.filteredUsers = this.filteredUsers.filter((filteredUser) => {
         return filteredUser.cars.length > 0;
       });
-      console.log(this.filteredUsers);
 
       this.filteredCars = [];
 
@@ -1008,7 +1000,6 @@ export default {
           this.filteredCars.push(car);
         });
       });
-      console.log(this.filteredCars);
     },
   },
 };
