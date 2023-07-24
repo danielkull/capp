@@ -213,7 +213,7 @@ export default {
       this.isEmailValid = currentValidation;
     },
     checkValidPassword(currentValidation) {
-      // this.isPasswordValid = currentValidation;
+      this.isPasswordValid = currentValidation;
       this.isPasswordValid = true;
     },
     checkForEmptyForm() {
