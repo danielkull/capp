@@ -141,7 +141,7 @@
               <span class="text-holder">
                 <p>Passwort</p>
                 <input type="password" name="user-bsp-pw" value="Platzhalter" />
-                <p class="change-pw">Passwort vergessen ?</p>
+                <p class="change-pw">Passwort vergessen?</p>
               </span>
             </td>
           </tr>

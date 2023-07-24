@@ -93,7 +93,7 @@
       <section class="main-menue__list">
         <ul class="layer-1__list">
           <li>
-            Offene anfragen<span class="icon-holder">
+            Offene Anfragen<span class="icon-holder">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -109,7 +109,7 @@
             </span>
           </li>
           <li>
-            Geschlossene Anfragen<span class="icon-holder">
+            Beantwortete Anfragen<span class="icon-holder">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
