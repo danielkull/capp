@@ -124,12 +124,12 @@ export default {
     const authenticationStore = useAuthenticationStore();
     return { authenticationStore };
   },
-  created() {
+  async created() {
     const emptySession = this.checkForEmptyObject(
       this.authenticationStore.session
     );
     if (emptySession) {
-      this.getSessionInfos();
+      await this.getSessionInfos();
       this.message = this.authenticationStore;
     }
   },
@@ -139,9 +139,9 @@ export default {
     this.getCars();
   },
   methods: {
-    getSessionInfos() {
-      this.authenticationStore.getSession();
-      this.authenticationStore.onAuthStateChange();
+    async getSessionInfos() {
+      await this.authenticationStore.getSession();
+      await this.authenticationStore.onAuthStateChange();
     },
     checkForEmptyObject(objectName) {
       return (

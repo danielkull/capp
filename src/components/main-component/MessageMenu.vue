@@ -110,16 +110,14 @@ export default {
     };
   },
   components: { MessageBox },
-  setup() {
-    const authenticationStore = useAuthenticationStore();
+  async setup() {
+    const authenticationStore = await useAuthenticationStore();
     return { authenticationStore };
   },
-  mounted() {
+  async mounted() {
     // Vorrübergehene Lösung...
-    setTimeout(() => {
-      this.activeUser = this.authenticationStore.activeUser;
-      this.getRoutes();
-    }, 500);
+    this.activeUser = this.authenticationStore.activeUser;
+    await this.getRoutes();
   },
   computed: {
     filterRouteRequests() {
