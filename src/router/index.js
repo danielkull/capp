@@ -1,27 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
-import StefansView from "@/views/StefansView.vue";
 import LogView from "@/views/LogView.vue";
-import CalenderView from "@/views/CalenderView.vue";
-import DanielsView from "@/views/DanielsView.vue";
 import MainPageView from "@/views/MainPageView.vue";
 import UserProfileView from "@/views/UserProfileView.vue";
-import KirstensView from "@/views/KirstensView.vue";
-import AddNewCarView from "@/views/AddNewCarView.vue";
-import TestUserManagementView from "@/views/TestUserManagementView.vue";
 
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "/stefansView",
-    name: "stefansView",
-    component: StefansView,
+    redirect: { name: "logView" },
   },
   {
     path: "/logView",
@@ -35,16 +22,6 @@ const routes = [
     meta: {
       needsAuth: true,
     },
-  },
-  {
-    path: "/calendar",
-    name: "calendar",
-    component: CalenderView,
-  },
-  {
-    path: "/danielView",
-    name: "danielView",
-    component: DanielsView,
   },
   {
     path: "/mainView",
@@ -63,19 +40,9 @@ const routes = [
     },
   },
   {
-    path: "/KirstensView",
-    name: "kirstensView",
-    component: KirstensView,
-  },
-  {
-    path: "/addNewCarView",
-    name: "addNewCarView",
-    component: AddNewCarView,
-  },
-  {
-    path: "/testUserManagementView",
-    name: "testUserManagementView",
-    component: TestUserManagementView,
+    path: '/:catchAll(.*)',
+    name: 'ErrorPage',
+    component: () => import("@/views/ErrorPageView.vue")
   },
 ];
 
