@@ -268,7 +268,7 @@
           <article class="main-menue__choice">
             <input
               type="checkbox"
-              name="hier Namen für Kategorie eintragen"
+              name="Anzeigeeinstellung"
               id="11"
               class="question-list__btn"
             /><label class="under-menue__layer-1" for="11"
@@ -288,7 +288,7 @@
             ></label>
             <section class="main-menue__list">
               <ul class="layer-2__list">
-                <li>Nachtmodus <CheckBox id="dark-mode" /></li>
+                <li>Nachtmodus <DarkModeButton /></li>
                 <li>Kontrastmodus <CheckBox id="contrast-mode" /></li>
                 <li>Farbmodus <CheckBox id="color-mode" /></li>
               </ul>
@@ -486,12 +486,14 @@
 
 <script>
 import CheckBox from "@/components/input-elements/CheckBox.vue";
+import DarkModeButton from "@/components/input-elements/DarkModeButton.vue";
+
 import ExpandMenue from "@/components/main-component/ExpandMenueFrame.vue";
 
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 
 export default {
-  components: { CheckBox, ExpandMenue },
+  components: { CheckBox, ExpandMenue, DarkModeButton },
   setup() {
     const authenticationStore = useAuthenticationStore();
 
@@ -576,7 +578,6 @@ export default {
   overflow: hidden;
   width: 100%;
   list-style-type: none;
-  box-shadow: inset 0px 3px 5px var(--box-shadow-light);
 }
 * > a {
   text-decoration: none;
@@ -613,7 +614,6 @@ export default {
   display: grid;
   grid-template-rows: 1fr;
   background: var(--surface-dark);
-  padding-block: 0rem 1rem;
 }
 
 .question-list__item {

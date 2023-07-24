@@ -139,7 +139,7 @@
 
   --s-brd-rad: 1rem;
   --m-brd-rad: 2rem;
-
+  --list-padding: var(--question-list-padding-inline);
   /*============================================*/
   /*   Fonts   Main text*/
   /*============================================*/
