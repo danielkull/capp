@@ -268,7 +268,7 @@
           <article class="main-menue__choice">
             <input
               type="checkbox"
-              name="hier Namen für Kategorie eintragen"
+              name="Anzeigeeinstellung"
               id="11"
               class="question-list__btn"
             /><label class="under-menue__layer-1" for="11"
@@ -559,7 +559,6 @@ export default {
   overflow: hidden;
   width: 100%;
   list-style-type: none;
-  box-shadow: inset 0px 3px 5px var(--box-shadow-light);
 }
 * > a {
   text-decoration: none;
@@ -596,7 +595,6 @@ export default {
   display: grid;
   grid-template-rows: 1fr;
   background: var(--surface-dark);
-  padding-block: 0rem 1rem;
 }
 
 .question-list__item {
