@@ -146,9 +146,6 @@
             <label for="commentar-section-check">
               Waren sie mit <span>{{ car.users.username }}</span> zufrieden ?
             </label>
-            <section class="commentar-section__rating-bar">
-              <RatingBar :ratingGroup="'userChoice'"></RatingBar>
-            </section>
           </section>
           <AverageRating></AverageRating>
           <section class="customer-wrapper">
