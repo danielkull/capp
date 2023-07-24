@@ -4,8 +4,6 @@
       <address aria-name="Adresse des Unternehmens">
         <ul class="adress-list" role="Anschrift des Unternehmens">
           <li>CAPP Carsharing</li>
-          <li>Musterstraße 99</li>
-          <li>12345 Musterstadt</li>
         </ul>
       </address>
     </article>
@@ -70,8 +68,7 @@ article :is(ul) {
   margin-inline: auto;
 }
 .adress-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: block;
   width: 70%;
   margin-inline: auto;
 }
