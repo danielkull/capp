@@ -23,10 +23,9 @@ export default {};
 
   height: calc(var(--after-heigth) + 0.3rem);
   border-radius: var(--m-brd-rad);
-  /* margin-block: var(--margin-default); */
+
   background: var(--check-default);
   transition: background-color 0.2s ease-out;
-  /* padding-block: calc(var(--after-heigth) - 0.7rem); */
 }
 .capp-btn__default::after {
   content: "";
@@ -41,7 +40,6 @@ export default {};
   background: var(--clr-after-btn);
   transition-duration: 0.2s, 0.2s;
   transition-property: background-color, translate;
-  /* transition: background-color 0.2s ease-out; */
 }
 .capp-btn__default:checked {
   background-color: var(--check-checked);

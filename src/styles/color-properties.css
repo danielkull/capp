@@ -38,6 +38,10 @@
   /*==========================================*/
   /*=========questionmenue========*/
   --quest-menu-bg: var(--clr-bg);
+  --filter-menue-bg: var(--clr-sur-l);
+  --filter-brd: var(--clr-brd);
+  --shd-f-h-light: rgba(0, 0, 0, 0.3);
+  --shd-f-h-dark: rgba(0, 0, 0, 0.6);
   /*================text color für Mode Switch=======================*/
   --text-light: var(--main-font-color-light);
   --text-mid: hsl(0, 0%, 33%);
@@ -235,6 +239,8 @@
   --brd-chat-f-h: hsl(0, 0%, 30%, 0.7);
   --shd-f-h-light: rgba(0, 0, 0, 0.8);
   --shd-f-h-dark: rgba(0, 0, 0, 0.9);
+  --filter-menue-bg: var(--clr-bg);
+  --filter-brd: var(--clr-sur-l);
   --clr-text-brd: hsl(0, 0%, 30%, 0.7);
   --clr-header-name: var(--primary-middle);
   /*==================================*/
@@ -284,7 +290,7 @@
   /*=========checkbox===*/
   --check-default: var(--list-color);
   --check-checked: var(--clr-prime-d);
-  --clr-after-btn: var(--clr-font-lightest);
+  --clr-after-btn: var(--clr-font-light);
   /*=======carmenue=======*/
   --menue-icon-act: var(--primary-middle);
   /*============tetfield================*/

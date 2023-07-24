@@ -261,7 +261,7 @@
                   Ja</label
                 >
               </li>
-              <li class="question-list__item">          
+              <li class="question-list__item">
                 <label for="isofix - no">
                   <input
                     type="radio"
@@ -333,11 +333,10 @@
         >
         <section class="question-list__list">
           <div>
-
             <ul
               class="question-list radio-list ul-input__text trunk-size__list"
             >
-            <li
+              <li
                 class="question-list__item trunk__list"
                 v-for="luggageTrunkSize in luggageTrunkSizes"
                 :key="luggageTrunkSize.id"
@@ -386,10 +385,10 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <p >
+            <p>
               Gibt es Einschränkungen für die Vermietung Deines Autos? Dann
               kannst Du sie hier auswählen:
-                 </p>
+            </p>
             <p>
               Gibt es Einschränkungen für die Vermietung Deines Autos? <br />
               Dann kannst Du sie hier auswählen:
@@ -983,7 +982,7 @@ input[type="checkbox"] {
 }
 .capp-radio__default::after {
   content: "";
-  _display: block;
+  display: block;
   position: absolute;
   top: 50%;
   left: -0.5rem;
