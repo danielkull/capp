@@ -181,18 +181,18 @@ export default {
 
     return { authenticationStore };
   },
-  created() {
+  async created() {
     // Get all seasion and user data from the auth Store if availabel
-    this.getSessionInfos();
+    await this.getSessionInfos();
   },
   beforeMount() {
     // Take the data from the auth Store and check if somebody is already logged in
     this.checkForRegisteredUser();
   },
   methods: {
-    getSessionInfos() {
-      this.authenticationStore.getSession();
-      this.authenticationStore.onAuthStateChange();
+    async getSessionInfos() {
+      await this.authenticationStore.getSession();
+      await this.authenticationStore.onAuthStateChange();
     },
     checkForRegisteredUser() {
       // Benötige diesen Consoel.log später für die entwicklung
