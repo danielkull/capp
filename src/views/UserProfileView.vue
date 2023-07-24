@@ -4,7 +4,7 @@
       <div class="user-profile__frame" id="user-profile-frame">
         <article class="user-profile__wrapper">
           <span class="user-profile__image-wrapper">
-            <span class="image-filter"></span>
+            <span class="image-filter" @click="backToMainPageView"></span>
             <img
               :src="car.img_source"
               :alt="
@@ -18,6 +18,16 @@
                 car.car_types.car_type_name
               "
             />
+            <!-- Button back to Main page -->
+            <label class="user-profile__back-to-main-icon">
+              <input
+                @click.prevent="backToMainPageView"
+                class="user-profile__back-to-main-btn"
+                type="button"
+                value=""
+              />
+            </label>
+            <!-- End of button back to Main Page -->
           </span>
           <section class="user-profile__information-wrapper">
             <article class="user-profile__image-small">
@@ -256,6 +266,11 @@ export default {
     this.globalStateStore.saveCurrentCarId(this.carID);
   },
   methods: {
+    backToMainPageView() {
+      this.$router.push({
+        name: "mainView",
+      });
+    },
     getSessionInfos() {
       this.authenticationStore.getSession();
       this.authenticationStore.onAuthStateChange();
@@ -534,6 +549,48 @@ main,
   appearance: none;
   width: 0;
 }
+
+.user-profile__back-to-main-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  opacity: 0.8;
+  background: var(--clr-sur-d);
+  z-index: 10;
+}
+
+/* ==== Back to MainPageView Icon */
+.user-profile__back-to-main-icon::after,
+.user-profile__back-to-main-icon::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 0.3rem;
+  height: 2rem;
+  background: var(--main-font-color-dark);
+  border-radius: 1rem;
+  transform: rotate(45deg);
+  box-shadow: 0 0 5px var(--shd-f-h-dark);
+}
+.user-profile__back-to-main-icon::after {
+  transform: rotate(315deg);
+}
+
+.user-profile__back-to-main-icon:active {
+  scale: 1.1;
+}
+
+.user-profile__back-to-main-btn {
+  position: absolute;
+  all: unset;
+  top: -99999px;
+}
+/* ==== End of back to MainPageView Icon */
 
 /*======Media Queries================================*/
 @media screen and (min-width: 1000px) {
