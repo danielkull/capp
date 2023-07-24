@@ -40,9 +40,9 @@ const routes = [
     },
   },
   {
-    path: '/:catchAll(.*)',
-    name: 'ErrorPage',
-    component: () => import("@/views/ErrorPageView.vue")
+    path: "/:catchAll(.*)",
+    name: "ErrorPage",
+    component: () => import("@/views/ErrorPageView.vue"),
   },
 ];
 
