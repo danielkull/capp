@@ -304,9 +304,13 @@ article time {
   column-gap: 2rem;
   align-items: center;
   padding-inline: 1rem;
+  background: rgba(238, 237, 237, 0.7);
   background: var(--clr-chat-footer);
+  -webkit-backdrop-filter: blur(3px);
+
   backdrop-filter: blur(3px);
   position: absolute;
+  z-index: 20;
   border-top: 1px solid var(--brd-chat-f-h);
   bottom: 0;
   left: 0;
