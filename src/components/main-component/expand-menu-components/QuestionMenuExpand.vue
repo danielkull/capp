@@ -1,7 +1,8 @@
 <template>
   <section class="menue-expand__outer-wrapper" id="user-data">
     <header>
-      <a href="#" class="back-btn">
+      <!-- /* Da im neuen View, wird es derzeit nicht benötigt */ -->
+<!--       <a href="#" class="back-btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -10,8 +11,9 @@
         >
           <path
             d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
-          /></svg
-      ></a>
+          />
+        </svg>
+      </a> -->
       <h2 class="menue-expand__site-header">Fragebogen</h2>
     </header>
     <div class="menue-expand__inner-wrapper">
@@ -37,9 +39,10 @@ export default {
 </script>
 
 <style scoped>
-section:target {
+/* Da im neuen View, wird es derzeit nicht benötigt */
+/* section:target {
   translate: 0% 0%;
-}
+} */
 .menue-expand__inner-wrapper,
 .menue-expand__outer-wrapper {
   min-width: 100%;
@@ -53,7 +56,7 @@ section:target {
   z-index: 15;
   top: 0px;
   left: 0px;
-  translate: 0 -100%;
+  translate: 0 0%;
   min-height: 100vh;
   min-height: 100dvh;
   background: linear-gradient(to top, var(--clr-bg) 30%, transparent),

@@ -29,6 +29,17 @@ const routes = [
     component: LogView,
   },
   {
+    path: "/user-sign-in-question-form",
+    name: "userQuestionView",
+    // component: () => import("@/views/CalenderView.vue"),
+    component: () => import("@/views/UserQuestionView.vue"),
+    meta: {
+      // Wird bei der Finalen Version auf true gesetzt damit Route mit Auth funktioniert
+      // Bei entwicklung ist es erstmal hinterlich, daher false
+      needsAuth: true,
+    },
+  },
+  {
     path: "/calendar",
     name: "calendar",
     component: CalenderView,
@@ -45,13 +56,18 @@ const routes = [
     meta: {
       // Wird bei der Finalen Version auf true gesetzt damit Route mit Auth funktioniert
       // Bei entwicklung ist es erstmal hinterlich, daher false
-      needsAuth: false,
+      needsAuth: true,
     },
   },
   {
     path: "/car-profile/:id",
     name: "carProfile",
     component: UserProfileView,
+    meta: {
+      // Wird bei der Finalen Version auf true gesetzt damit Route mit Auth funktioniert
+      // Bei entwicklung ist es erstmal hinterlich, daher false
+      needsAuth: true,
+    },
   },
   {
     path: "/KirstensView",
@@ -80,11 +96,11 @@ router.beforeEach((to, from, next) => {
   if (to.meta.needsAuth) {
     if (authenticationStore.session.value) {
       // Benötige diesen Consoel.log später für die entwicklung
-      // console.log(authenticationStore.session.value);
+      console.log("True", authenticationStore.session.value);
       next();
     } else {
       // Benötige diesen Consoel.log später für die entwicklung
-      // console.log(authenticationStore.session.value);
+      console.log("False", authenticationStore.session.value);
       next("/logView");
     }
   } else {

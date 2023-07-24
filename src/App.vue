@@ -20,6 +20,9 @@ export default {
     <router-link to="/testUserManagementView"
       >User/Data Managment Test Bereich</router-link
     >|
+    <router-link :to="{ name: 'userQuestionView'}"
+      >User Question Form</router-link
+    >|
     <DarkModeButton />
   </nav>
   <router-view />
