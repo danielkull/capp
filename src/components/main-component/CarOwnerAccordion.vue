@@ -59,7 +59,7 @@
       <section class="car-info__list">
         <section class="placeholder">
           <p>
-            <span class="label">Marke/Modell</span>
+            <span class="label">Marke / Modell</span>
             <span>{{ brandName }} {{ carModel }}</span>
           </p>
           <p>
@@ -105,7 +105,7 @@
     <!-------------------------------------------------------------------------------------->
     <article class="car-info__categorie">
       <a href="#booking-calendar" class="car-info__header car-info__link"
-        >Buchungs Kalender
+        >Buchungskalender
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +260,7 @@ h2 {
   font-weight: 500;
 }
 
-.car-info__link{
+.car-info__link {
   text-decoration: none;
 }
 

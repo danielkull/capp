@@ -95,7 +95,7 @@
             <td>2011</td>
           </tr>
           <tr>
-            <td>Ladevol.</td>
+            <td>Ladevolumen</td>
             <td>175 l</td>
           </tr>
         </tbody>
@@ -134,7 +134,7 @@
             <td>Schaltung</td>
           </tr>
           <tr>
-            <td>Verbauch / km</td>
+            <td>Verbrauch / km</td>
             <td>1.25 l</td>
           </tr>
           <tr>
@@ -143,7 +143,7 @@
           </tr>
           <tr>
             <td>Höchst-<br />geschwind.</td>
-            <td>175 Kmh</td>
+            <td>175 km/h</td>
           </tr>
         </tbody>
       </table>

@@ -13,7 +13,7 @@
           />
         </svg>
       </a>
-      <h2 class="menue-expand__site-header">Buche dein Fahrt</h2>
+      <h2 class="menue-expand__site-header">Buche deine Fahrt</h2>
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">
@@ -25,13 +25,13 @@
             v-model:inputData="bookStartDate"
             :inputId="'book-start-date'"
             :inputType="'datetime-local'"
-            ><h3>Start Zeitpunkt</h3>
+            ><h3>Buchungsstart</h3>
           </InputText>
           <InputText
             v-model:inputData="bookEndDate"
             :inputId="'book-end-date'"
             :inputType="'datetime-local'"
-            ><h3>End Zeitpunkt</h3>
+            ><h3>Buchungsende</h3>
           </InputText>
           <DropDownTwoColumns
             v-model:selectedData="purposeSelected"
@@ -46,7 +46,7 @@
             v-model:inputData="bookingMsg"
             id="booking-text"
             name="booking-text"
-            placeholder="Bitte schreiben eine kurze Nachricht..."
+            placeholder="Bitte schreibe eine kurze Nachricht..."
             cols="10"
             rows="5"
           >

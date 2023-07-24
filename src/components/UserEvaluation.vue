@@ -5,7 +5,7 @@
         <section class="user-evaluation__wrapper-frame">
           <div class="user-evaluation__header"><h3>CAPP</h3></div>
           <section class="user-evaluation__wrapper">
-            <p>Wie zufrieden warst du ?</p>
+            <p>Wie zufrieden warst du?</p>
 
             <span class="user-evaluation__icons"
               ><input

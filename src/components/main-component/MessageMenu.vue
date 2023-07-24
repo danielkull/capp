@@ -14,7 +14,7 @@
       />
     </label>
     <label for="msg-filter-sent" class="msg-filter__label"
-      >Gesendete
+      >Gesendet
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -25,7 +25,7 @@
       />
     </label>
     <label for="msg-filter-received" class="msg-filter__label"
-      >Erhaltende
+      >Erhalten
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -36,7 +36,7 @@
       />
     </label>
     <label for="msg-filter-accepted" class="msg-filter__label"
-      >Bestätigte
+      >Bestätigt
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -47,7 +47,7 @@
       />
     </label>
     <label for="msg-filter-pending" class="msg-filter__label"
-      >Ausstehnde
+      >Ausstehend
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -58,7 +58,7 @@
       />
     </label>
     <label for="msg-filter-declined" class="msg-filter__label"
-      >Abgelehnte
+      >Abgelehnt
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -82,7 +82,7 @@
       </li>
     </ul>
   </section>
-  <section v-else>Loadding....</section>
+  <section v-else>Loading....</section>
 </template>
 
 <script>

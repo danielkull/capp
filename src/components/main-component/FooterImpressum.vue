@@ -16,7 +16,7 @@
         |
         <li><a href="#data-sec">Datenschutz</a></li>
         |
-        <li><a href="#team">Über Uns</a></li>
+        <li><a href="#team">Über uns</a></li>
         |
         <li><a href="http://">Referenzen</a></li>
       </ul>

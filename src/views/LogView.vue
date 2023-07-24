@@ -105,7 +105,7 @@
                   :inputId="'sign-in-password'"
                   :inputType="'password'"
                   @is-valid="checkValidPassword"
-                  >Password</InputText
+                  >Passwort</InputText
                 >
               </form>
             </div>

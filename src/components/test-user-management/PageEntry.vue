@@ -21,7 +21,7 @@
       v-model:inputData="password"
       :inputId="'passwordSignIn'"
       :inputType="'password'"
-      >Password</InputText
+      >Passwort</InputText
     >
     <Button
       type="submit"
@@ -45,7 +45,7 @@
       v-model:inputData="password"
       :inputId="'passwordLogIn'"
       :inputType="'password'"
-      >Password</InputText
+      >Passwort</InputText
     >
     <Button
       type="submit"

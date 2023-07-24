@@ -152,7 +152,7 @@
                   v-model="hasIsofix"
                   @change="filterCarsByIsofix()"
                 />
-                <label for="isofix-false"> Nein</label>
+                <label for="isofix-false">Nein</label>
               </li>
             </ul>
             <!----------------------Iso----------------------------------->
