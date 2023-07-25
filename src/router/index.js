@@ -11,6 +11,10 @@ const routes = [
     redirect: { name: "logView" },
   },
   {
+    path: "/index.html",
+    redirect: { name: "logView" },
+  },
+  {
     path: "/logView",
     name: "logView",
     component: LogView,
@@ -40,7 +44,7 @@ const routes = [
     },
   },
   {
-    path: "/:catchAll(.*)",
+    path: "/:catchAll",
     name: "ErrorPage",
     component: () => import("@/views/ErrorPageView.vue"),
   },
