@@ -36,6 +36,8 @@
         :carUserCity="car.users.city"
         :imgSource="car.img_source"
         :seatsCount="car.count_of_seats"
+        :carHasIsofix="car.has_isofix"
+        :carIsSmoker="car.is_smoker"
       >
         <router-link
           class="more-info"
