@@ -47,7 +47,7 @@ footer {
 article :is(ul, li, a) {
   text-decoration: none;
   list-style-type: none;
-  font-size: clamp(0.9rem, 3vw, 1.5rem);
+  font-size: var(--font-list-label-s);
   color: var(--text-light);
 }
 article :is(a:hover) {
@@ -78,17 +78,18 @@ article :is(ul) {
   padding-top: calc(var(--s-pad) / 2);
 }
 .adress-list li:first-of-type {
-  border-bottom: var(--s-brd) solid var(--primary-middle);
+  line-height: 1.3rem;
   text-align: center;
   grid-column: 1/3;
   padding-bottom: calc(var(--s-pad) / 2);
+  font-size: var(--font-list-header);
+  border-bottom: var(--s-brd) solid var(--primary-middle);
 }
 .article__wrapper {
   padding-bottom: calc(var(--s-pad) - 0.2rem);
   margin-top: calc(var(--s-marg) - 0.8rem);
   display: block;
   align-items: center;
-
   width: 100%;
   height: auto;
 }

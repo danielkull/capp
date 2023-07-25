@@ -484,10 +484,10 @@ export default {
 }
 
 .icon-btn:active {
-  background: var(--primary-veryDark);
+  background: var(--primary-very-dark);
 }
 .icon-btn:active svg {
-  stroke: var(--secondary-mid);
+  stroke: var(--icon-crl);
 }
 .icon-btn:hover {
   background: var(--primary-dark);
@@ -498,7 +498,7 @@ export default {
 .icon-tooltip::after {
   position: absolute;
   display: inline-block;
-  background: var(--primary-veryDark);
+  background: var(--primary-dark);
 }
 
 .icon-tooltip {
@@ -524,7 +524,7 @@ export default {
 }
 .icon-tooltip > p {
   text-align: center;
-  color: var(--secondary-light);
+  color: var(--tooltip-txt);
 }
 
 .icon-btn:active.icon-tooltip {
@@ -536,7 +536,7 @@ svg {
   width: calc(var(--svg-width) + 0.2rem);
   margin-inline: auto;
   aspect-ratio: 1;
-  fill: var(--clr-iconsvg);
+  fill: var(--icon-crl);
 }
 
 svg:is(.iso, .dog) {

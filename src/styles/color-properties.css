@@ -46,9 +46,10 @@
   --text-light: var(--main-font-color-light);
   --text-mid: hsl(0, 0%, 33%);
   --text-dark: var(--main-font-color-dark);
-  /*===btn===*/
+  /*================= log-btn ============*/
   --clr-logo: var(--surface-light);
   --bg-log: var(--clr-sur-l);
+  --btn-brd-clr: var(--primary-middle);
   --btn-outl: var(--list-color);
   --btn-outl-act: var(--main-font-color-light);
   --clr-f-act: var(--surface-light);
@@ -75,16 +76,21 @@
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
 
   --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
+  /*==== input===========*/
+  --bg-input: hsl(0, 0%, 94%);
   /*====================================*/
   --nav-icon-def: var(--surface-light);
   --nav-icon-act: var(--main-font-color-light);
+  --icon-clr: var(--surface-light);
   /*==== car card===========*/
   --clr-plz-car: var(--clr-prime-d);
   --filter-img: 10%;
   --clr-iconsvg: rgba(231, 231, 231);
   /*=============Car-type=====================*/
-  --clr-type-icon: var(--primary-dark);
+  --clr-type-icon: var(--primary-middle);
   --clr-bord-icon: var(--clr-prime-l);
+  --tooltip-txt: var(--surface-dark);
+  --icon-crl: var(--surface-light);
   /*====IMG car card===========*/
   --card-shadow: rgba(0, 0, 0, 0.1);
   --clr-brd: rgb(186, 186, 186);
@@ -165,9 +171,11 @@
   --clr-seat-def: var(--list-color);
   --clr-seat-act: var(--secondary-color);
   /*================text color für Mode Switch=======================*/
+
   --text-light: var(--main-font-color-dark);
   --text-mid: var(--clr-font-light);
   --text-dark: var(--clr-font-lightest);
+  /*================= log-btn ============*/
   --clr-logo: var(--clr-font-lightest);
   --bg-log: var(--clr-sur-d);
   --btn-outl: var(--list-color);
@@ -176,6 +184,7 @@
   --clr-f: var(--list-color);
   --bg-shd-l: var(--clr-sur-d);
   --bg-shd-d: var(--clr-bg);
+
   /*============Neu Messeger===============*/
   --state-red: hsl(0, 83%, 54%);
   --sur-dark-shd: hsl(0, 0%, 7%);
@@ -196,9 +205,12 @@
   --clr-type-icon: var(--primary-very-dark);
   --clr-bord-icon: var(--clr-prime-l);
   --clr-iconsvg: rgb(230, 230, 230, 0.8);
+  --tooltip-txt: var(--clr-font-lightest);
   /*==================================*/
   --box-shadow-dark: hsla(0, 0%, 12%, 0.7);
   --nav-shadow: var(--box-shadow-dark, rgba(0, 0, 0, 0.7));
+  /*==== input===========*/
+  --bg-input: var(--clr-sur-l);
   /*====================================*/
 
   --nav-icon-def: var(--primary-dark);

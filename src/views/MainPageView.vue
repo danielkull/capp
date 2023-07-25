@@ -21,7 +21,6 @@
   </header>
 
   <main class="app-mainpage__main-page main-page-style">
-    <section class="filter-choice-frame"></section>
     <section class="filter-choice"><filter-drop-down /></section>
     <section class="mainpage__card-page" v-if="cars">
       <SmallCarCard
@@ -223,6 +222,7 @@ export default {
   padding-inline: 0rem;
   border-radius: var(--m-brd-rad) var(--m-brd-rad) 0 0;
   margin-top: 3.8rem;
+  padding-top: 2rem;
   overflow: scroll;
   position: fixed;
 }
@@ -247,7 +247,7 @@ main::-webkit-scrollbar {
 }
 .mainpage__card-page {
   width: 90%;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
   margin-inline: auto;
 }
 
@@ -315,6 +315,10 @@ main::-webkit-scrollbar {
 /*====================================================*/
 
 .filter-choice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 12;
   height: max-content;
   padding-bottom: 1.5rem;
   padding-top: 0.2rem;
@@ -322,15 +326,9 @@ main::-webkit-scrollbar {
   translate: 0 -650px;
   transition: 0.6s ease-in-out;
   background: var(--filter-menue-bg);
-  position: absolute;
   border-bottom: 2px solid var(--filter-brd);
   box-shadow: 0 0 20px var(--shd-f-h-dark), 0 0 40px var(--shd-f-h-light);
   border-radius: 0 0 1.2rem 1.2rem;
-  top: 0;
-  left: 0;
-  z-index: 12;
-  position: sticky;
-  top: -13rem;
 }
 
 /* ===== Router link ===== */

@@ -132,7 +132,7 @@ export default {
 .msg-user__wrapper:nth-child(2) .msg-img__holder .msg-img__user div,
 .msg-user__wrapper:nth-child(3) .msg-img__holder .msg-img__user div,
 .msg-user__wrapper:nth-child(5) .msg-img__holder .msg-img__user div {
-  background: var(--primary-mid);
+  background: var(--primary-middle);
 }
 .msg-user__wrapper:nth-child(4) .msg-img__holder .msg-img__user div,
 .msg-user__wrapper:nth-child(7) .msg-img__holder .msg-img__user div,
@@ -147,9 +147,9 @@ export default {
   border: 4px solid var(--sur-light-shd);
   z-index: 10;
   position: absolute;
-  top: 80%;
-  left: 80%;
-  background: var(--state-red);
+  top: 50px;
+  left: 50px;
+  background: var(--accent-color-light);
 }
 .msg-img__holder {
   position: relative;
@@ -164,14 +164,13 @@ export default {
   display: grid;
   place-content: center;
 
-  border-radius: 0.7rem 0.7rem 0rem 0.7rem;
-  overflow: hidden;
   filter: contrast(0.8) grayscale(0.3);
 }
 .msg-img__user > img {
   height: 4rem;
   width: 4rem;
   object-fit: cover;
+  border-radius: 0.8rem;
 }
 .msg-user__holder {
   display: grid;

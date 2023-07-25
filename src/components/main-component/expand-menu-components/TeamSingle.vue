@@ -83,16 +83,17 @@
     <section class="logo-wrapper">
       <span v-if="teamMember === 'Stefan'">
         <img src="@/assets\logos\Miro.png" alt="" />
-        <img src="@/assets\logos\procerate.png" alt="" />
         <img src="@/assets\logos\Figma-logo.svg" alt="" />
         <img src="@/assets/logos/HTML5_logo_and_wordmark.svg.png" alt="" />
         <img src="@/assets/logos/CSS3_logo.svg.png" alt="" />
         <img src="@/assets/logos/JavaScript_logo_2.svg.png" alt="" />
+        <img src="@/assets/logos/Vue.js_Logo_2.svg.png" alt="" />
       </span>
 
       <span v-if="teamMember === 'Kirsten'">
         <img src="@/assets/logos/HTML5_logo_and_wordmark.svg.png" alt="" />
         <img src="@/assets/logos/JavaScript_logo_2.svg.png" alt="" />
+        <img src="@/assets/logos/Vue.js_Logo_2.svg.png" alt="" />
         <img
           src="@/assets/logos/supabase-logo-DCC676FFE2-seeklogo.com.png"
           alt=""
@@ -104,6 +105,7 @@
         <img src="@/assets/logos/HTML5_logo_and_wordmark.svg.png" alt="" />
         <img src="@/assets/logos/JavaScript_logo_2.svg.png" alt="" />
         <img src="@/assets\logos\Pinia.svg" alt="" />
+        <img src="@/assets/logos/Vue.js_Logo_2.svg.png" alt="" />
         <img
           src="@/assets/logos/supabase-logo-DCC676FFE2-seeklogo.com.png"
           alt=""
@@ -114,8 +116,6 @@
         <img src="@/assets\logos\Miro.png" alt="" />
 
         <img src="@/assets/logos/HTML5_logo_and_wordmark.svg.png" alt="" />
-
-        <img src="@/assets/logos/JavaScript_logo_2.svg.png" alt="" />
       </span>
     </section>
   </article>
@@ -145,18 +145,19 @@ export default {
   border-radius: 1.8rem;
   overflow: hidden;
   margin-top: 2rem;
+  height: max-content;
 }
 
 .main-content :is(p, h5) {
   width: 90%;
   margin-inline: auto;
   margin-top: var(--s-marg);
-  font-size: clamp(0.9rem, 3vw, 1.3rem);
+  font-size: var(--font-list-label-s);
   color: var(--text-dark);
 }
 
 img {
-  width: max-content;
+  width: 2rem;
   height: 2rem;
 }
 .team-member__top-bg {
@@ -188,13 +189,14 @@ img {
   letter-spacing: 0.015rem;
   color: var(--clr-iconsvg);
 }
-.link-svg__wrapper {
+/* .link-svg__wrapper {
   border: 5px solid black;
+
   width: max-content;
-}
+} */
 svg {
   width: 2rem;
-  aspect-ratio: 1;
+  height: 2rem;
   fill: var(--clr-iconsvg);
 }
 
@@ -209,6 +211,7 @@ svg {
   width: 90%;
   margin-inline: auto;
   word-wrap: break-word;
+  padding-block: 1rem;
 }
 .logo-wrapper {
   width: 100%;

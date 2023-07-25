@@ -370,7 +370,7 @@ export default {
   left: 20%;
   width: 10rem;
   height: 3rem;
-  background: red;
+
   z-index: 15;
 }
 .log-view-wrapper {
@@ -423,11 +423,19 @@ main {
 }
 .capp-btn__default {
   background: none;
-  /* background: red; */
-
   border: 1px solid var(--check-default);
 }
+.capp-btn__default::after {
+  top: 50%;
+  left: 4%;
+  translate: 88% -50%;
+}
 .capp-btn__default:checked::after {
+  translate: 0% -50%;
+  transition: 0.3s ease-out;
+  background-color: var(--clr-after-btn);
+}
+/* .capp-btn__default:checked::after {
   background: radial-gradient(
     circle at 20%,
     transparent 40%,
@@ -439,7 +447,27 @@ main {
 .capp-btn__default::after {
   background: var(--check-default);
   transition: 0.1s ease-in;
+} */
+.capp-btn__default::after {
+  background: radial-gradient(
+    circle at 20%,
+    transparent 40%,
+    var(--check-default) 41% 40%,
+    var(--check-default)
+  );
 }
+
+.capp-btn__default:checked::after {
+  background: var(--check-default);
+  background: radial-gradient(
+    circle at center,
+    var(--check-default) 0% 39%,
+    transparent 40% 49%,
+    var(--check-default) 55%
+  );
+  transition: 0.1s ease-in;
+}
+
 .capp-btn__default:checked {
   background: none;
 }
@@ -461,15 +489,18 @@ main {
 /*===================================================*/
 
 .login-card__start-page {
-  translate: 0 0;
-  z-index: 14;
+  translate: 0 0px;
+  z-index: 2;
   background-color: var(--bg-log);
   border-radius: 2rem 2rem 0 0;
   padding-top: 10vh;
-  padding-bottom: 20vh;
+  padding-bottom: 12vh;
   box-shadow: 0px 0px 25px var(--foot-shd-d);
   border-top: var(--s-brd) solid var(--foot-brd);
-  margin-top: 20vh;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }
 
 .slide-enter-active {
