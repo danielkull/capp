@@ -43,11 +43,11 @@ const routes = [
       needsAuth: true,
     },
   },
-  {
+  /*   {
     path: "/:catchAll",
     name: "ErrorPage",
     component: () => import("@/views/ErrorPageView.vue"),
-  },
+  }, */
 ];
 
 const router = createRouter({
