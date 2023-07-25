@@ -21,7 +21,9 @@
         </div>
       </article>
       <article class="chat__time-stamp">
-        <day>Montag</day> <date>23.5.23</date>
+        <!--  -->
+        <!-- <day>Montag</day> <date>23.5.23</date> -->
+        <span>Montag</span> <span>23.5.23</span>
       </article>
       <article class="chat-text__own">
         <div class="text-user__own txt-user">
@@ -71,7 +73,8 @@
         </div>
       </article>
       <article class="chat__time-stamp">
-        <day>Dienstag</day> <date>24.5.23</date>
+        <!-- <day>Dienstag</day> <date>24.5.23</date> -->
+        <span>Dienstag</span> <span>24.5.23</span>
       </article>
 
       <article class="chat-text__other-user">

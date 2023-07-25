@@ -45,7 +45,7 @@ export const useAuthenticationStore = defineStore("authentication", {
           this.activeUser = data;
         }
       } catch (error) {
-        console.log(error.message);
+        alert(error.message);
       }
     },
   },

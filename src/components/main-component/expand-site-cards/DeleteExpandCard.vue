@@ -1,7 +1,7 @@
 <template>
   <section class="menue-expand__outer-wrapper" id="delete">
     <article class="question-card">
-      <DeleteLogCard :deleteLog="'profil-delete'" />
+      <DeleteLogCard deleteLogProfil="profil-delete" />
     </article>
   </section>
 </template>
