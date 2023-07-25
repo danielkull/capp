@@ -125,13 +125,7 @@ export default {
     return { authenticationStore };
   },
   async created() {
-    const emptySession = this.checkForEmptyObject(
-      this.authenticationStore.session
-    );
-    if (emptySession) {
-      await this.getSessionInfos();
-      this.message = this.authenticationStore;
-    }
+    await this.getSessionInfos();
   },
   mounted() {
     this.getBrands();
@@ -142,13 +136,6 @@ export default {
     async getSessionInfos() {
       await this.authenticationStore.getSession();
       await this.authenticationStore.onAuthStateChange();
-    },
-    checkForEmptyObject(objectName) {
-      return (
-        objectName &&
-        Object.keys(objectName).length === 0 &&
-        objectName.constructor === Object
-      );
     },
     async getBrands() {
       const { data } = await supabase.from("brands").select();
