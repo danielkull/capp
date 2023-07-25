@@ -26,6 +26,7 @@
       name="nav-menue"
       id="calendar-icon"
       class="nav-bar__btn-icons"
+      @click="startBookingCalendar"
     />
     <label class="nav-bar__icon-frame" for="calendar-icon">
       <svg
@@ -136,11 +137,17 @@ import MessageMenu from "@/components/main-component/MessageMenu.vue";
 import Messenger from "@/components/messenger/messenger-placeholder/MessengerWindow.vue";
 import MessageChat from "@/components/messenger/messenger-placeholder/MessageChatWindow.vue";
 import MessagePin from "@/components/messenger/messenger-placeholder/MessagePin.vue";
+
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+import { computed } from "vue";
+
 const btn = document.querySelector("menue-icon");
 export default {
   data() {
     return {
       msgChatTranslate: "",
+      activeUser: null,
+      bookingViewToggle: false,
     };
   },
   components: {
@@ -150,7 +157,16 @@ export default {
     MessageChat,
     MessagePin,
   },
-
+  setup() {
+    const authenticationStore = useAuthenticationStore();
+    return { authenticationStore };
+  },
+  provide() {
+    return {
+      activeUser: computed(() => this.activeUser),
+      bookingViewToggle: computed(() => this.bookingViewToggle),
+    };
+  },
   methods: {
     testItem() {
       this.$emit("toggle", this.item);
@@ -161,6 +177,10 @@ export default {
     },
     changeTranslateChat(value) {
       this.msgChatTranslate = value;
+    },
+    startBookingCalendar() {
+      this.activeUser = this.authenticationStore.activeUser;
+      this.bookingViewToggle = !this.bookingViewToggle;
     },
   },
 };

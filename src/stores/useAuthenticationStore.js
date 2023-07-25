@@ -10,31 +10,24 @@ export const useAuthenticationStore = defineStore("authentication", {
   actions: {
     async getSession() {
       await supabase.auth.getSession().then(({ data }) => {
-        // Benötige diesen Consoel.log später für die entwicklung
-        // console.log("GetSesstion Data: ",data)
         this.session.value = data.session;
         // Simple check for not being null
-        if (data.session ) {
+        if (data.session) {
           this.getProfileData();
         }
       });
     },
     async onAuthStateChange() {
       await supabase.auth.onAuthStateChange((_, _session) => {
-        // Benötige diesen Consoel.log später für die entwicklung
-        // console.log("Auth State Change event: ", _)
-        // console.log("Auth State Change session: ", _session)
         this.session.value = _session;
       });
     },
     async logOut() {
       try {
-        this.loading = true;
-        const { error } = supabase.auth.signOut();
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
       } catch (error) {
         alert(error.message);
-      } finally {
-        this.loading = false;
       }
     },
     async getProfileData() {
@@ -53,8 +46,6 @@ export const useAuthenticationStore = defineStore("authentication", {
         }
       } catch (error) {
         console.log(error.message);
-      } finally {
-        this.loading = false;
       }
     },
   },
