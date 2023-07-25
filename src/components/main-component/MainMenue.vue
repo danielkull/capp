@@ -288,9 +288,21 @@
             ></label>
             <section class="main-menue__list">
               <ul class="layer-2__list">
-                <li>Nachtmodus <DarkModeButton /></li>
-                <li>Kontrastmodus <CheckBox id="contrast-mode" /></li>
-                <li>Farbmodus <CheckBox id="color-mode" /></li>
+                <li>
+                  <label for="dark"
+                    >Nachtmodus <DarkModeButton id="dark"
+                  /></label>
+                </li>
+                <li>
+                  <label for="contrast-mode"
+                    >Kontrastmodus <CheckBox id="contrast-mode"
+                  /></label>
+                </li>
+                <li>
+                  <label for="color-mode"
+                    >Farbmodus <CheckBox id="color-mode"
+                  /></label>
+                </li>
               </ul>
             </section>
           </article>
@@ -513,9 +525,9 @@ export default {
 
 .main-menue__wrapper {
   width: 100%;
-  height: 78vh;
-  padding-top: 2rem;
-  padding-bottom: 3rem;
+  height: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background: var(--menue-bg);
   overflow: scroll;
 }
@@ -594,11 +606,12 @@ export default {
 }
 
 .layer-1__list > li,
-.layer-2__list > li {
+.layer-2__list > li label {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding-right: 1rem;
   padding-block: 0.2rem;
   margin-top: 0.2rem;
   color: var(--text-mid);

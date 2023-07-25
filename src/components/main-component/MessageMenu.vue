@@ -252,8 +252,12 @@ export default {
   column-gap: 0.5rem;
   row-gap: 0.2rem;
   grid-template-columns: repeat(3, 1fr);
-  width: 95%;
+  width: 100%;
   margin-inline: auto;
+  background: var(--clr-bg);
+  border-bottom: 2px solid var(--surface-light);
+  position: sticky;
+  top: 0;
 }
 .msg-filter__label {
   padding-block: 0.5rem;

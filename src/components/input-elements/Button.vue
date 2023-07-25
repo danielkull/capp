@@ -12,7 +12,7 @@ export default {};
   cursor: pointer;
   padding: calc(0.2rem + 1vh) calc(1.5rem + 1vw);
   border-radius: calc(var(--s-brd-rad) + 2rem);
-  border: calc(var(--m-brd) + 1px) solid var(--primary-mid);
+  border: calc(var(--m-brd) + 1px) solid var(--btn-brd-clr);
   box-shadow: 0 0 0 0 var(--primary-middle) inset;
   transition-duration: 0.5s, 0.2s;
   transition-property: box-shadow, color;

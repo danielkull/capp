@@ -321,7 +321,7 @@ svg {
   background: var(--clr-bg);
   position: fixed;
   z-index: 8;
-  margin-top: 220%;
+
   margin-top: 25%;
   overflow: hidden;
   transition: margin 0.5s ease-in-out;
@@ -342,7 +342,7 @@ svg {
   margin-top: 220%;
 }
 .nav-bar__menu-calender {
-  background: var(--clr-sur-d);
+  background: var(--clr-bg);
   padding: var(--m-pad) var(--s-pad);
   border-top: 2px solid var(--list-color);
   margin-top: 220%;
@@ -359,13 +359,13 @@ svg {
   margin-top: 0%;
 }
 :has(#calendar-icon:checked) .nav-bar__menu-calender {
-  margin-top: 16.1%;
+  margin-top: 0%;
 }
 :has(#message-icon:checked) .nav-bar__menu-message {
-  margin-top: 16.1%;
+  margin-top: 0;
 }
 :has(#menue-icon:checked) .nav-bar__menu-main {
-  margin-top: 16.1%;
+  margin-top: 0;
 }
 /*=============================================================*/
 .menu-main__wrapper {
@@ -471,9 +471,9 @@ svg {
   height: 100%;
   width: 100%;
   margin-inline: auto;
-  background: var(--clr-sur-d);
+  /* background: var(--clr-sur-d); */
   overflow: scroll;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 }
 .menu-message__wrapper::-webkit-scrollbar {
   appearance: none;

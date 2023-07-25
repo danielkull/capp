@@ -75,8 +75,8 @@ export default {
   position: absolute;
   display: block;
   top: 50%;
-  left: 0%;
-  translate: 10% -50%;
+  left: 6%;
+  translate: 83% -50%;
   height: var(--after-heigth);
   aspect-ratio: 1;
   border-radius: var(--circle-radius);
@@ -88,7 +88,7 @@ export default {
   background-color: var(--check-checked);
 }
 .capp-btn__default:checked::after {
-  translate: 95% -50%;
+  translate: 0% -50%;
   transition: 0.3s ease-out;
   background-color: var(--clr-after-btn);
 }

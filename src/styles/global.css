@@ -145,7 +145,7 @@
   /*============================================*/
 
   font-family: "Roboto", sans-serif;
-
+  --def-font-style: "Roboto", sans-serif;
   --font-logo: "Bodoni", serif;
 
   /* font-family: "Bodoni", serif;
