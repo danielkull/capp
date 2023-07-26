@@ -14,13 +14,14 @@
     <main>
       <p v-if="routeData.status === 'accepted'" class="booking-message__period">
         Klasse, deine Anfrage wurde angenommen. Bitte nehme nun Kontakt mit dem
-        Car Owner auf!
+        Vermieter* auf!
       </p>
       <p v-if="routeData.status === 'pending'" class="booking-message__period">
         {{ period }}
       </p>
       <p v-if="routeData.status === 'declined'" class="booking-message__period">
-        Leider hats nicht geklappt. Versuch es doch bei einem anderen Car Owner.
+        Leider hat's nicht geklappt. Versuch es doch bei einer anderen
+        Vermieterin*.
       </p>
     </main>
     <footer class="booking-message__footer">

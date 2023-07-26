@@ -395,7 +395,7 @@
       </article>
       <section class="question-list__info-section">
         <p class="question-list__info-text">
-          Du möchtest ein Auto registieren? Fülle bitte das gesamte Formular.
+          Du möchtest ein Auto registrieren? Fülle bitte das gesamte Formular.
         </p>
         <Button
           class="question-list__update-data-btn"
@@ -777,7 +777,7 @@ export default {
           ownerFeedbackArr.push("Raucher Status");
         }
         if (this.hasIsofix === "") {
-          ownerFeedbackArr.push("Isofix Vorhanden");
+          ownerFeedbackArr.push("Isofix vorhanden");
         }
         if (this.chosenTrunkSize === "" && this.ownTrunkSize === "") {
           ownerFeedbackArr.push("Kofferraum Größe");

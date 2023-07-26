@@ -33,7 +33,7 @@
           </tr>
           <tr>
             <td>Versicherung</td>
-            <td>vollkasko</td>
+            <td>Vollkasko</td>
           </tr>
           <tr>
             <td>

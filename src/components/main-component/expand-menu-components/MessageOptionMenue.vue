@@ -4,7 +4,7 @@
       <section class="setting-content__question">
         <p>
           Zu welchen Neuigkeiten möchtest du eine Sofort-Benachrichtigung per
-          Mail erhalten?
+          E-Mail erhalten?
         </p>
       </section>
       <section class="setting-content__options">
@@ -30,7 +30,7 @@
       <section class="setting-content__question">
         <p>
           Zu welchen Neuigkeiten möchtest du eine Sofort-Benachrichtigung per
-          Mail erhalten?
+          E-Mail erhalten?
         </p>
       </section>
       <section class="setting-content__options">
@@ -60,7 +60,7 @@
       <section class="setting-content__question">
         <p>
           Zu welchen Gruppen-Nachrichten möchtest du eine
-          Sofort-Benachrichtigung per Mail erhalten?
+          Sofort-Benachrichtigung per E-Mail erhalten?
         </p>
       </section>
       <section class="setting-content__options">
