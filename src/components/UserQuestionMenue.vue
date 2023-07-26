@@ -86,7 +86,7 @@
           {{ invalidInputMsg }}
         </p>
       </section>
-      <!------------------------------------------------------------>
+      <!-- 
       <article class="question-list__categorie">
         <input
           type="checkbox"
@@ -117,13 +117,15 @@
                     :value="carModel.id"
                     v-model="chosenCarModelID"
                   />
-                  {{ carModel.brands?.brand_name }} {{ carModel.car_type_name }}
+                  {{ carModel.brands?.brand_name }}
+                  {{ carModel.car_type_name }} ({{ carModel.category }})
                 </label>
               </li>
             </ul>
           </div>
         </section>
       </article>
+      -->
       <!------------------------------------------------------------>
       <article class="question-list__categorie">
         <input
@@ -273,9 +275,35 @@
                     :id="`car-type-${carType.id}`"
                     :value="carType.name"
                     v-model="chosenCarType"
+                    @change="getCarModels()"
                   />
                   {{ carType.name }}</label
                 >
+              </li>
+            </ul>
+            <h3>Automarken/Modelle</h3>
+            <ul v-if="carModels" class="question-list radio-list">
+              <li
+                class="question-list__item"
+                v-for="carModel in carModels"
+                :key="carModel.id"
+              >
+                <label
+                  :for="`model-${carModel.id}`"
+                  class="capp-label__default"
+                  style="text-align: left"
+                >
+                  <input
+                    class="capp-radio__default"
+                    type="radio"
+                    name="carModel"
+                    :id="`model-${carModel.id}`"
+                    :value="carModel.id"
+                    v-model="chosenCarModelID"
+                  />
+                  {{ carModel.brands?.brand_name }}
+                  {{ carModel.car_type_name }}
+                </label>
               </li>
             </ul>
 
@@ -842,7 +870,7 @@ export default {
   },
   mounted() {
     this.getFeatures();
-    this.getCarModels();
+    //this.getCarModels();
   },
   methods: {
     //getSessionInfos
@@ -855,6 +883,7 @@ export default {
       const { data } = await supabase
         .from("car_types")
         .select(`id, car_type_name, category, brand_id, brands ( brand_name )`)
+        .eq("category", this.chosenCarType)
         .order("brand_id", { ascending: true })
         .order("id", { ascending: true })
         .order("category", { ascending: true });
@@ -1011,6 +1040,9 @@ export default {
         }
         if (this.chosenTrunkSize === "" && this.ownTrunkSize === "") {
           ownerFeedbackArr.push("Kofferraum-Größe");
+        }
+        if (this.chosenMinAge === "") {
+          ownerFeedbackArr.push("Mindest-Alter");
         }
       }
       this.invalidInputMsg = ` ${userFeedbackArr.join(
