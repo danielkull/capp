@@ -1,6 +1,6 @@
 <template>
   <section class="question-frame">
-    <p v-if="deleteLog === 'profil-delete'">
+    <p v-if="deleteLogProfil === 'profil-delete'">
       Willst Du dein Konto wirklich löschen ?
     </p>
 
@@ -10,7 +10,7 @@
     </span>
   </section>
 
-  <section class="question-frame" v-if="deletelog === 'profil-logout'">
+  <section class="question-frame" v-if="deleteLogProfil === 'profil-logout'">
     <p>Willst Dich wirklich abmelden ?</p>
     <span class="quest-answer">
       <button><p>Ja</p></button>
@@ -21,12 +21,13 @@
 
 <script>
 export default {
-  props: {
+  props: ["deleteLogProfil"],
+  /*   props: {
     deleteLog: {
       type: String,
       required: true,
     },
-  },
+  }, */
 };
 </script>
 

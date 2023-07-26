@@ -1,4 +1,5 @@
 <template>
+  <!-- ========= Start small Message View ========= -->
   <article class="booking-message-section">
     <header class="booking-message__header">
       <section class="booking-message__header-profil-wrapper">
@@ -11,8 +12,15 @@
       </section>
     </header>
     <main>
-      <p class="booking-message__period">
+      <p v-if="routeData.status === 'accepted'" class="booking-message__period">
+        Klasse, deine Anfrage wurde angenommen. Bitte nehme nun Kontakt mit dem
+        Car Owner auf!
+      </p>
+      <p v-if="routeData.status === 'pending'" class="booking-message__period">
         {{ period }}
+      </p>
+      <p v-if="routeData.status === 'declined'" class="booking-message__period">
+        Leider hats nicht geklappt. Versuch es doch bei einem anderen Car Owner.
       </p>
     </main>
     <footer class="booking-message__footer">
@@ -43,6 +51,8 @@
       ></Button>
     </footer>
   </article>
+  <!-- ========= End small Message View ========= -->
+  <!-- ========= Start Extended Message View ========= -->
   <article v-if="showExtendedMsg" class="extended-booking-message-section">
     <header class="extended-booking-message__header">
       <div
@@ -92,21 +102,28 @@
       </h4>
       <p class="message-text">{{ routeData.booking_msg }}</p>
     </main>
-    <footer class="extended-booking-message__footer">
-      <Button
-        value="Akzeptieren"
-        id="extended-msg-btn__accept"
-        class="booking-messsage__button"
-        @click.prevent="changeRouteStatus('accepted')"
-      ></Button>
-      <Button
-        value="Ablehnen"
-        id="extended-msg-btn__decline"
-        class="booking-messsage__button decline-btn"
-        @click.prevent="changeRouteStatus('declined')"
-      ></Button>
+    <footer>
+      <section
+        v-if="msgFromMe"
+        class="extended-booking-message__footer"
+      ></section>
+      <section v-else class="extended-booking-message__footer">
+        <Button
+          value="Akzeptieren"
+          id="extended-msg-btn__accept"
+          class="booking-messsage__button"
+          @click.prevent="changeRouteStatus('accepted')"
+        ></Button>
+        <Button
+          value="Ablehnen"
+          id="extended-msg-btn__decline"
+          class="booking-messsage__button decline-btn"
+          @click.prevent="changeRouteStatus('declined')"
+        ></Button>
+      </section>
     </footer>
   </article>
+  <!-- ========= End Extended Message View ========= -->
 </template>
 
 <script>
@@ -191,8 +208,6 @@ export default {
         .update({ status: newStatus })
         .eq("id", this.routeData.id)
         .select("id, status");
-      console.log("Data: ", data);
-      console.log("Error: ", error);
       this.$emit("updateRouteStatus", data);
       this.showExtendedMsg = false;
     },
