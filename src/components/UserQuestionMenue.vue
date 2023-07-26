@@ -91,6 +91,44 @@
         <input
           type="checkbox"
           name="question"
+          id="car-model"
+          class="question-list__btn"
+        /><label class="question-list__header" for="car-model"
+          >Automarken/Modelle</label
+        >
+        <section class="question-list__list">
+          <div>
+            <ul v-if="carModels" class="question-list radio-list">
+              <li
+                class="question-list__item"
+                v-for="carModel in carModels"
+                :key="carModel.id"
+              >
+                <label
+                  :for="`model-${carModel.id}`"
+                  class="capp-label__default"
+                  style="text-align: left"
+                >
+                  <input
+                    class="capp-radio__default"
+                    type="radio"
+                    name="carModel"
+                    :id="`model-${carModel.id}`"
+                    :value="carModel.id"
+                    v-model="chosenCarModelID"
+                  />
+                  {{ carModel.brands?.brand_name }} {{ carModel.car_type_name }}
+                </label>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </article>
+      <!------------------------------------------------------------>
+      <article class="question-list__categorie">
+        <input
+          type="checkbox"
+          name="question"
           id="bogen4"
           class="question-list__btn"
         /><label class="question-list__header" for="bogen4">{{
@@ -98,6 +136,128 @@
         }}</label>
         <section class="question-list__list question-list__car-info">
           <div>
+            <h3>Grundsätzliche Angaben</h3>
+            <ul class="question-list">
+              <!-- Kennzeichen -->
+              <input-text
+                :inputId="'car-license-plate'"
+                :inputType="'text'"
+                :inputPlaceholder="'AB-CD 1234'"
+                v-model:inputData="carLicensePlate"
+                >Kennzeichen</input-text
+              >
+              <!-- Bildquelle -->
+              <input-text
+                :inputId="'car-img-source'"
+                :inputType="'text'"
+                :inputPlaceholder="'z.B. https://bildquelle/bildname.jpg'"
+                v-model:inputData="imgSource"
+                >Bild-Quelle</input-text
+              >
+              <!-- PS -->
+              <div class="capp-input__wrapper">
+                <span>
+                  <label
+                    for="kw"
+                    class="capp-label__default"
+                    style="text-align: left"
+                    >PS</label
+                  >
+                  <input
+                    class="capp-input__default"
+                    type="number"
+                    step="1"
+                    name="kw"
+                    id="kw"
+                    v-model="kwValue"
+                  />
+                </span>
+              </div>
+              <!-- Max Speed -->
+              <div class="capp-input__wrapper">
+                <span>
+                  <label
+                    for="max-speed"
+                    class="capp-label__default"
+                    style="text-align: left"
+                    >Höchst-Tempo</label
+                  >
+                  <input
+                    class="capp-input__default"
+                    type="number"
+                    step="1"
+                    name="max-speed"
+                    id="max-speed"
+                    v-model="maxSpeedValue"
+                  />
+                </span>
+              </div>
+              <!-- Baujahr - YearOfConstruction -->
+              <div class="capp-input__wrapper">
+                <span>
+                  <label
+                    for="year-of-construction"
+                    class="capp-label__default"
+                    style="text-align: left"
+                    >Baujahr</label
+                  >
+                  <input
+                    class="capp-input__default"
+                    type="number"
+                    step="1"
+                    name="year-of-construction"
+                    id="year-of-construction"
+                    v-model="yearOfConstruction"
+                  />
+                </span>
+              </div>
+              <!-- Kilometerstand -->
+              <div class="capp-input__wrapper">
+                <span>
+                  <label
+                    for="mileage"
+                    class="capp-label__default"
+                    style="text-align: left"
+                    >Kilometerstand</label
+                  >
+                  <input
+                    class="capp-input__default"
+                    type="number"
+                    step="1"
+                    name="mileage"
+                    id="mileage"
+                    v-model="mileage"
+                  />
+                </span>
+              </div>
+            </ul>
+
+            <h3>Versicherung</h3>
+            <ul class="question-list radio-list">
+              <li
+                class="question-list__item"
+                v-for="(insurance, index) in insurances"
+                :key="index"
+              >
+                <label :for="`insurance-${index}`">
+                  <input
+                    type="radio"
+                    class="capp-radio__default"
+                    name="insurance"
+                    :id="`insurance-${index}`"
+                    :value="insurance"
+                    v-model="chosenInsurance"
+                  />{{ insurance }}
+                </label>
+              </li>
+            </ul>
+            <input-text
+              :inputId="insurance - no"
+              :inputType="text"
+              v-model:inputData="insuranceNo"
+              >Versicherungs-Nummer</input-text
+            >
+
             <h3>Typ</h3>
             <ul class="question-list radio-list">
               <li
@@ -139,6 +299,21 @@
                 >
               </li>
             </ul>
+            <div class="capp-input__wrapper">
+              <span>
+                <label for="fuel-consume" class="capp-label__default"
+                  >Kraftstoffverbrauch/km</label
+                >
+                <input
+                  class="capp-input__default"
+                  type="number"
+                  step="0.1"
+                  name="fuel-consume"
+                  id="fuel-consume"
+                  v-model="fuelConsumeValue"
+                />
+              </span>
+            </div>
 
             <h3>Schaltung</h3>
             <ul class="question-list radio-list">
@@ -245,7 +420,6 @@
           </div>
         </section>
       </article>
-
       <!------------------------------------------------------------>
       <article class="question-list__categorie">
         <input
@@ -456,20 +630,13 @@ export default {
       cityValue: "",
       // = End of User Data =
       // === Car Owner Data ===
-      chosenCarType: "",
-      chosenFuelType: "",
-      chosenGear: "",
-      chosenSeatCount: "",
       isSmoker: "",
       hasIsofix: "",
-      chosenTrunkSize: "",
-      ownTrunkSize: "",
-      chosenFeatures: [],
       // Wird erstmal nicht benutzt
       miscellaneous: "",
       // ==============
-      chosenLimitations: [],
-      chosenMinAge: "",
+      carModels: null,
+      chosenCarModelID: "",
       carTypes: [
         {
           id: 1,
@@ -517,6 +684,7 @@ export default {
           iconSource: "Bus.svg",
         },
       ],
+      chosenCarType: "",
       fuelTypes: [
         {
           id: "autogas",
@@ -549,6 +717,8 @@ export default {
           iconSource: "Wasserstoff.svg",
         },
       ],
+      chosenFuelType: "",
+      fuelConsumeValue: 0,
       gears: [
         {
           id: "automatic",
@@ -559,6 +729,7 @@ export default {
           name: "Schaltung",
         },
       ],
+      chosenGear: "",
       seatCounts: [
         {
           id: 2,
@@ -577,7 +748,9 @@ export default {
           name: "6 und mehr Sitze",
         },
       ],
+      chosenSeatCount: "",
       features: [],
+      chosenFeatures: [],
       luggageTrunkSizes: [
         {
           id: "S",
@@ -615,6 +788,8 @@ export default {
           iconSource: "XXL-trunk.svg",
         },
       ],
+      chosenTrunkSize: "",
+      ownTrunkSize: "",
       limitations: [
         {
           id: 1,
@@ -641,7 +816,18 @@ export default {
           iconSource: "Raucher.svg",
         },
       ],
+      chosenLimitations: [],
       minAges: [18, 21, 25],
+      chosenMinAge: "",
+      insurances: ["Vollkasko", "Teilkasko"],
+      chosenInsurance: "",
+      insuranceNo: "",
+      carLicensePlate: "",
+      imgSource: "",
+      kwValue: 0,
+      maxSpeedValue: 0,
+      yearOfConstruction: 0,
+      mileage: 0,
     };
   },
   setup() {
@@ -656,12 +842,26 @@ export default {
   },
   mounted() {
     this.getFeatures();
+    this.getCarModels();
   },
   methods: {
+    //getSessionInfos
     async getSessionInfos() {
       await this.authenticationStore.getSession();
       await this.authenticationStore.onAuthStateChange();
     },
+    //getCarModels
+    async getCarModels() {
+      const { data } = await supabase
+        .from("car_types")
+        .select(`id, car_type_name, category, brand_id, brands ( brand_name )`)
+        .order("brand_id", { ascending: true })
+        .order("id", { ascending: true })
+        .order("category", { ascending: true });
+      this.carModels = data;
+      console.log(this.carModels);
+    },
+    //getFeatures
     async getFeatures() {
       const { data } = await supabase.from("features").select();
       const carFeaturesFromDB = data;
@@ -761,26 +961,56 @@ export default {
       if (value === "carOwner") {
         this.inputIsInValidUser = false;
         this.inputIsInValidOwner = true;
+        if (this.carLicensePlate === "") {
+          ownerFeedbackArr.push("Kennzeichen");
+        }
+        if (this.chosenCarModelID === "") {
+          ownerFeedbackArr.push("Automarke/Modell");
+        }
+        if (this.imgSource === "") {
+          ownerFeedbackArr.push("Bildquelle");
+        }
+        if (this.chosenInsurance === "") {
+          ownerFeedbackArr.push("Versicherungs-Art");
+        }
+        if (this.insuranceNo === "") {
+          ownerFeedbackArr.push("Versicherungs-Nummer");
+        }
+        if (this.kwValue === 0) {
+          ownerFeedbackArr.push("PS-Zahl");
+        }
+        if (this.yearOfConstruction === 0) {
+          ownerFeedbackArr.push("Baujahr");
+        }
+        if (this.maxSpeedValue === 0) {
+          ownerFeedbackArr.push("Höchst-Tempo");
+        }
+        if (this.mileage === 0) {
+          ownerFeedbackArr.push("Kilometerstand");
+        }
         if (this.chosenCarType === "") {
-          ownerFeedbackArr.push("Auto Typ");
+          ownerFeedbackArr.push("Auto-Typ");
         }
         if (this.chosenFuelType === "") {
           ownerFeedbackArr.push("Treibstoff");
+        }
+        if (this.fuelConsumeValue === 0) {
+          ownerFeedbackArr.push("Kraftstoffverbrauch/km");
         }
         if (this.chosenGear === "") {
           ownerFeedbackArr.push("Schaltung");
         }
         if (this.chosenSeatCount === "") {
-          ownerFeedbackArr.push("Sitz Anzahl");
+          ownerFeedbackArr.push("Sitz-Anzahl");
         }
         if (this.isSmoker === "") {
-          ownerFeedbackArr.push("Raucher Status");
+          ownerFeedbackArr.push("Raucher-Status");
         }
         if (this.hasIsofix === "") {
-          ownerFeedbackArr.push("Isofix Vorhanden");
+          ownerFeedbackArr.push("Isofix-Vorhanden");
         }
         if (this.chosenTrunkSize === "" && this.ownTrunkSize === "") {
-          ownerFeedbackArr.push("Kofferraum Größe");
+          ownerFeedbackArr.push("Kofferraum-Größe");
         }
       }
       this.invalidInputMsg = ` ${userFeedbackArr.join(
@@ -846,14 +1076,25 @@ export default {
           const { data, error } = await supabase
             .from("cars")
             .insert({
-              type_id: carTypeId,
+              car_license_plate: this.carLicensePlate,
+              //type_id: carTypeId,
+              type_id: this.chosenCarModelID,
               user_id: this.activeUser,
+              fuel_consume_per_km: this.fuelConsumeValue,
+              insurance_no: this.insuranceNo,
+              kw: this.kwValue,
+              year_of_construction: this.yearOfConstruction,
+              max_speed: this.maxSpeedValue,
+              mileage: this.mileage,
               trunk_volume_in_liters: trunkVolumn,
+              img_source: this.imgSource,
               fuel_type: this.chosenFuelType,
+              insurance_type: this.chosenInsurance,
               gear: this.chosenGear,
               count_of_seats: this.chosenSeatCount,
               is_smoker: this.isSmoker,
               has_isofix: this.hasIsofix,
+              min_age: this.chosenMinAge,
             })
             .select();
           if (data) {
@@ -1075,6 +1316,46 @@ label {
 }
 
 /* Input Elements */
+.capp-input__wrapper span {
+  width: 100%;
+}
+.capp-label__default {
+  display: block;
+  color: var(--primary-dark);
+  padding-left: 0.2rem;
+  padding-block: var(--s-font);
+  font-size: var(--font-list-label-s);
+  letter-spacing: 0.1rem;
+}
+
+.capp-input__default {
+  display: block;
+  width: 100%;
+  border: 2px solid var(--clr-trans);
+  border-radius: 0.5rem;
+  padding-inline: var(--xs-pad);
+  padding-block: var(--s-pad);
+  font-size: var(--font-list-label-s);
+  background: var(--bg-input);
+  font-family: var(--def-font-style);
+  caret-color: var(--primary-middle);
+  color: var(--text-light);
+
+  outline: none;
+  border: var(--s-brd) solid transparent;
+}
+
+.capp-input__default:hover {
+  cursor: pointer;
+}
+.capp-input__default::placeholder {
+  opacity: 0.5;
+}
+
+.capp-input__default:focus {
+  border: 1px solid var(--primary-dark);
+  background: var(--clr-sur-d);
+}
 
 /* Input Text, Email, Tel, Password */
 
