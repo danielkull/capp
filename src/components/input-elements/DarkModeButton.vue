@@ -81,7 +81,7 @@ export default {
   aspect-ratio: 1;
   border-radius: var(--circle-radius);
   background: var(--clr-after-btn);
-  transition-duration: 0.2s, 0.2s;
+  transition-duration: 0.1s, 0.1s;
   transition-property: background-color, translate;
 }
 .capp-btn__default:checked {
