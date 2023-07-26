@@ -211,7 +211,10 @@ img {
   aspect-ratio: 1;
 }
 .car-card__router-link {
-  width: 95%;
+  align-self: right;
+  width: 35%;
   margin-inline: auto;
+
+  margin-bottom: -0.5rem;
 }
 </style>

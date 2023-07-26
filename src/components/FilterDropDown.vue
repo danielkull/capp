@@ -1314,5 +1314,39 @@ form:has(#help-trunk:checked) .helper-text {
   .capp-btn__default:checked::after {
     translate: 127% -50%;
   }
+  .question-list__wrapper {
+    align-self: right;
+    width: 25rem;
+  }
+  .helper-text {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    translate: 30% -100%;
+
+    width: 20rem;
+    height: max-content;
+    padding: var(--s-pad);
+    text-align: start;
+    z-index: 15;
+    transition: translate 0.3s ease-in-out;
+    box-shadow: 0 0 10px var(--foot-shd-d), 0 0 50px var(--foot-shd-d);
+  }
+  .helper-text ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .helper-text ul li {
+    display: inline-flex;
+    gap: 1rem;
+    width: 100%;
+    padding-inline: 1rem;
+    font-size: var(--font-list-label);
+    padding-block: 0.2rem;
+  }
+  form:has(#help-trunk:checked) .helper-text {
+    translate: 30% 70%;
+  }
 }
 </style>
