@@ -115,8 +115,13 @@
                   <DifferentType
                     :differentType="'Isofix'"
                     class="icon"
+                    v-if="car.has_isofix === true"
                   ></DifferentType>
-                  <DifferentType :differentType="'Nicht-Raucher'" class="icon">
+                  <DifferentType
+                    :differentType="'Nicht-Raucher'"
+                    class="icon"
+                    v-if="car.is_smoker === false"
+                  >
                   </DifferentType>
                   <DifferentType :differentType="'Tiere'" class="icon">
                   </DifferentType>
