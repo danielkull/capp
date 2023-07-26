@@ -43,7 +43,7 @@
                   :inputType="'email'"
                   :inputPlaceholder="'beispiel@provider.com'"
                   @is-valid="checkValidEmail"
-                  >Email
+                  >E-Mail
                 </InputText>
                 <InputText
                   v-model:inputData="password"
@@ -100,7 +100,7 @@
                   :inputType="'email'"
                   :inputPlaceholder="'beispiel@provider.com'"
                   @is-valid="checkValidEmail"
-                  >Email
+                  >E-Mail
                 </InputText>
 
                 <InputText
@@ -311,13 +311,13 @@ export default {
           // If Username/Mail exist, give feedback
           if (duplicateUsername & duplicateMail) {
             this.invalidInputMsg =
-              "Leider gibt es bereits den Usernamen, sowie die Mailadresse";
+              "Leider gibt es bereits den Usernamen, sowie die E-Mail-Adresse";
             this.inputIsInValid = true;
           } else if (duplicateUsername) {
             this.invalidInputMsg = "Leider gibt es bereits den Usernamen";
             this.inputIsInValid = true;
           } else if (duplicateMail) {
-            this.invalidInputMsg = "Leider gibt es bereits die Mailadresse";
+            this.invalidInputMsg = "Leider gibt es bereits die E-Mail-Adresse";
             this.inputIsInValid = true;
             // If They don't exist, sign Up this new user
           } else if (!duplicateUsername & !duplicateMail) {

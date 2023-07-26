@@ -1,7 +1,7 @@
 <template>
   <section class="question-frame">
     <p v-if="deleteLogProfil === 'profil-delete'">
-      Willst Du dein Konto wirklich löschen ?
+      Willst Du dein Konto wirklich löschen?
     </p>
 
     <span class="quest-answer">
@@ -11,7 +11,7 @@
   </section>
 
   <section class="question-frame" v-if="deleteLogProfil === 'profil-logout'">
-    <p>Willst Dich wirklich abmelden ?</p>
+    <p>Willst Dich wirklich abmelden?</p>
     <span class="quest-answer">
       <button><p>Ja</p></button>
       <a href="#">Nein</a>

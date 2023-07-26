@@ -171,7 +171,7 @@ export default {
         case "text":
           return "Gib hier Deinen Usernamen ein. Es gibt nur eine Auflage: Du musst ihn Dir merken können.";
         case "email":
-          return "Bitte gib hier deine Mail-Adresse an. Sie sollte in etwa so aussehen: meinKuerzel@provider.com";
+          return "Bitte gib hier deine E-Mail-Adresse an. Sie sollte in etwa so aussehen: meinKuerzel@provider.com";
         case "password":
           return "Ein sicheres Passwort hat mindestens 12 Zeichen. Benutze hierbei bitte eine Mischung aus Groß-, Kleinschreibung, Sonderzeichen und Zahlen.";
         case "datetime-local":
@@ -189,7 +189,7 @@ export default {
         case "text":
           return "Der Username ist nicht korrekt";
         case "email":
-          return "Die Mail-Adresse ist nicht korrekt.";
+          return "Die E-Mail-Adresse ist nicht korrekt.";
         case "password":
           return "Leider wurden die Passwort-Kriterien nicht erfüllt";
         case "tel":
