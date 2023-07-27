@@ -21,10 +21,12 @@
   </header>
 
   <main class="app-mainpage__main-page main-page-style">
-    <section class="filter-choice"><filter-drop-down /></section>
-    <section class="mainpage__card-page" v-if="cars">
+    <section class="filter-choice">
+      <filter-drop-down @send-filtered-cars="newFilteredCars" />
+    </section>
+    <section class="mainpage__card-page" v-if="filteredCars">
       <SmallCarCard
-        v-for="car in cars"
+        v-for="car in filteredCars"
         :key="car.id"
         :brandName="car.car_types.brands.brand_name"
         :carTypeCategory="car.car_types.category"
@@ -119,6 +121,7 @@ export default {
       brands: null,
       carTypes: null,
       cars: null,
+      filteredCars: null,
     };
   },
   setup() {
@@ -161,6 +164,20 @@ export default {
         )
         .order("id", { ascending: true });
       this.cars = data;
+      this.filteredCars = data;
+    },
+    newFilteredCars(data) {
+      console.log("Meine neuen Daten: ", data);
+      if (
+        data?.checkChosenCarTypes?.length > 0 ||
+        data?.checkChosenFuelTypes?.length > 0 ||
+        data?.checkChosenSeatCounts?.length > 0 ||
+        data?.checkChosenZipCode?.length > 0
+      ) {
+        this.filteredCars = data.newFilteredData;
+      } else {
+        this.filteredCars = this.cars;
+      }
     },
   },
 };
