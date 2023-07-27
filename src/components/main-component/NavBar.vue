@@ -5,6 +5,8 @@
       name="nav-menue"
       id="user-icon"
       class="nav-bar__btn-icons"
+      @change="checkBtn"
+      v-model="checkedName"
     />
     <label class="nav-bar__icon-frame" for="user-icon">
       <svg
@@ -51,7 +53,8 @@
       name="nav-menue"
       id="message-icon"
       class="nav-bar__btn-icons"
-      @toggle="testToggle"
+      @change="checkBtn"
+      v-model="checkedName"
     /><label class="nav-bar__icon-frame" for="message-icon"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +78,8 @@
       name="nav-menue"
       id="menue-icon"
       class="nav-bar__btn-icons"
-      @click="testItem"
+      @change="checkBtn"
+      v-model="checkedName"
     /><label class="nav-bar__icon-frame" for="menue-icon">
       <div class="menue-wrapper">
         <span class="menue-strip menue-strip1"></span
@@ -141,13 +145,16 @@ import MessagePin from "@/components/messenger/messenger-placeholder/MessagePin.
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { computed } from "vue";
 
-const btn = document.querySelector("menue-icon");
 export default {
   data() {
     return {
       msgChatTranslate: "",
       activeUser: null,
       bookingViewToggle: false,
+      menueBtn: true,
+      chatBtn: true,
+      userBtn: true,
+      name: true,
     };
   },
   components: {
@@ -168,10 +175,25 @@ export default {
     };
   },
   methods: {
-    testItem() {
-      this.$emit("toggle", this.item);
-      console.log("halloo");
+    //
+    // navBtn(event) {
+    // this.$emit("toggle", this.item);
+    //   console.log("halloo");
+    //   console.log(event.target.checked);
+    //   const btnName = event.target.name;
+    //   const btnStatus = event.target.checked;
+    //   if (btnName === "nav-menu" && btnStatus) {
+    //     this.menueBtn = true;
+    //     // this.chatBtn = !this.chatBtn;
+    //   }
+    //   return (this.chatBtn = !this.chatBtn);
+    // },
+    checkBtn(event) {
+      this.event = this.event.filter((name) => name !== event);
+
+      //
     },
+
     testToggle() {
       console.log("geklappt");
     },
