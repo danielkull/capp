@@ -167,12 +167,15 @@ export default {
       this.filteredCars = data;
     },
     newFilteredCars(data) {
-      console.log("Meine neuen Daten: ", data);
       if (
         data?.checkChosenCarTypes?.length > 0 ||
         data?.checkChosenFuelTypes?.length > 0 ||
         data?.checkChosenSeatCounts?.length > 0 ||
-        data?.checkChosenZipCode?.length > 0
+        data?.checkChosenZipCode?.length > 0 ||
+        data?.checkChosenTrunkSize?.length > 0 ||
+        data?.checkChosenGear?.length > 0 ||
+        data?.checkHasIsofix?.length > 0 ||
+        data?.checkIsSmoker?.length > 0
       ) {
         this.filteredCars = data.newFilteredData;
       } else {
