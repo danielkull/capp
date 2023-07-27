@@ -25,7 +25,11 @@
                   :name="`carType-${carType.id}`"
                   :id="`carType-${carType.id}`"
                   v-model="carType.checked"
-                  @change="chooseCarTypes(), filterCarsByCarType()"
+                  @change="
+                    chooseCarTypes(),
+                      filterCarsByCarType(),
+                      $emit('sendFilteredCars')
+                  "
                 />
                 <label :for="`carType-${carType.id}`">{{ carType.name }}</label>
               </li>
@@ -58,7 +62,11 @@
                   :name="`fuelType-${fuelType.id}`"
                   :id="`fuelType-${fuelType.id}`"
                   v-model="fuelType.checked"
-                  @change="chooseFuelTypes(), filterCarsByFuelType()"
+                  @change="
+                    chooseFuelTypes(),
+                      filterCarsByFuelType(),
+                      $emit('sendFilteredCars')
+                  "
                 />
                 <label :for="`fuelType-${fuelType.id}`">{{
                   fuelType.name
@@ -94,7 +102,7 @@
                   :value="gear.name"
                   v-model="chosenGear"
                   class="capp-radio__default"
-                  @change="filterCarsByGear()"
+                  @change="filterCarsByGear(), $emit('sendFilteredCars')"
                 />
                 <label :for="gear.id">{{ gear.name }}</label>
               </li>
@@ -110,7 +118,7 @@
                   id="smoker-true"
                   value="true"
                   v-model="isSmoker"
-                  @change="filterCarsBySmoking()"
+                  @change="filterCarsBySmoking(), $emit('sendFilteredCars')"
                 />
                 <label for="smoker-true">Ja</label>
               </li>
@@ -122,7 +130,7 @@
                   id="smoker-false"
                   value="false"
                   v-model="isSmoker"
-                  @change="filterCarsBySmoking()"
+                  @change="filterCarsBySmoking(), $emit('sendFilteredCars')"
                 />
                 <label for="smoker-false">Nein</label>
               </li>
@@ -138,7 +146,7 @@
                   id="isofix-true"
                   value="true"
                   v-model="hasIsofix"
-                  @change="filterCarsByIsofix()"
+                  @change="filterCarsByIsofix(), $emit('sendFilteredCars')"
                 />
                 <label for="isofix-true"> Ja </label>
               </li>
@@ -150,7 +158,7 @@
                   id="isofix-false"
                   value="false"
                   v-model="hasIsofix"
-                  @change="filterCarsByIsofix()"
+                  @change="filterCarsByIsofix(), $emit('sendFilteredCars')"
                 />
                 <label for="isofix-false">Nein</label>
               </li>
@@ -182,7 +190,11 @@
                   :name="seatCount.id"
                   :id="seatCount.id"
                   v-model="seatCount.checked"
-                  @change="chooseSeatCounts(), filterCarsBySeatCount()"
+                  @change="
+                    chooseSeatCounts(),
+                      filterCarsBySeatCount(),
+                      $emit('sendFilteredCars')
+                  "
                   class="capp-btn__default"
                 />
                 <label :for="seatCount.id">{{ seatCount.name }}</label>
@@ -299,7 +311,11 @@
                   :name="minAge.id"
                   :id="minAge.id"
                   v-model="minAge.checked"
-                  @change="chooseMinAges(), filterCarsByMinAge()"
+                  @change="
+                    chooseMinAges(),
+                      filterCarsByMinAge(),
+                      $emit('sendFilteredCars')
+                  "
                   class="capp-btn__default"
                 />
                 <label :for="minAge.id" class="capp-label__default">{{
@@ -335,7 +351,7 @@
                   :id="trunkSize.id"
                   :value="[trunkSize.id, trunkSize.min, trunkSize.max]"
                   v-model="chosenTrunkSize"
-                  @change="filterCarsByTrunkSize()"
+                  @change="filterCarsByTrunkSize(), $emit('sendFilteredCars')"
                   class="capp-radio__default"
                 />
                 <label :for="trunkSize.id">{{ trunkSize.id }}</label>
@@ -459,7 +475,7 @@
                   :value="zipcode"
                   v-model="chosenZipCode"
                   class="capp-radio__default"
-                  @change="filterCarsByZipCode()"
+                  @change="filterCarsByZipCode(), $emit('sendFilteredCars')"
                 />
                 <label :for="`zipcode-${zipcode}`" class="capp-label__default"
                   >{{ zipcode }}xxxx</label
@@ -501,6 +517,7 @@ import { supabase } from "../lib/supabaseClient";
 import CheckBox from "./input-elements/CheckBox.vue";
 import RadioButton from "./input-elements/RadioButton.vue";
 export default {
+  emits: ["sendFilteredCars"],
   components: { CheckBox, RadioButton },
   data() {
     return {
@@ -731,6 +748,30 @@ export default {
       features: [],
       chosenFeatures: [],
     };
+  },
+  watch: {
+    filteredCars(newFilteredData) {
+      const checkChosenCarTypes = this.chosenCarTypes;
+      const checkChosenFuelTypes = this.chosenFuelTypes;
+      const checkChosenSeatCounts = this.chosenSeatCounts;
+      const checkChosenZipCode = this.chosenZipCode;
+      const checkChosenTrunkSize = this.chosenTrunkSize;
+      const checkChosenGear = this.chosenGear;
+      const checkHasIsofix = this.hasIsofix;
+      const checkIsSmoker = this.isSmoker;
+
+      this.$emit("sendFilteredCars", {
+        newFilteredData,
+        checkChosenCarTypes,
+        checkChosenFuelTypes,
+        checkChosenSeatCounts,
+        checkChosenZipCode,
+        checkChosenTrunkSize,
+        checkChosenGear,
+        checkHasIsofix,
+        checkIsSmoker,
+      });
+    },
   },
   mounted() {
     this.getFeatures();
