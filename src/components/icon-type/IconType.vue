@@ -804,10 +804,10 @@ export default {
 }
 
 .icon-btn:active {
-  background: var(--primary-veryDark);
+  background: var(--clr-prime-vd);
 }
 .icon-btn:active svg {
-  stroke: var(--secondary-mid);
+  stroke: var(--tooltip-txt);
 }
 .icon-btn:hover {
   background: var(--primary-dark);
@@ -818,7 +818,7 @@ export default {
 .icon-tooltip::after {
   position: absolute;
   display: inline-block;
-  background: var(--primary-veryDark);
+  background: var(--primary-middle);
 }
 
 .icon-tooltip {
@@ -844,7 +844,7 @@ export default {
 }
 .icon-tooltip > p {
   text-align: center;
-  color: var(--secondary-light);
+  color: var(--tooltip-txt);
 }
 
 .icon-btn:active.icon-tooltip {

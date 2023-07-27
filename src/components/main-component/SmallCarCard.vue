@@ -121,7 +121,7 @@ export default {
 <style scoped>
 .car-card__wrapper {
   width: 100%;
-  height: 18rem;
+  height: 20rem;
   position: relative;
   margin-bottom: 1rem;
   border-radius: 1rem;
@@ -133,10 +133,10 @@ export default {
 img {
   border-radius: 1rem 1rem 0 0;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
   object-fit: cover;
   object-position: center center;
-  filter: grayscale(var(--filter-img));
+  filter: grayscale(0.5);
 }
 
 .car-card__basic-information {
@@ -180,18 +180,18 @@ img {
 }
 .icon {
   width: 3rem;
-  aspect-ratio: 1;
-  margin-inline: 0.4rem;
+  height: 3rem;
+  /* margin-inline: 0.4rem; */
 }
 .car-card__icon-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 0.2rem;
-  padding-left: -0.3rem;
+
+  /* padding-left: -0.3rem; */
   padding-block: 0.9rem 0rem;
 
-  width: 90%;
+  width: 100%;
   margin-inline: auto;
   margin-top: 0.5rem;
   border-top: 1px solid var(--clr-brd);
@@ -216,5 +216,16 @@ img {
   margin-inline: auto;
 
   margin-bottom: -0.5rem;
+}
+@media screen and (min-width: 900px) {
+  .car-card__icon-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding-block: 0.9rem 0rem;
+
+    width: max-content;
+  }
 }
 </style>

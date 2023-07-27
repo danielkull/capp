@@ -574,16 +574,16 @@ main {
 .capp-input__invalid-input {
   font-size: var(--s-font);
   width: 100%;
-  height: max-content;
+  height: 100%;
   text-align: center;
-  padding-right: calc(var(--s-font) / 2);
   margin-top: calc(var(--s-font) / 1.5);
 }
 .input__valid {
   color: transparent;
 }
 .input__invalid {
-  color: var(--error-color);
+  color: var(--clr-error);
+  font-size: 0.9rem;
 }
 
 @media screen and (min-width: 500px) {

@@ -316,6 +316,9 @@ main,
   height: 100%;
 }
 
+.user-profile__frame {
+  position: fixed;
+}
 /*========================================================*/
 /*==================Profilbild-BG===============================*/
 /*========================================================*/
@@ -580,7 +583,6 @@ main,
   background: var(--main-font-color-dark);
   border-radius: 1rem;
   transform: rotate(45deg);
-  box-shadow: 0 0 5px var(--shd-f-h-dark);
 }
 .user-profile__back-to-main-icon::after {
   transform: rotate(315deg);

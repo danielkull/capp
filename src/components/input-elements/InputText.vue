@@ -319,16 +319,17 @@ input[type="password"]::placeholder {
 .capp-input__invalid-input {
   font-size: var(--s-font);
   width: 100%;
-  height: max-content;
-  text-align: right;
-  padding-right: calc(var(--s-font) / 2);
+  height: 100%;
+  text-align: left;
+
   margin-top: calc(var(--s-font) / 1.5);
 }
 .input__valid {
   color: transparent;
 }
 .input__invalid {
-  color: var(--accent-color-light);
+  color: var(--clr-error);
+  font-size: 0.9rem;
 }
 
 /*=====================*/

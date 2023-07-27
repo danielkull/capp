@@ -176,7 +176,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-
+  margin-bottom: 1.5rem;
   padding-top: 1rem;
 }
 .capp-input__wrapper span {
@@ -228,10 +228,12 @@ export default {
 }
 
 .capp-input__btn svg {
-  fill: var(--secondary-default);
+  fill: var(--list-default);
   position: relative;
 }
-
+.capp-input__btn:active > svg {
+  fill: var(--primary-middle);
+}
 .capp-input__help {
   position: absolute;
   top: -60px;
