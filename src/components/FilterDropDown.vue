@@ -755,12 +755,21 @@ export default {
       const checkChosenFuelTypes = this.chosenFuelTypes;
       const checkChosenSeatCounts = this.chosenSeatCounts;
       const checkChosenZipCode = this.chosenZipCode;
+      const checkChosenTrunkSize = this.chosenTrunkSize;
+      const checkChosenGear = this.chosenGear;
+      const checkHasIsofix = this.hasIsofix;
+      const checkIsSmoker = this.isSmoker;
+
       this.$emit("sendFilteredCars", {
         newFilteredData,
         checkChosenCarTypes,
         checkChosenFuelTypes,
         checkChosenSeatCounts,
         checkChosenZipCode,
+        checkChosenTrunkSize,
+        checkChosenGear,
+        checkHasIsofix,
+        checkIsSmoker,
       });
     },
   },
