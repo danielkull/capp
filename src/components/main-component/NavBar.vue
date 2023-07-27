@@ -5,8 +5,13 @@
       name="nav-menue"
       id="user-icon"
       class="nav-bar__btn-icons"
+
       @change="checkBtn"
       v-model="checkedName"
+
+      ref="navUserMenue"
+      @click="handleNavbarActivation"
+
     />
     <label class="nav-bar__icon-frame" for="user-icon">
       <svg
@@ -28,7 +33,11 @@
       name="nav-menue"
       id="calendar-icon"
       class="nav-bar__btn-icons"
-      @click="startBookingCalendar"
+      ref="navCalendarMenue"
+      @click="
+        startBookingCalendar();
+        handleNavbarActivation($event);
+      "
     />
     <label class="nav-bar__icon-frame" for="calendar-icon">
       <svg
@@ -53,8 +62,11 @@
       name="nav-menue"
       id="message-icon"
       class="nav-bar__btn-icons"
+
       @change="checkBtn"
       v-model="checkedName"
+
+      ref="navMessageMenue"
     /><label class="nav-bar__icon-frame" for="message-icon"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -78,8 +90,13 @@
       name="nav-menue"
       id="menue-icon"
       class="nav-bar__btn-icons"
+
       @change="checkBtn"
       v-model="checkedName"
+
+      ref="navSettingsMenue"
+      @click="handleNavbarActivation"
+
     /><label class="nav-bar__icon-frame" for="menue-icon">
       <div class="menue-wrapper">
         <span class="menue-strip menue-strip1"></span
@@ -203,6 +220,31 @@ export default {
     startBookingCalendar() {
       this.activeUser = this.authenticationStore.activeUser;
       this.bookingViewToggle = !this.bookingViewToggle;
+    },
+    handleNavbarActivation(event) {
+      // The selected checkbox of the navbar
+      let currentNavMenue = event.target;
+      // save the reference to all navbar checkboxes
+      const navUserMenue = this.$refs.navUserMenue;
+      const navCalendarMenue = this.$refs.navCalendarMenue;
+      const navMessageMenue = this.$refs.navMessageMenue;
+      const navSettingsMenue = this.$refs.navSettingsMenue;
+
+      // Check that not the current checkbox is set to 'false'
+      if (navUserMenue.id !== currentNavMenue.id) {
+        navUserMenue.checked = false;
+      }
+      if (navCalendarMenue.id !== currentNavMenue.id) {
+        navCalendarMenue.checked = false;
+      }
+      if (navMessageMenue.id !== currentNavMenue.id) {
+        navMessageMenue.checked = false;
+      }
+      if (navSettingsMenue.id !== currentNavMenue.id) {
+        navSettingsMenue.checked = false;
+      }
+      // Since toggle is part of the native html checkbox, we don't need to handle the current checkbox further.
+      // this.bookingViewToggl = navCalendarMenue.checked;
     },
   },
 };

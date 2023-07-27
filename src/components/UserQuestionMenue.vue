@@ -1193,6 +1193,12 @@ select:focus-within {
   padding: 0 1rem;
   margin-block: 1rem;
 }
+.question-list__info-section p:nth-child(1) {
+  color: var(--text-light);
+}
+.question-list__info-section p:nth-child(3) {
+  color: var(--text-dark);
+}
 
 @media screen and (max-width: 400px) {
   ul.radio-list {
