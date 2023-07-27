@@ -18,7 +18,7 @@
           v-if="teamMember === 'Daniel'"
           class="name"
           href="https://github.com/danielkull"
-          >Daniel Kuhl</a
+          >Daniel Kull</a
         >
         <a
           v-if="teamMember === 'Kerstin'"
