@@ -17,7 +17,6 @@
         </label>
       </span>
     </article>
-    <!-- <div class="main-page__shadow"></div> -->
   </header>
 
   <main class="app-mainpage__main-page main-page-style">
@@ -268,9 +267,11 @@ main::-webkit-scrollbar {
   /* box-shadow: inset 0px 15px 15px rgba(0, 0, 0, 0.4); */
 }
 .mainpage__card-page {
-  width: 90%;
+  width: 95%;
   margin-bottom: 5rem;
   margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 /*=================================================================*/
@@ -380,7 +381,7 @@ a.more-info:hover {
     width: 100%;
     height: 100%;
     padding-inline: 1rem;
-    border-radius: 2rem 2rem 0 0;
+    border-radius: 0;
     margin-top: 5rem;
   }
   .main-page__shadow {
@@ -388,6 +389,45 @@ a.more-info:hover {
     height: 50%;
     top: 99px;
     left: 0;
+  }
+  .filter-choice {
+    position: absolute;
+    top: 0;
+    left: 75%;
+    right: 0;
+    z-index: 12;
+    height: max-content;
+    padding-bottom: 2rem;
+    padding-top: 3rem;
+    width: 25vw;
+    translate: 0 -650px;
+  }
+  .mainpage__card-page {
+    width: 100%;
+    margin-bottom: 5rem;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    column-gap: calc(0.5rem + 1vw);
+    row-gap: calc(0.5rem + 1vh);
+  }
+  .capp-mainpage__header {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+    width: 100%;
+    height: 6rem;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      to right,
+      var(--clr-prime-m) 40%,
+      var(--clr-prime-vd)
+    );
+    padding-inline: 1.2rem;
+    box-shadow: 0 0 20px var(--shd-f-h-dark), 0 0 40px var(--shd-f-h-light);
   }
 
   /*========================================*/
