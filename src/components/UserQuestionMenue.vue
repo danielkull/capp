@@ -54,6 +54,7 @@
             >
             <!-- Wohnort / Stadt / City -->
             <input-text
+              class="city"
               :inputId="'city'"
               :inputType="'text'"
               :inputPlaceholder="'Ort'"
@@ -332,6 +333,7 @@
             </ul>
 
             <input-text
+              class="eigene-angaben"
               :inputId="'own-trunk-size'"
               :inputType="'text'"
               :inputPlaceholder="'Eigene Angaben'"
@@ -963,7 +965,7 @@ export default {
 .question-list__categorie > .question-list__list > * {
   overflow: hidden;
   width: 100%;
-  padding-inline: var(--list-padding);
+  padding-inline: 0.5rem;
   list-style-type: none;
   background: var(--clr-sur-d);
   border-radius: var(--m-brd-rad);
@@ -1024,8 +1026,8 @@ ul.question-list {
   display: grid;
   grid-template-rows: 1fr;
   background: var(--bg-log);
-  padding-block: 0rem var(--s-pad);
-  background: var(--quest-menu-bg);
+  padding-block: 0 var(--s-pad);
+  background: var(--menue-bg);
 }
 .question-list__btn:checked ~ .question-list__header::after {
   background: var(--primary-middle);
@@ -1089,6 +1091,12 @@ input[type="tel"]::placeholder {
 input[type="text"]:focus-within,
 input[type="tel"]:focus-within {
   outline: var(--m-brd) solid var(--primary-light);
+}
+.eigene-angaben {
+  margin-bottom: 1.5rem;
+}
+.city {
+  margin-bottom: 1.5rem;
 }
 
 /*============== Radio Buttons =============*/
@@ -1191,7 +1199,9 @@ select:focus-within {
   color: var(--text-light);
 }
 .question-list__info-section p:nth-child(3) {
-  color: var(--text-dark);
+  color: var(--accent-color-light);
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 @media screen and (max-width: 400px) {
