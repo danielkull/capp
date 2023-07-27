@@ -44,8 +44,8 @@ export default {
   outline-offset: 0px;
 }
 .capp-radio__default:checked::after {
-  background: var(--primary-mid);
+  background: var(--primary-middle);
   outline-offset: 7px;
-  outline: 1px solid var(--primary-mid);
+  outline: 1px solid var(--primary-middle);
 }
 </style>

@@ -460,8 +460,8 @@ export default {
       chosenFuelType: "",
       chosenGear: "",
       chosenSeatCount: "",
-      isSmoker: "",
-      hasIsofix: "",
+      isSmoker: false,
+      hasIsofix: false,
       chosenTrunkSize: "",
       ownTrunkSize: "",
       chosenFeatures: [],
@@ -772,12 +772,6 @@ export default {
         }
         if (this.chosenSeatCount === "") {
           ownerFeedbackArr.push("Sitz Anzahl");
-        }
-        if (this.isSmoker === "") {
-          ownerFeedbackArr.push("Raucher Status");
-        }
-        if (this.hasIsofix === "") {
-          ownerFeedbackArr.push("Isofix vorhanden");
         }
         if (this.chosenTrunkSize === "" && this.ownTrunkSize === "") {
           ownerFeedbackArr.push("Kofferraum Größe");
@@ -1129,9 +1123,9 @@ input[type="checkbox"] {
   outline-offset: 0px;
 }
 .capp-radio__default:checked::after {
-  background: var(--primary-mid);
+  background: var(--primary-middle);
   outline-offset: 4px;
-  outline: 1px solid var(--primary-mid);
+  outline: 1px solid var(--primary-middle);
 }
 label:has(.capp-radio__default:checked) {
   color: var(--text-mid);
