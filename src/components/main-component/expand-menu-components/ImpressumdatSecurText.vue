@@ -225,7 +225,6 @@
         possimus assumenda quas amet natus neque eos cupiditate aut, voluptas
         sunt labore mollitia.
       </p>
-      <plorem></plorem>
     </section>
   </article>
 </template>

@@ -318,7 +318,7 @@
           die sich für eine gute Nachbarschaft und Klimaschutz einsetzen.
         </p>
         <p v-if="faqQuestion === 'owner-question-12'">
-          Das machen wir für Dich! Schreibe uns einfach eine Email an
+          Das machen wir für Dich! Schreibe uns einfach eine E-Mail an
           capp.carsharing@gmail.com, wir kümmern uns darum.
         </p>
         <!------------------------------------------------------------------------------------------>
@@ -405,7 +405,7 @@ Du! So steht es im Vertrag. Wenn Du jemanden anderen fahren lassen möchtest, kl
              Zieh die Buchung unbedingt über den Buchungskalender zurück. Nur so wird der Vermieter* informiert und das Auto wieder für andere Nachbarn* freigegeben. Kosten entstehen Dir keine - CAPP soll nicht wirtschaftlich sein, sondern nur die Umwelt entlasten und die Gesellschaft stärken.  
           </p>
             <p v-if="faqQuestion === 'client-question-16'">
-             Das machen wir für Dich! Schreibe uns einfach eine Email an
+             Das machen wir für Dich! Schreibe uns einfach eine E-Mail an
             capp.carsharing@gmail.com, wir kümmern uns darum.
           </p>
       

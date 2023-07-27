@@ -15,7 +15,7 @@
         class="bi bi-person-square"
         viewBox="0 0 16 16"
       >
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+        <path class="path" d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
         <path
           d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"
         />
@@ -26,6 +26,7 @@
       name="nav-menue"
       id="calendar-icon"
       class="nav-bar__btn-icons"
+      @click="startBookingCalendar"
     />
     <label class="nav-bar__icon-frame" for="calendar-icon">
       <svg
@@ -136,11 +137,17 @@ import MessageMenu from "@/components/main-component/MessageMenu.vue";
 import Messenger from "@/components/messenger/messenger-placeholder/MessengerWindow.vue";
 import MessageChat from "@/components/messenger/messenger-placeholder/MessageChatWindow.vue";
 import MessagePin from "@/components/messenger/messenger-placeholder/MessagePin.vue";
+
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+import { computed } from "vue";
+
 const btn = document.querySelector("menue-icon");
 export default {
   data() {
     return {
       msgChatTranslate: "",
+      activeUser: null,
+      bookingViewToggle: false,
     };
   },
   components: {
@@ -150,7 +157,16 @@ export default {
     MessageChat,
     MessagePin,
   },
-
+  setup() {
+    const authenticationStore = useAuthenticationStore();
+    return { authenticationStore };
+  },
+  provide() {
+    return {
+      activeUser: computed(() => this.activeUser),
+      bookingViewToggle: computed(() => this.bookingViewToggle),
+    };
+  },
   methods: {
     testItem() {
       this.$emit("toggle", this.item);
@@ -161,9 +177,12 @@ export default {
     },
     changeTranslateChat(value) {
       this.msgChatTranslate = value;
-    },    
+    },
+    startBookingCalendar() {
+      this.activeUser = this.authenticationStore.activeUser;
+      this.bookingViewToggle = !this.bookingViewToggle;
+    },
   },
-
 };
 </script>
 
@@ -181,7 +200,7 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   z-index: 10;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   width: 100vw;
 
@@ -217,7 +236,7 @@ label p {
   width: 100%;
   text-align: left;
   font-weight: 500;
-  color: var(--primary-middle);
+  color: var(--clr-header-name);
   margin-left: -9rem;
 }
 svg {
@@ -243,15 +262,17 @@ svg {
   opacity: 1;
   transition: all 0.2s ease-in-out;
 }
-#message-icon:active + label svg > .path {
+#message-icon:checked + label svg > .path,
+#calendar-icon:checked + label svg > .calender-path,
+#user-icon:checked + label svg > .path {
   opacity: 0;
   translate: 0px -10px;
 }
 
-#calendar-icon:active + label svg > .calender-path {
+/* #calendar-icon:checked + label svg > .calender-path {
   opacity: 0;
   translate: 0px -10px;
-}
+} */
 
 /*===================================================*/
 /*========== Color checked icon svg =================*/
@@ -300,7 +321,7 @@ svg {
   background: var(--clr-bg);
   position: fixed;
   z-index: 8;
-  margin-top: 220%;
+
   margin-top: 25%;
   overflow: hidden;
   transition: margin 0.5s ease-in-out;
@@ -321,7 +342,7 @@ svg {
   margin-top: 220%;
 }
 .nav-bar__menu-calender {
-  background: var(--clr-sur-d);
+  background: var(--clr-bg);
   padding: var(--m-pad) var(--s-pad);
   border-top: 2px solid var(--list-color);
   margin-top: 220%;
@@ -338,13 +359,13 @@ svg {
   margin-top: 0%;
 }
 :has(#calendar-icon:checked) .nav-bar__menu-calender {
-  margin-top: 16.1%;
+  margin-top: 0%;
 }
 :has(#message-icon:checked) .nav-bar__menu-message {
-  margin-top: 16.1%;
+  margin-top: 0;
 }
 :has(#menue-icon:checked) .nav-bar__menu-main {
-  margin-top: 16.1%;
+  margin-top: 0;
 }
 /*=============================================================*/
 .menu-main__wrapper {
@@ -385,7 +406,7 @@ svg {
   display: flex;
   align-items: center;
   position: absolute;
-  z-index: 50;
+  z-index: 100;
   top: 0;
   left: 0;
   font-size: clamp(2rem, 5vw, 3rem);
@@ -398,12 +419,13 @@ svg {
   border-bottom: 1px solid var(--brd-chat-f-h);
   box-shadow: 0 0 20px var(--shd-f-h-dark), 0 0 50px var(--shd-f-h-light);
   backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   border-radius: 0 0 1.5rem 1.5rem;
 }
 #chat-window {
   all: unset;
   position: absolute;
-} 
+}
 .msg-user__pin-wrapper {
   width: 100%;
   height: max-content;
@@ -449,9 +471,9 @@ svg {
   height: 100%;
   width: 100%;
   margin-inline: auto;
-  background: var(--clr-sur-d);
+  /* background: var(--clr-sur-d); */
   overflow: scroll;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 }
 .menu-message__wrapper::-webkit-scrollbar {
   appearance: none;

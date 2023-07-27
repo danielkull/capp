@@ -5,11 +5,10 @@
       <!------------------------Nur fürs coden------------------------------------->
 
       <article>
-        <div class="quest-tbn">
-          <a href="#user-data">Fragebogen</a>
-        </div>
-        class="logIn-card__wrapper" :class="{ 'in-motion': motionActive }" >
         <section class="logIn-card__logo-capp">
+          <span class="theme-btn-holder">
+            <DarkModeButton class="dm-btn"
+          /></span>
           <h1>CAPP</h1>
           <!-- === Start Page Section for Log In und Sign In === -->
         </section>
@@ -44,7 +43,7 @@
                   :inputType="'email'"
                   :inputPlaceholder="'beispiel@provider.com'"
                   @is-valid="checkValidEmail"
-                  >Email
+                  >E-Mail
                 </InputText>
                 <InputText
                   v-model:inputData="password"
@@ -58,11 +57,11 @@
             <!-- Msg for the User if input is in any way invalid after cklicking the LogIn/Sign in button -->
             <div>
               <p
-                v-if="InputIsInValid"
+                v-if="inputIsInValid"
                 class="capp-input__invalid-input"
                 :class="{
-                  input__valid: !InputIsInValid,
-                  input__invalid: InputIsInValid,
+                  input__valid: !inputIsInValid,
+                  input__invalid: inputIsInValid,
                 }"
               >
                 {{ invalidInputMsg }}
@@ -101,7 +100,7 @@
                   :inputType="'email'"
                   :inputPlaceholder="'beispiel@provider.com'"
                   @is-valid="checkValidEmail"
-                  >Email
+                  >E-Mail
                 </InputText>
 
                 <InputText
@@ -109,18 +108,18 @@
                   :inputId="'sign-in-password'"
                   :inputType="'password'"
                   @is-valid="checkValidPassword"
-                  >Password</InputText
+                  >Passwort</InputText
                 >
               </form>
             </div>
             <!-- Msg for the User if input is in any way invalid after cklicking the LogIn/Sign in button -->
             <div>
               <p
-                v-if="InputIsInValid"
+                v-if="inputIsInValid"
                 class="capp-input__invalid-input"
                 :class="{
-                  input__valid: !InputIsInValid,
-                  input__invalid: InputIsInValid,
+                  input__valid: !inputIsInValid,
+                  input__invalid: inputIsInValid,
                 }"
               >
                 {{ invalidInputMsg }}
@@ -142,7 +141,6 @@
         <!-- ============== End of Sign In Page ==================== -->
       </article>
     </main>
-    <QuestionMenu />
     <ImpressumFooter />
   </section>
 </template>
@@ -151,18 +149,20 @@
 import InputText from "@/components/input-elements/InputText.vue";
 import LogButton from "@/components/input-elements/Button.vue";
 import BackButton from "@/components/input-elements/BackButton.vue";
+import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
+import router from "../router";
+import DarkModeButton from "@/components/input-elements/DarkModeButton.vue";
+
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { supabase } from "@/lib/supabaseClient.js";
-import router from "../router";
-import QuestionMenu from "@/components/main-component/expand-menu-components/QuestionMenuExpand.vue";
-import ImpressumFooter from "@/components/main-component/FooterImpressum.vue";
+
 export default {
   components: {
     InputText,
     LogButton,
     BackButton,
     ImpressumFooter,
-    QuestionMenu,
+    DarkModeButton,
   },
 
   data() {
@@ -170,14 +170,13 @@ export default {
       startPage: true,
       logInPage: false,
       signInPage: false,
-      motionActive: false,
       loading: false,
       email: null,
       password: null,
       username: null,
       isEmailValid: false,
       isPasswordValid: false,
-      InputIsInValid: false,
+      inputIsInValid: false,
       invalidInputMsg: "",
     };
   },
@@ -187,28 +186,23 @@ export default {
 
     return { authenticationStore };
   },
-  created() {
+  async created() {
     // Get all seasion and user data from the auth Store if availabel
-    this.getSessionInfos();
+    await this.getSessionInfos();
   },
   beforeMount() {
     // Take the data from the auth Store and check if somebody is already logged in
     this.checkForRegisteredUser();
   },
   methods: {
-    getSessionInfos() {
-      this.authenticationStore.getSession();
-      this.authenticationStore.onAuthStateChange();
+    async getSessionInfos() {
+      await this.authenticationStore.getSession();
+      await this.authenticationStore.onAuthStateChange();
     },
     checkForRegisteredUser() {
-      // Benötige diesen Consoel.log später für die entwicklung
-      // console.log("Check this: ", this.authenticationStore.session);
-      // If somebody is logged in send the user to the mainView
-      // Das MUSS für die Entwicklung ausgeklammert werden. Für die Build version
-      // wird es wieder eingeklammert.
-      // if (this.authenticationStore.session) {
-      //   router.push({ name: "mainView" });
-      // }
+      if (this.authenticationStore.session) {
+        router.push({ name: "mainView" });
+      }
     },
     emptyFormData() {
       this.email = null;
@@ -219,7 +213,7 @@ export default {
       this.isEmailValid = currentValidation;
     },
     checkValidPassword(currentValidation) {
-      // this.isPasswordValid = currentValidation;
+      this.isPasswordValid = currentValidation;
       this.isPasswordValid = true;
     },
     checkForEmptyForm() {
@@ -257,7 +251,7 @@ export default {
       this.emptyFormData();
       this.loading = true;
       this.invalidInputMsg = "";
-      this.InputIsInValid = false;
+      this.inputIsInValid = false;
       if (switchToPage === "logIn") {
         this.logInPage = !this.logInPage;
       } else if (switchToPage === "signIn") {
@@ -267,9 +261,7 @@ export default {
       this.hideSlide();
     },
     hideSlide() {
-      this.motionActive = true;
       setTimeout(() => {
-        this.motionActive = false;
         this.loading = false;
       }, 1000);
     },
@@ -297,7 +289,7 @@ export default {
         }
       } else {
         this.invalidInputMsg = "Deine Anmeldedaten sind leider unvollständig.";
-        this.InputIsInValid = true;
+        this.inputIsInValid = true;
       }
     },
     async handleSignIn() {
@@ -319,14 +311,14 @@ export default {
           // If Username/Mail exist, give feedback
           if (duplicateUsername & duplicateMail) {
             this.invalidInputMsg =
-              "Leider gibt es bereits den Usernamen, sowie die Mailadresse";
-            this.InputIsInValid = true;
+              "Leider gibt es bereits den Usernamen, sowie die E-Mail-Adresse";
+            this.inputIsInValid = true;
           } else if (duplicateUsername) {
             this.invalidInputMsg = "Leider gibt es bereits den Usernamen";
-            this.InputIsInValid = true;
+            this.inputIsInValid = true;
           } else if (duplicateMail) {
-            this.invalidInputMsg = "Leider gibt es bereits die Mailadresse";
-            this.InputIsInValid = true;
+            this.invalidInputMsg = "Leider gibt es bereits die E-Mail-Adresse";
+            this.inputIsInValid = true;
             // If They don't exist, sign Up this new user
           } else if (!duplicateUsername & !duplicateMail) {
             const { error } = await supabase.auth.signUp({
@@ -342,7 +334,9 @@ export default {
               if (responseInsertNewRow.error) {
                 throw error;
               } else {
-                router.push({ name: "addNewCarView" });
+                this.$router.push({
+                  name: "userQuestionView",
+                });
               }
             } else {
               throw error;
@@ -357,7 +351,7 @@ export default {
         }
       } else {
         this.invalidInputMsg = "Deine Anmeldedaten sind leider unvollständig.";
-        this.InputIsInValid = true;
+        this.inputIsInValid = true;
       }
     },
     toLowerCase(value) {
@@ -376,7 +370,7 @@ export default {
   left: 20%;
   width: 10rem;
   height: 3rem;
-  background: red;
+
   z-index: 15;
 }
 .log-view-wrapper {
@@ -402,26 +396,14 @@ main {
     var(--bg-shd-d) 100%
   );
 }
-.logIn-card__wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.in-motion {
-  overflow: hidden;
-}
 /*================================================*/
 /*                  Logo                          */
 /*================================================*/
 .logIn-card__logo-capp {
-  display: grid;
-  place-content: center;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   width: 100%;
   height: 30%;
@@ -431,6 +413,63 @@ main {
   color: var(--clr-logo);
   font-family: var(--font-logo);
   padding-bottom: 5rem;
+}
+.theme-btn-holder {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 95%;
+  margin-inline: auto;
+  margin-top: 5%;
+}
+.capp-btn__default {
+  background: none;
+  border: 1px solid var(--check-default);
+}
+.capp-btn__default::after {
+  top: 50%;
+  left: 4%;
+  translate: 88% -50%;
+}
+.capp-btn__default:checked::after {
+  translate: 0% -50%;
+  transition: 0.3s ease-out;
+  background-color: var(--clr-after-btn);
+}
+/* .capp-btn__default:checked::after {
+  background: radial-gradient(
+    circle at 20%,
+    transparent 40%,
+    var(--check-default) 41% 40%,
+    var(--check-default)
+  );
+}
+
+.capp-btn__default::after {
+  background: var(--check-default);
+  transition: 0.1s ease-in;
+} */
+.capp-btn__default::after {
+  background: radial-gradient(
+    circle at 20%,
+    transparent 40%,
+    var(--check-default) 41% 40%,
+    var(--check-default)
+  );
+}
+
+.capp-btn__default:checked::after {
+  background: var(--check-default);
+  background: radial-gradient(
+    circle at center,
+    var(--check-default) 0% 39%,
+    transparent 40% 49%,
+    var(--check-default) 55%
+  );
+  transition: 0.1s ease-in;
+}
+
+.capp-btn__default:checked {
+  background: none;
 }
 /*================================================*/
 /*                  Logo-Ende                     */
@@ -450,15 +489,18 @@ main {
 /*===================================================*/
 
 .login-card__start-page {
-  translate: 0 0;
-  z-index: 14;
+  translate: 0 0px;
+  z-index: 2;
   background-color: var(--bg-log);
   border-radius: 2rem 2rem 0 0;
   padding-top: 10vh;
-  padding-bottom: 20vh;
+  padding-bottom: 12vh;
   box-shadow: 0px 0px 25px var(--foot-shd-d);
   border-top: var(--s-brd) solid var(--foot-brd);
-  margin-top: 20vh;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }
 
 .slide-enter-active {

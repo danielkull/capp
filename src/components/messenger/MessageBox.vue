@@ -1,4 +1,5 @@
 <template>
+  <!-- ========= Start small Message View ========= -->
   <article class="booking-message-section">
     <header class="booking-message__header">
       <section class="booking-message__header-profil-wrapper">
@@ -11,8 +12,16 @@
       </section>
     </header>
     <main>
-      <p class="booking-message__period">
+      <p v-if="routeData.status === 'accepted'" class="booking-message__period">
+        Klasse, deine Anfrage wurde angenommen. Bitte nehme nun Kontakt mit dem
+        Vermieter* auf!
+      </p>
+      <p v-if="routeData.status === 'pending'" class="booking-message__period">
         {{ period }}
+      </p>
+      <p v-if="routeData.status === 'declined'" class="booking-message__period">
+        Leider hat's nicht geklappt. Versuch es doch bei einer anderen
+        Vermieterin*.
       </p>
     </main>
     <footer class="booking-message__footer">
@@ -43,6 +52,8 @@
       ></Button>
     </footer>
   </article>
+  <!-- ========= End small Message View ========= -->
+  <!-- ========= Start Extended Message View ========= -->
   <article v-if="showExtendedMsg" class="extended-booking-message-section">
     <header class="extended-booking-message__header">
       <div
@@ -92,21 +103,28 @@
       </h4>
       <p class="message-text">{{ routeData.booking_msg }}</p>
     </main>
-    <footer class="extended-booking-message__footer">
-      <Button
-        value="Akzeptieren"
-        id="extended-msg-btn__accept"
-        class="booking-messsage__button"
-        @click.prevent="changeRouteStatus('accepted')"
-      ></Button>
-      <Button
-        value="Ablehnen"
-        id="extended-msg-btn__decline"
-        class="booking-messsage__button decline-btn"
-        @click.prevent="changeRouteStatus('declined')"
-      ></Button>
+    <footer>
+      <section
+        v-if="msgFromMe"
+        class="extended-booking-message__footer"
+      ></section>
+      <section v-else class="extended-booking-message__footer">
+        <Button
+          value="Akzeptieren"
+          id="extended-msg-btn__accept"
+          class="booking-messsage__button"
+          @click.prevent="changeRouteStatus('accepted')"
+        ></Button>
+        <Button
+          value="Ablehnen"
+          id="extended-msg-btn__decline"
+          class="booking-messsage__button decline-btn"
+          @click.prevent="changeRouteStatus('declined')"
+        ></Button>
+      </section>
     </footer>
   </article>
+  <!-- ========= End Extended Message View ========= -->
 </template>
 
 <script>
@@ -191,8 +209,6 @@ export default {
         .update({ status: newStatus })
         .eq("id", this.routeData.id)
         .select("id, status");
-      console.log("Data: ", data);
-      console.log("Error: ", error);
       this.$emit("updateRouteStatus", data);
       this.showExtendedMsg = false;
     },
@@ -204,7 +220,7 @@ export default {
 .booking-message-section {
   width: 95%;
   margin-inline: auto;
-  background: var(--surface-light);
+  background: var(--surface-dark);
   margin-top: 1rem;
   border-radius: var(--s-brd-rad);
   padding-inline: 1rem;
@@ -226,15 +242,13 @@ export default {
 .booking-message__header-profil-wrapper {
   display: inherit;
   align-items: center;
+  color: fnt;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  gap: 1rem;
 }
 
-.booking-message__information-title {
-  font-weight: bold;
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
-}
 .message-text {
-  font-size: 1.1rem;
+  font-size: var(--font-list-label);
   padding-bottom: 0.5rem;
   width: 100%;
   text-align: start;
@@ -253,7 +267,6 @@ export default {
   width: 2.5rem;
   aspect-ratio: 1;
   margin-inline: auto;
-  /* margin-top: 7rem; */
   aspect-ratio: 1;
   border-radius: 100%;
   display: grid;
@@ -289,10 +302,26 @@ export default {
   padding: calc(0.1rem + 0.5vh) calc(0.5rem + 0.5vw);
   font-size: clamp(0.8rem, 3vw, 1.2rem);
 }
-.extended-title {
-  font-size: 1.2rem;
+
+.extended-booking-message__main p {
+  font-size: var(--font-list-label);
+  color: var(--text-light);
+  padding-block: 0.5rem 0.8rem;
+}
+.extended-booking-message__main :is(h3, h4) {
+  width: 100%;
   margin-bottom: 0.4rem;
-  text-decoration: underline;
+  padding-bottom: 0.5rem;
+  font-size: var(--font-hr3);
+  font-weight: var(--f-weight-bold);
+  border-bottom: 1px solid transparent;
+  color: var(--text-light);
+  border-image: linear-gradient(
+      to right,
+      var(--text-light),
+      var(--surface-dark)
+    )
+    30;
 }
 .message-from-you {
   color: var(--clr-font-lightest);
@@ -308,15 +337,15 @@ export default {
 
 /* ======== Buttons ========= */
 .booking-messsage__button {
-  padding-block: 0.1rem;
-  font-size: clamp(0.8rem, 3vw, 1.2rem);
+  padding-block: 0.2rem;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
   text-transform: none;
   outline-offset: clamp(0.1rem, 1vw, 0.2rem);
   outline: none;
   border-width: 1px;
   border-radius: 0.5rem;
   height: 1.5rem;
-  margin-block: 0.4rem;
+  margin-block: 0.4rem 0.4rem;
 }
 .decline-btn {
   color: var(--accent-color-light);
@@ -340,7 +369,7 @@ export default {
   top: 0;
   left: 0;
   margin-inline: auto;
-  background: var(--surface-light);
+  background: var(--clr-bg);
   margin-top: 1rem;
   border-radius: var(--s-brd-rad);
   padding-inline: 1rem;

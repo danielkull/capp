@@ -81,11 +81,11 @@ export default {
   border-radius: 100%;
   z-index: 10;
   position: absolute;
-  top: 0%;
-  left: 320%;
-  translate: -50% 0;
+  top: 0px;
+  left: 90px;
+  translate: 0 0;
   border: 4px solid var(--clr-bg);
-  background: var(--error-color);
+  background: var(--accent-color-light);
 }
 
 .msg-img__pin-holder {
@@ -116,7 +116,7 @@ export default {
   .msg-img__pin-holder
   .msg-img__pin-user
   div {
-  background: var(--primary-mid);
+  background: var(--primary-middle);
 }
 .msg-user__pin-wrapper:nth-child(4) .msg-img__pin-holder .msg-img__pin-user div,
 .msg-user__pin-wrapper:nth-child(7) .msg-img__pin-holder .msg-img__pin-user div,

@@ -1,7 +1,7 @@
 <template>
   <section class="menue-expand__outer-wrapper" id="logout-user">
     <article class="question-card">
-      <DeleteLogCard :deleteLog="'profil-logout'" />
+      <DeleteLogCard deleteLogProfil="profil-logout" />
     </article>
   </section>
 </template>

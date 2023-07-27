@@ -48,19 +48,29 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: var(--m-marg);
 }
 textarea {
   width: 100%;
-  margin-top: 1rem;
+  height: clamp(13vh, 3vh, 25vh);
   background: var(--clr-sur-l);
   font-family: "Roboto", sans-serif;
-  font-size: calc(var(--s-font) + 0.2rem);
+  font-size: var(--font-list-label-s);
   caret-color: var(--primary-middle);
-  padding: 0.4rem;
-  border-color: var(--clr-sur-d);
+  padding: var(--s-pad);
+  outline: none;
+  border-radius: var(--s-brd-rad);
+  border: var(--s-brd) solid transparent;
   resize: none;
+  color: var(--text-dark);
+  font-weight: var(--f-weight-ligh);
 }
-textarea:active {
-  border-color: red;
+textarea::placeholder {
+  font-size: var(--font-list-label-s);
+}
+
+textarea:focus {
+  border-color: var(--primary-middle);
+  background: var(--clr-sur-d);
 }
 </style>

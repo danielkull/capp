@@ -93,7 +93,7 @@
       <section class="main-menue__list">
         <ul class="layer-1__list">
           <li>
-            Offene anfragen<span class="icon-holder">
+            Offene Anfragen<span class="icon-holder">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -109,7 +109,7 @@
             </span>
           </li>
           <li>
-            Geschlossene Anfragen<span class="icon-holder">
+            Beantwortete Anfragen<span class="icon-holder">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
@@ -268,7 +268,7 @@
           <article class="main-menue__choice">
             <input
               type="checkbox"
-              name="hier Namen für Kategorie eintragen"
+              name="Anzeigeeinstellung"
               id="11"
               class="question-list__btn"
             /><label class="under-menue__layer-1" for="11"
@@ -288,9 +288,21 @@
             ></label>
             <section class="main-menue__list">
               <ul class="layer-2__list">
-                <li>Nachtmodus <CheckBox id="dark-mode" /></li>
-                <li>Kontrastmodus <CheckBox id="contrast-mode" /></li>
-                <li>Farbmodus <CheckBox id="color-mode" /></li>
+                <li>
+                  <label for="dark"
+                    >Nachtmodus <DarkModeButton id="dark"
+                  /></label>
+                </li>
+                <li>
+                  <label for="contrast-mode"
+                    >Kontrastmodus <CheckBox id="contrast-mode"
+                  /></label>
+                </li>
+                <li>
+                  <label for="color-mode"
+                    >Farbmodus <CheckBox id="color-mode"
+                  /></label>
+                </li>
               </ul>
             </section>
           </article>
@@ -452,12 +464,15 @@
     <!----------------------------------------->
     <article class="main-menue__choice">
       <input
-        type="checkbox"
+        type="button"
         name="Nutzer-Angaben"
         id="user-data"
         class="question-list__btn"
-      /><label class="main-menue__list-header" for="user-data"
-        ><a href="logout-user">Logout</a>
+      /><label
+        @click.prevent="logOut"
+        class="main-menue__list-header"
+        for="user-data"
+      >
         Abmelden
         <span class="icon-holder"
           ><svg
@@ -483,9 +498,25 @@
 
 <script>
 import CheckBox from "@/components/input-elements/CheckBox.vue";
+import DarkModeButton from "@/components/input-elements/DarkModeButton.vue";
+
 import ExpandMenue from "@/components/main-component/ExpandMenueFrame.vue";
+
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+
 export default {
-  components: { CheckBox, ExpandMenue },
+  components: { CheckBox, ExpandMenue, DarkModeButton },
+  setup() {
+    const authenticationStore = useAuthenticationStore();
+
+    return { authenticationStore };
+  },
+  methods: {
+    async logOut() {
+      await this.authenticationStore.logOut();
+      location.reload();
+    },
+  },
 };
 </script>
 
@@ -494,9 +525,9 @@ export default {
 
 .main-menue__wrapper {
   width: 100%;
-  height: 78vh;
-  padding-top: 2rem;
-  padding-bottom: 3rem;
+  height: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background: var(--menue-bg);
   overflow: scroll;
 }
@@ -559,7 +590,6 @@ export default {
   overflow: hidden;
   width: 100%;
   list-style-type: none;
-  box-shadow: inset 0px 3px 5px var(--box-shadow-light);
 }
 * > a {
   text-decoration: none;
@@ -576,11 +606,12 @@ export default {
 }
 
 .layer-1__list > li,
-.layer-2__list > li {
+.layer-2__list > li label {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding-right: 1rem;
   padding-block: 0.2rem;
   margin-top: 0.2rem;
   color: var(--text-mid);
@@ -596,7 +627,6 @@ export default {
   display: grid;
   grid-template-rows: 1fr;
   background: var(--surface-dark);
-  padding-block: 0rem 1rem;
 }
 
 .question-list__item {

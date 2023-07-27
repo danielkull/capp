@@ -33,8 +33,16 @@
         <IconType :carType="carTypeCategory" class="icon"></IconType>
         <FuelType :fuelType="fuelTypeName" class="icon"></FuelType>
         <TrunkType :trunkVolumeLiters="trunkVolume" class="icon"></TrunkType>
-        <DifferentType :differentType="'Isofix'" class="icon"></DifferentType>
-        <DifferentType :differentType="'Nicht-Raucher'" class="icon">
+        <DifferentType
+          :differentType="'Isofix'"
+          class="icon"
+          v-if="carHasIsofix === true"
+        ></DifferentType>
+        <DifferentType
+          :differentType="'Nicht-Raucher'"
+          class="icon"
+          v-if="carIsSmoker === false"
+        >
         </DifferentType>
         <DifferentType :differentType="'Tiere'" class="icon"> </DifferentType>
       </section>
@@ -99,6 +107,12 @@ export default {
     carUserCity: {
       type: String,
       required: true,
+    },
+    carIsSmoker: {
+      type: Boolean,
+    },
+    carHasIsofix: {
+      type: Boolean,
     },
   },
 };

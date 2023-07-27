@@ -74,14 +74,14 @@
         <input
           type="checkbox"
           name="question"
-          id="gears"
+          id="allgemein"
           class="question-list__btn"
-        /><label class="question-list__header" for="gears">{{
-          h2filterGears
-        }}</label>
+        />
+        <label class="question-list__header" for="allgemein">Allgemeines</label>
         <section class="question-list__list">
           <div>
-            <ul class="question-list">
+            <ul class="question-list radio-list">
+              <h4>{{ h2filterGears }}</h4>
               <li
                 class="question-list__item"
                 v-for="gear in gears"
@@ -99,6 +99,63 @@
                 <label :for="gear.id">{{ gear.name }}</label>
               </li>
             </ul>
+            <!----------------------Raucher----------------------------------->
+            <ul class="radio-list question-list radio-list">
+              <h4>{{ h2smoker }}</h4>
+              <li class="radio-list question-list__item">
+                <input
+                  type="radio"
+                  class="capp-radio__default"
+                  name="smoker"
+                  id="smoker-true"
+                  value="true"
+                  v-model="isSmoker"
+                  @change="filterCarsBySmoking()"
+                />
+                <label for="smoker-true">Ja</label>
+              </li>
+              <li class="question-list__item">
+                <input
+                  type="radio"
+                  class="capp-radio__default"
+                  name="smoker"
+                  id="smoker-false"
+                  value="false"
+                  v-model="isSmoker"
+                  @change="filterCarsBySmoking()"
+                />
+                <label for="smoker-false">Nein</label>
+              </li>
+            </ul>
+            <!----------------------Iso----------------------------------->
+            <ul class="question-list">
+              <h4>{{ h2isofix }}</h4>
+              <li class="question-list__item">
+                <input
+                  type="radio"
+                  class="capp-radio__default"
+                  name="isofix"
+                  id="isofix-true"
+                  value="true"
+                  v-model="hasIsofix"
+                  @change="filterCarsByIsofix()"
+                />
+                <label for="isofix-true"> Ja </label>
+              </li>
+              <li class="question-list__item">
+                <input
+                  type="radio"
+                  class="capp-radio__default"
+                  name="isofix"
+                  id="isofix-false"
+                  value="false"
+                  v-model="hasIsofix"
+                  @change="filterCarsByIsofix()"
+                />
+                <label for="isofix-false">Nein</label>
+              </li>
+            </ul>
+            <!----------------------Iso----------------------------------->
           </div>
         </section>
       </article>
@@ -136,19 +193,20 @@
         </section>
       </article>
       <!-- Filtern ob Raucher oder Nichtraucher -->
-      <article class="question-list__categorie">
+      <!-- <article class="question-list__categorie">
         <input
           type="checkbox"
           name="question"
           id="filter-smoker"
           class="question-list__btn"
-        /><label class="question-list__header" for="filter-smoker">{{
+        />
+        <label class="question-list__header" for="filter-smoker">{{
           h2smoker
         }}</label>
         <section class="question-list__list">
           <div>
-            <ul class="question-list">
-              <li class="question-list__item">
+            <ul class="radio-list question-list radio-list">
+              <li class="radio-list question-list__item">
                 <input
                   type="radio"
                   class="capp-radio__default"
@@ -175,15 +233,16 @@
             </ul>
           </div>
         </section>
-      </article>
+      </article> -->
       <!-- Filtern nach Isofix-Kindersitz-Halterung -->
-      <article class="question-list__categorie">
+      <!-- <article class="question-list__categorie">
         <input
           type="checkbox"
           name="question"
           id="filter-isofix"
           class="question-list__btn"
-        /><label class="question-list__header" for="filter-isofix">{{
+        />
+        <label class="question-list__header" for="filter-isofix">{{
           h2isofix
         }}</label>
         <section class="question-list__list">
@@ -199,7 +258,7 @@
                   v-model="hasIsofix"
                   @change="filterCarsByIsofix()"
                 />
-                <label for="isofix-true">Ja</label>
+                <label for="isofix-true"> Ja </label>
               </li>
               <li class="question-list__item">
                 <input
@@ -211,12 +270,12 @@
                   v-model="hasIsofix"
                   @change="filterCarsByIsofix()"
                 />
-                <label for="isofix-false">Nein</label>
+                <label for="isofix-false"> Nein</label>
               </li>
             </ul>
           </div>
         </section>
-      </article>
+      </article> -->
       <!-- Filtern nach Mindest-Alter -->
       <article class="question-list__categorie">
         <input
@@ -264,7 +323,7 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <ul class="question-list">
+            <ul class="question-list radio-list">
               <li
                 class="question-list__item"
                 v-for="trunkSize in trunkSizes"
@@ -279,14 +338,66 @@
                   @change="filterCarsByTrunkSize()"
                   class="capp-radio__default"
                 />
-                <label :for="trunkSize.id"
-                  >{{ trunkSize.id }} {{ trunkSize.min }}-{{
-                    trunkSize.max
-                  }}
-                  Liter</label
-                >
+                <label :for="trunkSize.id">{{ trunkSize.id }}</label>
               </li>
+
+              <!---------------------------------------------------------->
+              <!-----------------------Helb putt---------------------------->
+              <div class="capp-input__help-wrapper">
+                <!-- Start: Help/Question Button -->
+                <label for="help-trunk">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id="help-trunk"
+                    class="capp-input__help"
+                  />
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="bi bi-question-circle-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"
+                    />
+                  </svg>
+                </label>
+                <!-- End: Help/Question Button -->
+
+                <!-- Start: Help/Question Information Text -->
+
+                <!-- End: Help/Question Information Text -->
+              </div>
+
+              <!---------------------------------------------------------->
             </ul>
+            <article class="helper-text">
+              <ul>
+                <li>
+                  <p>S</p>
+                  <p>170-250 Liter</p>
+                </li>
+                <li>
+                  <p>M</p>
+                  <p>251-450 Liter</p>
+                </li>
+                <li>
+                  <p>L</p>
+                  <p>451-550 Liter</p>
+                </li>
+                <li>
+                  <p>XL</p>
+                  <p>551-800 Liter</p>
+                </li>
+                <li>
+                  <p>XXL</p>
+                  <p>801-1600 Liter</p>
+                </li>
+                <li></li>
+              </ul>
+            </article>
           </div>
         </section>
       </article>
@@ -302,7 +413,7 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <ul class="question-list">
+            <ul class="mulit-choice-list">
               <li
                 class="question-list__item"
                 v-for="feature in features"
@@ -335,7 +446,7 @@
         }}</label>
         <section class="question-list__list">
           <div>
-            <ul class="question-list">
+            <ul class="question-list radio-list">
               <li
                 class="question-list__item"
                 v-for="zipcode in zipcodes"
@@ -361,6 +472,7 @@
     </section>
   </form>
 
+  <!-- 
   <ul>
     <li
       v-for="filteredCar in filteredCars"
@@ -381,6 +493,7 @@
       Mindestalter: {{ filteredCar.min_age }}
     </li>
   </ul>
+  -->
 </template>
 
 <script>
@@ -541,7 +654,7 @@ export default {
         },
         {
           id: 6,
-          name: "6 und mehr Sitze",
+          name: "6 und mehr",
           checked: false,
         },
       ],
@@ -732,7 +845,6 @@ export default {
         )
         .in("fuel_type", this.chosenFuelTypeNames);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //chosenGear
     async filterCarsByGear() {
@@ -746,7 +858,6 @@ export default {
         )
         .eq("gear", this.chosenGear);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //hasIsofix
     async filterCarsByIsofix() {
@@ -760,7 +871,6 @@ export default {
         )
         .eq("has_isofix", this.hasIsofix);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //isSmoker
     async filterCarsBySmoking() {
@@ -774,7 +884,6 @@ export default {
         )
         .eq("is_smoker", this.isSmoker);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //chosenSeatCountIDs
     async filterCarsBySeatCount() {
@@ -805,7 +914,6 @@ export default {
           .in("count_of_seats", this.chosenSeatCountIDs);
         this.filteredCars = data;
       }
-      console.log(this.filteredCars);
     },
     //chosenMinAgeIDs
     async filterCarsByMinAge() {
@@ -819,7 +927,6 @@ export default {
         )
         .in("min_age", this.chosenMinAgeIDs);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //chosenTrunkSize
     async filterCarsByTrunkSize() {
@@ -834,7 +941,6 @@ export default {
         .gte("trunk_volume_in_liters", this.chosenTrunkSize[1])
         .lte("trunk_volume_in_liters", this.chosenTrunkSize[2]);
       this.filteredCars = data;
-      console.log(this.filteredCars);
     },
     //chosenCarTypeNames
     async filterCarsByCarType() {
@@ -858,7 +964,6 @@ export default {
           return filteredCarType.cars.length > 0;
         }
       );
-      console.log(this.filteredCarTypes);
 
       this.filteredCars = [];
 
@@ -867,7 +972,6 @@ export default {
           this.filteredCars.push(car);
         });
       });
-      console.log(this.filteredCars);
     },
     //chosenZipCode
     async filterCarsByZipCode() {
@@ -888,7 +992,6 @@ export default {
       this.filteredUsers = this.filteredUsers.filter((filteredUser) => {
         return filteredUser.cars.length > 0;
       });
-      console.log(this.filteredUsers);
 
       this.filteredCars = [];
 
@@ -897,7 +1000,6 @@ export default {
           this.filteredCars.push(car);
         });
       });
-      console.log(this.filteredCars);
     },
   },
 };
@@ -906,24 +1008,12 @@ export default {
 <style scoped>
 /* List Elements */
 .question-list__wrapper {
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
   overflow: hidden;
-  width: 90%;
-  margin-top: 2.5rem;
+  width: 95%;
+  margin-top: 1.5rem;
   margin-inline: auto;
-}
-
-h1,
-.question-list__wrapper {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-h1 {
-  font-size: 2.25rem;
-  line-height: 1.75;
-  padding-inline: 5rem;
-  padding-block: 0 1rem;
-  color: var(--primary-mid);
+  background: var(--filter-menue-bg);
 }
 
 .question-list__header,
@@ -933,18 +1023,19 @@ h1 {
 }
 
 .question-list__header {
-  --header-question-list: clamp(1rem, 2vw, 1.5rem);
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 0.5rem;
+  padding-block: var(--xs-pad);
   padding-inline: 1rem;
-  font-size: var(--header-question-list);
-  color: var(--font-color-light);
-  background: var(--secondary-light);
+  font-size: var(--font-list-label-s);
+  color: var(--text-light);
+  background: var(--filter-menue-bg);
+  border-bottom: 1px solid var(--clr-brd);
 }
+
 .question-list__btn {
   all: unset;
   position: absolute;
@@ -955,35 +1046,55 @@ h1 {
   content: "";
   position: absolute;
   display: block;
-  width: 0.8rem;
-  height: 1.5rem;
-  top: 25%;
+  width: 0.4rem;
+  height: 1.1rem;
+  top: 50%;
   right: calc(2% + 1.5vw);
   translate: 0% -50%;
   clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
   transform-origin: center;
   transition: rotate 0.3s ease-out;
-  background: var(--secondary-default);
+  background: var(--list-default);
 }
 
 .question-list__categorie > .question-list__list > * {
   overflow: hidden;
   width: 100%;
-  padding-inline: var(--list-padding);
   list-style-type: none;
-  background: var(--secondary-light);
-  box-shadow: inset 0px 4px 5px rgba(145, 145, 145, 0.1);
+  background: var(--clr-sur-d);
+  border-radius: 0 0 2rem 2rem;
+  padding-inline: var(--xs-marg);
 }
 
 ul.question-list {
+  position: relative;
   list-style-type: none;
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+ul h4 {
+  color: var(--primary-middle);
+  border-bottom: 1px solid var(--primary-middle);
+  padding-bottom: 0.3rem;
+  padding-top: 0.3rem;
+  opacity: 0.7;
+  text-align: center;
+  grid-column: 1/4;
+  font-size: var(--font-list-label-xs);
+}
+
+.mulit-choice-list {
+  display: grid;
+  list-style-type: none;
+  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.padding-top {
+/* .padding-top {
   padding-top: 1rem;
-}
+} */
 
 .question-list__list {
   display: grid;
@@ -991,64 +1102,50 @@ ul.question-list {
   transition: grid-template-rows 0.3s ease-in-out;
 }
 
-.question-list__car-info {
-  transition: grid-template-rows 0.5s ease-in-out;
-}
-
-.question-list__car-info ul.question-list {
-  padding-bottom: 0.5rem;
-  border-bottom: 1px dotted var(--secondary-mid);
-}
-
-.question-list__car-info h3 {
-  line-height: 1.75;
-  margin-top: calc(var(--list-item-padding) * 2);
-  font-size: 1.35rem;
-  color: var(--primary-dark);
-}
-
 .question-list__btn:checked ~ .question-list__list {
   display: grid;
   grid-template-rows: 1fr;
-  background: var(--secondary-light);
-  padding-block: 0rem 1rem;
+  background: var(--clr-sur-d);
+
+  padding-bottom: var(--xs-pad);
+  border-radius: 0 0 var(--m-brd-rad) var(--m-brd-rad);
+}
+.question-list__btn:checked ~ .question-list__header {
+  border: none;
 }
 .question-list__btn:checked ~ .question-list__header::after {
-  background: var(--primary-mid);
+  background: var(--primary-middle);
   rotate: 90deg;
 }
 .question-list__item {
-  padding-block: var(--list-item-padding);
-  padding-inline: var(--list-item-padding);
+  padding-block: var(--xs-marg);
+  margin-inline: auto;
   width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
   list-style-type: none;
-  padding-left: 0;
+
+  padding-inline: 1rem;
 }
 
-.question-list__item.personal-item > label {
+/* .question-list__item.personal-item > label {
   display: block;
-}
-
-.question-list__item:hover,
-.question-list__header:hover {
-  background: var(--list-hover);
-}
+} */
 
 label {
-  _font-size: 1.1rem;
-  _color: var(--font-color-light);
-  color: var(--primary-dark);
-  padding-block: calc(var(--s-font) / 2);
-  font-size: 1.15rem;
-  letter-spacing: 0.1rem;
+  color: var(--text-light);
+  font-size: var(--font-list-label-s);
+  transition: color 0.2s ease-in-out;
+  letter-spacing: 0.05rem;
+  width: max-content;
 }
-
-input[type="radio"] ~ label {
-  line-height: 2;
-}
-
-label > img {
-  align-self: baseline;
+label:has(.capp-radio__default:checked) {
+  color: var(--text-light);
+  font-size: var(--font-list-label-s);
+  transition: color 0.2s ease-in-out;
+  letter-spacing: 0.05rem;
+  width: max-content;
 }
 
 /* Input Elements */
@@ -1060,26 +1157,26 @@ input[type="checkbox"] {
 
 .capp-radio__default {
   all: unset;
-  _display: block;
-  width: var(--btn-height-default);
-  aspect-ratio: 1;
+  appearance: none;
+  width: 0;
+  height: 0;
   border-radius: var(--circle-radius);
-  margin: var(--margin-default);
-  border: 1px solid var(--clr-trans);
+  margin: var(--xs-marg);
+  border: var(--s-brd) solid var(--clr-trans);
   position: relative;
 }
 .capp-radio__default::after {
   content: "";
-  _display: block;
+  display: block;
   position: absolute;
-  top: 5%;
-  left: -0.5rem;
+  top: 50%;
+  left: 0rem;
   translate: -50% -50%;
-  width: 1rem;
-  height: 1rem;
-  transition: 0.3s;
+  width: var(--btn-height-s);
+  height: var(--btn-height-s);
+  transition: 0.2s;
   border-radius: var(--circle-radius);
-  outline: 2px solid var(--font-color-light);
+  outline: var(--s-brd) solid var(--text-light);
   outline-offset: 0px;
 }
 .capp-radio__default:checked::after {
@@ -1087,123 +1184,135 @@ input[type="checkbox"] {
   outline-offset: 4px;
   outline: 1px solid var(--primary-mid);
 }
-
-/* Input Text, Email, Tel, Password */
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"] {
-  font-size: 1.1rem;
-  color: black;
-  padding: 0.25rem 0.35rem;
-  border: 1px solid var(--secondary-mid);
-  border-radius: 0.35rem;
+.capp-radio__default:checked + label {
+  color: var(--text-mid);
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="password"]::placeholder,
-input[type="tel"]::placeholder {
-  color: var(--secondary-mid);
-}
-
-input[type="text"]:focus-within,
-input[type="email"]:focus-within,
-input[type="password"]:focus-within,
-input[type="tel"]:focus-within {
-  outline: 2px solid var(--primary-light);
-}
-
-.capp-input__default {
-  display: block;
-  width: 100%;
-  border: 2px solid var(--clr-trans);
-  border-radius: 0.5rem;
-  padding-inline: 0.5rem;
-  padding-block: 1rem;
-  font-size: var(--m-font);
-  background: var(--clr-bg-main);
-  box-shadow: inset 0 5px 5px -2px var(--secondary-dark);
-  color: var(--font-color-dark);
-}
-.capp-input__default:hover {
-  cursor: pointer;
-}
-.capp-input__default::placeholder {
-  opacity: 0.5;
-}
-
-.capp-input__default:focus {
-  outline-color: var(--primary-light);
-}
-
-.capp-input__default.input__invalid {
-  color: var(--error-color);
-}
-
-.capp-input__default.input__invalid:focus {
-  outline-color: var(--error-color);
-}
-
-.capp-input__default ~ span {
-  display: none;
-}
-
-.capp-input__default.input__invalid ~ span {
-  display: block;
-  color: var(--error-color);
-}
-
-span#password-toggle-text {
-  font-size: 0.75rem;
-  color: var(--primary-dark);
-}
-
-/* Checkboxen */
+/* ================  Checkboxen ====================*/
 .capp-btn__default {
+  --after-heigth: 1.2rem;
   cursor: pointer;
   appearance: none;
   display: block;
   position: relative;
-  width: calc(var(--btn-height-default) * 1.5);
-  height: calc(var(--btn-height-default) * 0.75);
-  border-radius: var(--btn-height-default);
-  margin-block: var(--margin-default) 5px;
-  background: var(--secondary-mid);
+  width: clamp(2.5rem, 10vw, 3rem);
+
+  height: calc(var(--after-heigth) + 0.3rem);
+  border-radius: var(--m-brd-rad);
+
+  background: var(--check-default);
+  transition: background-color 0.1s ease-out;
 }
+
 .capp-btn__default::after {
   content: "";
   position: absolute;
   display: block;
-  top: -2%;
-  left: -10%;
-  width: calc(var(--btn-height-default) * 0.75);
+  top: 50%;
+  left: 3%;
+  translate: 10% -50%;
+  height: var(--after-heigth);
   aspect-ratio: 1;
   border-radius: var(--circle-radius);
-  background: var(--secondary-dark);
-  transition: 0.3s ease-out;
+  background: var(--clr-after-btn);
+  transition-duration: 0.2s, 0.2s;
+  transition-property: background-color, translate;
 }
 .capp-btn__default:checked {
-  background: var(--primary-light);
+  background-color: var(--check-checked);
 }
 .capp-btn__default:checked::after {
-  left: 50.2%;
+  translate: 90% -50%;
   transition: 0.3s ease-out;
-  background: var(--primary-dark);
+  background-color: var(--clr-after-btn);
+}
+.capp-btn__default:checked + label {
+  color: var(--text-mid);
+}
+/*================================================*/
+.capp-input__help-wrapper {
+  position: absolute;
+
+  top: 60%;
+  left: 78%;
+  display: grid;
+  width: 4rem;
+  height: 4rem;
+  place-content: center;
+  margin-left: 1rem;
+}
+.capp-input__help {
+  width: calc(var(--s-font) * 2);
+  height: calc(var(--s-font) * 2);
+  padding-top: 0.5rem;
+  all: unset;
+}
+#help-trunk.label {
+  display: block;
+}
+#help-trunk:checked ~ svg {
+  fill: var(--primary-middle);
+}
+.capp-input__help ~ svg {
+  fill: var(--list-default);
+  /* position: relative; */
+  width: 1.8rem;
+  height: 1.8rem;
+}
+form:has(#help-trunk:checked) .helper-text {
+  translate: 160% 0%;
+}
+.helper-text {
+  position: absolute;
+  top: 30%;
+  left: -90%;
+
+  display: block;
+  background: var(--clr-sur-l);
+  color: var(--text-light);
+  border-radius: var(--s-brd-rad);
+  width: 65vw;
+  height: max-content;
+  padding: var(--s-pad);
+  text-align: start;
+  z-index: 15;
+  transition: translate 0.3s ease-in-out;
+  box-shadow: 0 0 10px var(--foot-shd-d), 0 0 50px var(--foot-shd-d);
+}
+.helper-text ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+.helper-text ul li {
+  display: inline-flex;
+  gap: 1rem;
+  width: 100%;
+  padding-inline: 1rem;
+  font-size: var(--font-list-label);
+  padding-block: 0.2rem;
+}
+.helper-text ul li:nth-child(1),
+.helper-text ul li:nth-child(2),
+.helper-text ul li:nth-child(3),
+.helper-text ul li:nth-child(4) {
+  border-bottom: 1px solid var(--clr-brd);
+}
+.helper-text ul li p:first-of-type {
+  width: 20%;
+}
+.helper-text ul li p:last-of-type {
+  width: 80%;
+  text-align: end;
 }
 
-/* Select */
-select {
-  padding: 0.35rem 0.5rem;
-  font-size: 1.1rem;
-  margin-left: 0.35rem;
-  border-radius: 0.25rem;
-  border: 1px solid var(--secondary-mid);
-  color: var(--font-color-dark);
-}
-
-select:focus-within {
-  outline-color: var(--primary-mid);
+@media screen and (min-width: 900px) {
+  .question-list__item:hover,
+  .question-list__header:hover {
+    background: var(--list-hover);
+  }
+  .capp-btn__default:checked::after {
+    translate: 127% -50%;
+  }
 }
 </style>

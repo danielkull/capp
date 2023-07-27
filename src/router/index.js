@@ -1,27 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
-import StefansView from "@/views/StefansView.vue";
 import LogView from "@/views/LogView.vue";
-import CalenderView from "@/views/CalenderView.vue";
-import DanielsView from "@/views/DanielsView.vue";
 import MainPageView from "@/views/MainPageView.vue";
 import UserProfileView from "@/views/UserProfileView.vue";
-import KirstensView from "@/views/KirstensView.vue";
-import AddNewCarView from "@/views/AddNewCarView.vue";
-import TestUserManagementView from "@/views/TestUserManagementView.vue";
 
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    redirect: { name: "logView" },
   },
   {
-    path: "/stefansView",
-    name: "stefansView",
-    component: StefansView,
+    path: "/index.html",
+    redirect: { name: "logView" },
   },
   {
     path: "/logView",
@@ -29,45 +20,34 @@ const routes = [
     component: LogView,
   },
   {
-    path: "/calendar",
-    name: "calendar",
-    component: CalenderView,
-  },
-  {
-    path: "/danielView",
-    name: "danielView",
-    component: DanielsView,
+    path: "/user-sign-in-question-form",
+    name: "userQuestionView",
+    component: () => import("@/views/UserQuestionView.vue"),
+    meta: {
+      needsAuth: true,
+    },
   },
   {
     path: "/mainView",
     name: "mainView",
     component: MainPageView,
     meta: {
-      // Wird bei der Finalen Version auf true gesetzt damit Route mit Auth funktioniert
-      // Bei entwicklung ist es erstmal hinterlich, daher false
-      needsAuth: false,
+      needsAuth: true,
     },
   },
   {
     path: "/car-profile/:id",
     name: "carProfile",
     component: UserProfileView,
+    meta: {
+      needsAuth: true,
+    },
   },
-  {
-    path: "/KirstensView",
-    name: "kirstensView",
-    component: KirstensView,
-  },
-  {
-    path: "/addNewCarView",
-    name: "addNewCarView",
-    component: AddNewCarView,
-  },
-  {
-    path: "/testUserManagementView",
-    name: "testUserManagementView",
-    component: TestUserManagementView,
-  },
+  /*   {
+    path: "/:catchAll",
+    name: "ErrorPage",
+    component: () => import("@/views/ErrorPageView.vue"),
+  }, */
 ];
 
 const router = createRouter({
@@ -79,12 +59,8 @@ router.beforeEach((to, from, next) => {
   const authenticationStore = useAuthenticationStore();
   if (to.meta.needsAuth) {
     if (authenticationStore.session.value) {
-      // Benötige diesen Consoel.log später für die entwicklung
-      // console.log(authenticationStore.session.value);
       next();
     } else {
-      // Benötige diesen Consoel.log später für die entwicklung
-      // console.log(authenticationStore.session.value);
       next("/logView");
     }
   } else {

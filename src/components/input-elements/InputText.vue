@@ -171,7 +171,7 @@ export default {
         case "text":
           return "Gib hier Deinen Usernamen ein. Es gibt nur eine Auflage: Du musst ihn Dir merken können.";
         case "email":
-          return "Bitte gib hier deine Mail-Adresse an. Sie sollte in etwa so aussehen: meinKuerzel@provider.com";
+          return "Bitte gib hier deine E-Mail-Adresse an. Sie sollte in etwa so aussehen: meinKuerzel@provider.com";
         case "password":
           return "Ein sicheres Passwort hat mindestens 12 Zeichen. Benutze hierbei bitte eine Mischung aus Groß-, Kleinschreibung, Sonderzeichen und Zahlen.";
         case "datetime-local":
@@ -189,7 +189,7 @@ export default {
         case "text":
           return "Der Username ist nicht korrekt";
         case "email":
-          return "Die Mail-Adresse ist nicht korrekt.";
+          return "Die E-Mail-Adresse ist nicht korrekt.";
         case "password":
           return "Leider wurden die Passwort-Kriterien nicht erfüllt";
         case "tel":
@@ -265,6 +265,7 @@ export default {
   justify-content: space-evenly;
   align-items: center;
 }
+
 .capp-input__wrapper span {
   width: 100%;
 }
@@ -282,15 +283,16 @@ export default {
   width: 100%;
   border: 2px solid var(--clr-trans);
   border-radius: 0.5rem;
-  padding-inline: 0.5rem;
-  padding-block: 1rem;
+  padding-inline: var(--xs-pad);
+  padding-block: var(--s-pad);
   font-size: var(--font-list-label-s);
-  background: var(--clr-sur-l);
-
+  background: var(--bg-input);
+  font-family: var(--def-font-style);
   caret-color: var(--primary-middle);
   color: var(--text-light);
+
   outline: none;
-  border: 1px solid transparent;
+  border: var(--s-brd) solid transparent;
 }
 input[type="password"] {
   font-family: Verdana;
@@ -326,17 +328,21 @@ input[type="password"]::placeholder {
   color: transparent;
 }
 .input__invalid {
-  color: var(--error-color);
+  color: var(--accent-color-light);
 }
 
 /*=====================*/
 .capp-input__help-wrapper {
-  position: relative;
+  /* position: relative; */
   display: grid;
   width: max-content;
   height: max-content;
   place-content: center;
-  top: 20px;
+  top: 0%;
+  left: 0;
+  translate: 0 60%;
+  margin-left: 1rem;
+  z-index: 100;
 }
 .capp-input__btn {
   all: unset;
@@ -345,28 +351,34 @@ input[type="password"]::placeholder {
   padding-top: 0.5rem;
 }
 .capp-input__btn:active > svg {
-  fill: var(--primary-mid);
+  fill: var(--primary-middle);
 }
 .capp-input__btn svg {
-  fill: var(--secondary-default);
+  fill: var(--list-default);
   position: relative;
 }
 
 .capp-input__help {
   position: absolute;
-  top: 60px;
+  top: 10px;
   left: -280px;
   display: block;
-  font-size: var(--s-font);
+  font-size: var(--font-list-label);
   background: var(--clr-sur-l);
   color: var(--text-mid);
-  border-radius: 1rem;
-  width: 20rem;
+  border-radius: var(--s-brd-rad);
+  width: 70vw;
   height: auto;
   padding: var(--s-pad);
+
   text-align: start;
-  z-index: 10;
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.4), 0 0 50px rgb(0, 0, 0, 0.4);
+  z-index: 30;
+  box-shadow: 0 0 10px var(--foot-shd-d), 0 0 50px var(--foot-shd-d);
+  /* background: red; */
+}
+.capp-input__help p {
+  width: 95%;
+  margin-inline: auto;
 }
 /*=================Helper Text show/hide Transition (works with <Transition> from vue) =================*/
 
@@ -384,17 +396,17 @@ input[type="password"]::placeholder {
 /*=================toggle BTn PW=============================*/
 .pw-sight {
   all: unset;
-  translate: 10px 5px;
+  translate: 10px 7px;
   cursor: pointer;
 }
 .pw-sight > svg {
   cursor: pointer;
   width: 1.5rem;
   aspect-ratio: 1;
-  fill: var(--secondary-dark);
+  fill: var(--list-default);
 }
 .pw-sight:active > svg {
-  fill: var(--primary-dark);
+  fill: var(--primary-middle);
 }
 
 /*======================================================================= */

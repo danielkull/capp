@@ -246,7 +246,7 @@
       <section class="faq-answer__holder">
         <section>
           <p>
-            Das machen wir für Dich! Schreibe uns einfach eine Email an
+            Das machen wir für Dich! Schreibe uns einfach eine E-Mail an
             capp.carsharing@gmail.com, wir kümmern uns darum.
           </p>
         </section>

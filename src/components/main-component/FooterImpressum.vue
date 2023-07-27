@@ -4,8 +4,6 @@
       <address aria-name="Adresse des Unternehmens">
         <ul class="adress-list" role="Anschrift des Unternehmens">
           <li>CAPP Carsharing</li>
-          <li>Musterstraße 99</li>
-          <li>12345 Musterstadt</li>
         </ul>
       </address>
     </article>
@@ -16,7 +14,7 @@
         |
         <li><a href="#data-sec">Datenschutz</a></li>
         |
-        <li><a href="#team">Über Uns</a></li>
+        <li><a href="#team">Über uns</a></li>
         |
         <li><a href="http://">Referenzen</a></li>
       </ul>
@@ -49,7 +47,7 @@ footer {
 article :is(ul, li, a) {
   text-decoration: none;
   list-style-type: none;
-  font-size: clamp(0.9rem, 3vw, 1.5rem);
+  font-size: var(--font-list-label-s);
   color: var(--text-light);
 }
 article :is(a:hover) {
@@ -70,8 +68,7 @@ article :is(ul) {
   margin-inline: auto;
 }
 .adress-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: block;
   width: 70%;
   margin-inline: auto;
 }
@@ -81,17 +78,18 @@ article :is(ul) {
   padding-top: calc(var(--s-pad) / 2);
 }
 .adress-list li:first-of-type {
-  border-bottom: var(--s-brd) solid var(--primary-middle);
+  line-height: 1.3rem;
   text-align: center;
   grid-column: 1/3;
   padding-bottom: calc(var(--s-pad) / 2);
+  font-size: var(--font-list-header);
+  border-bottom: var(--s-brd) solid var(--primary-middle);
 }
 .article__wrapper {
   padding-bottom: calc(var(--s-pad) - 0.2rem);
   margin-top: calc(var(--s-marg) - 0.8rem);
   display: block;
   align-items: center;
-
   width: 100%;
   height: auto;
 }

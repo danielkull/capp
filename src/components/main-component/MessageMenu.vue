@@ -14,7 +14,7 @@
       />
     </label>
     <label for="msg-filter-sent" class="msg-filter__label"
-      >Gesendete
+      >Gesendet
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -25,7 +25,7 @@
       />
     </label>
     <label for="msg-filter-received" class="msg-filter__label"
-      >Erhaltende
+      >Erhalten
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -36,7 +36,7 @@
       />
     </label>
     <label for="msg-filter-accepted" class="msg-filter__label"
-      >Bestätigte
+      >Bestätigt
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -47,7 +47,7 @@
       />
     </label>
     <label for="msg-filter-pending" class="msg-filter__label"
-      >Ausstehnde
+      >Ausstehend
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -58,7 +58,7 @@
       />
     </label>
     <label for="msg-filter-declined" class="msg-filter__label"
-      >Abgelehnte
+      >Abgelehnt
       <input
         class="msg-filter__input"
         type="checkbox"
@@ -82,7 +82,11 @@
       </li>
     </ul>
   </section>
-  <section v-else>Loadding....</section>
+  <section v-else class="msg-filter__placeholder">Loading....</section>
+  <!-- Check if routaData Array is empty -->
+  <section v-if="routeData.length === 0" class="msg-filter__placeholder">
+    Bisher keine Buchungsanfragen
+  </section>
 </template>
 
 <script>
@@ -93,10 +97,9 @@ import MessageBox from "@/components/messenger/MessageBox.vue";
 export default {
   data() {
     return {
-      routeData: null,
+      routeData: [],
       // Needs to be 0 for all users, who have no car
       userCar: 0,
-      activeUser: null,
       startTime: null,
       startEnd: null,
       checkBoxValue: 0,
@@ -109,17 +112,18 @@ export default {
       checkBoxDeclined: false,
     };
   },
+  inject: ["activeUser", "bookingViewToggle"],
   components: { MessageBox },
   setup() {
     const authenticationStore = useAuthenticationStore();
     return { authenticationStore };
   },
-  mounted() {
-    // Vorrübergehene Lösung...
-    setTimeout(() => {
-      this.activeUser = this.authenticationStore.activeUser;
-      this.getRoutes();
-    }, 500);
+  watch: {
+    bookingViewToggle(value) {
+      if (value === true) {
+        this.getRoutes();
+      }
+    },
   },
   computed: {
     filterRouteRequests() {
@@ -200,7 +204,6 @@ export default {
           .or(
             `user_id.eq.${this.activeUser[0].id},and(car_id.in.(${this.userCar}))`
           );
-        // console.log("routes: ", data);
         this.routeData = data;
         this.addSenderOrReceiver(this.routeData);
         if (error) throw error;
@@ -249,8 +252,12 @@ export default {
   column-gap: 0.5rem;
   row-gap: 0.2rem;
   grid-template-columns: repeat(3, 1fr);
-  width: 95%;
+  width: 100%;
   margin-inline: auto;
+  background: var(--clr-bg);
+  border-bottom: 2px solid var(--surface-light);
+  position: sticky;
+  top: 0;
 }
 .msg-filter__label {
   padding-block: 0.5rem;
@@ -270,5 +277,11 @@ export default {
   width: 0;
   position: absolute;
   top: -99999px;
+}
+.msg-filter__placeholder {
+  height: 80%;
+  display: grid;
+  place-content: center;
+  font-size: 1.2rem;
 }
 </style>

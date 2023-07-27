@@ -59,20 +59,14 @@
       <section class="car-info__list">
         <section class="placeholder">
           <p>
-            <span class="label">Marke/Modell</span>
+            <span class="label">Marke / Modell</span>
             <span>{{ brandName }} {{ carModel }}</span>
           </p>
-          <p>
-            <span class="label">Kennzeichen</span>
-            <span>{{ licensePlate }}</span>
-          </p>
+
           <p>
             <span class="label">Versicherung</span> <span>{{ insurance }}</span>
           </p>
-          <p>
-            <span class="label">Versicherungs-Nr.</span>
-            <span>{{ insuranceNumber }}</span>
-          </p>
+
           <p>
             <span class="label">Getriebe-Art</span> <span>{{ gear }}</span>
           </p>
@@ -83,18 +77,7 @@
           <p>
             <span class="label">PS</span> <span>{{ kwValue }}</span>
           </p>
-          <p>
-            <span class="label">Höchst-Tempo</span>
-            <span>{{ maxSpeed }} kmh</span>
-          </p>
-          <p>
-            <span class="label">Baujahr</span>
-            <span>{{ yearOfConstruction }}</span>
-          </p>
-          <p>
-            <span class="label">Kilometerstand</span>
-            <span>{{ mileageValue }}</span>
-          </p>
+
           <p>
             <span class="label">Kofferaum-Volumen</span>
             <span>{{ trunkVolume }} l</span>
@@ -105,7 +88,7 @@
     <!-------------------------------------------------------------------------------------->
     <article class="car-info__categorie">
       <a href="#booking-calendar" class="car-info__header car-info__link"
-        >Buchungs Kalender
+        >Buchungskalender
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +243,7 @@ h2 {
   font-weight: 500;
 }
 
-.car-info__link{
+.car-info__link {
   text-decoration: none;
 }
 
