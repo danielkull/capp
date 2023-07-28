@@ -205,6 +205,7 @@
       </div>
       <BookingExpandCard></BookingExpandCard>
       <BookingCalendarExpandCard></BookingCalendarExpandCard>
+      <BookingConfirmation></BookingConfirmation>
     </main>
   </body>
   <div v-else>
@@ -227,6 +228,8 @@ import InputText from "@/components/input-elements/InputText.vue";
 
 import BookingCalendarExpandCard from "@/components/main-component/expand-site-cards/BookingCalendarExpandCard.vue";
 import BookingExpandCard from "@/components/main-component/expand-site-cards/BookingExpandCard.vue";
+import BookingConfirmation from "@/components/main-component/expand-site-cards/BookingConfirmationExpandCard.vue";
+
 import { useGlobalStateStore } from "@/stores/useGlobalStateStore";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 
@@ -251,6 +254,7 @@ export default {
     InputText,
     BookingCalendarExpandCard,
     BookingExpandCard,
+    BookingConfirmation,
   },
   setup() {
     // Initialize the store at the begining
