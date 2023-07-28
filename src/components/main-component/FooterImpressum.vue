@@ -10,7 +10,7 @@
 
     <article class="article__wrapper">
       <ul class="link-wrapper" role="Liste der Links des Footers">
-        <li><a href="#impressum">Impressum</a></li>
+        <li><a @click="goToPage" href="#impressum">Impressum</a></li>
         |
         <li><a href="#data-sec">Datenschutz</a></li>
         |
@@ -20,10 +20,23 @@
       </ul>
     </article>
   </footer>
+  <Impressum></Impressum>
+  <Datasafty></Datasafty>
+  <Team></Team>
 </template>
 
 <script>
-export default {};
+import Impressum from "@/components/main-component/expand-site-cards/ImpressumExpandCard.vue";
+import Datasafty from "@/components/main-component/expand-site-cards/DataSafetyExpandCard.vue";
+import Team from "@/components/main-component/expand-site-cards/TeamExpandCard.vue";
+
+export default {
+  components: {
+    Impressum,
+    Datasafty,
+    Team,
+  },
+};
 </script>
 
 <style scoped>
