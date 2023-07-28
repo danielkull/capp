@@ -52,13 +52,6 @@
           >
           </TextAreaWithoutButton>
 
-          <Button
-            id="booking-btn"
-            :value="loading ? 'Loading...' : 'Send Request'"
-            :disabled="loading"
-            class="booking-btn-distance"
-            @click.prevent="handleBooking"
-          ></Button>
           <p
             v-if="inputIsInValid"
             class="capp-input__invalid-input"
@@ -69,6 +62,13 @@
           >
             {{ invalidInputMsg }}
           </p>
+          <Button
+            id="booking-btn"
+            :value="loading ? 'Loading...' : 'Send Request'"
+            :disabled="loading"
+            class="booking-btn-distance"
+            @click.prevent="handleBooking"
+          ></Button>
           <!-- Zwischen Lösung, führt eine getter funktion bei pinia aus und updated die Daten -->
           {{ checkForData }}
         </form>
@@ -83,6 +83,7 @@ import InputText from "@/components/input-elements/InputText.vue";
 import DropDownTwoColumns from "@/components/input-elements/DropDownTwoColumns.vue";
 import TextAreaWithoutButton from "@/components/input-elements/TextAreaWithoutButton.vue";
 import Button from "@/components/input-elements/Button.vue";
+
 import { useGlobalStateStore } from "@/stores/useGlobalStateStore";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 import { supabase } from "@/lib/supabaseClient";
@@ -137,6 +138,16 @@ export default {
     },
   },
   methods: {
+    checkForValidDate() {
+      // Converts Date to Number in Milliseconds
+      const currentStartDate = Date.parse(this.bookStartDate);
+      const currentEndDate = Date.parse(this.bookEndDate);
+      // Defince 30 Minutes
+      const setTimeDiffernce = 30;
+      // Adds the allowed time differents (in Milliseconds)
+      let allowedTimeDifference = currentStartDate + setTimeDiffernce * 60000;
+      return currentEndDate >= allowedTimeDifference ? true : false;
+    },
     getSessionInfos() {
       this.authenticationStore.getSession();
       this.authenticationStore.onAuthStateChange();
@@ -161,24 +172,30 @@ export default {
     },
     handleBooking() {
       if (this.bookingFormComplete()) {
-        // Deactivated for develop puropse of getting back to car-profile
         this.createRoute();
-        this.$router.go(-2);
+        this.globalStateStore.translateCard = "0% 0%";
       }
     },
     bookingFormComplete() {
       // Hier zuvor noch das Datum Prüfen
       // Beide Zeitangaben dürfen nicht exakt gleich sein (Vielleicht gibt man default dem end noch 30 Minuten)
       // Die EndZeit darf vom Datum nicht vor der Start liegen und wenn beide Datums gleich sind. Darf die Zeit nicht davor liegen
+      let dateValid = this.checkForValidDate();
 
       if (
         this.purposeSelected &&
         this.bookingMsg &&
         this.bookStartDate &&
-        this.bookEndDate
+        this.bookEndDate &&
+        dateValid
       ) {
         this.inputIsInValid = false;
         return true;
+      } else if (dateValid === false) {
+        this.invalidInputMsg =
+          "Deine Zeitangabe passt leider nicht. Bitte plane für das Buchungsende mindesten 30 Minuten abstand ein.";
+        this.inputIsInValid = true;
+        return false;
       } else {
         this.invalidInputMsg = "Leider sind deine Buchungsdaten unvollständig";
         this.inputIsInValid = true;
@@ -313,7 +330,7 @@ h3 {
 }
 
 .input__invalid {
-  color: var(--error-color);
+  color: var(--accent-color-dark);
 }
 /* =============================== */
 .booking-btn-distance {

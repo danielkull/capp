@@ -1,33 +1,55 @@
 <template>
-  <section class="question-frame">
-    <p v-if="deleteLogProfil === 'profil-delete'">
-      Willst Du dein Konto wirklich löschen?
-    </p>
+  <!-- Window for Deleting the Profil -->
+  <section class="question-frame" v-if="deleteLogProfil === 'profil-delete'">
+    <p>Willst Du dein Konto wirklich löschen?</p>
 
     <span class="quest-answer">
       <button><p>Ja</p></button>
       <a href="#">Nein</a>
     </span>
   </section>
-
+  <!-- Window for Logging out -->
   <section class="question-frame" v-if="deleteLogProfil === 'profil-logout'">
     <p>Willst Dich wirklich abmelden?</p>
     <span class="quest-answer">
-      <button><p>Ja</p></button>
+      <button @click.prevent="logOut"><p>Ja</p></button>
       <a href="#">Nein</a>
+    </span>
+  </section>
+  <!-- Window for Booking confirmation -->
+  <section
+    class="question-frame"
+    v-if="deleteLogProfil === 'booking-confirmation'"
+  >
+    <p>Deine Buchungsanfrage ist abgeschickt.</p>
+    <span class="quest-answer single-choice">
+      <button @click.prevent="closePage"><p>Ja</p></button>
     </span>
   </section>
 </template>
 
 <script>
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
+import { useGlobalStateStore } from "@/stores/useGlobalStateStore"; 
+
 export default {
   props: ["deleteLogProfil"],
-  /*   props: {
-    deleteLog: {
-      type: String,
-      required: true,
+  setup() {
+    const authenticationStore = useAuthenticationStore();
+    const globalStateStore = useGlobalStateStore();
+
+    return { authenticationStore, globalStateStore };
+  },
+  methods: {
+    async logOut() {
+      await this.authenticationStore.logOut();
+      location.reload();
     },
-  }, */
+    closePage() {
+      this.globalStateStore.translateCard = "-100% 0%";
+      this.$router.go(-2);
+    }
+  },
 };
 </script>
 
@@ -72,6 +94,10 @@ a {
   margin-top: 3rem;
   padding-inline: var(--s-pad);
 }
+.single-choice {
+  justify-content: center;
+}
+
 button:active {
   border-color: var(--primary-middle);
   color: var(--primary-middle);
