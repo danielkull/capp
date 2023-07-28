@@ -312,7 +312,8 @@ input[type="password"]::placeholder {
 
 .capp-input__default:focus {
   border: 1px solid var(--primary-dark);
-  background: var(--clr-sur-d);
+  background: var(--input-activ);
+  color: var(--text-dark);
 }
 
 /* ====== Invalid and Valid Styling ====== */
@@ -339,7 +340,7 @@ input[type="password"]::placeholder {
   width: max-content;
   height: max-content;
   place-content: center;
-  top: 0%;
+  top: 0;
   left: 0;
   translate: 0 60%;
   margin-left: 1rem;
@@ -361,8 +362,8 @@ input[type="password"]::placeholder {
 
 .capp-input__help {
   position: absolute;
-  top: 10px;
-  left: -280px;
+  top: -50px;
+  left: -270px;
   display: block;
   font-size: var(--font-list-label);
   background: var(--clr-sur-l);
