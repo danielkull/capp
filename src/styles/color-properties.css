@@ -114,12 +114,13 @@
   --menue-icon-def: var(--main-font-color-light);
   --menue-icon-act: var(--clr-prime-m);
   --menue-bg: var(--surface-light);
+  --input-activ: rgba(168, 166, 166, 0.2);
   /*==============logdoter==========================*/
   --foot-bg: hsl(0, 0%, 98%), 20%;
   --foot-filter: blur(5px);
   --foot-shd: hsla(0, 0%, 0%, 0.2);
   --foot-shd-d: hsla(0, 0%, 0%, 0.4);
-  --foot-brd: var(--surface-light);
+  --foot-brd: var(--shd-log-delete);
   /*===============Epand menue switch=================*/
   --brd-top: rgb(0, 0, 0, 0.6);
   --bg-content: transparent;
@@ -255,6 +256,7 @@
   --menue-icon-act: var(--primary-middle);
   /*============tetfield================*/
   --clr-txt-bg: var(--clr-prime-l);
+  --input-activ: var(--clr-sur-d);
   /*=========menue===========*/
   --text-field-clr: hsl(0, 0%, 8%, 0.8);
   --menue-bg: var(--clr-bg);

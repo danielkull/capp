@@ -80,7 +80,6 @@ article :is(ul) {
 .adress-list li:first-of-type {
   line-height: 1.3rem;
   text-align: center;
-  grid-column: 1/3;
   padding-bottom: calc(var(--s-pad) / 2);
   font-size: var(--font-list-header);
   border-bottom: var(--s-brd) solid var(--primary-middle);
@@ -92,5 +91,21 @@ article :is(ul) {
   align-items: center;
   width: 100%;
   height: auto;
+}
+
+@media screen and (min-width: 900px) {
+  footer {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    padding-block: 1rem 0.6rem;
+    border-top: var(--s-brd) solid var(--foot-brd);
+  }
+  .adress-list li:first-of-type {
+    text-align: start;
+    padding: 0;
+    border-bottom: var(--s-brd) solid none;
+  }
 }
 </style>
