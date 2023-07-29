@@ -4,6 +4,7 @@ export const useGlobalStateStore = defineStore("globalState", {
   state: () => ({
     currentDate: null,
     currentCarId: null,
+    translateCard: "",
   }),
 
   actions: {
