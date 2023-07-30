@@ -210,15 +210,14 @@ export default {
         this.msgFromMe = true;
         this.msgSender = this.activeUser[0].username;
         this.msgReceiver = this.routeData.car_id.user_id.username;
-        return `Deine Buchungsanfrage an ${this.routeData.car_id.user_id.username} (${this.routeData.car_id.user_id.firstname} ${this.routeData.car_id.user_id.lastname})`;
+        return `Deine Buchungsanfrage an ${this.routeData.car_id.user_id.username}`;
       } else if (
         this.activeUser[0].username !== this.routeData.user_id.username
       ) {
         this.msgFromMe = false;
-        //this.msgSender = this.routeData.car_id.user_id.username;
         this.msgSender = this.routeData.user_id.username;
         this.msgReceiver = this.activeUser[0].username;
-        return `${this.routeData.user_id.username} (${this.routeData.user_id.firstname} ${this.routeData.user_id.lastname}) hat dir eine Buchungsanfrage geschickt.`;
+        return `${this.routeData.user_id.username} hat dir eine Buchungsanfrage geschickt.`;
       }
     },
     whoSendMsg() {
@@ -291,7 +290,7 @@ export default {
 
 /*==================Profilbild-Klein-===============================*/
 .user-profile__image-small {
-  width: 6.5rem;
+  width: 2.5rem;
   aspect-ratio: 1;
   margin-inline: auto;
   aspect-ratio: 1;
@@ -302,7 +301,8 @@ export default {
 .user-profile__image-small__wrapper {
   overflow: hidden;
   display: block;
-  width: 100%;
+  /* width: 100%; */
+  width: 2.5rem;
   border: 3px solid var(--primary-dark);
   aspect-ratio: 1;
   border-radius: 100%;
@@ -313,8 +313,7 @@ export default {
   aspect-ratio: 1;
   object-fit: cover;
   object-position: center center;
-  position: relative;
-  z-index: 0;
+  /*position: relative;*/
 }
 /*========================================================*/
 /*==================Profilbilder-Ende===============================*/
@@ -403,6 +402,7 @@ export default {
   padding-inline: 1rem;
   padding-block: 0.2rem 0.4rem;
   overflow: scroll;
+  z-index: 1;
 }
 .extended-booking-message-section::-webkit-scrollbar {
   appearance: none;
