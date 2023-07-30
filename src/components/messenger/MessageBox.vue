@@ -6,28 +6,28 @@
         <article class="user-profile__image-small">
           <span class="user-profile__image-small__wrapper">
             <img
-              :src="routeData.car_id.user_id.img_source"
+              :src="routeData.user_id.img_source"
               :alt="
-                routeData.car_id.user_id.username +
+                routeData.user_id.username +
                 '(' +
-                routeData.car_id.user_id.firstname +
+                routeData.user_id.firstname +
                 ' ' +
-                routeData.car_id.user_id.lastname +
+                routeData.user_id.lastname +
                 '), ' +
-                routeData.car_id.user_id.zipcode +
+                routeData.user_id.zipcode +
                 ' ' +
-                routeData.car_id.user_id.city
+                routeData.user_id.city
               "
               :title="
-                routeData.car_id.user_id.username +
+                routeData.user_id.username +
                 '(' +
-                routeData.car_id.user_id.firstname +
+                routeData.user_id.firstname +
                 ' ' +
-                routeData.car_id.user_id.lastname +
+                routeData.user_id.lastname +
                 '), ' +
-                routeData.car_id.user_id.zipcode +
+                routeData.user_id.zipcode +
                 ' ' +
-                routeData.car_id.user_id.city
+                routeData.user_id.city
               "
             />
           </span>
@@ -210,14 +210,15 @@ export default {
         this.msgFromMe = true;
         this.msgSender = this.activeUser[0].username;
         this.msgReceiver = this.routeData.car_id.user_id.username;
-        return `Deine Buchungsanfrage an ${this.routeData.car_id.user_id.username}`;
+        return `Deine Buchungsanfrage an ${this.routeData.car_id.user_id.username} (${this.routeData.car_id.user_id.firstname} ${this.routeData.car_id.user_id.lastname})`;
       } else if (
         this.activeUser[0].username !== this.routeData.user_id.username
       ) {
         this.msgFromMe = false;
-        this.msgSender = this.routeData.car_id.user_id.username;
+        //this.msgSender = this.routeData.car_id.user_id.username;
+        this.msgSender = this.routeData.user_id.username;
         this.msgReceiver = this.activeUser[0].username;
-        return `${this.routeData.user_id.username} hat dir eine Buchungsanfrage geschickt.`;
+        return `${this.routeData.user_id.username} (${this.routeData.user_id.firstname} ${this.routeData.user_id.lastname}) hat dir eine Buchungsanfrage geschickt.`;
       }
     },
     whoSendMsg() {
@@ -290,7 +291,7 @@ export default {
 
 /*==================Profilbild-Klein-===============================*/
 .user-profile__image-small {
-  width: 2.5rem;
+  width: 6.5rem;
   aspect-ratio: 1;
   margin-inline: auto;
   aspect-ratio: 1;
@@ -313,6 +314,7 @@ export default {
   object-fit: cover;
   object-position: center center;
   position: relative;
+  z-index: 0;
 }
 /*========================================================*/
 /*==================Profilbilder-Ende===============================*/
