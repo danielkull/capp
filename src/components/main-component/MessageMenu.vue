@@ -208,7 +208,6 @@ export default {
             `user_id.eq.${this.activeUser[0].id},and(car_id.in.(${this.userCar}))`
           );
         this.routeData = data;
-        console.log(this.routeData);
         this.addSenderOrReceiver(this.routeData);
         if (error) throw error;
       } catch (error) {
