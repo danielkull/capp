@@ -4,7 +4,33 @@
     <header class="booking-message__header">
       <section class="booking-message__header-profil-wrapper">
         <article class="user-profile__image-small">
-          <span class="user-profile__image-small__wrapper"> </span>
+          <span class="user-profile__image-small__wrapper">
+            <img
+              :src="routeData.car_id.user_id.img_source"
+              :alt="
+                routeData.car_id.user_id.username +
+                '(' +
+                routeData.car_id.user_id.firstname +
+                ' ' +
+                routeData.car_id.user_id.lastname +
+                '), ' +
+                routeData.car_id.user_id.zipcode +
+                ' ' +
+                routeData.car_id.user_id.city
+              "
+              :title="
+                routeData.car_id.user_id.username +
+                '(' +
+                routeData.car_id.user_id.firstname +
+                ' ' +
+                routeData.car_id.user_id.lastname +
+                '), ' +
+                routeData.car_id.user_id.zipcode +
+                ' ' +
+                routeData.car_id.user_id.city
+              "
+            />
+          </span>
         </article>
         <h3 class="booking-message__information-title">
           {{ checkWhoBooks }}
