@@ -47,3 +47,4 @@ section:target {
   border-radius: var(--s-pad);
   box-shadow: 0px 0px 20px var(--card-shd-d), 0px 0px 40px 2px var(--card-shd-l);
 }
+</style>

@@ -87,7 +87,7 @@ import TeamSite from "@/components/main-component/expand-site-cards/TeamExpandCa
 import UserRules from "@/components/main-component/expand-site-cards/UseExpandCard.vue";
 import UserData from "@/components/main-component/expand-site-cards/UserDataExpandCard.vue";
 import DeleteCard from "@/components/main-component/expand-site-cards/DeleteExpandCard.vue";
-import LogoutCard from "@/components/main-component/expand-site-cards/DeleteExpandCard.vue";
+import LogoutCard from "@/components/main-component/expand-site-cards/LogoutExpandCard.vue";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
 

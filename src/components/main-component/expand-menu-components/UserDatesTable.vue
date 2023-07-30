@@ -21,8 +21,9 @@
                   <path
                     fill-rule="evenodd"
                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                  /></svg
-              ></label>
+                  />
+                </svg>
+              </label>
             </th>
           </tr>
         </thead>
@@ -42,7 +43,7 @@
         </tbody>
       </table>
       <span class="link-wrapper">
-        <a href="#delete">Konto löschen ?</a>
+        <a href="#delete">Konto löschen?</a>
       </span>
     </article>
 
@@ -71,8 +72,9 @@
                   <path
                     fill-rule="evenodd"
                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                  /></svg
-              ></label>
+                  />
+                </svg>
+              </label>
             </th>
           </tr>
         </thead>
@@ -104,7 +106,8 @@
                 >E-Mail und Passwort<input
                   type="button"
                   value=""
-                  id="change-btn" /><svg
+                  id="change-btn"
+                /><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   height="100%"
@@ -118,8 +121,9 @@
                   <path
                     fill-rule="evenodd"
                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                  /></svg
-              ></label>
+                  />
+                </svg>
+              </label>
             </th>
           </tr>
         </thead>
