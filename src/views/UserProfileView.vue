@@ -164,6 +164,7 @@
           </section>
           <AverageRating></AverageRating>
           <section class="customer-wrapper">
+            <!--
             <CustomerReviews
               v-for="reviewer in reviewers"
               :key="reviewer.id"
@@ -174,6 +175,7 @@
               :userMsg="reviewer.msgText"
             ></CustomerReviews>
             <hr />
+            -->
             <CustomerReviews
               v-for="review in reviews"
               :key="review.id"
@@ -183,44 +185,6 @@
               :lastName="review.users.lastname"
               :userMsg="review.booking_msg"
             ></CustomerReviews>
-            <!--
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            -->
           </section>
         </article>
       </div>
@@ -376,7 +340,6 @@ export default {
         .select(`*, users(id, username, firstname, lastname, img_source)`)
         .eq("car_id", this.carID);
       this.reviews = data;
-      console.log(this.reviews);
     },
   },
 };
