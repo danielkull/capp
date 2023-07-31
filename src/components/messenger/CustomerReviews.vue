@@ -28,12 +28,6 @@
 
     <p class="customer-review-text">
       {{ userMsg }}
-      <!--
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto
-      dolorum aut autem ad, neque molestias necessitatibus accusamus? Assumenda
-      porro quasi soluta blanditiis quae, debitis voluptate laborum quos dicta
-      at.
-      -->
     </p>
   </article>
 </template>
