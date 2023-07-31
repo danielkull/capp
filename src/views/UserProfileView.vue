@@ -163,7 +163,7 @@
             </label>
           </section>
           <AverageRating></AverageRating>
-          <section class="customer-wrapper">
+          <section class="customer-wrapper" v-if="reviews.length > 0">
             <!--
             <CustomerReviews
               v-for="reviewer in reviewers"
@@ -183,8 +183,11 @@
               :userName="review.users.username"
               :firstName="review.users.firstname"
               :lastName="review.users.lastname"
-              :userMsg="review.booking_msg"
+              :userMsg="review.review_msg"
             ></CustomerReviews>
+          </section>
+          <section class="customer-wrapper" v-else>
+            <h3>Es liegen noch keine Bewertungen vor.</h3>
           </section>
         </article>
       </div>
@@ -338,7 +341,8 @@ export default {
       const { data } = await supabase
         .from("routes")
         .select(`*, users(id, username, firstname, lastname, img_source)`)
-        .eq("car_id", this.carID);
+        .eq("car_id", this.carID)
+        .neq("review_msg", "");
       this.reviews = data;
     },
   },
@@ -599,6 +603,9 @@ main,
 .customer-wrapper::-webkit-scrollbar {
   appearance: none;
   width: 0;
+}
+.customer-wrapper > h3 {
+  text-align: center;
 }
 
 .user-profile__back-to-main-icon {
