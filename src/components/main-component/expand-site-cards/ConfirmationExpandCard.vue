@@ -7,17 +7,23 @@
     id="booking-confirmation"
   >
     <article class="question-card">
-      <DeleteLogCard deleteLogProfil="booking-confirmation" />
+      <DeleteLogCard :deleteLogProfil="modalMessageScreen" />
     </article>
   </section>
 </template>
 
 <script scoped>
 import DeleteLogCard from "@/components/main-component/expand-menu-components/DeleteLogQuestion.vue";
-import { useGlobalStateStore } from "@/stores/useGlobalStateStore"; 
+import { useGlobalStateStore } from "@/stores/useGlobalStateStore";
 import { watch } from "vue";
 
 export default {
+  props: {
+    modalMessageScreen: {
+      type: String,
+      default: "booking-confirmation",
+    },
+  },
   components: {
     DeleteLogCard,
   },
@@ -29,16 +35,16 @@ export default {
   setup() {
     // Initialize the store at the begining
     const globalStateStore = useGlobalStateStore();
-    return { globalStateStore};
+    return { globalStateStore };
   },
   mounted() {
     // This watch must be imported and can be used to look for changes in the pinia store.
     watch(
       () => this.globalStateStore.translateCard,
       (translateValue) => {
-        this.changePage = translateValue
+        this.changePage = translateValue;
       }
-    )
+    );
   },
 };
 </script>
@@ -58,7 +64,6 @@ section:target {
   top: 0%;
   left: 0%;
   translate: 0% 0;
-  /* translate: -100% 0; */
   transition: 0s;
   display: grid;
   place-content: center;

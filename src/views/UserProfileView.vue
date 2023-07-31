@@ -228,7 +228,7 @@ import InputText from "@/components/input-elements/InputText.vue";
 
 import BookingCalendarExpandCard from "@/components/main-component/expand-site-cards/BookingCalendarExpandCard.vue";
 import BookingExpandCard from "@/components/main-component/expand-site-cards/BookingExpandCard.vue";
-import BookingConfirmation from "@/components/main-component/expand-site-cards/BookingConfirmationExpandCard.vue";
+import BookingConfirmation from "@/components/main-component/expand-site-cards/ConfirmationExpandCard.vue";
 
 import { useGlobalStateStore } from "@/stores/useGlobalStateStore";
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
