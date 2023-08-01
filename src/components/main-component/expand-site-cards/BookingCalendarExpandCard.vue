@@ -13,7 +13,7 @@
           />
         </svg>
       </a>
-      <h2 class="menue-expand__site-header">Buchungs Kalender</h2>
+      <h2 class="menue-expand__site-header">Buchungskalender</h2>
     </header>
     <div class="menue-expand__inner-wrapper">
       <section class="menue-expand__site-main">

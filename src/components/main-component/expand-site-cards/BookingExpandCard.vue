@@ -193,7 +193,7 @@ export default {
         return true;
       } else if (dateValid === false) {
         this.invalidInputMsg =
-          "Deine Zeitangabe passt leider nicht. Bitte plane für das Buchungsende mindesten 30 Minuten abstand ein.";
+          "Deine Zeitangabe passt leider nicht. Bitte plane für das Buchungsende mindesten 30 Minuten Abstand ein.";
         this.inputIsInValid = true;
         return false;
       } else {

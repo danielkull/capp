@@ -1,7 +1,7 @@
 <template>
   <!-- Window for Deleting the Profil -->
   <section class="question-frame" v-if="deleteLogProfil === 'profil-delete'">
-    <p>Willst Du dein Konto wirklich löschen?</p>
+    <p>Willst Du Dein Konto wirklich löschen?</p>
 
     <span class="quest-answer">
       <button><p>Ja</p></button>
@@ -10,7 +10,7 @@
   </section>
   <!-- Window for Logging out -->
   <section class="question-frame" v-if="deleteLogProfil === 'profil-logout'">
-    <p>Willst Dich wirklich abmelden?</p>
+    <p>Willst Du Dich wirklich abmelden?</p>
     <span class="quest-answer">
       <button @click.prevent="logOut"><p>Ja</p></button>
       <a href="#">Nein</a>
@@ -21,7 +21,7 @@
     class="question-frame"
     v-if="deleteLogProfil === 'booking-confirmation'"
   >
-    <p>Deine Buchungsanfrage ist abgeschickt.</p>
+    <p>Deine Buchungsanfrage wurde abgeschickt.</p>
     <span class="quest-answer single-choice">
       <button @click.prevent="closePage"><p>Ja</p></button>
     </span>
