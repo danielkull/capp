@@ -214,7 +214,6 @@ export default {
     },
     checkValidPassword(currentValidation) {
       this.isPasswordValid = currentValidation;
-      this.isPasswordValid = true;
     },
     checkForEmptyForm() {
       const pasW = this.password;
@@ -282,7 +281,7 @@ export default {
           }
         } catch (error) {
           if (error instanceof Error) {
-            alert(error.message);
+            console.log(error.message);
           }
         } finally {
           this.loading = false;
