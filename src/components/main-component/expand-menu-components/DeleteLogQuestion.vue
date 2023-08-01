@@ -26,11 +26,22 @@
       <button @click.prevent="closePage"><p>Ja</p></button>
     </span>
   </section>
+  <!-- Window for changing User Setttings Data -->
+  <section
+    class="question-frame"
+    v-if="deleteLogProfil === 'user-settings-confirmation'"
+  >
+    <p>Möchtest du deine Änderungen speichern?</p>
+    <span class="quest-answer">
+      <button @click.prevent="closePage"><p>Ja</p></button>
+      <button @click.prevent="closePage"><p>Nein</p></button>
+    </span>
+  </section>
 </template>
 
 <script>
 import { useAuthenticationStore } from "@/stores/useAuthenticationStore";
-import { useGlobalStateStore } from "@/stores/useGlobalStateStore"; 
+import { useGlobalStateStore } from "@/stores/useGlobalStateStore";
 
 export default {
   props: ["deleteLogProfil"],
@@ -48,7 +59,7 @@ export default {
     closePage() {
       this.globalStateStore.translateCard = "-100% 0%";
       this.$router.go(-2);
-    }
+    },
   },
 };
 </script>

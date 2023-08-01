@@ -246,6 +246,7 @@ export default {
   padding-top: 2rem;
   overflow: scroll;
   position: fixed;
+  padding-bottom: 2.5rem;
 }
 .main-page-style {
   background: var(--clr-bg);

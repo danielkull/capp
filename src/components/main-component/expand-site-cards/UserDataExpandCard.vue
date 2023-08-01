@@ -107,9 +107,9 @@ header h2 {
   margin-top: 0.2rem;
   margin-inline: auto;
   padding-inline: var(--s-pad);
+  padding-top: 1rem;
   border-radius: var(--s-brd-rad) var(--s-brd-rad) 0 0;
   background: var(--bg-content);
-
   overflow: scroll;
 }
 </style>

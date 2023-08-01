@@ -1,13 +1,23 @@
 <template>
   <section class="site__wrapper">
-    <article class="user-table__wrapper">
+    <article
+      class="user-table__wrapper"
+      :class="{ 'change-btn__active': !notEditableBasicInfos }"
+    >
       <table width="100%">
         <thead>
           <tr>
             <th width="30%">Basis Info</th>
             <th width="70%">
-              <label for="change-btn"
-                ><input type="button" value="" id="change-btn" /><svg
+              <label for="change-btn__basis-info"
+                ><input
+                  type="button"
+                  value=""
+                  class="change-btn"
+                  :class="{ 'change-btn__active': !notEditableBasicInfos }"
+                  id="change-btn__basis-info"
+                  @click.prevent="editBasicInfo"
+                /><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   height="100%"
@@ -30,15 +40,29 @@
         <tbody>
           <tr>
             <td>Anrede</td>
-            <td>Herr</td>
+            <td>Frau / Herr</td>
           </tr>
           <tr>
             <td>Nachname</td>
-            <td>Musteetzwe</td>
+            <td>
+              <input
+                v-model="firstname"
+                class="user-settings__form-text-input"
+                type="text"
+                :disabled="notEditableBasicInfos"
+              />
+            </td>
           </tr>
           <tr>
             <td>Vorname</td>
-            <td>Max</td>
+            <td>
+              <input
+                v-model="lastname"
+                class="user-settings__form-text-input"
+                type="text"
+                :disabled="notEditableBasicInfos"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -51,14 +75,24 @@
 
     <!------------------------------------------------------------------------------------------------>
 
-    <article class="user-table__wrapper">
+    <article
+      class="user-table__wrapper"
+      :class="{ 'change-btn__active': !notEditableAddress }"
+    >
       <table width="100%">
         <thead>
           <tr>
             <th width="30%">Adresse</th>
             <th width="70%">
-              <label for="change-btn"
-                ><input type="button" value="" id="change-btn" /><svg
+              <label for="change-btn__address"
+                ><input
+                  type="button"
+                  value=""
+                  class="change-btn"
+                  :class="{ 'change-btn__active': !notEditableAddress }"
+                  id="change-btn__address"
+                  @click.prevent="editAdress"
+                /><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   height="100%"
@@ -81,15 +115,36 @@
         <tbody>
           <tr>
             <td>Straße</td>
-            <td>Fantasystraße</td>
+            <td>
+              <input
+                v-model="address"
+                class="user-settings__form-text-input"
+                type="text"
+                :disabled="notEditableAddress"
+              />
+            </td>
           </tr>
           <tr>
             <td>PLZ</td>
-            <td>000000</td>
+            <td>
+              <input
+                v-model="zipcode"
+                class="user-settings__form-text-input"
+                type="text"
+                :disabled="notEditableAddress"
+              />
+            </td>
           </tr>
           <tr>
             <td>Ort</td>
-            <td>Musterhausen</td>
+            <td>
+              <input
+                v-model="city"
+                class="user-settings__form-text-input"
+                type="text"
+                :disabled="notEditableAddress"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -102,11 +157,12 @@
         <thead>
           <tr class="mail-pw-wrapper">
             <th width="100%">
-              <label for="change-btn"
+              <label for="change-btn__mail-password"
                 >E-Mail und Passwort<input
                   type="button"
                   value=""
-                  id="change-btn"
+                  class="change-btn"
+                  id="change-btn__mail-password"
                 /><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
@@ -153,10 +209,119 @@
       </table>
     </article>
   </section>
+  <ModalConfirmation
+    modal-message-screen="user-settings-confirmation"
+  ></ModalConfirmation>
 </template>
 
 <script>
-export default {};
+import ModalConfirmation from "@/components/main-component/expand-site-cards/ConfirmationExpandCard.vue";
+
+import { useGlobalStateStore } from "@/stores/useGlobalStateStore";
+import { useAuthenticationStore } from "@/stores/useAuthenticationStore.js";
+
+export default {
+  components: { ModalConfirmation },
+  data() {
+    return {
+      activeUser: "",
+      firstname: null,
+      lastname: null,
+      address: null,
+      zipcode: null,
+      city: null,
+      notEditableBasicInfos: true,
+      notEditableAddress: true,
+      notEditableMailPassword: true,
+      basicInfosChanged: false,
+      addressChanged: false,
+      mailPasswordChanged: false,
+    };
+  },
+  setup() {
+    const globalStateStore = useGlobalStateStore();
+    const authenticationStore = useAuthenticationStore();
+    return { globalStateStore, authenticationStore };
+  },
+  mounted() {
+    this.$watch(
+      () => this.authenticationStore.activeUser,
+      (activeUser) => {
+        this.activeUser = activeUser[0];
+        this.firstname = this.activeUser.firstname;
+        this.lastname = this.activeUser.lastname;
+        this.address = this.activeUser.address;
+        this.zipcode = this.activeUser.zipcode;
+        this.city = this.activeUser.city;
+        // After initialization data are changed, so set back to false
+        this.basicInfosChanged = false;
+        this.addressChanged = false;
+        this.mailPasswordChanged = false;
+      }
+    );
+  },
+  methods: {
+    editBasicInfo() {
+      this.notEditableBasicInfos = !this.notEditableBasicInfos;
+      if (this.basicInfosChanged) {
+        // Data set for the update function
+        let dataToUpdate = {
+          activeUser: this.activeUser.id,
+          firstname: this.firstname,
+          lastname: this.lastname,
+        };
+        // The update function
+        this.authenticationStore.updateCurrentUserData(dataToUpdate);
+        // set dataChange back to default
+        this.basicInfosChanged = false;
+      }
+    },
+    editAdress() {
+      this.notEditableAddress = !this.notEditableAddress;
+      if (this.addressChanged) {
+        // Data set for the update function
+        let dataToUpdate = {
+          activeUser: this.activeUser.id,
+          address: this.address,
+          zipcode: this.zipcode,
+          city: this.city,
+        };
+        // The update function
+        this.authenticationStore.updateCurrentUserAddress(dataToUpdate);
+        // set dataChange back to default
+        this.addressChanged = false;
+      }
+    },
+  },
+  // Watch if any data were changed by user
+  watch: {
+    firstname(newFirstName, oldFirstName) {
+      if (newFirstName !== oldFirstName) {
+        this.basicInfosChanged = true;
+      }
+    },
+    lastname(newLastName, oldLastName) {
+      if (newLastName !== oldLastName) {
+        this.basicInfosChanged = true;
+      }
+    },
+    address(newAddress, oldAddress) {
+      if (newAddress !== oldAddress) {
+        this.addressChanged = true;
+      }
+    },
+    zipcode(newZipcode, oldZipcode) {
+      if (newZipcode !== oldZipcode) {
+        this.addressChanged = true;
+      }
+    },
+    city(newCity, oldCity) {
+      if (newCity !== oldCity) {
+        this.addressChanged = true;
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -187,9 +352,7 @@ input[type="button"] {
   height: 0;
   top: -99999px;
 }
-#change-btn:active ~ svg {
-  fill: var(--check-checked);
-}
+
 /*===================================*/
 label {
   display: block;
@@ -203,7 +366,16 @@ label svg {
   height: var(--m-font);
   fill: var(--text-light);
 }
-
+/* Styling after edit button is pressed */
+.change-btn:active ~ svg {
+  fill: var(--check-checked);
+}
+.change-btn__active,
+.change-btn__active ~ svg {
+  fill: var(--secondary-color);
+  box-shadow: 0px 0px 15px var(--secondary-color);
+}
+/* end of edit button styling */
 .link-wrapper {
   display: block;
 
@@ -249,8 +421,26 @@ tr:nth-child(even) {
   border-bottom: var(--s-brd) solid var(--clr-brd-top);
   border-top: var(--s-brd) solid var(--clr-brd-top);
 }
-
 /*===============================================*/
+
+/* === Styling of Input Elements === */
+.user-settings__form-text-input,
+.user-settings__form-text-input:focus {
+  font-family: var(--def-font-style);
+  border: none;
+  color: var(--text-light);
+  font-weight: var(--f-weight-m);
+  text-align: right;
+  background: transparent;
+  outline-offset: var(--xs-pad);
+  outline-color: var(--shd-single-cards);
+}
+.user-settings__form-text-input:focus {
+  box-shadow: 0 0 20px 1px var(--shd-single-cards);
+  background: rgba(102, 100, 100, 0.08);
+  color: var(--text-mid);
+}
+/* === End of Styling of Input Elements === */
 
 .text-holder {
   display: block;

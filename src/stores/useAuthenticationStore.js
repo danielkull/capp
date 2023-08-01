@@ -48,5 +48,34 @@ export const useAuthenticationStore = defineStore("authentication", {
         alert(error.message);
       }
     },
+    async updateCurrentUserData(dataToUpdate) {
+      try {
+        const { error } = await supabase
+          .from("users")
+          .update({
+            firstname: dataToUpdate.firstname,
+            lastname: dataToUpdate.lastname,
+          })
+          .eq("id", dataToUpdate.activeUser);
+        if (error) throw error;
+      } catch (error) {
+        alert(error.message);
+      }
+    },
+    async updateCurrentUserAddress(dataToUpdate) {
+      try {
+        const { error } = await supabase
+          .from("users")
+          .update({
+            address: dataToUpdate.address,
+            zipcode: dataToUpdate.zipcode,
+            city: dataToUpdate.city,
+          })
+          .eq("id", dataToUpdate.activeUser);
+        if (error) throw error;
+      } catch (error) {
+        alert(error.message);
+      }
+    },
   },
 });
