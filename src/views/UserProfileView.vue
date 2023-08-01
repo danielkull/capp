@@ -65,7 +65,7 @@
                       />
                     </svg>
                   </span>
-                  <p class="user-info__city-plz">{{ car.users.plz }}</p>
+                  <p class="user-info__city-plz">{{ car.users.zipcode }}</p>
                   <p>/</p>
                   <p class="user-info__city-name">{{ car.users.city }},</p>
                   <p class="user-info__city-disrict">{{ car.users.address }}</p>
@@ -159,47 +159,35 @@
               class="commentar-section__btn"
             />
             <label for="commentar-section-check">
-              Waren sie mit <span>{{ car.users.username }}</span> zufrieden ?
+              Waren Sie mit <span>{{ car.users.username }}</span> zufrieden ?
             </label>
           </section>
           <AverageRating></AverageRating>
-          <section class="customer-wrapper">
+          <section class="customer-wrapper" v-if="reviews.length > 0">
+            <!--
             <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
+              v-for="reviewer in reviewers"
+              :key="reviewer.id"
+              :imgSource="reviewer.userImg"
+              :userName="reviewer.username"
+              :firstName="reviewer.firstname"
+              :lastName="reviewer.lastname"
+              :userMsg="reviewer.msgText"
             ></CustomerReviews>
+            <hr />
+            -->
             <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
+              v-for="review in reviews"
+              :key="review.id"
+              :imgSource="review.users.img_source"
+              :userName="review.users.username"
+              :firstName="review.users.firstname"
+              :lastName="review.users.lastname"
+              :userMsg="review.review_msg"
             ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
-            <CustomerReviews
-              :imgSource="car.img_source"
-              :userName="car.users.username"
-              :brandName="car.car_types.brands.brand_name"
-              :carTypeName="car.car_types.car_type_name"
-            ></CustomerReviews>
+          </section>
+          <section class="customer-wrapper" v-else>
+            <h3>Es liegen noch keine Bewertungen vor.</h3>
           </section>
         </article>
       </div>
@@ -239,6 +227,56 @@ export default {
       carID: this.$route.params.id,
       car: null,
       store: null,
+      reviews: null,
+      reviewers: [
+        {
+          id: 1,
+          username: "brandMatthes95",
+          firstname: "Matthias",
+          lastname: "Brandmüller",
+          userImg:
+            "https://images.pexels.com/photos/8178093/pexels-photo-8178093.jpeg?auto=compress&cs=tinysrgb&w=1600",
+          msgText:
+            "Brauchbarer fahrbarer Untersatz - praktisch, quadratisch, gut.",
+        },
+        {
+          id: 7,
+          username: "claudi66",
+          firstname: "Claudia",
+          lastname: "Nierenhofer",
+          userImg:
+            "https://images.pexels.com/photos/11431783/pexels-photo-11431783.jpeg?auto=compress&cs=tinysrgb&w=1600",
+          msgText: "Hat mich sicher und reibungslos von A nach B gebracht.",
+        },
+        {
+          id: 14,
+          username: "Bernd das Brot",
+          firstname: "Bernd",
+          lastname: "Brothage",
+          userImg:
+            "https://images.pexels.com/photos/709188/pexels-photo-709188.jpeg?auto=compress&cs=tinysrgb&w=600",
+          msgText: "Insgesamt sehr gutes Auto. Durchaus empfehlenswert.",
+        },
+        {
+          id: 20,
+          username: "Walksky",
+          firstname: "Luke",
+          lastname: "Skywalker",
+          userImg:
+            "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1600",
+          msgText:
+            "Insgesamt durchweg zufrieden. Nur die Türen sind etwas schwergängig.",
+        },
+        {
+          id: 56,
+          username: "martin",
+          firstname: "Martin",
+          lastname: "Bullerjahn",
+          userImg:
+            "https://images.pexels.com/photos/2128807/pexels-photo-2128807.jpeg?auto=compress&cs=tinysrgb&w=600",
+          msgText: "Fast perfekt für mich - fehlt nur noch der Isofix.",
+        },
+      ],
     };
   },
   components: {
@@ -273,6 +311,7 @@ export default {
   mounted() {
     this.getCar();
     this.globalStateStore.saveCurrentCarId(this.carID);
+    this.getReviews();
   },
   methods: {
     backToMainPageView() {
@@ -301,6 +340,14 @@ export default {
         )
         .eq("id", this.carID);
       this.car = data[0];
+    },
+    async getReviews() {
+      const { data } = await supabase
+        .from("routes")
+        .select(`*, users(id, username, firstname, lastname, img_source)`)
+        .eq("car_id", this.carID)
+        .neq("review_msg", "");
+      this.reviews = data;
     },
   },
 };
@@ -560,6 +607,9 @@ main,
 .customer-wrapper::-webkit-scrollbar {
   appearance: none;
   width: 0;
+}
+.customer-wrapper > h3 {
+  text-align: center;
 }
 
 .user-profile__back-to-main-icon {

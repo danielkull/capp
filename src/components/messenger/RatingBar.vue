@@ -7,6 +7,7 @@
   <div class="commentar__rating-bar">
     <RatingIcon
       v-for="n in ratingRange"
+      :key="n"
       :ratingId="n + ratingGroup"
       :ratingGroup="ratingGroup"
       :scalingIsActive="scalingIsActive"

@@ -7,26 +7,27 @@
             <!-- Die :alt und :title Daten müssen noch überarbeitet werden -->
             <!-- Nicht jeder User hat auch einen brand Naame und CarType -->
             <!-- Die Werte müssten auch eher aus den Rout Infos geholt werden, statt als props übertragen zu werden -->
+            <!-- Für die CustomerReviews Daten muss wahrscheinlich noch eine Tabelle angelegt werden, in der die Rewiew-Daten über ein entsprechendes Formular gespeichert werden. -->
+            <!-- Aus der Reviews Tabelle werden die Daten dann individuell für das jeweilige Auto in den reviewers state geladen -->
             <img
               :src="imgSource"
-              :alt="brandName + ' ' + carTypeName + ' von ' + userName"
-              :title="brandName + ' ' + carTypeName + ' von ' + userName"
+              :alt="firstName + ' ' + lastName + ' (' + userName + ')'"
+              :title="firstName + ' ' + lastName + ' (' + userName + ')'"
             />
           </span>
         </article>
-        <h3 class="customer-review__header-username">Reviewer Username</h3>
+        <h3 class="customer-review__header-username">
+          Reviewer {{ userName }}
+        </h3>
       </section>
       <RatingBar
-        :ratingGroup="'Reviewer Username'"
+        :ratingGroup="'Reviewer ' + userName"
         :scalingIsActive="true"
       ></RatingBar>
     </header>
 
     <p class="customer-review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iusto
-      dolorum aut autem ad, neque molestias necessitatibus accusamus? Assumenda
-      porro quasi soluta blanditiis quae, debitis voluptate laborum quos dicta
-      at.
+      {{ userMsg }}
     </p>
   </article>
 </template>
@@ -40,19 +41,23 @@ export default {
   props: {
     imgSource: {
       type: String,
-      required: true,
+      required: false,
     },
     userName: {
       type: String,
       required: true,
     },
-    brandName: {
+    firstName: {
       type: String,
-      required: true,
+      required: false,
     },
-    carTypeName: {
+    lastName: {
       type: String,
-      required: true,
+      required: false,
+    },
+    userMsg: {
+      type: String,
+      required: false,
     },
   },
 };

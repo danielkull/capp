@@ -198,7 +198,10 @@ export default {
         const { data, error } = await supabase
           .from("routes")
           .select(
-            "*, user_id(username), car_id(id, user_id(username)), purpose_id(purpose_name)"
+            `*, 
+            user_id(username, firstname, lastname, zipcode, city, img_source), 
+            car_id(id, user_id(username, firstname, lastname, zipcode, city, img_source)), 
+            purpose_id(purpose_name)`
           )
           // Bei Mehreren Autos für einen User muss hier noch etwas gemacht werden
           .or(

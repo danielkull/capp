@@ -4,7 +4,33 @@
     <header class="booking-message__header">
       <section class="booking-message__header-profil-wrapper">
         <article class="user-profile__image-small">
-          <span class="user-profile__image-small__wrapper"> </span>
+          <span class="user-profile__image-small__wrapper">
+            <img
+              :src="routeData.user_id.img_source"
+              :alt="
+                routeData.user_id.username +
+                '(' +
+                routeData.user_id.firstname +
+                ' ' +
+                routeData.user_id.lastname +
+                '), ' +
+                routeData.user_id.zipcode +
+                ' ' +
+                routeData.user_id.city
+              "
+              :title="
+                routeData.user_id.username +
+                '(' +
+                routeData.user_id.firstname +
+                ' ' +
+                routeData.user_id.lastname +
+                '), ' +
+                routeData.user_id.zipcode +
+                ' ' +
+                routeData.user_id.city
+              "
+            />
+          </span>
         </article>
         <h3 class="booking-message__information-title">
           {{ checkWhoBooks }}
@@ -189,7 +215,7 @@ export default {
         this.activeUser[0].username !== this.routeData.user_id.username
       ) {
         this.msgFromMe = false;
-        this.msgSender = this.routeData.car_id.user_id.username;
+        this.msgSender = this.routeData.user_id.username;
         this.msgReceiver = this.activeUser[0].username;
         return `${this.routeData.user_id.username} hat dir eine Buchungsanfrage geschickt.`;
       }
@@ -275,7 +301,8 @@ export default {
 .user-profile__image-small__wrapper {
   overflow: hidden;
   display: block;
-  width: 100%;
+  /* width: 100%; */
+  width: 2.5rem;
   border: 3px solid var(--primary-dark);
   aspect-ratio: 1;
   border-radius: 100%;
@@ -286,7 +313,7 @@ export default {
   aspect-ratio: 1;
   object-fit: cover;
   object-position: center center;
-  position: relative;
+  /*position: relative;*/
 }
 /*========================================================*/
 /*==================Profilbilder-Ende===============================*/
@@ -375,6 +402,7 @@ export default {
   padding-inline: 1rem;
   padding-block: 0.2rem 0.4rem;
   overflow: scroll;
+  z-index: 1;
 }
 .extended-booking-message-section::-webkit-scrollbar {
   appearance: none;
