@@ -1049,7 +1049,6 @@ export default {
 <style scoped>
 /* List Elements */
 .question-list__wrapper {
-  /* border-radius: 1rem; */
   overflow: hidden;
   width: 95%;
   margin-top: 1.5rem;
@@ -1132,11 +1131,6 @@ ul h4 {
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-
-/* .padding-top {
-  padding-top: 1rem;
-} */
-
 .question-list__list {
   display: grid;
   grid-template-rows: 0fr;
@@ -1170,16 +1164,13 @@ ul h4 {
   padding-inline: 1rem;
 }
 
-/* .question-list__item.personal-item > label {
-  display: block;
-} */
-
 label {
   color: var(--text-light);
   font-size: var(--font-list-label-s);
   transition: color 0.2s ease-in-out;
   letter-spacing: 0.05rem;
   width: max-content;
+  margin-top: 0.2rem;
 }
 label:has(.capp-radio__default:checked) {
   color: var(--text-light);
@@ -1221,9 +1212,9 @@ input[type="checkbox"] {
   outline-offset: 0px;
 }
 .capp-radio__default:checked::after {
-  background: var(--primary-mid);
+  background: var(--primary-middle);
   outline-offset: 4px;
-  outline: 1px solid var(--primary-mid);
+  outline: 1px solid var(--primary-middle);
 }
 .capp-radio__default:checked + label {
   color: var(--text-mid);
