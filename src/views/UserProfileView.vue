@@ -65,7 +65,7 @@
                       />
                     </svg>
                   </span>
-                  <p class="user-info__city-plz">{{ car.users.plz }}</p>
+                  <p class="user-info__city-plz">{{ car.users.zipcode }}</p>
                   <p>/</p>
                   <p class="user-info__city-name">{{ car.users.city }},</p>
                   <p class="user-info__city-disrict">{{ car.users.address }}</p>
@@ -159,7 +159,7 @@
               class="commentar-section__btn"
             />
             <label for="commentar-section-check">
-              Waren sie mit <span>{{ car.users.username }}</span> zufrieden ?
+              Waren Sie mit <span>{{ car.users.username }}</span> zufrieden ?
             </label>
           </section>
           <AverageRating></AverageRating>
