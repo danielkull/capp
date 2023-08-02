@@ -76,7 +76,7 @@
       >
         Im hohen Norden hat Kerstin die Organisation des Projektes übernommen.
         Als Mutter der “CAPP” (zumindest war es ihre Idee) behält sie den
-        Überblick über die Stati der tausend issues, reviewed geflissentlich,
+        Überblick über die Status der tausend issues, reviewed geflissentlich,
         sorgt für den Content und die gute Laune. Unser kreatives Sprachrohr.
       </p>
     </section>
@@ -92,6 +92,7 @@
 
       <span v-if="teamMember === 'Kirsten'">
         <img src="@/assets/logos/HTML5_logo_and_wordmark.svg.png" alt="" />
+        <img src="@/assets/logos/CSS3_logo.svg.png" alt="" />
         <img src="@/assets/logos/JavaScript_logo_2.svg.png" alt="" />
         <img src="@/assets/logos/Vue.js_Logo_2.svg.png" alt="" />
         <img
@@ -103,6 +104,7 @@
       <span v-if="teamMember === 'Daniel'">
         <img src="@/assets\logos\Miro.png" alt="" />
         <img src="@/assets/logos/HTML5_logo_and_wordmark.svg.png" alt="" />
+        <img src="@/assets/logos/CSS3_logo.svg.png" alt="" />
         <img src="@/assets/logos/JavaScript_logo_2.svg.png" alt="" />
         <img src="@/assets\logos\Pinia.svg" alt="" />
         <img src="@/assets/logos/Vue.js_Logo_2.svg.png" alt="" />
@@ -114,8 +116,10 @@
 
       <span v-if="teamMember === 'Kerstin'">
         <img src="@/assets\logos\Miro.png" alt="" />
-
         <img src="@/assets/logos/HTML5_logo_and_wordmark.svg.png" alt="" />
+        <img src="@/assets/logos/CSS3_logo.svg.png" alt="" />
+        <img src="@/assets/logos/JavaScript_logo_2.svg.png" alt="" />
+        <img src="@/assets/logos/Vue.js_Logo_2.svg.png" alt="" />
       </span>
     </section>
   </article>
