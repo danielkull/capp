@@ -121,7 +121,7 @@ export default {
 <style scoped>
 .car-card__wrapper {
   width: 100%;
-  height: 20rem;
+  height: 20em;
   position: relative;
   margin-bottom: 1rem;
   border-radius: 1rem;
@@ -181,16 +181,12 @@ img {
 .icon {
   width: 3rem;
   height: 3rem;
-  /* margin-inline: 0.4rem; */
 }
 .car-card__icon-wrapper {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-
-  /* padding-left: -0.3rem; */
-  padding-block: 0.9rem 0rem;
-
+  padding-block: 0.9rem 0.6rem;
   width: 100%;
   margin-inline: auto;
   margin-top: 0.5rem;
@@ -215,7 +211,7 @@ img {
   width: 35%;
   margin-inline: auto;
 
-  margin-bottom: -0.5rem;
+  margin-bottom: -0.2rem;
 }
 @media screen and (min-width: 900px) {
   .car-card__icon-wrapper {
